@@ -12,6 +12,7 @@ class Puzzle :
     void orderingPuzzle(int roomID);
     void deductionPuzzle(int roomID);
     void choicePuzzle(int roomID);
+    bool checkdoortouch();
 
    
 
