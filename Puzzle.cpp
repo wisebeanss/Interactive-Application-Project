@@ -47,38 +47,3 @@ void Puzzle::sequencePuzzle(int roomID)
     }
 }
 
-void Puzzle::room1()
-{
-    sequencePuzzle(1);
-    identifyObjectPuzzle(1);
-}
-
-void Puzzle::room2()
-{
-    fragmentPuzzle(2);
-    orderingPuzzle(2);
-}
-
-void Puzzle::room3()
-{
-    sequencePuzzle(3);
-    identifyObjectPuzzle(3);
-}
-
-void Puzzle::room4()
-{
-    fragmentPuzzle(4);
-    orderingPuzzle(4);
-}
-
-void Puzzle::room5()
-{
-    deductionPuzzle(5);
-    choicePuzzle(5);
-}
-
-void Puzzle::room6()
-{
-    deductionPuzzle(6);
-    choicePuzzle(6);
-}

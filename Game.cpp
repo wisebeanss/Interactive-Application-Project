@@ -15,7 +15,7 @@ void Game::Run() {
 		char letter = _getch();
 		int oldY = player.getY();
 		int oldX = player.getX();
-		player.move(letter);
+		player.move(letter, 24, 7);
 		map.updateMap(oldY, oldX, ' ');
 		map.updateMap(player.getY(), player.getX(), player.getSymbol());
 		map.printMap();

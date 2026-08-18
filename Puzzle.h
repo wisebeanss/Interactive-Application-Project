@@ -11,13 +11,7 @@ class Puzzle :
     void deductionPuzzle(int roomID);
     void choicePuzzle(int roomID);
 
-    // Room functions
-    void room1();
-    void room2();
-    void room3();
-    void room4();
-    void room5();
-    void room6();
+   
 
 };
 
