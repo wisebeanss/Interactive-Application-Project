@@ -6,7 +6,7 @@ using namespace std;
 void Puzzle::sequencePuzzle(int roomID)
 {
     int answer1;
-    int attempts;
+    int attempts = 0;
     char answer2 = ' ';
     if (roomID == 1)
     {
