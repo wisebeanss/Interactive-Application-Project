@@ -35,4 +35,4 @@ void Player::Discard(InteractiveObject* object) {
 			break;
 		}
 	}
- }
+}
