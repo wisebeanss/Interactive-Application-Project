@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void Puzzle::sequencePuzzle(int roomID)
+bool Puzzle::sequencePuzzle(int roomID)
 {
     int answer1;
     int attempts = 0;
