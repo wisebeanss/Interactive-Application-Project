@@ -2,13 +2,12 @@
 #include <iostream>
 
 using namespace std;
-void Puzzle::sequencePuzzle(int roomID)
+bool Puzzle::sequencePuzzle(int roomID)
 {
     int answer;
 
     if (roomID == 1)
     {
-        
         cout << "Enter the time as HHMMSS: ";
         cin >> answer;
 
@@ -19,17 +18,18 @@ void Puzzle::sequencePuzzle(int roomID)
             cout << "11:51...\n";
             cout << "The time feels strangely familiar.\n";
 
-            // unlock room 2
+            return true;
         }
         else
         {
             cout << "\nThat doesn't seem right.\n";
+
+            return false;
         }
     }
 
     else if (roomID == 3)
     {
-
         cout << "Enter the sequence: ";
         cin >> answer;
 
@@ -38,12 +38,16 @@ void Puzzle::sequencePuzzle(int roomID)
             cout << "\nYou remember the order now.\n";
             cout << "But you still don't remember why.\n";
 
-            // unlock second puzzle in room 3
+            return true;
         }
         else
         {
             cout << "\nThe memories don't fit together.\n";
+
+            return false;
         }
     }
+
+    return false;
 }
 
