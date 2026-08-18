@@ -47,8 +47,8 @@ void Map::printMap() const {
 
 void Map::updateMap(int x, int y, char symbol) {
 	if (x > 0 && x < 24 || y > 0 || y < 7) {
-		mapSize[y][x] = 'P';
-	}		
+		mapSize[y][x] = symbol;
+	}	
 }
 
 Map::~Map() {}
