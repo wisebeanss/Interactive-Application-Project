@@ -10,10 +10,15 @@ void Game::Init() {
 	map.printMap();
 }
 void Game::Run() {
-	char letter = _getch();
-	player.move(letter);
-	map.updateMap(player.getX(), player.getY(), player.getSymbol());
-	map.printMap();
+	while (true) {
+		char letter = _getch();
+		int oldY = player.getY();
+		int oldX = player.getX();
+		player.move(letter);
+		map.updateMap(oldY, oldX, ' ');
+		map.updateMap(player.getY(), player.getX(), player.getSymbol());
+		map.printMap();
+	}
 }
 void Game::End() {
 

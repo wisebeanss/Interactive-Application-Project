@@ -1,5 +1,5 @@
 #include "Player.h"
-Player::Player() : GameObject(0, 0, 'P') {
+Player::Player() : GameObject(3, 1, 'P') {
 }
 Player::~Player() {
 	for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
@@ -25,16 +25,16 @@ void Player::Discard(InteractiveObject* object) {
 void Player::move(char movement)
 {
 	switch (movement) {
-	case 'W':
-		setX(getX() + 1);
-		break;
-	case 'A':
-		setY(getY() - 1);
-		break;
-	case 'S':
+	case 'w':
 		setX(getX() - 1);
 		break;
-	case 'D':
+	case 'a':
+		setY(getY() - 1);
+		break;
+	case 's':
+		setX(getX() + 1);
+		break;
+	case 'd':
 		setY(getY() + 1);
 		break;
 	default:
