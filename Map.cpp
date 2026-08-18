@@ -48,7 +48,11 @@ void Map::printMap() const {
 }
 
 void Map::printCarrIndicator() const {
-
+	std::cout << "+-- -- -- -- -- --+\n";
+	std::cout << "|                 |\n";
+	std::cout << "| Carriage" << carriageNum << "    |\n";
+	std::cout << "|                 |\n";
+	std::cout << "+-- -- -- -- -- --+\n";
 
 }
 void Map::updateMap(int x, int y, char symbol) {
