@@ -4,6 +4,7 @@
 #include <conio.h>
 #include <iostream>
 #include <vector>
+#include "Map.h"
 
 using namespace std;
 class Player: public GameObject
@@ -16,7 +17,7 @@ public:
 	void Interact(InteractiveObject& object);
 	void Equip(InteractiveObject* object);
 	void Discard(InteractiveObject* object);
-	void HandleInput(char symbol);
-	void move(char movement, int boundaryX, int boundaryY);
+	void HandleInput(char symbol, Map& map);
+	void move(char movement, Map& map);
 };
 

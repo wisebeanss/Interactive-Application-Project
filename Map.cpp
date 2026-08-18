@@ -71,11 +71,8 @@ void Map::updateMap(int x, int y, char symbol) {
 	}	
 }
 
-bool Map::validMove(int x, int y) {
-	if (x > 0 && x < 24 && y > 0 && y < 7) {
-		return true;
-	}
-	else return false;
+bool Map::validMove(int x, int y) {	
+	return (mapSize[y][x] == ' ');
 }
 
 Map::~Map() {}

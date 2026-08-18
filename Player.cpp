@@ -22,7 +22,7 @@ void Player::Discard(InteractiveObject* object) {
 		}
 	}
 }
-void Player::HandleInput(char symbol) {
+void Player::HandleInput(char symbol, Map &map) {
 	if (symbol == 'e') {
 		for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
 			std::cout << Inventory[objIdx];
@@ -32,10 +32,10 @@ void Player::HandleInput(char symbol) {
 
 	}
 	else {
-		move(symbol, 22, 5);
+		move(symbol, map);
 	}
 }
-void Player::move(char movement, int boundaryX, int boundaryY)
+void Player::move(char movement, Map &map)
 {
 	int newX = getX();
 	int newY = getY();
@@ -55,9 +55,8 @@ void Player::move(char movement, int boundaryX, int boundaryY)
 	default:
 		break;
 	}
-	// Only update if inside boundaries
-	if (newX >= 1 && newX <= boundaryX &&
-		newY >= 1 && newY <= boundaryY)
+	// Only update if valid
+	if (map.validMove(newX, newY))
 	{
 		setX(newX);
 		setY(newY);
