@@ -13,7 +13,7 @@ void Game::Run() {
 	while (true) {
 		char letter = _getch();
 		player.move(letter);
-		map.updateMap(player.getX(), player.getY(), player.getSymbol());
+		map.updateMap(player.getY(), player.getX(), player.getSymbol());
 		map.printMap();
 	}
 }
