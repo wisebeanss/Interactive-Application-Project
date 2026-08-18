@@ -52,7 +52,7 @@ void Map::printCarrIndicator() const {
 
 }
 void Map::updateMap(int x, int y, char symbol) {
-	if (x > 0 && x < 24 || y > 0 || y < 7) {
+	if (x > 0 && x < 24 && y > 0 && y < 7) {
 		mapSize[y][x] = symbol;
 	}	
 }
