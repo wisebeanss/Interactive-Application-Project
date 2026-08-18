@@ -36,3 +36,20 @@ void Player::Discard(InteractiveObject* object) {
 		}
 	}
 }
+void Player::move(char movement)
+{
+	switch (movement) {
+	case 'W':
+		setX(getX() + 1);
+		break;
+	case 'A':
+		setY(getY() - 1);
+		break;
+	case 'S':
+		setX(getX() - 1);
+		break;
+	case 'D':
+		setY(getY() + 1);
+		break;
+	}
+}
