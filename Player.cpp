@@ -37,5 +37,7 @@ void Player::move(char movement)
 	case 'D':
 		setY(getY() + 1);
 		break;
+	default:
+		break;
 	}
 }
