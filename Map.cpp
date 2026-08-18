@@ -3,6 +3,7 @@
 
 Map::Map() {
 	buildMap();
+	carriageNum = 1;
 }
 
 
@@ -27,7 +28,7 @@ void Map::buildMap() {
 			}
 			
 			//obj build
-			if (i == 4 && j == 23) {
+			if (i == 3 && j == 23) {
 				mapSize[i][j] = 'D';
 			}
 		}
@@ -36,6 +37,7 @@ void Map::buildMap() {
 }
 
 void Map::printMap() const {
+
 	for (int i = 0; i < 7; i++) {
 
 		for (int j = 0; j < 24; j++) {
@@ -45,6 +47,10 @@ void Map::printMap() const {
 	}
 }
 
+void Map::printCarrIndicator() const {
+
+
+}
 void Map::updateMap(int x, int y, char symbol) {
 	if (x > 0 && x < 24 || y > 0 || y < 7) {
 		mapSize[y][x] = 'P';
