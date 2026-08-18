@@ -14,7 +14,6 @@ class Game
 private:
 	Map map;
 	Player player;
-	vector<InteractiveObject*> hints;
 public:
 	Game();
 	~Game();
