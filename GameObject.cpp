@@ -1,7 +1,8 @@
 #include "GameObject.h"
-GameObject::GameObject(int x, int y) {
+GameObject::GameObject(int x, int y, char symbol) {
 	this->x = x;
 	this->y = y;
+	this->symbol = symbol;
 }
 GameObject::~GameObject() {
 
@@ -17,4 +18,10 @@ int GameObject::getY() const {
 }
 void GameObject::setY(int y) {
 	this->y = y;
+}
+char GameObject::getSymbol() const {
+	return symbol;
+}
+void GameObject::setSymbol(char symbol) {
+	this->symbol = symbol;
 }

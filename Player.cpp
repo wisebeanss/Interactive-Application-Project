@@ -1,5 +1,5 @@
 #include "Player.h"
-Player::Player() : GameObject(0, 0){
+Player::Player() : GameObject(0, 0, 'P') {
 }
 Player::~Player() {
 	for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {

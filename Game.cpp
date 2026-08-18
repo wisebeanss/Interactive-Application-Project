@@ -12,7 +12,7 @@ void Game::Init() {
 void Game::Run() {
 	char letter = _getch();
 	player.move(letter);
-	map.updateMap(player.getX(), player.getY(), 'P');
+	map.updateMap(player.getX(), player.getY(), player.getSymbol());
 	map.printMap();
 }
 void Game::End() {
