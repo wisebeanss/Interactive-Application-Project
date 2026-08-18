@@ -2,12 +2,14 @@
 #include <iostream>
 
 using namespace std;
+int answer1;
+int attempts = 0;
+char answer2 = ' ';
 
-bool Puzzle::sequencePuzzle(int roomID)
+bool Puzzle::ROOM1(int roomID)
 {
-    int answer1;
-    int attempts = 0;
-    char answer2 = ' ';
+    if (roomID != 1) return false;
+    
     if (roomID == 1)
     {
         bool P11 = false;
@@ -42,18 +44,20 @@ bool Puzzle::sequencePuzzle(int roomID)
             }
         }
         while (!P12) {
-            if( roomID ==1 && P11)
-            cout << "MirrorA: The reflection is smiling But you are not\n";
+            if (roomID == 1 && P11)
+                cout << "MirrorA: The reflection is smiling But you are not\n";
             cout << "MirrorB: You raise your left hand. The reflection raises its right hand\n";
             cout << "MirrorC:You raise your left hand.The reflection raises its left hand. You blink.  It blinks with you.\n";
-       
+            cin >> answer2;
+
             if (answer2 == 'C') {
                 cout << "---\n";
                 cout << "Mirror C ripples softly.\n";
                 cout << "'I show only what is real.'\n";
                 cout << "The true mirror sees you exactly as you are.\n";
                 cout << "Lock clicks open.\n";
-                P12 = true;  
+          
+                P12 = true;
             }
             else {
                 cout << "---\n";
@@ -62,17 +66,16 @@ bool Puzzle::sequencePuzzle(int roomID)
             }
         }
     }
+}
+    ///
+    bool Puzzle::ROOM2(int roomID){
+        if (roomID != 2) return false;
+}
+    bool Puzzle::ROOM3(int roomID){
 
-    
-
-    else if (roomID == 2)
-    {
-        // TODO: Add room 2 puzzle
-        cout << "Room 2: Coming soon...\n";
-    }
-
-    else if (roomID == 3)
-    {
+        if (roomID != 3)return false;
+        if(roomID ==3)
+         {
         cout << "Enter the sequence (4 digits): ";
         cin >> answer1;
 

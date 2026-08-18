@@ -6,12 +6,13 @@ class Puzzle :
     public InteractiveObject
 {
     // Puzzle functions
-    bool  sequencePuzzle(int roomID);
-    bool  identifyObjectPuzzle(int roomID);
-    bool  fragmentPuzzle(int roomID);
-    bool  orderingPuzzle(int roomID);
-    bool  deductionPuzzle(int roomID);
-    bool  choicePuzzle(int roomID);
+    bool  ROOM1(int roomID);
+    bool  ROOM2(int roomID);
+    bool  ROOM3(int roomID);
+    bool  ROOM4(int roomID);
+    bool  ROOM5(int roomID);
+    bool  ROOM6(int roomID);
+ 
 
    
 
