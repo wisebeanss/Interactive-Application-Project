@@ -31,6 +31,9 @@ void Map::buildMap() {
 			if (i == 3 && j == 23) {
 				mapSize[i][j] = 'D';
 			}
+			else if (i == 1 || i == 5) {
+				mapSize[i][j] = '#';
+			}
 		}
 	}
 
@@ -48,7 +51,11 @@ void Map::printMap() const {
 }
 
 void Map::printCarrIndicator() const {
-
+	std::cout << "+-- -- -- -- -- --+\n";
+	std::cout << "|                 |\n";
+	std::cout << "|   CARRIAGE " << carriageNum << "    |\n";
+	std::cout << "|                 |\n";
+	std::cout << "+-- -- -- -- -- --+\n";
 
 }
 void Map::updateMap(int x, int y, char symbol) {
