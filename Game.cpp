@@ -17,6 +17,7 @@ void Game::Run() {
 		player.move(letter);
 		map.updateMap(oldY, oldX, ' ');
 		map.updateMap(player.getY(), player.getX(), player.getSymbol());
+		system("cls");
 		map.printMap();
 	}
 }
