@@ -1,11 +1,14 @@
 #pragma once
 #include <iostream>
+#include <vector>
+using namespace std;
+class InteractiveObject;
 class Map
 {
 private:
 	int carriageNum;
 	char mapSize[7][24];
-	
+	vector<InteractiveObject*> Objects;
 public:
 	Map();
 	void printCarrIndicator() const;

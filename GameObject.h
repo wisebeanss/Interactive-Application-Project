@@ -1,4 +1,9 @@
 #pragma once
+#include <conio.h>
+#include <iostream>
+#include <vector>
+#include <string>
+#include "Map.h"
 class GameObject
 {
 private:

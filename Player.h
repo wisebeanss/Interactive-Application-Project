@@ -1,10 +1,6 @@
 #pragma once
 #include "GameObject.h"
 #include "InteractiveObject.h"
-#include <conio.h>
-#include <iostream>
-#include <vector>
-#include "Map.h"
 
 using namespace std;
 class Player: public GameObject

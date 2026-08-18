@@ -25,8 +25,9 @@ void Player::Discard(InteractiveObject* object) {
 void Player::HandleInput(char symbol, Map &map) {
 	if (symbol == 'e') {
 		for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
-			std::cout << Inventory[objIdx];
+			std::cout << Inventory[objIdx]->getName();
 		}
+		std::cout << "dadasda" << std::endl;
 	}
 	else if (symbol == 'f') {
 
@@ -56,8 +57,7 @@ void Player::move(char movement, Map &map)
 		break;
 	}
 	// Only update if valid
-	if (map.validMove(newX, newY))
-	{
+	if (map.validMove(newX, newY)) {
 		setX(newX);
 		setY(newY);
 	}
