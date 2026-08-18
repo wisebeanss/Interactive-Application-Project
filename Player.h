@@ -1,7 +1,9 @@
 #pragma once
 #include "GameObject.h"
 #include "InteractiveObject.h"
+#include <conio.h>
 #include <vector>
+
 using namespace std;
 class Player: public GameObject
 {
