@@ -7,7 +7,7 @@ Game::~Game() {
 }
 void Game::Init() {
 	map.buildMap();
-	map.printCarrIndicator();
+	map.updateMap(player.getX(), player.getY(), player.getSymbol());
 	map.printMap();
 }
 void Game::Run() {
@@ -15,9 +15,10 @@ void Game::Run() {
 		char letter = _getch();
 		int oldY = player.getY();
 		int oldX = player.getX();
-		player.move(letter, 24, 7);
-		map.updateMap(oldY, oldX, ' ');
-		map.updateMap(player.getY(), player.getX(), player.getSymbol());
+		player.move(letter, 22, 5);
+		map.updateMap(oldX, oldY, ' ');
+		map.updateMap(player.getX(), player.getY(), player.getSymbol());
+		system("cls");
 		map.printMap();
 	}
 }

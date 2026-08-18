@@ -1,5 +1,5 @@
 #include "Player.h"
-Player::Player() : GameObject(3, 1, 'P') {
+Player::Player() : GameObject(1, 3, 'P') {
 }
 Player::~Player() {
 	for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
@@ -24,27 +24,27 @@ void Player::Discard(InteractiveObject* object) {
 }
 void Player::move(char movement, int boundaryX, int boundaryY)
 {
-	int newX = 0;
-	int newY = 0;
+	int newX = getX();
+	int newY = getY();
 	switch (movement) {
 	case 'w':
-		newX = getX() - 1;
+		newY -= 1;
 		break;
 	case 'a':
-		newY = getY() - 1;
+		newX -= 1;
 		break;
 	case 's':
-		newX = getX() + 1;
+		newY += 1;
 		break;
 	case 'd':
-		newY = getY() + 1;
+		newX += 1;
 		break;
 	default:
 		break;
 	}
 	// Only update if inside boundaries
-	if (newX >= 0 && newX <= boundaryX &&
-		newY >= 0 && newY <= boundaryY)
+	if (newX >= 1 && newX <= boundaryX &&
+		newY >= 1 && newY <= boundaryY)
 	{
 		setX(newX);
 		setY(newY);

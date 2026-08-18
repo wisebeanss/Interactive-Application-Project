@@ -6,6 +6,7 @@
 #include <conio.h>
 #include <string>
 #include <vector>
+#include <cstdlib>
 #include "Player.h"
 #include "InteractiveObject.h"
 #include "Map.h"
