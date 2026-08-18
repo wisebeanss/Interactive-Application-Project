@@ -1,9 +1,9 @@
 #include <iostream>
 #include "Game.h"
-#include "Map.h"
 int main(void) {
-	Map Map;
-	Map.buildMap();
-	Map.printMap();
+	Game Application;
+	Application.Init();
+	Application.Run();
+	Application.End();
 	return 0;
 }

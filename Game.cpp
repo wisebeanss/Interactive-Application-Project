@@ -6,7 +6,8 @@ Game::~Game() {
 
 }
 void Game::Init() {
-
+	map.buildMap();
+	map.printMap();
 }
 void Game::Run() {
 
