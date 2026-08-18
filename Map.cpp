@@ -32,7 +32,7 @@ void Map::buildMap() {
 				mapSize[i][j] = 'D';
 			}
 			if (i == 1 || i == 5) {
-				if (j > 4 && j < 20 && (j % 4 != 0)) {
+				if (j > 4 && j < 20 && (j % 5 != 0)) {
 					mapSize[i][j] = 'H';
 				}
 			}
@@ -40,6 +40,11 @@ void Map::buildMap() {
 			if ((i == 1 && j == 1) || ( i == 5 && j == 1) 
 				|| (i == 1 && j == 4) || (i == 5 && j == 4)) {
 				mapSize[i][j] = '@';
+			}
+			//mirror
+			if ((i == 1 && j == 21) || (i == 5 && j == 21)
+				|| (i == 1 && j == 16) || (i == 5 && j == 16)) {
+				mapSize[i][j] = '#';
 			}
 		}
 	}
