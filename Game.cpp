@@ -15,7 +15,7 @@ void Game::Run() {
 		char letter = _getch();
 		int oldY = player.getY();
 		int oldX = player.getX();
-		player.move(letter, 22, 5);
+		player.HandleInput(letter, map);
 		map.updateMap(oldX, oldY, ' ');
 		map.updateMap(player.getX(), player.getY(), player.getSymbol());
 		system("cls");

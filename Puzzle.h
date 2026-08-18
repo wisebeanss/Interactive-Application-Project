@@ -1,5 +1,7 @@
 #pragma once
 #include "InteractiveObject.h"
+#include<string>
+
 class Puzzle :
     public InteractiveObject
 {

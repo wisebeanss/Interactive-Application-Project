@@ -31,6 +31,16 @@ void Map::buildMap() {
 			if (i == 3 && j == 23) {
 				mapSize[i][j] = 'D';
 			}
+			if (i == 1 || i == 5) {
+				if (j > 4 && j < 20 && (j % 4 != 0)) {
+					mapSize[i][j] = 'H';
+				}
+			}
+			//puzzle objects
+			if ((i == 1 && j == 1) || ( i == 5 && j == 1) 
+				|| (i == 1 && j == 4) || (i == 5 && j == 4)) {
+				mapSize[i][j] = '@';
+			}
 		}
 	}
 
@@ -48,13 +58,21 @@ void Map::printMap() const {
 }
 
 void Map::printCarrIndicator() const {
-
+	std::cout << "+-- -- -- -- -- --+\n";
+	std::cout << "|                 |\n";
+	std::cout << "|   CARRIAGE " << carriageNum << "    |\n";
+	std::cout << "|                 |\n";
+	std::cout << "+-- -- -- -- -- --+\n";
 
 }
 void Map::updateMap(int x, int y, char symbol) {
-	if (x > 0 && x < 24 || y > 0 || y < 7) {
+	if (x > 0 && x < 24 && y > 0 && y < 7) {
 		mapSize[y][x] = symbol;
 	}	
+}
+
+bool Map::validMove(int x, int y) {	
+	return (mapSize[y][x] == ' ');
 }
 
 Map::~Map() {}
