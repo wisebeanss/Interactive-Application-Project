@@ -22,6 +22,19 @@ void Player::Discard(InteractiveObject* object) {
 		}
 	}
 }
+void Player::HandleInput(char symbol) {
+	if (symbol == 'e') {
+		for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
+			std::cout << Inventory[objIdx];
+		}
+	}
+	else if (symbol == 'f') {
+
+	}
+	else {
+		move(symbol, 22, 5);
+	}
+}
 void Player::move(char movement, int boundaryX, int boundaryY)
 {
 	int newX = getX();
