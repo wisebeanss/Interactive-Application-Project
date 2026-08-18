@@ -3,6 +3,7 @@
 
 Map::Map() {
 	buildMap();
+	carriageNum = 1;
 }
 
 
@@ -12,7 +13,11 @@ void Map::buildMap() {
 
 		for (int j = 0; j < 24; j++) {
 
-			if (i == 0 || i == 6) {
+			//boundary
+			if ((j == 0 && i == 0) || (j == 23 && i == 0) || (i == 6 && j == 0) || (j == 23 && i == 6)) {
+				mapSize[i][j] = '+';
+			}
+			else if (i == 0 || i == 6) {
 				mapSize[i][j] = '=';
 			}
 			else if (j == 0 || j == 23) {
@@ -21,13 +26,18 @@ void Map::buildMap() {
 			else {
 				mapSize[i][j] = ' ';
 			}
-
+			
+			//obj build
+			if (i == 3 && j == 23) {
+				mapSize[i][j] = 'D';
+			}
 		}
 	}
 
 }
 
 void Map::printMap() const {
+
 	for (int i = 0; i < 7; i++) {
 
 		for (int j = 0; j < 24; j++) {
@@ -35,6 +45,16 @@ void Map::printMap() const {
 		}	
 		std::cout << "\n";
 	}
+}
+
+void Map::printCarrIndicator() const {
+
+
+}
+void Map::updateMap(int x, int y, char symbol) {
+	if (x > 0 && x < 24 || y > 0 || y < 7) {
+		mapSize[y][x] = symbol;
+	}	
 }
 
 Map::~Map() {}

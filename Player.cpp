@@ -1,25 +1,11 @@
 #include "Player.h"
-Player::Player() {
-	x = 0;
-	y = 0;
+Player::Player() : GameObject(3, 1, 'P') {
 }
 Player::~Player() {
 	for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
 		delete Inventory[objIdx];
 		Inventory[objIdx] = nullptr;
 	}
-}
-int Player::getX() const{
-	return x;
-}
-void Player::setX(int x) {
-	this->x = x;
-}
-int Player::getY() const{
-	return y;
-}
-void Player::setY(int y) {
-	this->y = y;
 }
 void Player::Interact(InteractiveObject& object) {
 	object.use();
@@ -34,5 +20,24 @@ void Player::Discard(InteractiveObject* object) {
 			Inventory.erase(Inventory.begin() + objIdx);
 			break;
 		}
+	}
+}
+void Player::move(char movement)
+{
+	switch (movement) {
+	case 'w':
+		setX(getX() - 1);
+		break;
+	case 'a':
+		setY(getY() - 1);
+		break;
+	case 's':
+		setX(getX() + 1);
+		break;
+	case 'd':
+		setY(getY() + 1);
+		break;
+	default:
+		break;
 	}
 }
