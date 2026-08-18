@@ -1,5 +1,6 @@
 #pragma once
-class InteractiveObject
+#include "GameObject.h"
+class InteractiveObject : public GameObject
 {
 public:
 	InteractiveObject();

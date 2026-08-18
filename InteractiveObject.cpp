@@ -1,5 +1,5 @@
 #include "InteractiveObject.h"
-InteractiveObject::InteractiveObject() {
+InteractiveObject::InteractiveObject() : GameObject(1, 1){
 
 }
 InteractiveObject::~InteractiveObject() {
