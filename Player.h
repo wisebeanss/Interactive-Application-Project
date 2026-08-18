@@ -15,6 +15,6 @@ public:
 	void Interact(InteractiveObject& object);
 	void Equip(InteractiveObject* object);
 	void Discard(InteractiveObject* object);
-	void move(char movement);
+	void move(char movement, int boundaryX, int boundaryY);
 };
 

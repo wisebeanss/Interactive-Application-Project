@@ -22,22 +22,31 @@ void Player::Discard(InteractiveObject* object) {
 		}
 	}
 }
-void Player::move(char movement)
+void Player::move(char movement, int boundaryX, int boundaryY)
 {
+	int newX = 0;
+	int newY = 0;
 	switch (movement) {
 	case 'w':
-		setX(getX() - 1);
+		newX = getX() - 1;
 		break;
 	case 'a':
-		setY(getY() - 1);
+		newY = getY() - 1;
 		break;
 	case 's':
-		setX(getX() + 1);
+		newX = getX() + 1;
 		break;
 	case 'd':
-		setY(getY() + 1);
+		newY = getY() + 1;
 		break;
 	default:
 		break;
+	}
+	// Only update if inside boundaries
+	if (newX >= 0 && newX <= boundaryX &&
+		newY >= 0 && newY <= boundaryY)
+	{
+		setX(newX);
+		setY(newY);
 	}
 }
