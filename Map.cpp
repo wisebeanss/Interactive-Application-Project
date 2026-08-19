@@ -68,7 +68,6 @@ void Map::buildMap() {
 			}
 			//carriage 2
 			else if (carriageNum == 2) {
-				
 				if (i == 1 || i == 5) {
 					if (j > 6 && j < 20 && (j % 7 != 0)) {
 						mapSize[i][j] = 'H';
@@ -87,9 +86,24 @@ void Map::buildMap() {
 				}
 				if (i == 5 && j == 4) {
 					mapSize[i][j] = ']';
+				}	
+			}
+			//carriage 3
+			else if (carriageNum == 3) {
+				if (i == 1 || i == 5) {
+					if (j > 6 && j < 19 && (j % 7 != 0) && (j % 7 != 1)) {
+						mapSize[i][j] = 'H';
+					}
 				}
-		
-				
+				if (i == 1 && j == 2) {
+					mapSize[i][j] = '^';
+				}
+				if (i == 1 && j == 4) {
+					mapSize[i][j] = '@';
+				}
+				if ((i == 5 && j == 4) || (i == 5 && j == 2)) {
+					mapSize[i][j] = 'A';
+				}
 			}
 
 
