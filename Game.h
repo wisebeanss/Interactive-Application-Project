@@ -10,6 +10,7 @@
 #include "Player.h"
 #include "Note.h"
 #include "Map.h"
+#include "Puzzle.h"
 
 using namespace std;
 class Game
