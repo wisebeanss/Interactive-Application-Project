@@ -27,7 +27,7 @@ PhotoFragment::PhotoFragment(string description, int id) : InteractiveObject("Ph
 }
 PhotoFragment::~PhotoFragment() {
     for (size_t i = 0; i < Ids.size(); i++) {
-        if (Ids.at(i) == id) {
+        if (Ids.at(i) == getId()) {
             Ids.erase(Ids.begin() + i);
         }
     }

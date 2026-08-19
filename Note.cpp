@@ -17,7 +17,7 @@ Note::Note(string text, int id) : InteractiveObject("Note", id) {
 }
 Note::~Note() {
     for (size_t i = 0; i < Ids.size(); i++) {
-        if (Ids.at(i) == id) {
+        if (Ids.at(i) == getId()) {
             Ids.erase(Ids.begin() + i);
         }
     }
