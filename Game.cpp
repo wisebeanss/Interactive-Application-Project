@@ -18,11 +18,12 @@ void Game::Run() {
 		int oldY = player.getY();
 		int oldX = player.getX();
 		system("cls");
-		player.HandleInput(letter, map);
+		player.move(letter, map);		
 		map.updateMap(oldX, oldY, ' ');
 		map.updateMap(player.getX(), player.getY(), player.getSymbol());
 		map.printCarrIndicator();
 		map.printMap();
+		player.HandleInput(letter, map);
 		switch (map.getCarriage()) {
 		case 1:
 			puzzle.ROOM1(1, map);

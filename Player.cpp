@@ -50,33 +50,30 @@ void Player::HandleInput(char symbol, Map &map) {
 		map.nextRoom();
 		map.buildMap();
 	}
-	else {
-		int newX = getX();
-		int newY = getY();
-		switch (symbol) {
-		case 'w':
-			newY -= 1;
-			break;
-		case 'a':
-			newX -= 1;
-			break;
-		case 's':
-			newY += 1;
-			break;
-		case 'd':
-			newX += 1;
-			break;
-		default:
-			break;
-		}
-		// Only update if valid
-		if (map.validMove(newX, newY)) {
-			setX(newX);
-			setY(newY);
-		}		
-	}
 }
 void Player::move(char movement, Map &map)
 {
-
+	int newX = getX();
+	int newY = getY();
+	switch (movement) {
+	case 'w':
+		newY -= 1;
+		break;
+	case 'a':
+		newX -= 1;
+		break;
+	case 's':
+		newY += 1;
+		break;
+	case 'd':
+		newX += 1;
+		break;
+	default:
+		break;
+	}
+	// Only update if valid
+	if (map.validMove(newX, newY)) {
+		setX(newX);
+		setY(newY);
+	}
 }
