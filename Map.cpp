@@ -146,8 +146,8 @@ bool Map::validMove(int x, int y) {
 vector<InteractiveObject*> Map::getObjects() {
 	return Objects;
 }
-vector<InteractiveObject*> Map::setObjects() {
-	return Objects;
+void Map::setObjects(InteractiveObject* object) {
+	Objects.push_back(object);
 }
 
 ///*cout << R"(
