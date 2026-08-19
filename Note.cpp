@@ -11,7 +11,7 @@ std::string centerDescription(const std::string& text, int width) {
 	return std::string(left, ' ') + text + std::string(right, ' ');
 }
 vector<int> Note::Ids;
-Note::Note(string text, int id) : InteractiveObject("Note", id) {
+Note::Note(string text, int id, bool isPickable) : InteractiveObject("Note", id, true) {
     this->text = text;
     Ids.push_back(id);
 }

@@ -1,5 +1,5 @@
 #include "Clocks.h"
-Clocks::Clocks(string lines,int x , int y, int id) : InteractiveObject("Clock", id)
+Clocks::Clocks(string lines,int x , int y, int id) : InteractiveObject("Clock", id, false)
 {
 	line = lines;
 	setX(x);
