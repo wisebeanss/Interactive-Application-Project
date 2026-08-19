@@ -7,6 +7,9 @@ class Doors :
 {
     private:
         string line;
+        int roomID = 0;
+        int question = 0;
+
 
     public:
          Doors(string lines, int X, int Y, int id);
