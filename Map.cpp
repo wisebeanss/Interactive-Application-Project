@@ -78,8 +78,8 @@ void Map::buildMap() {
 					}
 					//mirror
 					if ((i == 1 && j == 21) || (i == 5 && j == 21)
-						|| (i == 1 && j == 16) || (i == 5 && j == 16)) {
-						mapSize[i][j] = '#';
+						|| (i == 1 && j == 16)) {
+						mapSize[i][j] = '&';
 					}
 				}
 				//carriage 2
@@ -142,6 +142,29 @@ void Map::buildMap() {
 						(i == 1 && j == 14)) {
 						mapSize[i][j] = '~';
 					}
+				}
+				else if (carriageNum == 5) {
+					if (i == 1 || i == 5) {
+						if (j > 5 && j < 17 && (j % 7 != 0) && (j % 8 != 1)) {
+							mapSize[i][j] = 'H';
+						}
+					}
+					if ((i == 1 && j == 2) || (i == 5 && j == 5)) {
+						mapSize[i][j] = '^';
+					}
+					if ((i == 1 && j == 18) || (i == 1 && j == 21) ||
+						(i == 5 && j == 18) || (i == 5 && j == 21)) {
+						mapSize[i][j] = '?';
+					}
+					
+				}
+				else if (carriageNum == 6) {
+					if ((i == 1 && j == 5) || (i == 1 && j == 10) || (i == 1 && j == 15) ||
+						(i == 5 && j == 7) || (i == 5 && j == 14)) {
+						mapSize[i][j] = '#';
+					}
+
+
 				}
 
 			}
