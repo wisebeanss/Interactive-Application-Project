@@ -19,7 +19,8 @@ public:
 	bool validMove(int x, int y);
 	int getCarriage() const;
 	void nextCarriage();
-	
+	vector<InteractiveObject*> getObjects();
+	vector<InteractiveObject*> setObjects();
 	~Map();
 };
 

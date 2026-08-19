@@ -129,8 +129,12 @@ bool Map::validMove(int x, int y) {
 	return (mapSize[y][x] == ' ');
 }
 
-
-
+vector<InteractiveObject*> Map::getObjects() {
+	return Objects;
+}
+vector<InteractiveObject*> Map::setObjects() {
+	return Objects;
+}
 
 ///*cout << R"(
 //-------------------------- -------------------------- -------------------------- -------------------------- -------------------------- -------------
