@@ -1,7 +1,7 @@
 #include "Player.h"
 
 
-Player::Player() : GameObject(1, 3, 'P') {
+Player::Player() : GameObject(1, 6, 'P') {
 }
 Player::~Player() {
 	for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {

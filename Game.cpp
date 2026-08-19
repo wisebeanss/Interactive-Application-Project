@@ -1,4 +1,5 @@
 #include "Game.h"
+
 Game::Game() {
 	
 }
@@ -13,16 +14,30 @@ void Game::Init() {
 }
 void Game::Run() {
 	Puzzle puzzle;
+	const std::chrono::milliseconds frameBudget(33);
+
 	while (true) {
-		char letter = _getch();
+		auto frameStart = std::chrono::high_resolution_clock::now();
+
 		int oldY = player.getY();
 		int oldX = player.getX();
-		system("cls");
-		player.HandleInput(letter, map);
+
+		if (_kbhit()) {
+			char letter = _getch();
+			player.HandleInput(letter, map);
+		}
+		//mapping
+		map.updateFrame(); //upd map env frame
+		map.buildMap();
+
 		map.updateMap(oldX, oldY, ' ');
 		map.updateMap(player.getX(), player.getY(), player.getSymbol());
+
+		map.resetCursorPosition();
+
 		map.printCarrIndicator();
 		map.printMap();
+
 		switch (map.getCarriage()) {
 		case 1:
 			puzzle.ROOM1(1, map);
@@ -42,6 +57,12 @@ void Game::Run() {
 		case 6:
 			puzzle.ROOM6(1, map);
 			break;
+		}
+
+		auto frameEnd = std::chrono::high_resolution_clock::now();
+		auto elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(frameEnd - frameStart);
+		if (elapsedTime < frameBudget) {
+			std::this_thread::sleep_for(frameBudget - elapsedTime);
 		}
 	}
 }
