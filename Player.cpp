@@ -32,11 +32,10 @@ void Player::HandleInput(char symbol, Map &map) {
 	else if (symbol == 'f') {
 		for (size_t objItm = 0; objItm < map.getObjects().size(); objItm++)
 		{
-			if (map.getObjects()[objItm]->getX() == getX() + 1 || map.getObjects()[objItm]->getX() == getX() - 1)
-			{
-				Interact(*(map.getObjects()[objItm]));
-			}
-			if (map.getObjects()[objItm]->getY() == getY() + 1 || map.getObjects()[objItm]->getY() == getY() - 1)
+			if (map.getObjects()[objItm]->getX() == getX() + 1 ||
+				map.getObjects()[objItm]->getX() == getX() - 1 || 
+				map.getObjects()[objItm]->getY() == getY() + 1 || 
+				map.getObjects()[objItm]->getY() == getY() - 1)
 			{
 				Interact(*(map.getObjects()[objItm]));
 			}
