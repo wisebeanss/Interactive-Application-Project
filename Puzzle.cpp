@@ -70,7 +70,64 @@ bool Puzzle::ROOM1(int roomID, Map &map)
     ///
     bool Puzzle::ROOM2(int roomID){
         if (roomID != 2) return false;
-}
+        if (roomID == 2)
+        {
+            bool P21 = false;
+            bool P22 = false;
+         
+            while (!P21) {
+
+
+                //3 photo 
+                std::cout << "Photo1\n";
+                std::cout << "Photo2\n";
+                std::cout << "photo3\n";
+                //after player collect all photo 
+                int total = 0;
+
+                /* add the total
+                for (int p; p < 4; p++) {
+                    if (p == true) {
+                        total++;
+                    }
+                }*/
+
+
+                if (total == 3) {
+
+                    cout << "You have collected all Photo Fragments!";
+                    cout << "The suitcase is now open!";
+                    bool P21 = true;
+                }
+                else {
+
+                    cout << " You haven't collected all Photo Fragments!";
+
+                }
+
+            }
+            
+            while (!P22) {
+                if (roomID == 2 && P21) {
+
+                    if (answer1 == 1243) {
+
+                        cout << "Layer upon layer of masks, hiding who you truly are at the very end. ";
+                        cout << "Words fade into view beneath the last portrait: ";
+                        cout << "After all this time… are you tired? ";
+                        cout << "The door opens.";
+                        P22 = true;
+                    }
+                    else {
+                        cout << "Are you sure you arranged it in the right order?";
+                        cout << "Try again.";
+                        P22 = false;
+                    }
+
+                }
+            }
+        }
+    }
     bool Puzzle::ROOM3(int roomID){
 
         if (roomID != 3)return false;
@@ -93,3 +150,64 @@ bool Puzzle::ROOM1(int roomID, Map &map)
         }
     }
 }
+
+    bool Puzzle::ROOM4(int roomID) {
+        if (roomID != 4) return false;
+        if (roomID == 4)
+        {
+            bool P41 = false;
+            bool P42 = false;
+
+            while (!P41) {
+
+
+                //3 photo 
+                std::cout << "Photo1\n";
+                std::cout << "Photo2\n";
+                std::cout << "photo3\n";
+
+                //after player collect all photo 
+                int total = 0;
+
+                /* add the total
+                for (int p; p < 4; p++) {
+                    if (p == true) {
+                        total++;
+                    }
+                }*/
+
+
+                if (total == 3) {
+
+                    cout << "You have collected all Photo Fragments!";
+                    cout << "The suitcase is now open!";
+                    bool P21 = true;
+                }
+                else {
+
+                    cout << " You haven't collected all Photo Fragments!";
+                    bool P21 = false;
+                }
+
+            }
+
+            while (!P42) {
+                if (roomID == 4 && P41) {
+
+                    if (answer1 == 2143) {
+
+                        cout << "You remember the beginning.";
+                        cout << "Now remember the end.";
+                        cout << "The door opens.";
+                        P42 = true;
+                    }
+                    else {
+                        cout << "Are you sure you arranged it in the right order?";
+                        cout << "Try again.";
+                        P42 = false;
+                    }
+
+                }
+            }
+        }
+    }
