@@ -23,7 +23,26 @@ void Game::Run() {
 		map.updateMap(player.getX(), player.getY(), player.getSymbol());
 		map.printCarrIndicator();
 		map.printMap();
-		puzzle.ROOM1(1, map);
+		switch (map.getCarriage()) {
+		case 1:
+			puzzle.ROOM1(1, map);
+			break;
+		case 2:
+			puzzle.ROOM2(1, map);
+			break;
+		case 3:
+			puzzle.ROOM3(1, map);
+			break;
+		case 4:
+			puzzle.ROOM4(1, map);
+			break;
+		case 5:
+			puzzle.ROOM5(1, map);
+			break;
+		case 6:
+			puzzle.ROOM6(1, map);
+			break;
+		}
 	}
 }
 void Game::End() {
