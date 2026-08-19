@@ -24,7 +24,7 @@ void Player::Discard(InteractiveObject* object) {
 void Player::HandleInput(char symbol, Map &map) {
 	if (symbol == 'e') {
 		for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
-			std::cout << Inventory[objIdx]->getName();
+			std::cout << Inventory[objIdx]->getName() << " " << Inventory[objIdx]->getId();
 		}
 		std::cout << "dadasda" << std::endl;
 	}
