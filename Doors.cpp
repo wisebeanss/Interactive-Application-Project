@@ -23,10 +23,12 @@ void Doors::use()
 	if (roomID == 1) {
 		if (question == 1) {
 			cout << "Enter the time as HHMMSS (e.g., 115012): ";
-			cin >> answerT1;
-			attempts++;
+			while (true) 
+			{
+				cin >> answerT1;
+				attempts++;
 
-			while (true) {
+
 				if (answerT1 == 115012) {
 					cout << "\nThe clock begins ticking...\n";
 					cout << "11:50...\n";
@@ -46,7 +48,28 @@ void Doors::use()
 
 			}
 
-
+	if (question == 2) {
+		cout << "Enter which mirror is correct/n";
+			while (true) {
+					cin >> answerT2;
+					attempts++;
+				}
+			if (answerT2 == 'C ') {
+				cout << "The mirrors go still\n";
+				cout << "Your reflection looks directly at you\n";
+				cout << "You know the truth.\n";
+				question = 3;
+				return;
+			}
+			else {
+				cout << "\n That mirror lies. Think again.\n";
+				if (attempts >= 3)
+				{
+					cout << " Hint: The reflection should match you.\n";
+				}
+				cout << "Your answer: ";
+			}
+		}
 		
 		}
 	}

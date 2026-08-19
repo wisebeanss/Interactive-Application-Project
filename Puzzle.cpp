@@ -65,6 +65,7 @@ bool Puzzle::ROOM1(int roomID, Map& map)
             if (roomID == 1 && P11)
                 cout << "MirrorA: The reflection is smiling But you are not\n";
                 cout << "MirrorB: You raise your left hand. The reflection raises its right hand\n";
+                
                 cout << "MirrorC:You raise your left hand.The reflection raises its left hand. You blink.  It blinks with you.\n";
                 cin >> answer2;
 
