@@ -18,10 +18,10 @@ bool Puzzle::ROOM1(int roomID, Map &map)
 
         if (add == false)
         {
-            map.setObjects(new Clocks("Clock1: The incident happened one hour after \n", 1, 1));
-            map.setObjects(new Clocks("Clock2: The minute hand stopped at 45.\n", 4, 1));
-            map.setObjects(new Clocks("Clock3:The second hand stopped at 12.\n", 1, 5));
-            map.setObjects(new Clocks("Clock4: This clock was 5 minutes slow.\n", 4, 5));
+            map.setObjects(new Clocks("Clock1: The incident happened one hour after \n", 1, 1, 1));
+            map.setObjects(new Clocks("Clock2: The minute hand stopped at 45.\n", 4, 1, 1));
+            map.setObjects(new Clocks("Clock3:The second hand stopped at 12.\n", 1, 5, 1));
+            map.setObjects(new Clocks("Clock4: This clock was 5 minutes slow.\n", 4, 5, 1));
             add = true;
         }
 
