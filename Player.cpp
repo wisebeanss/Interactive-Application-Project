@@ -46,7 +46,10 @@ void Player::HandleInput(char symbol, Map &map) {
 	else if (symbol == 'l') {
 		map.nextCarriage();
 		map.buildMap();
-		
+	}
+	else if (symbol == 'k') {
+		map.nextRoom();
+		map.buildMap();
 	}
 	else {
 		move(symbol, map);

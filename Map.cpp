@@ -126,14 +126,30 @@ void Map::buildMap() {
 						}
 					}
 				}
-
+				else if (carriageNum == 4) {
+					if (i == 1 || i == 5) {
+						if (j > 6 && j < 19 && (j % 7 != 0) && (j % 7 != 1)) {
+							mapSize[i][j] = 'H';
+						}
+					}
+					if (i == 1 && j == 3) {
+						mapSize[i][j] = '[';
+					}
+					if (i == 1 && j == 4) {
+						mapSize[i][j] = ']';
+					}
+					if ((i == 5 && j == 5) || (i == 5 && j == 22) ||
+						(i == 1 && j == 14)) {
+						mapSize[i][j] = '~';
+					}
+				}
 
 			}
 
 
 		}
 	}
-
+	//////////////////roooms////////////////////////
 	else if (carriageRoom == 2) {
 		for (int i = 0; i < 7; i++) {
 
