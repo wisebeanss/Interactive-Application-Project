@@ -8,7 +8,7 @@
 #include <vector>
 #include <cstdlib>
 #include "Player.h"
-#include "InteractiveObject.h"
+#include "Note.h"
 #include "Map.h"
 
 using namespace std;
