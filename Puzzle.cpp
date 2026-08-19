@@ -6,7 +6,7 @@ int answer1;
 int attempts = 0;
 char answer2 = ' ';
 
-bool Puzzle::ROOM1(int roomID)
+bool Puzzle::ROOM1(int roomID, Map &map)
 {
     if (roomID != 1) return false;
     

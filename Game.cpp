@@ -8,6 +8,7 @@ Game::~Game() {
 void Game::Init() {
 	map.buildMap();
 	map.updateMap(player.getX(), player.getY(), player.getSymbol());
+	map.printCarrIndicator();
 	map.printMap();
 }
 void Game::Run() {
@@ -19,6 +20,7 @@ void Game::Run() {
 		player.HandleInput(letter, map);
 		map.updateMap(oldX, oldY, ' ');
 		map.updateMap(player.getX(), player.getY(), player.getSymbol());
+		map.printCarrIndicator();
 		map.printMap();
 	}
 }
