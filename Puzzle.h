@@ -10,11 +10,11 @@ class Puzzle :
 public:
     // Puzzle functions
     bool  ROOM1(int roomID, Map& map);
-    bool  ROOM2(int roomID);
-    bool  ROOM3(int roomID);
-    bool  ROOM4(int roomID);
-    bool  ROOM5(int roomID);
-    bool  ROOM6(int roomID);
+    bool  ROOM2(int roomID, Map& map);
+    bool  ROOM3(int roomID, Map& map);
+    bool  ROOM4(int roomID, Map& map);
+    bool  ROOM5(int roomID, Map& map);
+    bool  ROOM6(int roomID, Map& map);
 
 
     Puzzle();
