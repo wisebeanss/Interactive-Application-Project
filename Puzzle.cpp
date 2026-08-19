@@ -64,6 +64,10 @@ bool Puzzle::ROOM1(int roomID, Map &map)
                 cout << "The mirror distorts. It is lying.\n";
                 cout << "Think again.\n\n";
             }
+
+            cout << "\n--- The Door Opens ---\n";
+            cout << "You have faced what you tried to forget.\n";
+            return true;
         }
     }
 }
