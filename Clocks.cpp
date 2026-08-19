@@ -1,7 +1,9 @@
 #include "Clocks.h"
-Clocks::Clocks(string lines)
+Clocks::Clocks(string lines,int x , int y) : InteractiveObject()
 {
 	line = lines;
+	setX(x);
+	setY(y);
 }
 Clocks::~Clocks()
 {
