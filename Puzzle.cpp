@@ -18,10 +18,10 @@ bool Puzzle::ROOM1(int roomID, Map &map)
 
         if (add == false)
         {
-            map.setObjects(new Clocks("Clock1: The incident happened one hour after \n", 1, 1));
-            map.setObjects(new Clocks("Clock2: The minute hand stopped at 45.\n", 4, 1));
-            map.setObjects(new Clocks("Clock3:The second hand stopped at 12.\n", 1, 5));
-            map.setObjects(new Clocks("Clock4: This clock was 5 minutes slow.\n", 4, 5));
+            map.setObjects(new Clocks("Clock1: The incident happened one hour after \n", 1, 1, 1));
+            map.setObjects(new Clocks("Clock2: The minute hand stopped at 45.\n", 4, 1, 1));
+            map.setObjects(new Clocks("Clock3:The second hand stopped at 12.\n", 1, 5, 1));
+            map.setObjects(new Clocks("Clock4: This clock was 5 minutes slow.\n", 4, 5, 1));
             add = true;
         }
 
@@ -58,9 +58,9 @@ bool Puzzle::ROOM1(int roomID, Map &map)
   /*      while (!P12) {
             if (roomID == 1 && P11)
                 cout << "MirrorA: The reflection is smiling But you are not\n";
-            cout << "MirrorB: You raise your left hand. The reflection raises its right hand\n";
-            cout << "MirrorC:You raise your left hand.The reflection raises its left hand. You blink.  It blinks with you.\n";
-            cin >> answer2;
+                cout << "MirrorB: You raise your left hand. The reflection raises its right hand\n";
+                cout << "MirrorC:You raise your left hand.The reflection raises its left hand. You blink.  It blinks with you.\n";
+                cin >> answer2;
 
             if (answer2 == 'C') {
                 cout << "---\n";
