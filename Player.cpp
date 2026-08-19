@@ -42,6 +42,7 @@ void Player::HandleInput(char symbol, Map &map) {
 				(objX == getX() + 1 && objY == getY()) ||
 				(objX == getX() - 1 && objY == getY()))
 			{
+				cout << "\r" << string(80, ' ') << "\r";
 				map.getObjects()[i]->use();
 			}
 		}

@@ -29,7 +29,7 @@ bool Puzzle::ROOM1(int roomID, Map& map)
         {
             map.setObjects(new Clocks("Clock1: The incident happened one hour after \n", 1, 4, 1));
             map.setObjects(new Clocks("Clock2: The minute hand stopped at 45.\n", 4, 4, 1));
-            map.setObjects(new Clocks("Clock3:The second hand stopped at 12.\n", 1, 8, 1));
+            map.setObjects(new Clocks("Clock3: The second hand stopped at 12.\n", 1, 8, 1));
             map.setObjects(new Clocks("Clock4: This clock was 5 minutes slow.\n", 4, 8, 1));
             add = true;
         }
