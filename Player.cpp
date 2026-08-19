@@ -9,9 +9,6 @@ Player::~Player() {
 		Inventory[objIdx] = nullptr;
 	}
 }
-void Player::Interact(InteractiveObject& object) {
-	object.use();
-}
 void Player::Equip(InteractiveObject* object) {
 	Inventory.push_back(object);
 }
@@ -27,7 +24,7 @@ void Player::Discard(InteractiveObject* object) {
 void Player::HandleInput(char symbol, Map &map) {
 	if (symbol == 'e') {
 		for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
-			std::cout << Inventory[objIdx]->getName();
+			std::cout << Inventory[objIdx]->getName() << " " << Inventory[objIdx]->getId();
 		}
 		std::cout << "dadasda" << std::endl;
 	}
@@ -41,7 +38,7 @@ void Player::HandleInput(char symbol, Map &map) {
 				(objX == getX() + 1 && objY == getY()) ||
 				(objX == getX() - 1 && objY == getY()))
 			{
-				Interact(*(map.getObjects()[i]));
+				map.getObjects()[i]->use();
 			}
 		}
 	}
@@ -52,9 +49,6 @@ void Player::HandleInput(char symbol, Map &map) {
 	else if (symbol == 'k') {
 		map.nextRoom();
 		map.buildMap();
-	}
-	else {
-		move(symbol, map);
 	}
 }
 void Player::move(char movement, Map &map)
