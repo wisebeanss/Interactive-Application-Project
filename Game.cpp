@@ -25,12 +25,14 @@ void Game::Run() {
 		if (_kbhit()) {
 			char letter = _getch();
 			player.HandleInput(letter, map);
+			std::cout << "Key Pressed: " << letter
+				<< " | New Pos: (" << player.getX() << ", " << player.getY() << ")\n";
 		}
 		//mapping
 		map.updateFrame(); //upd map env frame
 		map.buildMap();
 
-		map.updateMap(oldX, oldY, ' ');
+		//map.updateMap(oldX, oldY, ' ');
 		map.updateMap(player.getX(), player.getY(), player.getSymbol());
 
 		map.resetCursorPosition();

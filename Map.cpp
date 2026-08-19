@@ -269,15 +269,22 @@ void Map::printCarrIndicator() const {
 
 }
 void Map::updateMap(int x, int y, char symbol) {
-	if (x > -1 && x < 24 && y > 2 && y < 10) {
+	if (x > 0 && x < 24 && y > 2 && y < 10) {
 		mapSize[y][x] = symbol;
 	}	
 }
 
 bool Map::validMove(int x, int y) {	
-	if (x > -1 && x < 24 && y > 2 && y < 10) {
-		return (mapSize[y][x] == ' ');
+	if (x > 0 && x < 24 && y > 2 && y < 10) {
+		char tile = mapSize[y][x];
+		if (tile == '=' || tile == '|' || tile == '+' || tile == '['
+			|| tile == ']' || tile == '@' || tile == '#' || tile == '?' ||
+			tile == '&' || tile == '^' || tile == '~' || tile == 'A') {
+			return false;
+		}
+		return true;
 	}
+	return false;
 }
 
 vector<InteractiveObject*> Map::getObjects() {

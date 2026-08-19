@@ -1,4 +1,7 @@
 #include "Letters.h"
+
+std::vector<int> Letters::Ids;
+
 std::string centerLetter(const std::string& text, int width) {
     int padding = width - static_cast<int>(text.size());
     if (padding <= 0) {
