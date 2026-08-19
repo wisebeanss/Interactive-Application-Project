@@ -30,14 +30,16 @@ void Player::HandleInput(char symbol, Map &map) {
 		std::cout << "dadasda" << std::endl;
 	}
 	else if (symbol == 'f') {
-		for (size_t objItm = 0; objItm < map.getObjects().size(); objItm++)
+		for (int i = 0; i < map.getObjects().size(); i++)
 		{
-			if (map.getObjects()[objItm]->getX() == getX() + 1 ||
-				map.getObjects()[objItm]->getX() == getX() - 1 || 
-				map.getObjects()[objItm]->getY() == getY() + 1 || 
-				map.getObjects()[objItm]->getY() == getY() - 1)
+			int objX = map.getObjects()[i]->getX();
+			int objY = map.getObjects()[i]->getY();
+			if ((objX == getX() && objY == getY() + 1) ||
+				(objX == getX() && objY == getY() - 1) ||
+				(objX == getX() + 1 && objY == getY()) ||
+				(objX == getX() - 1 && objY == getY()))
 			{
-				Interact(*(map.getObjects()[objItm]));
+				Interact(*(map.getObjects()[i]));
 			}
 		}
 	}
