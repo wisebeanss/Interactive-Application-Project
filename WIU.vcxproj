@@ -149,6 +149,8 @@
     <ClCompile Include="Lockers.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Note.cpp" />
+    <ClCompile Include="PhotoFragment.cpp" />
     <ClCompile Include="Mirrors.cpp" />
     <ClCompile Include="Phones.cpp" />
     <ClCompile Include="Photograph.cpp" />
@@ -169,6 +171,8 @@
     <ClInclude Include="Letters.h" />
     <ClInclude Include="Lockers.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Note.h" />
+    <ClInclude Include="PhotoFragment.h" />
     <ClInclude Include="Mirrors.h" />
     <ClInclude Include="Phones.h" />
     <ClInclude Include="Photograph.h" />
