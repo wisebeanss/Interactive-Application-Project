@@ -42,22 +42,50 @@ void Map::buildMap() {
 			if (i == 3 && j == 23) {
 				mapSize[i][j] = 'D';
 			}
-			if (i == 1 || i == 5) {
-				if (j > 4 && j < 20 && (j % 5 != 0)) {
-					mapSize[i][j] = 'H';
+			else if (carriageNum > 1) {
+				if (i == 3 && j == 0) {
+					mapSize[i][j] = 'D';
 				}
 			}
-			//puzzle objects
-			if ((i == 1 && j == 1) || ( i == 5 && j == 1) 
-				|| (i == 1 && j == 4) || (i == 5 && j == 4)) {
-				mapSize[i][j] = '@';
+			
+			//carriage 1
+			if (carriageNum == 1) {
+				if (i == 1 || i == 5) {
+					if (j > 4 && j < 20 && (j % 5 != 0)) {
+						mapSize[i][j] = 'H';
+					}
+				}
+				//puzzle objects
+				if ((i == 1 && j == 1) || (i == 5 && j == 1)
+					|| (i == 1 && j == 4) || (i == 5 && j == 4)) {
+					mapSize[i][j] = '@';
+				}
+				//mirror
+				if ((i == 1 && j == 21) || (i == 5 && j == 21)
+					|| (i == 1 && j == 16) || (i == 5 && j == 16)) {
+					mapSize[i][j] = '#';
+				}
 			}
-			//mirror
-			if ((i == 1 && j == 21) || (i == 5 && j == 21)
-				|| (i == 1 && j == 16) || (i == 5 && j == 16)) {
-				mapSize[i][j] = '#';
+			//carriage 2
+			else if (carriageNum == 2) {
+				
+				if (i == 1 || i == 5) {
+					if (j > 4 && j < 20 && (j % 7 != 0)) {
+						mapSize[i][j] = 'H';
+					} 
+				}
+				if ((i == 1 && j == 2) || (i == 1 && j == 5) ||
+					(i == 5 && j == 20)) {
+					mapSize[i][j] = '~';
+				}
+		
+				
 			}
+
+
 		}
+
+
 	}
 
 }

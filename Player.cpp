@@ -34,6 +34,7 @@ void Player::HandleInput(char symbol, Map &map) {
 	}
 	else if (symbol == 'l') {
 		map.nextCarriage();
+		map.buildMap();
 		
 	}
 	else {
