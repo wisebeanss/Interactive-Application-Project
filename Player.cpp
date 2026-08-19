@@ -21,31 +21,39 @@ void Player::Discard(InteractiveObject* object) {
 		}
 	}
 }
+InteractiveObject* Player::getNearbyObject(Map& map) {
+	for (int i = 0; i < map.getObjects().size(); i++) {
+		int objX = map.getObjects()[i]->getX();
+		int objY = map.getObjects()[i]->getY();
+		if ((objX == getX() && objY == getY() + 1) ||
+			(objX == getX() && objY == getY() - 1) ||
+			(objX == getX() + 1 && objY == getY()) ||
+			(objX == getX() - 1 && objY == getY()))
+		{
+			return map.getObjects()[i];
+		}
+	}
+	return nullptr;
+}
 void Player::HandleInput(char symbol, Map &map) {
 	//movement
 	if (symbol == 'w' || symbol == 'a' || symbol == 's' || symbol == 'd') {
 		move(symbol, map);
 	}
 	if (symbol == 'e') {
-		for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
-			std::cout << Inventory[objIdx]->getName() << " " << Inventory[objIdx]->getId();
+		if (Inventory.empty()) {
+			cout << "\r" << string(80, ' ') << "\r";
+			std::cout << "Nothing in Inventory" << std::endl;
 		}
-	}
-	else if (symbol == 'f') {
-		for (int i = 0; i < map.getObjects().size(); i++)
-		{
-			int objX = map.getObjects()[i]->getX();
-			int objY = map.getObjects()[i]->getY();
-			if ((objX == getX() && objY == getY() + 1) ||
-				(objX == getX() && objY == getY() - 1) ||
-				(objX == getX() + 1 && objY == getY()) ||
-				(objX == getX() - 1 && objY == getY()))
-			{
+		else {
+			for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
 				cout << "\r" << string(80, ' ') << "\r";
-				map.getObjects()[i]->use();
+				std::cout << Inventory[objIdx]->getName() << " " << Inventory[objIdx]->getId();
 			}
 		}
+
 	}
+
 	else if (symbol == 'l') {
 		map.nextCarriage();
 		map.buildMap();
@@ -53,6 +61,13 @@ void Player::HandleInput(char symbol, Map &map) {
 	else if (symbol == 'k') {
 		map.nextRoom();
 		map.buildMap();
+	}	
+	else if (symbol == 'f') {
+		InteractiveObject* nearbyObject = getNearbyObject(map);
+		if (nearbyObject != nullptr) {
+
+			nearbyObject->use();
+		}
 	}
 }
 void Player::move(char movement, Map &map)
