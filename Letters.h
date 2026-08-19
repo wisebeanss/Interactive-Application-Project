@@ -7,7 +7,7 @@ private:
 	string text;
 	static vector<int> Ids;
 public:
-	Letters(string text, int id, bool isPickable);
+	Letters(string text, int id);
 	~Letters();
 	void use();
 };

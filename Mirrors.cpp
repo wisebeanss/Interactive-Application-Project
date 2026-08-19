@@ -11,7 +11,7 @@ std::string centerMirrorText(const std::string& text, int width) {
     return std::string(left, ' ') + text + std::string(right, ' ');
 }
 vector<int> Mirrors::Ids;
-Mirrors::Mirrors(string text, int id, bool isPickable = false) : InteractiveObject("Note", id, false) {
+Mirrors::Mirrors(string text, int id) : InteractiveObject("Note", id, false) {
     this->text = text;
     Ids.push_back(id);
 }

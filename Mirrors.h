@@ -7,7 +7,7 @@ private:
 	string text;
 	static vector<int> Ids;
 public:
-	Mirrors(string text, int id, bool isPickable);
+	Mirrors(string text, int id);
 	~Mirrors();
 	void use();
 };
