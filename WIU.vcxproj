@@ -145,6 +145,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="InteractiveObject.cpp" />
+    <ClCompile Include="Keys.cpp" />
     <ClCompile Include="Letters.cpp" />
     <ClCompile Include="Lockers.cpp" />
     <ClCompile Include="main.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="InteractiveObject.h" />
+    <ClInclude Include="Keys.h" />
     <ClInclude Include="Letters.h" />
     <ClInclude Include="Lockers.h" />
     <ClInclude Include="Map.h" />
