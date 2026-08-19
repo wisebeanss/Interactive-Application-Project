@@ -6,6 +6,11 @@ int answer1;
 int attempts = 0;
 char answer2 = ' ';
 
+Puzzle::~Puzzle()
+{
+
+}
+
 bool Puzzle::ROOM1(int roomID, Map &map)
 {
     if (roomID != 1) return false;
@@ -128,13 +133,15 @@ bool Puzzle::ROOM1(int roomID, Map &map)
             }
         }
     }
-    bool Puzzle::ROOM3(int roomID){
+    bool Puzzle::ROOM3(int roomID)
+    {
 
         if (roomID != 3)return false;
-        if(roomID ==3)
-         {
-        cout << "Enter the sequence (4 digits): ";
-        cin >> answer1;
+        if (roomID == 3)
+        {
+            cout << "Enter the sequence (4 digits): ";
+            cin >> answer1;
+        }
 
         if (answer1 == 1234)
         {
@@ -149,9 +156,10 @@ bool Puzzle::ROOM1(int roomID, Map &map)
             cout << "\nThe memories don't fit together.\n";
         }
     }
-}
 
-    bool Puzzle::ROOM4(int roomID) {
+
+    bool Puzzle::ROOM4(int roomID)
+    {
         if (roomID != 4) return false;
         if (roomID == 4)
         {
@@ -210,4 +218,111 @@ bool Puzzle::ROOM1(int roomID, Map &map)
                 }
             }
         }
+    }
+
+    bool Puzzle::ROOM5(int roomID)
+    {
+        if (roomID != 5) return false;
+        if (roomID == 5)
+        {
+            bool P51 = false;
+            bool P52 = false;
+
+            while (!P51) {
+
+                if (answer2 == 'D') {
+
+                    cout << "The safe is now open!";
+                    P51 = true;
+                }
+
+                else {
+                    cout << "Try again.";
+                    P51 = false;
+                }
+
+            }
+
+            while (!P52) {
+
+                if (answer1 == 3) {
+
+                    cout << "The door clicks open.";
+                    P51 = true;
+                }
+
+                else {
+                    cout << "Try again.";
+                    P51 = false;
+                }
+
+
+
+            }
+        }
+    }
+
+    bool Puzzle::ROOM6(int roomID)
+    {
+        if (roomID != 6) return false;
+        if (roomID == 6)
+        {
+            bool P61 = false;
+            bool P62 = false;
+
+            while (!P61) {
+
+                if (answer1 == 3) {
+
+                    cout << "The door clicks open.";
+                    P61 = true;
+                }
+
+                else {
+                    cout << "Try again.";
+                    P61 = false;
+                }
+            }
+
+            while (!P62) {
+
+                int door = 0;
+                switch (door) {
+                case 1:
+                    cout << "Try again.";
+                    P62 = false;
+                    break;
+
+                case 2:
+                    cout << "Try again.";
+                    P62 = false;
+                    break;
+
+                case 3:
+                    cout << "Try again.";
+                    P62 = false;
+                    break;
+
+                case 4:
+                    cout << "Try again.";
+                    P62 = false;
+                    break;
+
+                case 5:
+                    cout << "escaped";
+                    P62 = true;
+                    break;
+
+
+
+                }
+
+
+
+
+            }
+
+
+        }
+
     }

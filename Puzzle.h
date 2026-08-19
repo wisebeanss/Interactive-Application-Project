@@ -13,7 +13,10 @@ class Puzzle :
     bool  ROOM4(int roomID);
     bool  ROOM5(int roomID);
     bool  ROOM6(int roomID);
- 
+
+    Puzzle();
+
+    ~Puzzle();
 
    
 
