@@ -12,6 +12,7 @@ void Game::Init() {
 	map.printMap();
 }
 void Game::Run() {
+	Puzzle puzzle;
 	while (true) {
 		char letter = _getch();
 		int oldY = player.getY();
@@ -22,6 +23,7 @@ void Game::Run() {
 		map.updateMap(player.getX(), player.getY(), player.getSymbol());
 		map.printCarrIndicator();
 		map.printMap();
+		puzzle.ROOM1(1, map);
 	}
 }
 void Game::End() {

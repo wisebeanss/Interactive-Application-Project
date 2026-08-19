@@ -8,8 +8,9 @@
 #include <vector>
 #include <cstdlib>
 #include "Player.h"
-#include "InteractiveObject.h"
+#include "Note.h"
 #include "Map.h"
+#include "Puzzle.h"
 
 using namespace std;
 class Game

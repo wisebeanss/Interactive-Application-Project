@@ -7,6 +7,7 @@ class Map
 {
 private:
 	int carriageNum;
+	int carriageRoom;
 	char mapSize[7][24];
 	vector<InteractiveObject*> Objects;
 public:
@@ -17,10 +18,12 @@ public:
 	void mapTile(int posX, int posY, char symbol);
 	void updateMap(int x, int y, char symbol);
 	bool validMove(int x, int y);
-	int getCarriage() const;
-	void nextCarriage();
 	vector<InteractiveObject*> getObjects();
 	void setObjects(InteractiveObject* object);
+	int getCarriage() const;
+	void nextCarriage(); //debug
+	int getRoom() const;
+	void nextRoom(); //debug
 	~Map();
 };
 
