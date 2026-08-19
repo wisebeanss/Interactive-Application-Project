@@ -20,6 +20,7 @@ public:
 	int getCarriage() const;
 	void nextCarriage();
 	vector<InteractiveObject*> getObjects();
+	void setObjects(InteractiveObject* object);
 	~Map();
 };
 
