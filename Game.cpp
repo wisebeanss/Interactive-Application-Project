@@ -24,6 +24,7 @@ void Game::Run() {
 		map.printCarrIndicator();
 		map.printMap();
 		puzzle.ROOM1(1, map);
+		
 	}
 }
 void Game::End() {
