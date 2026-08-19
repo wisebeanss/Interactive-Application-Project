@@ -6,16 +6,16 @@ using namespace std;
 int answer1;
 int attempts = 0;
 char answer2 = ' ';
-<<<<<<< HEAD
+
 
 Puzzle::~Puzzle()
 {
 
 }
 
-=======
+
 bool add = false;
->>>>>>> ae32b543432de6c16533b368a0671b2dc33d5b07
+
 bool Puzzle::ROOM1(int roomID, Map &map)
 {
     if (roomID != 1) return false;
@@ -149,6 +149,7 @@ bool Puzzle::ROOM1(int roomID, Map &map)
             }
         }
     }
+
     bool Puzzle::ROOM3(int roomID)
     {
 
@@ -235,7 +236,7 @@ bool Puzzle::ROOM1(int roomID, Map &map)
             }
         }
     }
-<<<<<<< HEAD
+
 
     bool Puzzle::ROOM5(int roomID)
     {
@@ -341,9 +342,9 @@ bool Puzzle::ROOM1(int roomID, Map &map)
 
 
         }
-=======
+
     void Puzzle::use()
     {
->>>>>>> ae32b543432de6c16533b368a0671b2dc33d5b07
+
 
     }

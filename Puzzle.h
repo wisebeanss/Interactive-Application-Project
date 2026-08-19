@@ -15,14 +15,14 @@ public:
     bool  ROOM4(int roomID);
     bool  ROOM5(int roomID);
     bool  ROOM6(int roomID);
-<<<<<<< HEAD
+
 
     Puzzle();
 
     ~Puzzle();
-=======
+
     void use();
->>>>>>> ae32b543432de6c16533b368a0671b2dc33d5b07
+
 
    
 
