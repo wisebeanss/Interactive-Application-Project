@@ -30,7 +30,6 @@ void Mirrors::use() {
         std::cout << centerMirrorText(line, boxWidth) << std::endl;
     }
     std::cout << "+----------------------+" << std::endl;
-    std::cout << "+----------------------+" << std::endl;
     std::cout << "|" << centerMirrorText("", width) << "|" << std::endl;
     std::cout << "|" << centerMirrorText(text, width) << "|" << std::endl;
     std::cout << "|" << centerMirrorText("", width) << "|" << std::endl;
