@@ -119,7 +119,9 @@ bool Map::validMove(int x, int y) {
 	return (mapSize[y][x] == ' ');
 }
 
-
+vector<InteractiveObject*> Map::getObjects() {
+	return Objects;
+}
 
 
 ///*cout << R"(
