@@ -32,6 +32,10 @@ void Player::HandleInput(char symbol, Map &map) {
 	else if (symbol == 'f') {
 
 	}
+	else if (symbol == 'l') {
+		map.nextCarriage();
+		
+	}
 	else {
 		move(symbol, map);
 	}

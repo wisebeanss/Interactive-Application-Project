@@ -5,7 +5,18 @@ Map::Map() {
 	buildMap();
 	carriageNum = 1;
 }
+Map::~Map() {
 
+}
+int Map::getCarriage() const {
+	return carriageNum;
+}
+void Map::nextCarriage() {
+	if (carriageNum < 6) {
+		carriageNum++;
+	}
+	else { carriageNum = 1; }
+}
 
 void Map::buildMap() {
 
@@ -80,7 +91,6 @@ bool Map::validMove(int x, int y) {
 	return (mapSize[y][x] == ' ');
 }
 
-Map::~Map() {}
 
 
 
