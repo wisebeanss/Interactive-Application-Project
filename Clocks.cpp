@@ -1,7 +1,7 @@
 #include "Clocks.h"
-Clocks::Clocks()
+Clocks::Clocks(string lines)
 {
-
+	line = lines;
 }
 Clocks::~Clocks()
 {

@@ -8,7 +8,7 @@ class Clocks :
 private:
     string line;
 public:
-    Clocks();
+    Clocks(string lines);
     ~Clocks();
     void setLine(string line);
     void use();
