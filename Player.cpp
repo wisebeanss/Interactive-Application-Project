@@ -30,7 +30,6 @@ void Player::HandleInput(char symbol, Map &map) {
 		for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
 			std::cout << Inventory[objIdx]->getName() << " " << Inventory[objIdx]->getId();
 		}
-		std::cout << "dadasda" << std::endl;
 	}
 	else if (symbol == 'f') {
 		for (int i = 0; i < map.getObjects().size(); i++)
