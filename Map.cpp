@@ -70,13 +70,23 @@ void Map::buildMap() {
 			else if (carriageNum == 2) {
 				
 				if (i == 1 || i == 5) {
-					if (j > 4 && j < 20 && (j % 7 != 0)) {
+					if (j > 6 && j < 20 && (j % 7 != 0)) {
 						mapSize[i][j] = 'H';
 					} 
 				}
 				if ((i == 1 && j == 2) || (i == 1 && j == 5) ||
 					(i == 5 && j == 20)) {
 					mapSize[i][j] = '~';
+				}
+				if ((i == 1 && j == 21) || (i == 5 && j == 7) ||
+					(i == 5 && j == 14) || (i == 1 && j == 21)) {
+					mapSize[i][j] = '^';
+				}
+				if (i == 5 && j == 3) {
+					mapSize[i][j] = '[';
+				}
+				if (i == 5 && j == 4) {
+					mapSize[i][j] = ']';
 				}
 		
 				
@@ -122,7 +132,9 @@ bool Map::validMove(int x, int y) {
 vector<InteractiveObject*> Map::getObjects() {
 	return Objects;
 }
-
+void Map::setObjects(InteractiveObject* object) {
+	Objects.push_back(object);
+}
 
 ///*cout << R"(
 //-------------------------- -------------------------- -------------------------- -------------------------- -------------------------- -------------
