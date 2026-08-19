@@ -1,12 +1,13 @@
 #pragma once
 #include "InteractiveObject.h"
-#include<string>
+#include <string>
+#include "map.h"
 
 class Puzzle :
     public InteractiveObject
 {
     // Puzzle functions
-    bool  ROOM1(int roomID);
+    bool  ROOM1(int roomID, Map& map);
     bool  ROOM2(int roomID);
     bool  ROOM3(int roomID);
     bool  ROOM4(int roomID);
