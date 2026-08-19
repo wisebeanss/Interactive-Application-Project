@@ -144,6 +144,7 @@
     <ClCompile Include="InteractiveObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Note.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Puzzle.cpp" />
   </ItemGroup>
@@ -152,6 +153,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="InteractiveObject.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Note.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Puzzle.h" />
   </ItemGroup>
