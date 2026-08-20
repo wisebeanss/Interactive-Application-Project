@@ -54,3 +54,4 @@ void Watch::use()
     cout << "+----------------------+" << endl;
     cout << "         |    |" << endl;
     cout << "         |    |" << endl;
+}

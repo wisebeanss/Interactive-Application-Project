@@ -10,7 +10,16 @@ Map::Map() {
 Map::~Map() {
 
 }
-
+bool Map::isMapRendered() {
+	return renderMap;
+}
+void Map::setMapRendered(bool rendered) {
+	renderMap = rendered;
+}
+Map& getGameMap() {
+	static Map map;
+	return map;
+}
 void Map::resetCursorPosition() {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	COORD cursorPosition;

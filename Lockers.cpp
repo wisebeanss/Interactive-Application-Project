@@ -52,3 +52,4 @@ void Lockers::use()
     cout << "|" << centerLockerText("", width) << "|" << endl;
     cout << "|" << centerLockerText("", width) << "|" << endl;
     cout << "+----------------------+" << endl;
+}

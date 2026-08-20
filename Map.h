@@ -13,9 +13,12 @@ private:
 	char mapSize[13][24];
 	int animFrame;
 	bool offMap;
+	bool renderMap;
 	vector<InteractiveObject*> Objects;
 public:
 	void resetCursorPosition();
+	bool isMapRendered();
+	void setMapRendered(bool rendered);
 	Map();
 	void updateFrame();
 	void printCarrIndicator() const;
@@ -36,4 +39,4 @@ public:
 	void setOffMap(bool printmap);
 	~Map();
 };
-
+Map& getGameMap();
