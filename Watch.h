@@ -11,6 +11,6 @@ public:
     Watch(string text, int X, int Y, int id);
     ~Watch();
     void use();
-    string centerWatchText(string str, int width) const;
+    string centerWatchText(const string &str, int width) const;
 };
 

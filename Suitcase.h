@@ -14,5 +14,5 @@ public:
     void collectPhoto(int num);
     bool hasAllPhotos();
     bool tryUnlock();
-    bool isUnlocked() const { return unlocked; }
-}
+    bool isUnlocked() const;
+};

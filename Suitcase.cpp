@@ -20,7 +20,9 @@ void Suitcase::collectPhoto(int num)
         unlocked = true;
     }
 }
-bool Suitcase::isUnlocked() const { return unlocked; }
+bool Suitcase::isUnlocked() const { 
+    return unlocked; 
+}
 bool Suitcase::hasAllPhotos()
 {
     return photo1 && photo2 && photo3;

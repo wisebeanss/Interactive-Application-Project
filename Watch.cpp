@@ -1,5 +1,5 @@
 #include "Watch.h"
-std::string centerWatchText(const std::string& text, int width)
+std::string Watch::centerWatchText(const std::string& text, int width) const
 {
     int padding = width - static_cast<int>(text.size());
 

@@ -105,12 +105,6 @@ void Map::buildMap() {
 			else {
 					mapSize[gridY][j] = ' ';
 			}
-
-			//obj build
-			//if (i == 3 && j == 23) {
-			//	mapSize[gridY][j] = 'D';
-			//}
-
 			if (carriageNum > 1) {
 				if (i == 3 && j == 0) {
 					mapSize[gridY][j] = 'B';
