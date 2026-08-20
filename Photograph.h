@@ -4,11 +4,11 @@ class Photograph :
     public InteractiveObject
 {
 private:
-    string description;
+    string text;
     static vector<int> Ids;
 
 public:
-    Photograph(string description, int id);
+    Photograph(string text, int X, int Y, int id);
     ~Photograph();
     void use();
 };
