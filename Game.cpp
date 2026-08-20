@@ -25,9 +25,13 @@ void Game::Run() {
 		if (_kbhit()) {
 			char letter = _getch();
 			player.HandleInput(letter, map);
+		}
+		if (player.getNearbyObject(map) != nullptr) {
 			cout << "\r" << string(80, ' ') << "\r";
-			std::cout << "Key Pressed: " << letter
-			<< " | New Pos: (" << player.getX() << ", " << player.getY() << ")\n";
+			cout << "Press F to Interact";
+		}
+		else {
+			cout << "\r" << string(80, ' ') << "\r";
 		}
 		//mapping
 		map.updateFrame(); //upd map env frame
