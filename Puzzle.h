@@ -3,6 +3,7 @@
 #include <string>
 #include "map.h"
 #include "Clocks.h"
+#include "Mirrors.h"
 
 class Puzzle :
     public InteractiveObject
