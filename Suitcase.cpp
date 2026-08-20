@@ -1,7 +1,7 @@
 #include "Suitcase.h"
 #include <iostream>
 
-using namespace std;
+
 Suitcase::Suitcase(int x, int y, int id)
     : InteractiveObject("Suitcase", id , false)
 {

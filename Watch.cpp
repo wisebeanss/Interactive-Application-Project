@@ -1,17 +1,18 @@
 #include "Watch.h"
-std::string centerWatchText(const std::string& text, int width)
+
+string Watch::centerWatchText(string str, int width) const
 {
-    int padding = width - static_cast<int>(text.size());
+    int padding = width - static_cast<int>(str.size());
 
     if (padding <= 0)
     {
-        return text.substr(0, width);
+        return str.substr(0, width);
     }
 
     int left = padding / 2;
     int right = padding - left;
 
-    return std::string(left, ' ') + text + std::string(right, ' ');
+    return string(left, ' ') + str + string(right, ' ');
 }
 
 vector<int> Watch::Ids;
