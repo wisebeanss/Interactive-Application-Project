@@ -11,6 +11,19 @@ Map::Map() {
 Map::~Map() {
 
 }
+bool Map::isMapRendered() {
+	return renderMap;
+}
+void Map::setMapRendered(bool rendered) {
+	renderMap = rendered;
+}
+void Map::resetCursorPosition() {
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD cursorPosition;
+	cursorPosition.X = 0;
+	cursorPosition.Y = 0;
+	SetConsoleCursorPosition(hConsole, cursorPosition);
+}
 void Map::updateFrame() {
 	animFrame++;
 }
@@ -350,3 +363,8 @@ void Map::setOffMap(bool OffMap)
 	// |              /
 	//  -------------
  //   )" << endl;
+
+Map& getGameMap() {
+	static Map map;
+	return map;
+}

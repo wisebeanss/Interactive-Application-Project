@@ -31,11 +31,11 @@ void Mirrors::use() {
         std::string line = "/" + std::string(w - 2, ' ') + "\\";
         std::cout << centerMirrorText(line, boxWidth) << std::endl;
     }
-    std::cout << "+----------------------+" << std::endl;
+    std::cout << "|" << centerMirrorText("", width) << "|" << std::endl;
     std::cout << "|" << centerMirrorText("", width) << "|" << std::endl;
     std::cout << "|" << centerMirrorText(text, width) << "|" << std::endl;
     std::cout << "|" << centerMirrorText("", width) << "|" << std::endl;
-    std::cout << "+----------------------+" << std::endl;
+    std::cout << "|" << centerMirrorText("", width) << "|" << std::endl;
     for (int w = width; w  >= 2; w -= 2) {
         std::string line = "\\" + std::string(w - 2, ' ') + "/";
         std::cout << centerMirrorText(line, boxWidth) << std::endl;

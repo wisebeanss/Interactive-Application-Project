@@ -15,13 +15,9 @@ private:
 	bool renderMap;
 	vector<InteractiveObject*> Objects;
 public:
-	void resetCursorPosition() {
-		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-		COORD cursorPosition;
-		cursorPosition.X = 0;
-		cursorPosition.Y = 0;
-		SetConsoleCursorPosition(hConsole, cursorPosition);
-	}
+	void resetCursorPosition();
+	bool isMapRendered();
+	void setMapRendered(bool rendered);
 	Map();
 	void updateFrame();
 	void printCarrIndicator() const;
@@ -42,3 +38,4 @@ public:
 	~Map();
 };
 
+Map& getGameMap();

@@ -16,7 +16,7 @@ void Game::Run() {
 	Puzzle puzzle;
 	const std::chrono::milliseconds frameBudget(33);
 
-	while (map.renderMap) {
+	while (true) {
 		auto frameStart = std::chrono::high_resolution_clock::now();
 
 		int oldY = player.getY();
@@ -38,6 +38,7 @@ void Game::Run() {
 		}
 		//mapping
 		map.updateFrame(); //upd map env frame
+	
 		map.buildMap();
 
 		//map.updateMap(oldX, oldY, ' ');
@@ -46,7 +47,10 @@ void Game::Run() {
 		map.resetCursorPosition();
 
 		map.printCarrIndicator();
-		map.printMap();
+		if (map.isMapRendered()) {
+			map.printMap();
+		}
+
 
 		switch (map.getCarriage()) {
 		case 1:
