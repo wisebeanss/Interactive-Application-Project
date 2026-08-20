@@ -19,7 +19,6 @@ public:
 	void resetCursorPosition();
 	bool isMapRendered();
 	void setMapRendered(bool rendered);
-	Map();
 	void updateFrame();
 	void printCarrIndicator() const;
 	void printSidebar(int carriageNum, int carriageRoom, bool uiActive, const std::string uiBuffer[13] = nullptr) const;
@@ -37,6 +36,7 @@ public:
 	void clearObjects();
 	bool getOffMap();
 	void setOffMap(bool printmap);
+	Map();
 	~Map();
 };
 Map& getGameMap();

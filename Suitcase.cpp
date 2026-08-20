@@ -1,7 +1,7 @@
 #include "Suitcase.h"
 #include <iostream>
 
-
+using namespace std;
 Suitcase::Suitcase(int x, int y, int id)
     : InteractiveObject("Suitcase", id , false)
 {
@@ -20,7 +20,7 @@ void Suitcase::collectPhoto(int num)
         unlocked = true;
     }
 }
-
+bool Suitcase::isUnlocked() const { return unlocked; }
 bool Suitcase::hasAllPhotos()
 {
     return photo1 && photo2 && photo3;

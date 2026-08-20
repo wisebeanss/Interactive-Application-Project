@@ -15,4 +15,4 @@ public:
     bool hasAllPhotos();
     bool tryUnlock();
     bool isUnlocked() const { return unlocked; }
-};
+}

@@ -5,16 +5,6 @@
 #include "Clocks.h"
 #include "Mirrors.h"
 #include "Doors.h"
-#include "Photograph.h"
-#include "Watch.h"
-#include "Phones.h"
-#include "Letters.h"
-#include "Suitcase.h"
-#include "Note.h"
-#include "Lockers.h"
-#include "Drawers.h"
-#include "Posters.h"
-#include "PhotoFragment.h"
 
 class Puzzle :
     public InteractiveObject
