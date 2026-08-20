@@ -22,7 +22,6 @@ void Doors::setRoomID(bool id)
 void Doors::use()
 {
 	int answerT1;
-	int attempts = 0;
 	char answerT2 = ' ';
 
 	if (roomID == 1) {
@@ -37,7 +36,8 @@ void Doors::use()
 				cout << "\nThe clock begins ticking...\n";
 				cout << "11:50...\n";
 				cout << "11:51...\n";
-				cout << "The time feels strangely familiar.\n";
+				cout << "You stare at its hands. The time feels familiar, yet you cannot recall why.\n";
+				cout << "You can now solve Puzzle 2.\n";
 				question = 2;
 				return;
 			}
@@ -45,7 +45,7 @@ void Doors::use()
 				cout << "\nThat doesn't seem right.\n";
 
 				if (attempts == 3) {
-					std::cout << "= !Remember the clock is 5 mins slower!=\n";
+					std::cout << "Remember Clock 4 is 5 mins faster!\n";
 					attempts -= 1;
 				}
 			}
@@ -57,7 +57,7 @@ void Doors::use()
 			cout << "Enter which mirror is correct \n";
 			cin >> answerT2;
 			attempts++;
-			if (answerT2 == 'C') {
+			if (answerT2 == 'C' || answerT2 == 'c') {
 				cout << "\r" << string(80, ' ') << "\r";
 				cout << "The mirrors go still\n";
 				cout << "\r" << string(80, ' ') << "\r";
@@ -70,12 +70,12 @@ void Doors::use()
 				return;
 			}
 			else {
-				cout << "\n That mirror lies. Think again.\n";
+				cout << "\nThat mirror lies. Think again.\n";
 				if (attempts >= 3)
 				{
 					cout << " Hint: The reflection should match you.\n";
 				}
-				cout << "Your answer: ";
+				
 			}
 
 		}
