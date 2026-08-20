@@ -1,14 +1,13 @@
 #pragma once
 #include "InteractiveObject.h"
-class Letters :
+class Keys :
     public InteractiveObject
 {
 private:
-	string text;
 	static vector<int> Ids;
 public:
-	Letters(string text, int id);
-	~Letters();
+	Keys(string text, int id);
+	~Keys();
 	void use();
 };
 

@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include <Windows.h>
 using namespace std;
 class InteractiveObject;
 class Map
@@ -8,10 +9,19 @@ class Map
 private:
 	int carriageNum;
 	int carriageRoom;
-	char mapSize[7][24];
+	char mapSize[13][24];
+	int animFrame;
 	vector<InteractiveObject*> Objects;
 public:
+	void resetCursorPosition() {
+		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+		COORD cursorPosition;
+		cursorPosition.X = 0;
+		cursorPosition.Y = 0;
+		SetConsoleCursorPosition(hConsole, cursorPosition);
+	}
 	Map();
+	void updateFrame();
 	void printCarrIndicator() const;
 	void buildMap();
 	void printMap() const;
