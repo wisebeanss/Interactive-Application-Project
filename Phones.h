@@ -3,5 +3,13 @@
 class Phones :
     public InteractiveObject
 {
+private:
+    string text;
+    static vector<int> Ids;
+
+public:
+    Phones(string text, int X, int Y, int id);
+    ~Phones();
+    void use();
 };
 

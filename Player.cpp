@@ -41,6 +41,8 @@ void Player::HandleInput(char symbol, Map &map) {
 	if (symbol == 'w' || symbol == 'a' || symbol == 's' || symbol == 'd') {
 		move(symbol, map);
 		setInteract(false);
+		system("cls");
+		map.setMapRendered(true);
 	}
 	if (symbol == 'e') {
 		if (Inventory.empty()) {
@@ -69,9 +71,7 @@ void Player::HandleInput(char symbol, Map &map) {
 		if (nearbyObject != nullptr) {
 			setInteract(true);
 			nearbyObject->use();
-	//	 DEBUG CHECK:
-		 std::cout << "Interacted with ID: " << nearbyObject->getId() 
-		           << " UI Active: " << nearbyObject->getUIActive() << std::endl;
+			map.setMapRendered(false);
 		}
 	}
 }

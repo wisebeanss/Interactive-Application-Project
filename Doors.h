@@ -9,7 +9,7 @@ class Doors :
         string line;
         int roomID = 0;
         int question = 0;
-
+        int attempts = 0;
 
     public:
          Doors(string lines, int X, int Y, int id);
