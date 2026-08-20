@@ -8,7 +8,10 @@ Map::Map() {
 	animFrame = 0;
 }
 Map::~Map() {
-
+	for (InteractiveObject* object : Objects) {
+		delete object;
+	}
+	Objects.clear();
 }
 bool Map::isMapRendered() {
 	return renderMap;
