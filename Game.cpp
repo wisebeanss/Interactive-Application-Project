@@ -26,12 +26,7 @@ void Game::Run() {
 			char letter = _getch();
 			player.HandleInput(letter, map);
 		}
-		if (player.getNearbyObject(map) != nullptr && !player.getInteract()) {
-			std::cout << "\rPress F to Interact                   ";
-		}
-		else {
-			std::cout << "\r                                      ";
-		}
+		
 		//mapping
 	
 		map.updateFrame(); //upd map env frame
@@ -41,6 +36,7 @@ void Game::Run() {
 
 		std::string mirrorBuffer[13];
 		bool isUIActive = false;
+		std::string statusMsg = "";
 
 		// If player is interacting with mirror object
 		InteractiveObject* obj = player.getNearbyObject(map);
@@ -48,6 +44,7 @@ void Game::Run() {
 			isUIActive = true;
 			obj->getUIBuffer(mirrorBuffer); // Fills 13-line array
 		}
+		else { statusMsg = "Click 'F' to Interact"; }
 
 		// Render map and UI simultaneously
 		map.resetCursorPosition();
