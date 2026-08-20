@@ -7,6 +7,7 @@ class Player: public GameObject
 {
 private:
 	vector<InteractiveObject*> Inventory;
+	bool interact;
 public:
 	Player();
 	~Player();
@@ -16,5 +17,7 @@ public:
 	InteractiveObject* getNearbyObject(Map &map);
 	void HandleInput(char symbol, Map& map);
 	void move(char movement, Map& map);
+	void setInteract(bool Interact);
+	bool getInteract();
 };
 

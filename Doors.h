@@ -17,5 +17,6 @@ class Doors :
    
         void setLine(string line);
         void use();
+        void setRoomID(bool id);
 };
 

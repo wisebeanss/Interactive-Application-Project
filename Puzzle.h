@@ -9,6 +9,8 @@
 class Puzzle :
     public InteractiveObject
 {
+private:
+
 public:
     // Puzzle functions
     bool  ROOM1(int roomID, Map& map);

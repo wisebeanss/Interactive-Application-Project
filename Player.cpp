@@ -2,6 +2,7 @@
 
 
 Player::Player() : GameObject(2, 6, 'P') {
+	setInteract(false);
 }
 Player::~Player() {
 	for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
@@ -39,6 +40,7 @@ void Player::HandleInput(char symbol, Map &map) {
 	//movement
 	if (symbol == 'w' || symbol == 'a' || symbol == 's' || symbol == 'd') {
 		move(symbol, map);
+		setInteract(false);
 	}
 	if (symbol == 'e') {
 		if (Inventory.empty()) {
@@ -65,7 +67,7 @@ void Player::HandleInput(char symbol, Map &map) {
 	else if (symbol == 'f') {
 		InteractiveObject* nearbyObject = getNearbyObject(map);
 		if (nearbyObject != nullptr) {
-
+			setInteract(true);
 			nearbyObject->use();
 		}
 	}
@@ -96,4 +98,12 @@ void Player::move(char movement, Map &map)
 		setX(newX);
 		setY(newY);
 	}
+}
+void Player::setInteract(bool Interact)
+{
+	interact = Interact;
+}
+bool Player::getInteract()
+{
+	return interact;
 }

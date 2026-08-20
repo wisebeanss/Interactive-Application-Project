@@ -11,6 +11,7 @@ private:
 	int carriageRoom;
 	char mapSize[13][24];
 	int animFrame;
+	bool offMap;
 	vector<InteractiveObject*> Objects;
 public:
 	void resetCursorPosition() {
@@ -34,6 +35,9 @@ public:
 	void nextCarriage(); //debug
 	int getRoom() const;
 	void nextRoom(); //debug
+	void clearObjects();
+	bool getOffMap();
+	void setOffMap(bool printmap);
 	~Map();
 };
 

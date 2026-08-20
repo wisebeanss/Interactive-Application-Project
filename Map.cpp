@@ -290,10 +290,20 @@ bool Map::validMove(int x, int y) {
 vector<InteractiveObject*> Map::getObjects() {
 	return Objects;
 }
+void Map::clearObjects() {
+	Objects.clear();
+}
 void Map::setObjects(InteractiveObject* object) {
 	Objects.push_back(object);
 }
-
+bool Map::getOffMap()
+{
+	return offMap;
+}
+void Map::setOffMap(bool OffMap)
+{
+	offMap = OffMap;
+}
 ///*cout << R"(
 //-------------------------- -------------------------- -------------------------- -------------------------- -------------------------- -------------
 //|  |_ |_ |_ |_ |_ |_ |_   |  |_ |_ |_ |_ |_ |_ |_    |  |_ |_ |_ |_ |_ |_ |_    |  |_ |_ |_ |_ |_ |_ |_    |  |_ |_ |_ |_ |_ |_ |_    |             \

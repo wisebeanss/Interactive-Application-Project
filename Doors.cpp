@@ -4,6 +4,7 @@ Doors::Doors(string lines, int x, int y, int id) : InteractiveObject("Doors", id
 	line = lines;
 	setX(x);
 	setY(y);
+	setRoomID(id);
 }
 Doors::~Doors()
 {
@@ -13,15 +14,19 @@ void Doors::setLine(string lines)
 {
 	line = lines;
 }
+void Doors::setRoomID(bool id)
+{
+	roomID = id;
+}
 void Doors::use()
 {
-	cout << line;
 	int answerT1;
 	int attempts = 0;
 	char answerT2 = ' ';
 
 	if (roomID == 1) {
 		if (question == 1) {
+			cout << "\r" << string(80, ' ') << "\r";
 			cout << "Enter the time as HHMMSS (e.g., 115012): ";
 			while (true) 
 			{

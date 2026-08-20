@@ -27,8 +27,11 @@ void Game::Run() {
 			player.HandleInput(letter, map);
 		}
 		if (player.getNearbyObject(map) != nullptr) {
-			cout << "\r" << string(80, ' ') << "\r";
-			cout << "Press F to Interact";
+			if (player.getInteract() == false)
+			{
+				cout << "\r" << string(80, ' ') << "\r";
+				cout << "Press F to Interact";
+			}
 		}
 		else {
 			cout << "\r" << string(80, ' ') << "\r";
