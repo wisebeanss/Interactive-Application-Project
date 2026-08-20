@@ -24,7 +24,7 @@ Photograph::Photograph(string text, int X, int Y, int id)
     : InteractiveObject("Photograph", id, false)
 {
     this->text = text;
-
+    setSymbol('~');
     Ids.push_back(id);
 
     setX(X);

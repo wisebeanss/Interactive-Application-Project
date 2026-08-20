@@ -3,8 +3,13 @@
 #include <vector>
 #include <Windows.h>
 #include <string>
+#include "Doors.h"
+
 using namespace std;
+
+
 class InteractiveObject;
+
 class Map
 {
 private:

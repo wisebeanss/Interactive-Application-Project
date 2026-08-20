@@ -87,7 +87,7 @@ void Map::buildMap() {
 			else if (poleOffset2 == 3) mapSize[10][j] = 'i';
 		}
 	
-	int trainOffset = 3;
+	int trainOffset = 3;			
 	for (int i = 0; i < 7; i++) {
 
 		for (int j = 0; j < 24; j++) {
@@ -107,10 +107,11 @@ void Map::buildMap() {
 			}
 
 			//obj build
-			if (i == 3 && j == 23) {
-				mapSize[gridY][j] = 'D';
-			}
-			else if (carriageNum > 1) {
+			//if (i == 3 && j == 23) {
+			//	mapSize[gridY][j] = 'D';
+			//}
+
+			if (carriageNum > 1) {
 				if (i == 3 && j == 0) {
 					mapSize[gridY][j] = 'B';
 				}
@@ -224,6 +225,11 @@ void Map::buildMap() {
 		}
 
 
+	}
+	for (size_t k = 0; k < Objects.size(); k++) {
+		if (Doors* door = dynamic_cast<Doors*>(Objects.at(k))) {
+			mapSize[trainOffset + door->getY()][door->getX()] = door->getSymbol();
+		}
 	}
 }
 

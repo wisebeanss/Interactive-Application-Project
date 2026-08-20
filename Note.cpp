@@ -14,6 +14,7 @@ vector<int> Note::Ids;
 Note::Note(string text, int id) : InteractiveObject("Note", id, true) {
     this->text = text;
     Ids.push_back(id);
+    setSymbol('^');
 }
 Note::~Note() {
     for (size_t i = 0; i < Ids.size(); i++) {

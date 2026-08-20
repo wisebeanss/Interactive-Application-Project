@@ -16,6 +16,7 @@ Mirrors::Mirrors(string text, int X, int Y, int id) : InteractiveObject("Note", 
     Ids.push_back(id);
     setX(X);
     setY(Y);
+    setSymbol('&');
 }
 Mirrors::~Mirrors() {
     for (size_t i = 0; i < Ids.size(); i++) {

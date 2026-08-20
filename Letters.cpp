@@ -16,6 +16,7 @@ std::string centerLetter(const std::string& text, int width) {
 Letters::Letters(string text, int id) : InteractiveObject("Letter", id, false) {
 	this->text = text;
 	Ids.push_back(id);
+    setSymbol('?');
 }
 void Letters::use() {
     const int width = 22;

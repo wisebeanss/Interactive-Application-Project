@@ -5,6 +5,7 @@ Doors::Doors(string lines, int x, int y, int id) : InteractiveObject("Doors", id
 	setX(x);
 	setY(y);
 	setRoomID(id);
+	setSymbol('D');
 	question = 1;
 }
 Doors::~Doors()

@@ -1,7 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "InteractiveObject.h"
-
+#include "Map.h"
 using namespace std;
 class Player: public GameObject
 {

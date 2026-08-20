@@ -4,6 +4,7 @@ Clocks::Clocks(string lines,int x , int y, int id) : InteractiveObject("Clock", 
 	line = lines;
 	setX(x);
 	setY(y);
+	setSymbol('@');
 }
 Clocks::~Clocks()
 {

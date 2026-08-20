@@ -23,7 +23,7 @@ void PhotoFragment::use() {
     std::cout << "+----------------------+" << std::endl;
 }
 PhotoFragment::PhotoFragment(string description, int id) : InteractiveObject("Photo Fragment", id, false){
-
+    setSymbol('~');
 }
 PhotoFragment::~PhotoFragment() {
     for (size_t i = 0; i < Ids.size(); i++) {

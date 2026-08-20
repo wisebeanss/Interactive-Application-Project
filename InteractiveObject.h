@@ -1,7 +1,8 @@
 #pragma once
 #include "GameObject.h"
-#include "Map.h"
 using namespace std;
+
+class Map;
 class InteractiveObject : public GameObject
 {
 private:

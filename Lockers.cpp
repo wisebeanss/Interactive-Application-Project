@@ -23,7 +23,7 @@ Lockers::Lockers(string text, int X, int Y, int id)
     this->text = text;
 
     Ids.push_back(id);
-
+    setSymbol('#');
     setX(X);
     setY(Y);
 }
