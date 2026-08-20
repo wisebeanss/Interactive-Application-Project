@@ -53,13 +53,18 @@ void Doors::use()
 			}
 
 	if (question == 2) {
+		cout << "\r" << string(80, ' ') << "\r";
 		cout << "Enter which mirror is correct \n";
 		cin >> answerT2;
 		attempts++;
 		if (answerT2 == 'C') {
+			cout << "\r" << string(80, ' ') << "\r";
 			cout << "The mirrors go still\n";
+			cout << "\r" << string(80, ' ') << "\r";
 			cout << "Your reflection looks directly at you\n";
+			cout << "\r" << string(80, ' ') << "\r";
 			cout << "You know the truth.\n";
+			cout << "\r" << string(80, ' ') << "\r";
 			cout << "Room 2 unlocked!\n";
 			question = 3;
 			return;
