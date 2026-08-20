@@ -47,6 +47,7 @@ void Doors::use()
 					
 				if (attempts == 3) {
 					std::cout << "= !Remember the clock is 5 mins slower!=\n";
+					attempts -= 1;
 				}
 			}
 
