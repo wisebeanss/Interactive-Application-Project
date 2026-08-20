@@ -39,10 +39,19 @@ InteractiveObject* Player::getNearbyObject(Map& map) {
 void Player::HandleInput(char symbol, Map &map) {
 	//movement
 	if (symbol == 'w' || symbol == 'a' || symbol == 's' || symbol == 'd') {
+		for (size_t i = 0; i < map.getObjects().size(); i++) {
+
+			InteractiveObject* obj = map.getObjects()[i];
+			if (obj != nullptr && obj->getUIActive()) {
+				obj->enableUI(); // Toggles uiActive back to false webn they walk
+			}
+		}
+
 		move(symbol, map);
 		setInteract(false);
 		system("cls");
 		map.setMapRendered(true);
+		
 	}
 	if (symbol == 'e') {
 		if (Inventory.empty()) {

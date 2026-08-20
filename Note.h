@@ -1,6 +1,7 @@
 #pragma once
 #include "InteractiveObject.h"
-class Note : public InteractiveObject {
+class Note : public InteractiveObject 
+{
 private:
 	string text;
 	static vector<int> Ids;

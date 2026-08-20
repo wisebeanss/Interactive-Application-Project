@@ -39,6 +39,7 @@ Watch::~Watch()
     }
 }
 
+
 void Watch::use()
 {
     const int width = 22;

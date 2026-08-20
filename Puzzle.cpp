@@ -39,119 +39,29 @@ bool Puzzle::ROOM1(int roomID, Map& map)
                 add = true;
         }
 
-
-        //cout << "Clock1: The incident happened one hour after \n";
-        //cout << "Clock2: The minute hand stopped at 45.\n";
-        //cout << "Clock3:The second hand stopped at 12.\n";
-        //cout << "Clock4: This clock was 5 minutes slow.\n";
-        //cout << "Enter the time as HHMMSS (e.g., 115012): ";
-        //cin >> answer1;
-
-        //while (!P11) {
-
-        //    if (answer1 == 115012)
-        //    {
-        //        cout << "\nThe clock begins ticking...\n";
-        //        cout << "11:50...\n";
-        //        cout << "11:51...\n";
-        //        cout << "The time feels strangely familiar.\n";
-        //        cout << "✓ Room 1 unlocked!\n";
-        //        P11 = true;
-
-        //        // unlock room 2
-        //    }
-        //    else
-        //    {
-        //        cout << "\nThat doesn't seem right.\n";
-        //        P11 = false;
-        //        if (attempts == 3) {
-        //            std::cout << "= !Remember the clock is 5 mins slower!=\n";
-        //        }
-        //    }
-        //}
-  /*      while (!P12) {
-            if (roomID == 1 && P11)
-                cout << "MirrorA: The reflection is smiling But you are not\n";
-                cout << "MirrorB: You raise your left hand. The reflection raises its right hand\n";
-                cout << "MirrorC:You raise your left hand.The reflection raises its left hand. You blink.  It blinks with you.\n";
-                cin >> answer2;
-
-            if (answer2 == 'C') {
-                cout << "---\n";
-                cout << "Mirror C ripples softly.\n";
-                cout << "'I show only what is real.'\n";
-                cout << "The true mirror sees you exactly as you are.\n";
-                cout << "Lock clicks open.\n";
-
-                P12 = true;
-            }
-            else {
-                cout << "---\n";
-                cout << "The mirror distorts. It is lying.\n";
-                cout << "Think again.\n\n";
-            }
-        }*/
     }
 }
-///
+
 bool Puzzle::ROOM2(int roomID, Map& map) {
     if (roomID != 2) return false;
     if (roomID == 2)
     {
-        bool P21 = false;
-        bool P22 = false;
+     /*   if (add == false)
+        {
+            map.clearObjects();
+            map.setObjects(new PhotoFragment("Clock1: A ‘Hand’\n", 1, 4, 101));
+            map.setObjects(new PhotoFragment("Clock2: A “Face”\n", 4, 4, 102));
+            map.setObjects(new PhotoFragment("Clock3: “The Other person” \n", 1, 8, 103));
+            map.setObjects(new Note("The Perfect poster is not first.\n", 4, 8, 103));
+            map.setObjects(new Note("The Strong poster is somewhere before the Successful poster.\n", 16, 4, 201));
+            map.setObjects(new Note("The Smart poster is immediately before the Perfect poster. \n", 21, 4, 202));
+            map.setObjects(new Note("The Successful poster is last.\n", 21, 8, 203));
+            map.setObjects(new Posters("1.THE STRONG 2.THE SMART 3.THE SUCCESSFUL 4.THE PERFECT \n", 21, 8, 203));
+            map.setObjects(new Doors(" ", 23, 6, 301));
+            add = true;
+        }*/
 
-        while (!P21) {
-
-
-            //3 photo 
-            std::cout << "Photo1\n";
-            std::cout << "Photo2\n";
-            std::cout << "photo3\n";
-            //after player collect all photo 
-            int total = 0;
-
-            /* add the total
-            for (int p; p < 4; p++) {
-                if (p == true) {
-                    total++;
-                }
-            }*/
-
-
-            if (total == 3) {
-
-                cout << "You have collected all Photo Fragments!";
-                cout << "The suitcase is now open!";
-                bool P21 = true;
-            }
-            else {
-
-                cout << " You haven't collected all Photo Fragments!";
-
-            }
-
-        }
-
-        while (!P22) {
-            if (roomID == 2 && P21) {
-
-                if (answer1 == 1243) {
-
-                    cout << "Layer upon layer of masks, hiding who you truly are at the very end. ";
-                    cout << "Words fade into view beneath the last portrait: ";
-                    cout << "After all this time… are you tired? ";
-                    cout << "The door opens.";
-                    P22 = true;
-                }
-                else {
-                    cout << "Are you sure you arranged it in the right order?";
-                    cout << "Try again.";
-                    P22 = false;
-                }
-
-            }
-        }
+        
     }
 }
 bool Puzzle::ROOM3(int roomID, Map& map)
@@ -160,21 +70,21 @@ bool Puzzle::ROOM3(int roomID, Map& map)
     if (roomID != 3)return false;
     if (roomID == 3)
     {
-        cout << "Enter the sequence (4 digits): ";
-        cin >> answer1;
-    }
-
-    if (answer1 == 1234)
-    {
-        cout << "\nYou remember the order now.\n";
-        cout << "But you still don't remember why.\n";
-        cout << "✓ First puzzle in Room 3 unlocked!\n";
-
-        // unlock second puzzle in room 3
-    }
-    else
-    {
-        cout << "\nThe memories don't fit together.\n";
+        if (add == false)
+        {
+              // map.clearObjects();
+              // map.setObjects(new Phones("First call: 11:32\n", 1, 4, 101));
+              // map.setObjects(new Phones("Final call: 11:37\n", 4, 4, 102));
+              // map.setObjects(new Letters("I called again two minutes later. \n", 1, 8, 103));
+              // map.setObjects(new Clocks("Stopped at 11:35 \n", 4, 8, 103));
+              //// map.setObjects(new Suitcase("MirrorA: The reflection\nis smiling But you are not\n", 16, 4, 201));
+              // map.setObjects(new Note("You blamed yourself for what happened at 11:35, but you weren't there when it happened.\n", 21, 4, 202));
+              // map.setObjects(new Letters("No timestamp.\n", 21, 8, 203));
+              // map.setObjects(new Photograph("Taken at 10:20. \n", 21, 8, 203));
+              // map.setObjects(new Watch("Stopped at 11:35. \n", 1, 8, 103));
+              // map.setObjects(new Doors(" ", 23, 6, 301));
+              // add = true;
+        }
     }
 }
 
@@ -184,59 +94,17 @@ bool Puzzle::ROOM4(int roomID, Map& map)
     if (roomID != 4) return false;
     if (roomID == 4)
     {
-        bool P41 = false;
-        bool P42 = false;
-
-        while (!P41) {
-
-
-            //3 photo 
-            std::cout << "Photo1\n";
-            std::cout << "Photo2\n";
-            std::cout << "photo3\n";
-
-            //after player collect all photo 
-            int total = 0;
-
-            /* add the total
-            for (int p; p < 4; p++) {
-                if (p == true) {
-                    total++;
-                }
-            }*/
-
-
-            if (total == 3) {
-
-                cout << "You have collected all Photo Fragments!";
-                cout << "The suitcase is now open!";
-                bool P21 = true;
-            }
-            else {
-
-                cout << " You haven't collected all Photo Fragments!";
-                bool P21 = false;
-            }
-
-        }
-
-        while (!P42) {
-            if (roomID == 4 && P41) {
-
-                if (answer1 == 2143) {
-
-                    cout << "You remember the beginning.";
-                    cout << "Now remember the end.";
-                    cout << "The door opens.";
-                    P42 = true;
-                }
-                else {
-                    cout << "Are you sure you arranged it in the right order?";
-                    cout << "Try again.";
-                    P42 = false;
-                }
-
-            }
+        if (add == false)
+        {
+            /*   map.clearObjects();
+               map.setObjects(new PhotoFragment("A photograph of you as a child.\n", 1, 4, 101));
+               map.setObjects(new PhotoFragment("You and someone else are sitting together on a train. \n", 4, 4, 102));
+               map.setObjects(new PhotoFragment("You and the same person are standing together.\n", 1, 8, 103));
+               map.setObjects(new Posters("1.FIRST TRAIN RIDE 2.CHILDHOOD 3.LAST SUMMER 4. PHOTOGRAPH\n", 4, 8, 103));
+               map.setObjects(new Note("Childhood came before the first train ride.The last summer was immediately before the photograph. The first train ride happened after childhood. The photograph was before my first train ride. I dont remember writing one of the lines. \n", 16, 4, 201);
+              map.setObjects(new Suitcase(" ", 23, 6, 301));
+              map.setObjects(new Doors(" ", 23, 6, 301));
+               add = true;*/
         }
     }
 }
@@ -245,40 +113,25 @@ bool Puzzle::ROOM5(int roomID, Map& map)
     if (roomID != 5) return false;
     if (roomID == 5)
     {
-        bool P51 = false;
-        bool P52 = false;
-
-        while (!P51) {
-
-            if (answer2 == 'D') {
-
-                cout << "The safe is now open!";
-                P51 = true;
-            }
-
-            else {
-                cout << "Try again.";
-                P51 = false;
-            }
-
-        }
-
-        while (!P52) {
-
-            if (answer1 == 3) {
-
-                cout << "The door clicks open.";
-                P51 = true;
-            }
-
-            else {
-                cout << "Try again.";
-                P51 = false;
-            }
-
-
-
-        }
+        /*   map.clearObjects();
+                map.setObjects(new Letters("Dear you, I wish I could tell you what happened. Maybe tomorrow. Written on Monday\n", 1, 4, 101));
+                map.setObjects(new Letters("Dear you, I tried calling today. You didn't answer. I'll try again. Written on Wednesday \n", 4, 4, 102));
+                map.setObjects(new Letters("Dear you, I don't know if you're still listening. I'm sorry. Written on Friday\n", 1, 8, 103));
+                map.setObjects(new Letters("Dear you,I don't know why I keep writing these. You're not going to read them anyway." No date\n", 4, 8, 103));
+                map.setObjects(new Note("The last letter was written after I stopped expecting an answer.\n", 16, 4, 201);
+                map.setObjects(new Note("I stopped calling before I stopped writing.", 23, 6, 301));
+                map.setObjects(new Safe(" ", 23, 6, 301));
+                map.setObjects(new Lockers("The locker is empty.A faded sticker reads: "PROPERTY OF STAFF" ", 23, 6, 301));
+                map.setObjects(new Lockers("Inside is an old school notebook.The name has been scratched out.", 23, 6, 301));
+                map.setObjects(new Lockers("A scarf is hanging inside.You recognize it. You remember seeing it before. But you can't remember where. ", 23, 6, 301));
+                map.setObjects(new Lockers("The locker contains a train ticket. Destination: UNKNOWN Seat: 18 ", 23, 6, 301));
+                map.setObjects(new Lockers("There is nothing inside.But someone's name is carved into the door. ", 23, 6, 301));
+                map.setObjects(new Note("They always kept their belongings close.", 23, 6, 301));
+                 map.setObjects(new Note(" a photograph showing the missing person wearing a scarf,the same scarf from Locker 3", 23, 6, 301));
+                  map.setObjects(new Note(" Another ticket says: "I sat opposite you." The player's seat is 17. ", 23, 6, 301));
+                   map.setObjects(new Note("I never left anything behind.", 23, 6, 301));
+               map.setObjects(new Doors(" ", 23, 6, 301));
+                add = true;*/
     }
 }
 
@@ -287,61 +140,21 @@ bool Puzzle::ROOM6(int roomID, Map& map)
     if (roomID != 6) return false;
     if (roomID == 6)
     {
-        bool P61 = false;
-        bool P62 = false;
-
-        while (!P61) {
-
-            if (answer1 == 3) {
-
-                cout << "The door clicks open.";
-                P61 = true;
-            }
-
-            else {
-                cout << "Try again.";
-                P61 = false;
-            }
-        }
-
-        while (!P62) {
-
-            int door = 0;
-            switch (door) {
-            case 1:
-                cout << "Try again.";
-                P62 = false;
-                break;
-
-            case 2:
-                cout << "Try again.";
-                P62 = false;
-                break;
-
-            case 3:
-                cout << "Try again.";
-                P62 = false;
-                break;
-
-            case 4:
-                cout << "Try again.";
-                P62 = false;
-                break;
-
-            case 5:
-                cout << "escaped";
-                P62 = true;
-                break;
-
-
-
-            }
-
-
-
-
-        }
-
+        /*   map.clearObjects();
+               map.setObjects(new Drawers("A blank sheet of paper.Nothing else.\n", 1, 4, 101));
+               map.setObjects(new Drawers("A train ticket.The destination has been scratched out.\n", 4, 4, 102));
+               map.setObjects(new Drawers("A photograph.You recognize the person in it.On the back: "I'll see you again." \n", 1, 8, 103));
+               map.setObjects(new Drawers("A small key.You don't recognize it. \n", 4, 8, 103));
+               map.setObjects(new Drawers("A folded piece of paper.You recognize the handwriting. It's yours.\n", 16, 4, 201);
+               map.setObjects(new Note("You searched for answers everywhere except where you left them.", 23, 6, 301));
+               map.setObjects(new Note("The truth is not something you were given.", 23, 6, 301));
+               map.setObjects(new Note("You already knew.", 23, 6, 301));
+               map.setObjects(new Note("The third path is the one that stops the train.", 23, 6, 301));
+               map.setObjects(new Suitcase(" ", 23, 6, 301));
+               map.setObjects(new Doors(" ", 23, 6, 301));
+               map.setObjects(new Doors(" ", 23, 6, 301));
+              map.setObjects(new Doors(" ", 23, 6, 301));
+               add = true;*/
 
     }
 }
