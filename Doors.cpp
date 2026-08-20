@@ -1,4 +1,5 @@
 #include "Doors.h"
+
 Doors::Doors(string lines, int x, int y, int id) : InteractiveObject("Doors", id, false)
 {
 	line = lines;
@@ -79,5 +80,9 @@ void Doors::use()
 			}
 
 		}
+	}
+
+	if (roomID == 2) {
+
 	}
 }
