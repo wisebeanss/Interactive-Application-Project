@@ -43,36 +43,41 @@ void Doors::use()
 			}
 			else {
 				cout << "\nThat doesn't seem right.\n";
-					
+
 				if (attempts == 3) {
 					std::cout << "= !Remember the clock is 5 mins slower!=\n";
 					attempts -= 1;
 				}
 			}
 
+		}
+
+		if (question == 2) {
+			cout << "\r" << string(80, ' ') << "\r";
+			cout << "Enter which mirror is correct \n";
+			cin >> answerT2;
+			attempts++;
+			if (answerT2 == 'C') {
+				cout << "\r" << string(80, ' ') << "\r";
+				cout << "The mirrors go still\n";
+				cout << "\r" << string(80, ' ') << "\r";
+				cout << "Your reflection looks directly at you\n";
+				cout << "\r" << string(80, ' ') << "\r";
+				cout << "You know the truth.\n";
+				cout << "\r" << string(80, ' ') << "\r";
+				cout << "Room 2 unlocked!\n";
+				question = 3;
+				return;
+			}
+			else {
+				cout << "\n That mirror lies. Think again.\n";
+				if (attempts >= 3)
+				{
+					cout << " Hint: The reflection should match you.\n";
+				}
+				cout << "Your answer: ";
 			}
 
-	if (question == 2) {
-		cout << "Enter which mirror is correct \n";
-		cin >> answerT2;
-		attempts++;
-		if (answerT2 == 'C') {
-			cout << "The mirrors go still\n";
-			cout << "Your reflection looks directly at you\n";
-			cout << "You know the truth.\n";
-			cout << "Room 2 unlocked!\n";
-			question = 3;
-			return;
-		}
-		else {
-			cout << "\n That mirror lies. Think again.\n";
-			if (attempts >= 3)
-			{
-				cout << " Hint: The reflection should match you.\n";
-			}
-			cout << "Your answer: ";
-		}
-		
 		}
 	}
 }
