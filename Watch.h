@@ -12,6 +12,5 @@ public:
     ~Watch();
     void use();
     string centerWatchText(string str, int width) const;
-    void getUIBuffer(string buffer[13]) const override;
 };
 
