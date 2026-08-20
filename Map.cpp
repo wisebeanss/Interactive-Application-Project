@@ -6,6 +6,7 @@ Map::Map() {
 	carriageNum = 1;
 	carriageRoom = 1;
 	animFrame = 0;
+	renderMap = true;
 }
 Map::~Map() {
 

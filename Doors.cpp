@@ -38,7 +38,6 @@ void Doors::use()
 				cout << "11:50...\n";
 				cout << "11:51...\n";
 				cout << "The time feels strangely familiar.\n";
-				cout << "✓ Room 1 unlocked!\n";
 				question = 2;
 				return;
 			}
@@ -47,6 +46,7 @@ void Doors::use()
 					
 				if (attempts == 3) {
 					std::cout << "= !Remember the clock is 5 mins slower!=\n";
+					attempts -= 1;
 				}
 			}
 
@@ -60,6 +60,7 @@ void Doors::use()
 			cout << "The mirrors go still\n";
 			cout << "Your reflection looks directly at you\n";
 			cout << "You know the truth.\n";
+			cout << "Room 2 unlocked!\n";
 			question = 3;
 			return;
 		}
