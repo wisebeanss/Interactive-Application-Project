@@ -5,6 +5,7 @@ Doors::Doors(string lines, int x, int y, int id) : InteractiveObject("Doors", id
 	setX(x);
 	setY(y);
 	setRoomID(id);
+	question = 1;
 }
 Doors::~Doors()
 {
@@ -28,52 +29,47 @@ void Doors::use()
 		if (question == 1) {
 			cout << "\r" << string(80, ' ') << "\r";
 			cout << "Enter the time as HHMMSS (e.g., 115012): ";
-			while (true) 
-			{
-				cin >> answerT1;
-				attempts++;
+			cin >> answerT1;
+			attempts++;
 
 
-				if (answerT1 == 115012) {
-					cout << "\nThe clock begins ticking...\n";
-					cout << "11:50...\n";
-					cout << "11:51...\n";
-					cout << "The time feels strangely familiar.\n";
-					cout << "✓ Room 1 unlocked!\n";
-					question = 2;
-					return;
-				}
-				else {
-					cout << "\nThat doesn't seem right.\n";
+			if (answerT1 == 115012) {
+				cout << "\nThe clock begins ticking...\n";
+				cout << "11:50...\n";
+				cout << "11:51...\n";
+				cout << "The time feels strangely familiar.\n";
+				cout << "✓ Room 1 unlocked!\n";
+				question = 2;
+				return;
+			}
+			else {
+				cout << "\nThat doesn't seem right.\n";
 					
-					if (attempts == 3) {
-						std::cout << "= !Remember the clock is 5 mins slower!=\n";
-					}
+				if (attempts == 3) {
+					std::cout << "= !Remember the clock is 5 mins slower!=\n";
 				}
+			}
 
 			}
 
 	if (question == 2) {
-		cout << "Enter which mirror is correct/n";
-			while (true) {
-					cin >> answerT2;
-					attempts++;
-				}
-			if (answerT2 == 'C ') {
-				cout << "The mirrors go still\n";
-				cout << "Your reflection looks directly at you\n";
-				cout << "You know the truth.\n";
-				question = 3;
-				return;
+		cout << "Enter which mirror is correct \n";
+		cin >> answerT2;
+		attempts++;
+		if (answerT2 == 'C') {
+			cout << "The mirrors go still\n";
+			cout << "Your reflection looks directly at you\n";
+			cout << "You know the truth.\n";
+			question = 3;
+			return;
+		}
+		else {
+			cout << "\n That mirror lies. Think again.\n";
+			if (attempts >= 3)
+			{
+				cout << " Hint: The reflection should match you.\n";
 			}
-			else {
-				cout << "\n That mirror lies. Think again.\n";
-				if (attempts >= 3)
-				{
-					cout << " Hint: The reflection should match you.\n";
-				}
-				cout << "Your answer: ";
-			}
+			cout << "Your answer: ";
 		}
 		
 		}
