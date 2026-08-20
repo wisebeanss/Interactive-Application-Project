@@ -1,7 +1,7 @@
 #include "Suitcase.h"
 #include <iostream>
-using namespace std;
 
+using namespace std;
 Suitcase::Suitcase(int x, int y, int id)
     : InteractiveObject("Suitcase", id , false)
 {
@@ -38,6 +38,6 @@ bool Suitcase::tryUnlock()
         unlocked = true;
         return true;
     }
-    cout << "\n🔒 The suitcase is still locked. Find all 3 photos first.\n";
+    cout << "\n The suitcase is still locked. Find all 3 photos first.\n";
     return false;
 }
