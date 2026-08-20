@@ -12,6 +12,7 @@ private:
 	char mapSize[13][24];
 	int animFrame;
 	bool offMap;
+	bool renderMap;
 	vector<InteractiveObject*> Objects;
 public:
 	void resetCursorPosition() {

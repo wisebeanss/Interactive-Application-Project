@@ -16,7 +16,7 @@ void Game::Run() {
 	Puzzle puzzle;
 	const std::chrono::milliseconds frameBudget(33);
 
-	while (true) {
+	while (map.renderMap) {
 		auto frameStart = std::chrono::high_resolution_clock::now();
 
 		int oldY = player.getY();
