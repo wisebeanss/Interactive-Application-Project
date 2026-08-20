@@ -32,9 +32,9 @@ bool Puzzle::ROOM1(int roomID, Map& map)
                 map.setObjects(new Clocks("Clock2: The minute hand stopped at 45.\n", 4, 4, 102));
                 map.setObjects(new Clocks("Clock3: The second hand stopped at 12.\n", 1, 8, 103));
                 map.setObjects(new Clocks("Clock4: This clock was 5 minutes slow.\n", 4, 8, 103));
-                map.setObjects(new Mirrors("MirrorA: The reflection is smiling But you are not\n", 16, 4, 201));
-                map.setObjects(new Mirrors("MirrorB: You raise your left hand. The reflection raises its right hand\n", 21, 4, 202));
-                map.setObjects(new Mirrors("MirrorC:You raise your left hand.The reflection raises its left hand. You blink.  It blinks with you.\n", 21, 8, 203));
+                map.setObjects(new Mirrors("MirrorA: The reflection\nis smiling But you are not\n", 16, 4, 201));
+                map.setObjects(new Mirrors("MirrorB: You raise your\nleft hand. The reflection\nraises its right hand\n", 21, 4, 202));
+                map.setObjects(new Mirrors("MirrorC:You raise your\nleft hand.The reflection\nraises its left hand.\nYou blink.\nIt blinks with you.\n", 21, 8, 203));
                 map.setObjects(new Doors(" ", 23, 6, 301));
                 add = true;
         }

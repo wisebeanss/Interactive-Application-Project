@@ -34,7 +34,7 @@ void Game::Run() {
 		//map.updateMap(oldX, oldY, ' ');
 		map.updateMap(player.getX(), player.getY(), player.getSymbol());
 
-		std::string mirrorBuffer[13];
+		std::string mirrorBuffer[15];
 		bool isUIActive = false;
 		std::string statusMsg = "";
 

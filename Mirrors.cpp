@@ -28,23 +28,34 @@ void Mirrors::use() {
     enableUI();
 }
 
-void Mirrors::getUIBuffer(string buffer[13]) const {
-    const int width = 22;
+void Mirrors::getUIBuffer(string buffer[15]) const {
+    const int width = 26;
     const int boxWidth = width + 2;
 
     buffer[0] = centerMirrorText("/\\", boxWidth);
     buffer[1] = centerMirrorText("/  \\", boxWidth);
     buffer[2] = centerMirrorText("/    \\", boxWidth);
-    buffer[3] = "+----------------------+";
-    buffer[4] = "|" + centerMirrorText("", width) + "|";
-    buffer[5] = "|" + centerMirrorText(text, width) + "|";
-    buffer[6] = "|" + centerMirrorText("", width) + "|";
-    buffer[7] = "+----------------------+";
-    buffer[8] = centerMirrorText("\\    /", boxWidth);
-    buffer[9] = centerMirrorText("\\  /", boxWidth);
-    buffer[10] = centerMirrorText("\\/", boxWidth);
-    buffer[11] = "                      ";
-    buffer[12] = "                      ";
+    buffer[3] = "+--------------------------+";
+
+    int row = 4;
+    size_t start = 0;
+    while (row < 9 && start < text.size()) {
+        size_t end = text.find('\n', start);
+        if (end == string::npos) end = text.size();
+        string line = text.substr(start, end - start);
+        buffer[row++] = "|" + centerMirrorText(line, width) + "|";
+        start = end + 1; // move past '\n'
+    }
+    // Fill remaining rows with empty centered lines
+    while (row < 9) {
+        buffer[row++] = "|" + centerMirrorText("", width) + "|";
+    }
+    buffer[9] = "+--------------------------+";
+    buffer[10] = centerMirrorText("\\    /", boxWidth);
+    buffer[11] = centerMirrorText("\\  /", boxWidth);
+    buffer[12] = centerMirrorText("\\/", boxWidth);
+    buffer[13] = "                      ";
+    buffer[14] = "                      ";
 }
 
 string Mirrors::centerMirrorText(string str, int width) const {
