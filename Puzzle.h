@@ -4,6 +4,7 @@
 #include "map.h"
 #include "Clocks.h"
 #include "Mirrors.h"
+#include "Doors.h"
 
 class Puzzle :
     public InteractiveObject

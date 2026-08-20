@@ -1,5 +1,5 @@
 #include "Doors.h"
-Doors::Doors(string lines, int x, int y, int id) : InteractiveObject("Doors", id)
+Doors::Doors(string lines, int x, int y, int id) : InteractiveObject("Doors", id, false)
 {
 	line = lines;
 	setX(x);
