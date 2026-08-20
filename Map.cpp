@@ -10,6 +10,15 @@ Map::Map() {
 Map::~Map() {
 
 }
+
+void Map::resetCursorPosition() {
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD cursorPosition;
+	cursorPosition.X = 0;
+	cursorPosition.Y = 0;
+	SetConsoleCursorPosition(hConsole, cursorPosition);
+}
+
 void Map::updateFrame() {
 	animFrame++;
 }
@@ -109,11 +118,13 @@ void Map::buildMap() {
 				if ((i == 1 && j == 1) || (i == 5 && j == 1)
 					|| (i == 1 && j == 4) || (i == 5 && j == 4)) {
 					mapSize[gridY][j] = '@';
+
 				}
 				//mirror
 				if ((i == 1 && j == 21) || (i == 5 && j == 21)
 					|| (i == 1 && j == 16)) {
 					mapSize[gridY][j] = '&';
+
 				}
 			}
 			//carriage 2
@@ -249,6 +260,42 @@ void Map::buildMap() {
 	}
 }
 
+void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, const std::string uiBuffer[13]) const {
+	std::string leftPanelPadding = "                                  ";
+	std::cout << leftPanelPadding << "+-- -- -- -- -- --+    +-- -- -- -- -- --+\n";
+	std::cout << leftPanelPadding << "|                 |    |                 |\n";
+	std::cout << leftPanelPadding << "|   CARRIAGE " << carriageNum << "    |    |     ROOM   " << carriageRoom << "    |\n";
+	std::cout << leftPanelPadding << "|                 |    |                 |\n";
+	std::cout << leftPanelPadding << "+-- -- -- -- -- --+    +-- -- -- -- -- --+\n";
+
+	for (int i = 0; i < 13; i++) {
+		std::string lineBuffer = "";
+		if (i == 2) {
+			lineBuffer += "   [ CONTROLS ]                   ";
+		}
+		else if (i == 3) {
+			lineBuffer += "   WASD : Move Player             ";
+		}
+		else if (i == 4) {
+			lineBuffer += "   F    : Interact / Use Object   ";
+		}
+		else lineBuffer += leftPanelPadding;
+
+		for (int j = 0; j < 24; j++) {
+			lineBuffer += mapSize[i][j];
+			lineBuffer += ' ';
+		}
+		if (uiActive) {
+			lineBuffer += uiBuffer[i]; 
+		}
+		else {
+			lineBuffer += "                                      ";
+		}
+
+		std::cout << lineBuffer << "\n";
+	}
+}
+
 void Map::printMap() const {
 
 	for (int i = 0; i < 13; i++) {
@@ -260,14 +307,14 @@ void Map::printMap() const {
 	}
 }
 
-void Map::printCarrIndicator() const {
-	std::cout << "+-- -- -- -- -- --+    +-- -- -- -- -- --+\n";
-	std::cout << "|                 |    |                 |\n";
-	std::cout << "|   CARRIAGE " << carriageNum << "    |    |     ROOM   " << carriageRoom << "    |\n";
-	std::cout << "|                 |    |                 |\n";
-	std::cout << "+-- -- -- -- -- --+    +-- -- -- -- -- --+\n";
-
-}
+//void Map::printCarrIndicator() const {
+//	std::cout << "+-- -- -- -- -- --+    +-- -- -- -- -- --+\n";
+//	std::cout << "|                 |    |                 |\n";
+//	std::cout << "|   CARRIAGE " << carriageNum << "    |    |     ROOM   " << carriageRoom << "    |\n";
+//	std::cout << "|                 |    |                 |\n";
+//	std::cout << "+-- -- -- -- -- --+    +-- -- -- -- -- --+\n";
+//
+//}
 void Map::updateMap(int x, int y, char symbol) {
 	if (x > 0 && x < 24 && y > 2 && y < 10) {
 		mapSize[y][x] = symbol;

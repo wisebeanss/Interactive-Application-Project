@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <Windows.h>
+#include <string>
 using namespace std;
 class InteractiveObject;
 class Map
@@ -14,16 +15,11 @@ private:
 	bool offMap;
 	vector<InteractiveObject*> Objects;
 public:
-	void resetCursorPosition() {
-		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-		COORD cursorPosition;
-		cursorPosition.X = 0;
-		cursorPosition.Y = 0;
-		SetConsoleCursorPosition(hConsole, cursorPosition);
-	}
+	void resetCursorPosition();
 	Map();
 	void updateFrame();
 	void printCarrIndicator() const;
+	void printSidebar(int carriageNum, int carriageRoom, bool uiActive, const std::string uiBuffer[13] = nullptr) const;
 	void buildMap();
 	void printMap() const;
 	void mapTile(int posX, int posY, char symbol);

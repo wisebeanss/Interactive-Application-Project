@@ -4,6 +4,7 @@ InteractiveObject::InteractiveObject(string name, int id, bool isPickable) : Gam
 	this->name = name;
 	this->id = id;
 	this->isPickable = isPickable;
+	uiActive = false;
 }
 InteractiveObject::~InteractiveObject() {
 
@@ -17,4 +18,10 @@ int InteractiveObject::getId()
 }
 bool InteractiveObject::checkIfPickable() const {
 	return isPickable;
+}
+bool InteractiveObject::getUIActive() const {
+	return uiActive;
+}
+void InteractiveObject::enableUI() {
+	uiActive = !uiActive;
 }

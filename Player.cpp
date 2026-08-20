@@ -69,6 +69,9 @@ void Player::HandleInput(char symbol, Map &map) {
 		if (nearbyObject != nullptr) {
 			setInteract(true);
 			nearbyObject->use();
+	//	 DEBUG CHECK:
+		 std::cout << "Interacted with ID: " << nearbyObject->getId() 
+		           << " UI Active: " << nearbyObject->getUIActive() << std::endl;
 		}
 	}
 }

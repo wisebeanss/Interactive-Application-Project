@@ -9,8 +9,8 @@ Game::~Game() {
 void Game::Init() {
 	map.buildMap();
 	map.updateMap(player.getX(), player.getY(), player.getSymbol());
-	map.printCarrIndicator();
-	map.printMap();
+	map.printSidebar(1, 1, false);
+	//map.printMap();
 }
 void Game::Run() {
 	Puzzle puzzle;
@@ -26,27 +26,34 @@ void Game::Run() {
 			char letter = _getch();
 			player.HandleInput(letter, map);
 		}
-		if (player.getNearbyObject(map) != nullptr) {
-			if (player.getInteract() == false)
-			{
-				cout << "\r" << string(80, ' ') << "\r";
-				cout << "Press F to Interact";
-			}
+		if (player.getNearbyObject(map) != nullptr && !player.getInteract()) {
+			std::cout << "\rPress F to Interact                   ";
 		}
 		else {
-			cout << "\r" << string(80, ' ') << "\r";
+			std::cout << "\r                                      ";
 		}
 		//mapping
+	
 		map.updateFrame(); //upd map env frame
 		map.buildMap();
-
 		//map.updateMap(oldX, oldY, ' ');
 		map.updateMap(player.getX(), player.getY(), player.getSymbol());
 
-		map.resetCursorPosition();
+		std::string mirrorBuffer[13];
+		bool isUIActive = false;
 
-		map.printCarrIndicator();
-		map.printMap();
+		// If player is interacting with mirror object
+		InteractiveObject* obj = player.getNearbyObject(map);
+		if (obj != nullptr && obj->getUIActive()) {
+			isUIActive = true;
+			obj->getUIBuffer(mirrorBuffer); // Fills 13-line array
+		}
+
+		// Render map and UI simultaneously
+		map.resetCursorPosition();
+		map.printSidebar(map.getCarriage(), map.getRoom(), isUIActive, mirrorBuffer);
+
+		//map.printMap();
 
 		switch (map.getCarriage()) {
 		case 1:

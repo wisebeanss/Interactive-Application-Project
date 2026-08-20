@@ -25,19 +25,47 @@ Mirrors::~Mirrors() {
     }
 }
 void Mirrors::use() {
+    enableUI();
+}
+
+void Mirrors::getUIBuffer(string buffer[13]) const {
     const int width = 22;
     const int boxWidth = width + 2;
+
+    buffer[0] = centerMirrorText("/\\", boxWidth);
+    buffer[1] = centerMirrorText("/  \\", boxWidth);
+    buffer[2] = centerMirrorText("/    \\", boxWidth);
+    buffer[3] = "+----------------------+";
+    buffer[4] = "|" + centerMirrorText("", width) + "|";
+    buffer[5] = "|" + centerMirrorText(text, width) + "|";
+    buffer[6] = "|" + centerMirrorText("", width) + "|";
+    buffer[7] = "+----------------------+";
+    buffer[8] = centerMirrorText("\\    /", boxWidth);
+    buffer[9] = centerMirrorText("\\  /", boxWidth);
+    buffer[10] = centerMirrorText("\\/", boxWidth);
+    buffer[11] = "                      ";
+    buffer[12] = "                      ";
+}
+
+string Mirrors::centerMirrorText(string str, int width) const {
+    int padding = width - (int)str.length();
+    if (padding <= 0) return str;
+    int leftPad = padding / 2;
+    int rightPad = padding - leftPad;
+    return string(leftPad, ' ') + str + string(rightPad, ' ');
+}
+
+    /*const std::string rightOffset = "                                                                                    ";
     for (int w = 2; w <= width; w += 2) {
         std::string line = "/" + std::string(w - 2, ' ') + "\\";
-        std::cout << centerMirrorText(line, boxWidth) << std::endl;
+        std::cout << rightOffset << centerMirrorText(line, boxWidth) << std::endl;
     }
-    std::cout << "+----------------------+" << std::endl;
-    std::cout << "|" << centerMirrorText("", width) << "|" << std::endl;
-    std::cout << "|" << centerMirrorText(text, width) << "|" << std::endl;
-    std::cout << "|" << centerMirrorText("", width) << "|" << std::endl;
-    std::cout << "+----------------------+" << std::endl;
+    std::cout << rightOffset << "+----------------------+" << std::endl;
+    std::cout << rightOffset << "|" << centerMirrorText("", width) << "|" << std::endl;
+    std::cout << rightOffset << "|" << centerMirrorText(text, width) << "|" << std::endl;
+    std::cout << rightOffset << "|" << centerMirrorText("", width) << "|" << std::endl;
+    std::cout << rightOffset << "+----------------------+" << std::endl;
     for (int w = width; w  >= 2; w -= 2) {
         std::string line = "\\" + std::string(w - 2, ' ') + "/";
-        std::cout << centerMirrorText(line, boxWidth) << std::endl;
-    }
-}
+        std::cout << rightOffset << centerMirrorText(line, boxWidth) << std::endl;
+    }*/
