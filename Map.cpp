@@ -350,6 +350,9 @@ vector<InteractiveObject*> Map::getObjects() {
 	return Objects;
 }
 void Map::clearObjects() {
+	for (auto* obj : Objects) {
+		delete obj;
+	}
 	Objects.clear();
 }
 void Map::setObjects(InteractiveObject* object) {

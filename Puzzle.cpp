@@ -25,7 +25,7 @@ bool Puzzle::ROOM1(int roomID, Map& map)
         //bool P11 = false;
         //bool P12 = false;
 
-        if (add == false)
+        if (map.getObjects().empty())
         {
                 map.clearObjects();
                 map.setObjects(new Clocks("Clock1: The incident happened one hour after \n", 1, 4, 101));
@@ -36,7 +36,6 @@ bool Puzzle::ROOM1(int roomID, Map& map)
                 map.setObjects(new Mirrors("MirrorB: You raise your\nleft hand. The reflection\nraises its right hand\n", 21, 4, 202));
                 map.setObjects(new Mirrors("MirrorC:You raise your\nleft hand.The reflection\nraises its left hand.\nYou blink.\nIt blinks with you.\n", 21, 8, 203));
                 map.setObjects(new Doors(" ", 23, 3, 301));
-                add = true;
         }
 
     }
@@ -46,6 +45,7 @@ bool Puzzle::ROOM2(int roomID, Map& map) {
     if (roomID != 2) return false;
     if (roomID == 2)
     {
+        map.clearObjects();
      /*   if (add == false)
         {
             map.clearObjects();
@@ -70,6 +70,7 @@ bool Puzzle::ROOM3(int roomID, Map& map)
     if (roomID != 3)return false;
     if (roomID == 3)
     {
+        map.clearObjects();
         if (add == false)
         {
               // map.clearObjects();
@@ -94,6 +95,7 @@ bool Puzzle::ROOM4(int roomID, Map& map)
     if (roomID != 4) return false;
     if (roomID == 4)
     {
+        map.clearObjects();
         if (add == false)
         {
             /*   map.clearObjects();
@@ -113,6 +115,7 @@ bool Puzzle::ROOM5(int roomID, Map& map)
     if (roomID != 5) return false;
     if (roomID == 5)
     {
+        map.clearObjects();
         /*   map.clearObjects();
                 map.setObjects(new Letters("Dear you, I wish I could tell you what happened. Maybe tomorrow. Written on Monday\n", 1, 4, 101));
                 map.setObjects(new Letters("Dear you, I tried calling today. You didn't answer. I'll try again. Written on Wednesday \n", 4, 4, 102));
@@ -140,6 +143,7 @@ bool Puzzle::ROOM6(int roomID, Map& map)
     if (roomID != 6) return false;
     if (roomID == 6)
     {
+        map.clearObjects();
         /*   map.clearObjects();
                map.setObjects(new Drawers("A blank sheet of paper.Nothing else.\n", 1, 4, 101));
                map.setObjects(new Drawers("A train ticket.The destination has been scratched out.\n", 4, 4, 102));
