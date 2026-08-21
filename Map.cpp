@@ -308,16 +308,16 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, const s
 	}
 }
 
-void Map::printMap() const {
-
-	for (int i = 0; i < 13; i++) {
-
-		for (int j = 0; j < 24; j++) {
-			std::cout << mapSize[i][j] << " ";
-		}	
-		std::cout << "\n";
-	}
-}
+//void Map::printMap() const {
+//
+//	for (int i = 0; i < 13; i++) {
+//
+//		for (int j = 0; j < 24; j++) {
+//			std::cout << mapSize[i][j] << " ";
+//		}	
+//		std::cout << "\n";
+//	}
+//}
 
 //void Map::printCarrIndicator() const {
 //	std::cout << "+-- -- -- -- -- --+    +-- -- -- -- -- --+\n";
