@@ -1,12 +1,14 @@
 #include "Map.h"
 #include "Player.h"
 #include <iostream>
+#include "Timer.h"
 
 Map::Map() {
 	buildMap();
 	carriageNum = 1;
 	carriageRoom = 1;
 	animFrame = 0;
+	
 }
 Map::~Map() {
 	clearObjects();
@@ -54,6 +56,8 @@ void Map::nextRoom() {
 }
 
 void Map::buildMap() {
+
+
 	for (int i = 0; i < 13; i++) {
 		for (int j = 0; j < 24; j++) {
 			mapSize[i][j] = ' ';
@@ -309,6 +313,14 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, const s
 		else {
 			lineBuffer += "                                  ";
 		}
+		//===========time=======/
+			/*lineBuffer += formatPanelLine(
+				"       TIME: " +
+				std::to_string(timer.getMinutes()) + ":" +
+				(timer.getSeconds() < 10 ? "0" : "") +
+				std::to_string(timer.getSeconds()),
+				targetWidth);*/
+			
 
 		std::cout << lineBuffer << "\n";
 	}
@@ -381,6 +393,17 @@ bool Map::validMove(int x, int y) {
 	}
 	return false;
 }
+
+void Map::updateTimer()
+{
+	timer.update();
+}
+
+void Map::reduceTimer()
+{
+	timer.decreaseTime(120);
+}
+
 
 vector<InteractiveObject*> Map::getObjects() {
 	return Objects;

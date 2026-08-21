@@ -14,7 +14,7 @@ void Game::Init() {
 }
 void Game::Run() {
 	Puzzle puzzle;
-	Timer timer;
+	
 	const std::chrono::milliseconds frameBudget(33);
 
 	while (true) {
@@ -28,7 +28,8 @@ void Game::Run() {
 			player.HandleInput(letter, map);
 		}
 		//timer
-		timer.update();
+		map.updateTimer();
+
 		//mapping
 	
 		map.updateFrame(); //upd map env frame

@@ -7,6 +7,7 @@
 #include "Doors.h"
 #include "Mirrors.h"
 #include "Clocks.h"
+#include "Timer.h"
 using namespace std;
 
 
@@ -21,6 +22,8 @@ private:
 	bool offMap;
 	bool renderMap;
 	vector<InteractiveObject*> Objects;
+	int timerSeconds;
+	Timer timer;
 public:
 	char mapSize[13][24];
 	void resetCursorPosition();
@@ -43,7 +46,10 @@ public:
 	void clearObjects();
 	bool getOffMap();
 	void setOffMap(bool printmap);
+	void updateTimer();
+	void reduceTimer();
 	Map();
 	~Map();
+	
 };
 Map& getGameMap();
