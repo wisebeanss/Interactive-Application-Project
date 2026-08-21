@@ -8,10 +8,7 @@ Map::Map() {
 	animFrame = 0;
 }
 Map::~Map() {
-	for (InteractiveObject* object : Objects) {
-		delete object;
-	}
-	Objects.clear();
+	clearObjects();
 }
 bool Map::isMapRendered() {
 	return renderMap;
@@ -121,18 +118,6 @@ void Map::buildMap() {
 						mapSize[gridY][j] = 'H';
 					}
 				}
-				//puzzle objects
-				if ((i == 1 && j == 1) || (i == 5 && j == 1)
-					|| (i == 1 && j == 4) || (i == 5 && j == 4)) {
-					mapSize[gridY][j] = '@';
-
-				}
-				//mirror
-				if ((i == 1 && j == 21) || (i == 5 && j == 21)
-					|| (i == 1 && j == 16)) {
-					mapSize[gridY][j] = '&';
-
-				}
 			}
 			//carriage 2
 			else if (carriageNum == 2) {
@@ -225,7 +210,13 @@ void Map::buildMap() {
 	}
 	for (size_t k = 0; k < Objects.size(); k++) {
 		if (Doors* door = dynamic_cast<Doors*>(Objects.at(k))) {
-			mapSize[trainOffset + door->getY()][door->getX()] = door->getSymbol();
+			mapSize[door->getY()][door->getX()] = door->getSymbol();
+		}
+		if (Mirrors* mirror = dynamic_cast<Mirrors*>(Objects.at(k))) {
+			mapSize[mirror->getY()][mirror->getX()] = mirror->getSymbol();
+		}
+		if (Clocks* clock = dynamic_cast<Clocks*>(Objects.at(k))) {
+			mapSize[clock->getY()][clock->getX()] = clock->getSymbol();
 		}
 	}
 }
@@ -336,12 +327,23 @@ void Map::updateMap(int x, int y, char symbol) {
 bool Map::validMove(int x, int y) {	
 	if (x > 0 && x < 24 && y > 2 && y < 10) {
 		char tile = mapSize[y][x];
-		if (tile == '=' || tile == '|' || tile == '+' || tile == '['
-			|| tile == ']' || tile == '@' || tile == '#' || tile == '?' ||
-			tile == '&' || tile == '^' || tile == '~' || tile == 'A') {
-			return false;
+		bool isDoorUnlocked = false;
+		vector<char> blockedTiles = {'=', '|', '+', '[', ']', '@', '#', '?', '&', '^', '~', 'A', 'D'};
+		auto it = std::find(blockedTiles.begin(), blockedTiles.end(), 'D');
+		for (size_t k = 0; k < Objects.size(); k++) {
+			if (Doors* door = dynamic_cast<Doors*>(Objects.at(k))) {
+				isDoorUnlocked = door->isUnlocked();
+				break;
+			}
 		}
-		return true;
+		if (isDoorUnlocked) {
+			blockedTiles.erase(
+				std::remove(blockedTiles.begin(), blockedTiles.end(), 'D'),
+				blockedTiles.end()
+			);
+		}
+		bool isBlockedTiles = count(blockedTiles.begin(), blockedTiles.end(), tile) > 0;
+		return !isBlockedTiles;
 	}
 	return false;
 }
@@ -350,7 +352,7 @@ vector<InteractiveObject*> Map::getObjects() {
 	return Objects;
 }
 void Map::clearObjects() {
-	for (auto* obj : Objects) {
+	for (InteractiveObject* obj : Objects) {
 		delete obj;
 	}
 	Objects.clear();

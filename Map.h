@@ -3,8 +3,10 @@
 #include <vector>
 #include <Windows.h>
 #include <string>
+#include <algorithm>
 #include "Doors.h"
-
+#include "Mirrors.h"
+#include "Clocks.h"
 using namespace std;
 
 

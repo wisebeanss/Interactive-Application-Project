@@ -10,11 +10,12 @@ class Doors :
         int roomID = 0;
         int question = 0;
         int attempts = 0;
-
+        bool unlocked;
     public:
          Doors(string lines, int X, int Y, int id);
         ~Doors();
-   
+        bool isUnlocked() const;
+        void changeUnlockedState(bool state);
         void setLine(string line);
         void use();
         void setRoomID(bool id);

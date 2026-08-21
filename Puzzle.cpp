@@ -35,7 +35,7 @@ bool Puzzle::ROOM1(int roomID, Map& map)
                 map.setObjects(new Mirrors("MirrorA: The reflection\nis smiling But you are not\n", 16, 4, 201));
                 map.setObjects(new Mirrors("MirrorB: You raise your\nleft hand. The reflection\nraises its right hand\n", 21, 4, 202));
                 map.setObjects(new Mirrors("MirrorC:You raise your\nleft hand.The reflection\nraises its left hand.\nYou blink.\nIt blinks with you.\n", 21, 8, 203));
-                map.setObjects(new Doors(" ", 23, 3, 301));
+                map.setObjects(new Doors(" ", 23, 6, 301));
         }
 
     }
