@@ -23,6 +23,7 @@ public:
     int getCurrentRoom();
 
 
+
     Puzzle();
 
     ~Puzzle();
