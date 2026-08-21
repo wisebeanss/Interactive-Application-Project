@@ -52,26 +52,7 @@ void Game::Run() {
 
 		//map.printMap();
 
-		switch (map.getCarriage()) {
-		case 1:
-			puzzle.ROOM1(1, map);
-			break;
-		case 2:
-			puzzle.ROOM2(2, map);
-			break;
-		case 3:
-			puzzle.ROOM3(3, map);
-			break;
-		case 4:
-			puzzle.ROOM4(4, map);
-			break;
-		case 5:
-			puzzle.ROOM5(5, map);
-			break;
-		case 6:
-			puzzle.ROOM6(6, map);
-			break;
-		}
+		puzzle.ROOM1(map.getCarriage(), map);
 
 		auto frameEnd = std::chrono::high_resolution_clock::now();
 		auto elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(frameEnd - frameStart);
