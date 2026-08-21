@@ -38,9 +38,16 @@ void Posters::use() {
     std::cout << "+----------------------+" << '\n';
     std::cout << "|" << centerPostertext("", width) << "|" << '\n';
     std::cout << "|" << centerPostertext("", width) << "|" << '\n';
-    std::cout << "|" << centerPostertext("", width) << "|" << '\n';
-    std::cout << "|" << centerPostertext(text, width) << "|" << '\n';
-    std::cout << "|" << centerPostertext("", width) << "|" << '\n';
+    
+    size_t start = 0;
+    while (start < text.size()) {
+        size_t end = text.find('\n', start);
+        if (end == std::string::npos) end = text.size();
+        std::string line = text.substr(start, end - start);
+        std::cout << "|" << centerPostertext(line, width) << "|" << std::endl;
+        start = end + 1;
+    }
+
     std::cout << "|" << centerPostertext("", width) << "|" << '\n';
     std::cout << "|" << centerPostertext("", width) << "|" << '\n';
     std::cout << "+----------------------+" << '\n';
