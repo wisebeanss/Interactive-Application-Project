@@ -31,7 +31,16 @@ void Note::use() {
     std::cout << "+----------------------+" << std::endl;
     std::cout << "|" << centerDescription("", width) << "|" << std::endl;
     std::cout << "|" << centerDescription("", width) << "|" << std::endl;
-    std::cout << "|" << centerDescription(text, width) << "|" << std::endl;
+
+    size_t start = 0;
+    while (start < text.size()) {
+        size_t end = text.find('\n', start);
+        if (end == std::string::npos) end = text.size();
+        std::string line = text.substr(start, end - start);
+        std::cout << "|" << centerDescription(line, width) << "|" << std::endl;
+        start = end + 1;
+    }
+
     std::cout << "|" << centerDescription("", width) << "|" << std::endl;
     std::cout << "|" << centerDescription("", width) << "|" << std::endl;
     std::cout << "+----------------------+" << std::endl;
