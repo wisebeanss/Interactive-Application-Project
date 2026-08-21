@@ -8,10 +8,17 @@ Doors::Doors(string lines, int x, int y, int id) : InteractiveObject("Doors", id
 	setRoomID(id);
 	setSymbol('D');
 	question = 1;
+	changeUnlockedState(false);
 }
 Doors::~Doors()
 {
 
+}
+bool Doors::isUnlocked() const {
+	return unlocked;
+}
+void Doors::changeUnlockedState(bool state) {
+	unlocked = state;
 }
 void Doors::setLine(string lines)
 {
@@ -68,6 +75,7 @@ void Doors::use()
 				cout << "You know the truth.\n";
 				cout << "\r" << string(80, ' ') << "\r";
 				cout << "Room 2 unlocked!\n";
+				changeUnlockedState(true);
 				question = 3;
 				return;
 			}

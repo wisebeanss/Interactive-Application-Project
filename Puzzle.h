@@ -10,7 +10,7 @@ class Puzzle :
     public InteractiveObject
 {
 private:
-
+    int currentRoom;
 public:
     // Puzzle functions
     bool  ROOM1(int roomID, Map& map);
@@ -19,6 +19,9 @@ public:
     bool  ROOM4(int roomID, Map& map);
     bool  ROOM5(int roomID, Map& map);
     bool  ROOM6(int roomID, Map& map);
+    void setCurrentRoom(int room);
+    int getCurrentRoom();
+
 
 
     Puzzle();
