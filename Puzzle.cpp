@@ -43,14 +43,14 @@ bool Puzzle::ROOMS(int roomID, Map& map)
            if (getCurrentRoom() != 2)
            {
                map.clearObjects();
-               //map.setObjects(new PhotoFragment("Clock1: A ‘Hand’\n", 1, 4, 101));
-               //map.setObjects(new PhotoFragment("Clock2: A “Face”\n", 4, 4, 102));
-               //map.setObjects(new PhotoFragment("Clock3: “The Other person” \n", 1, 8, 103));
-               //map.setObjects(new Note("The Perfect poster is not first.\n", 4, 8, 103));
-               //map.setObjects(new Note("The Strong poster is somewhere before the Successful poster.\n", 16, 4, 201));
-               //map.setObjects(new Note("The Smart poster is immediately before the Perfect poster. \n", 21, 4, 202));
-               //map.setObjects(new Note("The Successful poster is last.\n", 21, 8, 203));
-               //map.setObjects(new Posters("1.THE STRONG 2.THE SMART 3.THE SUCCESSFUL 4.THE PERFECT \n", 21, 8, 203));
+               map.setObjects(new PhotoFragment("Clock1: A ‘Hand’\n", 1, 4, 101));
+               map.setObjects(new PhotoFragment("Clock2: A “Face”\n", 4, 4, 102));
+               map.setObjects(new PhotoFragment("Clock3: “The Other person” \n", 1, 8, 103));
+               map.setObjects(new Note("The Perfect poster is not first.\n", 4, 8, 103));
+               map.setObjects(new Note("The Strong poster is somewhere before the Successful poster.\n", 16, 4, 201));
+               map.setObjects(new Note("The Smart poster is immediately before the Perfect poster. \n", 21, 4, 202));
+               map.setObjects(new Note("The Successful poster is last.\n", 21, 8, 203));
+               map.setObjects(new Posters("1.THE STRONG 2.THE SMART 3.THE SUCCESSFUL 4.THE PERFECT \n", 4, 8, 203));
                map.setObjects(new Doors(" ", 23, 6, 2));
                setCurrentRoom(2);
  /*              add = true;*/

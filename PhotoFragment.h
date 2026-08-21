@@ -7,7 +7,7 @@ private:
     string description;
     static vector<int> Ids;
 public:
-    PhotoFragment(string description, int id);
+    PhotoFragment(string description, int X, int Y, int id);
     ~PhotoFragment();
     void use();
 };

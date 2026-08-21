@@ -11,9 +11,11 @@ std::string centerDescription(const std::string& text, int width) {
 	return std::string(left, ' ') + text + std::string(right, ' ');
 }
 vector<int> Note::Ids;
-Note::Note(string text, int id) : InteractiveObject("Note", id, true) {
+Note::Note(string text, int X, int Y, int id) : InteractiveObject("Note", id, true) {
     this->text = text;
     Ids.push_back(id);
+    setX(X);
+    setY(Y);
     setSymbol('^');
 }
 Note::~Note() {

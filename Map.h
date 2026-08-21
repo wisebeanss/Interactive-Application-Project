@@ -8,6 +8,11 @@
 #include "Mirrors.h"
 #include "Clocks.h"
 #include "Timer.h"
+#include "PhotoFragment.h"
+#include "Letters.h"
+#include "Suitcase.h"
+#include "Posters.h"
+#include "Note.h"
 using namespace std;
 
 

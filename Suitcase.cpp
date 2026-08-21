@@ -7,7 +7,7 @@ Suitcase::Suitcase(int x, int y, int id)
 {
     setX(x);
     setY(y);
-
+    setSymbol(']');
 }
 
 void Suitcase::collectPhoto(int num)

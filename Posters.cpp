@@ -18,10 +18,12 @@ std::string centerPostertext(const std::string& text, int width) {
 std::vector<int> Posters::Ids;
 
 
-Posters::Posters(std::string text, int id)
+Posters::Posters(std::string text, int X, int Y, int id)
     : InteractiveObject("Posters", id, true), text(std::move(text)) {
     Ids.push_back(id);
-    setSymbol('^');
+    setX(X);
+    setY(Y);
+    setSymbol(']');
 }
 
 

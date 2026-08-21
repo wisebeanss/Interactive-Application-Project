@@ -6,7 +6,7 @@ private:
 	string text;
 	static vector<int> Ids;
 public:
-	Note(string text , int id);
+	Note(string text, int X, int Y, int id);
 	~Note();
 	void use();
 };

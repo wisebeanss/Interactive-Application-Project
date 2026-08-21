@@ -5,7 +5,9 @@
 #include "Clocks.h"
 #include "Mirrors.h"
 #include "Doors.h"
-
+#include "PhotoFragment.h"
+#include "Note.h"
+#include "Posters.h"
 class Puzzle :
     public InteractiveObject
 {

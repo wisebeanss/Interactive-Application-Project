@@ -7,7 +7,7 @@ private:
 	string text;
 	static vector<int> Ids;
 public:
-	Posters(string text, int id);
+	Posters(string text, int X, int Y, int id);
 	~Posters();
 	void use();
 };

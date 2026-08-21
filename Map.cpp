@@ -133,20 +133,20 @@ void Map::buildMap() {
 						mapSize[gridY][j] = 'H';
 					}
 				}
-				if ((i == 1 && j == 2) || (i == 1 && j == 5) ||
-					(i == 5 && j == 20)) {
-					mapSize[gridY][j] = '~';
-				}
-				//if ((i == 1 && j == 21) || (i == 5 && j == 7) ||
-				//	(i == 5 && j == 14) || (i == 1 && j == 21)) {
-				//	mapSize[i][j] = '^';
+				//if ((i == 1 && j == 2) || (i == 1 && j == 5) ||
+				//	(i == 5 && j == 20)) {
+				//	mapSize[gridY][j] = '~';
 				//}
-				if (i == 5 && j == 3) {
-					mapSize[gridY][j] = '[';
-				}
-				if (i == 5 && j == 4) {
-					mapSize[gridY][j] = ']';
-				}
+				////if ((i == 1 && j == 21) || (i == 5 && j == 7) ||
+				////	(i == 5 && j == 14) || (i == 1 && j == 21)) {
+				////	mapSize[i][j] = '^';
+				////}
+				//if (i == 5 && j == 3) {
+				//	mapSize[gridY][j] = '[';
+				//}
+				//if (i == 5 && j == 4) {
+				//	mapSize[gridY][j] = ']';
+				//}
 			}
 			//carriage 3
 			else if (carriageNum == 3) {
@@ -227,6 +227,22 @@ void Map::buildMap() {
 		}
 		if (Clocks* clock = dynamic_cast<Clocks*>(Objects.at(k))) {
 			mapSize[clock->getY()][clock->getX()] = clock->getSymbol();
+		}
+		if (Letters* letter = dynamic_cast<Letters*>(Objects.at(k))) {
+			mapSize[letter->getY()][letter->getX()] = letter->getSymbol();
+		}
+		if (PhotoFragment* photoFrag = dynamic_cast<PhotoFragment*>(Objects.at(k))) {
+			mapSize[photoFrag->getY()][photoFrag->getX()] = photoFrag->getSymbol();
+		}
+		if (Suitcase* suitcase = dynamic_cast<Suitcase*>(Objects.at(k))) {
+			mapSize[suitcase->getY()][suitcase->getX()] = suitcase->getSymbol();
+		}
+		if (Posters* poster = dynamic_cast<Posters*>(Objects.at(k))) {
+			mapSize[poster->getY()][poster->getX() - 1] = '[';
+			mapSize[poster->getY()][poster->getX()] = poster->getSymbol();
+		}
+		if (Note* note = dynamic_cast<Note*>(Objects.at(k))) {
+			mapSize[note->getY()][note->getX()] = note->getSymbol();
 		}
 	}
 }
