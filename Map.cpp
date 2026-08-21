@@ -295,8 +295,8 @@ std::string formatPanelLine(const std::string& text, size_t targetWidth = 30) {
 	}
 	return text + std::string(targetWidth - text.length(), ' '); // Pad remaining spaces
 }
-Player player;
-void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, const std::string uiBuffer[13]) const {
+
+void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, Player& player, const std::string uiBuffer[13]) const {
 	const size_t targetWidth = 33;
 	std::string margin(targetWidth + 2, ' ');
 
@@ -370,14 +370,7 @@ bool Map::validMove(int x, int y) {
 	if (x > 0 && x < 24 && y > 2 && y < 10) {
 		char tile = mapSize[y][x];
 		bool isDoorUnlocked = false;
-		vector<char> blockedTiles = {'=', '|', '+', '[', ']', '@', '#', '?', '&', '^', '~', 'A', 'D'};
-		/*auto it = std::find(blockedTiles.begin(), blockedTiles.end(), 'D');
-		for (size_t k = 0; k < Objects.size(); k++) {
-			if (Doors* door = dynamic_cast<Doors*>(Objects.at(k))) {
-				isDoorUnlocked = door->isUnlocked();
-				break;
-			}
-		}*/
+		vector<char> blockedTiles = {'=', '|', '+', '[', ']', '@', '#', '?', '&', '~', 'A', 'D'};
 		// If the player is trying to move onto a door
 		if (tile == 'D')
 		{
@@ -395,16 +388,8 @@ bool Map::validMove(int x, int y) {
 			}
 
 			return false;
-		
-	/*	if (isDoorUnlocked) {
-			blockedTiles.erase(
-				std::remove(blockedTiles.begin(), blockedTiles.end(), 'D'),
-				blockedTiles.end()
-			);*/
 		}
 		return count(blockedTiles.begin(), blockedTiles.end(), tile) == 0;
-		/*bool isBlockedTiles = count(blockedTiles.begin(), blockedTiles.end(), tile) > 0;
-		return !isBlockedTiles;*/
 	}
 	return false;
 }
@@ -435,6 +420,13 @@ void Map::clearObjects() {
 }
 void Map::setObjects(InteractiveObject* object) {
 	Objects.push_back(object);
+}
+
+void Map::removeObject(InteractiveObject* object) {
+	auto obj = find(Objects.begin(), Objects.end(), object);
+	if (obj != Objects.end()) {
+		Objects.erase(obj);
+	}
 }
 bool Map::getOffMap()
 {

@@ -9,7 +9,7 @@ Game::~Game() {
 void Game::Init() {
 	map.buildMap();
 	map.updateMap(player.getX(), player.getY(), player.getSymbol());
-	map.printSidebar(1, 1, false);
+	map.printSidebar(1, 1, false, player);
 	//map.printMap();
 }
 void Game::Run() {
@@ -51,7 +51,7 @@ void Game::Run() {
 
 		// Render map and UI simultaneously
 		map.resetCursorPosition();
-		map.printSidebar(map.getCarriage(), map.getRoom(), isUIActive, uiBuffer);
+		map.printSidebar(map.getCarriage(), map.getRoom(), isUIActive, player, uiBuffer);
 
 		//map.printMap();
 

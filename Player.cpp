@@ -3,9 +3,7 @@
 
 Player::Player() : GameObject(2, 6, 'P') {
 	setInteract(false);
-	for (int i = 0; i < maxInv; i++) {
-		inventorySlot[i] = "Empty " + std::to_string(i + 1);
-	}
+	Inventory.fill(nullptr);
 }
 Player::~Player() {
 	for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
@@ -14,32 +12,23 @@ Player::~Player() {
 	}
 }
 std::string Player::getInvItemSlot(int index) const {
-	if (index >= 0 && index < maxInv) {
-		return inventorySlot[index];
-	} return "Empty";
+	InteractiveObject* obj = Inventory.at(index);
+	return (obj == nullptr) ? "Empty" : obj->getName() + to_string(obj->getId());
 }
 void Player::Equip(InteractiveObject* object) {
-	if (object == nullptr) return;
-	if (Inventory.size() < maxInv) {
-		Inventory.push_back(object);
-		int slotIdx = Inventory.size() - 1;
-		inventorySlot[slotIdx] = object->getName();
+	for (int objIdx = 0; objIdx < Inventory.size(); objIdx++) {
+		if (Inventory.at(objIdx) == nullptr) {
+			Inventory.at(objIdx) = object;
+			break;
+		}
 	}
 }
 void Player::Discard(InteractiveObject* object) {
 	for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
 		if (Inventory[objIdx] == object) {
 			delete Inventory[objIdx];
-			Inventory.erase(Inventory.begin() + objIdx);
+			Inventory[objIdx] = nullptr;
 			break;
-		}
-	}
-	for (int i = 0; i < maxInv; i++) {
-		if (i < Inventory.size()) {
-			inventorySlot[i] = Inventory[i]->getName();
-		}
-		else {
-			inventorySlot[i] = "Empty " + std::to_string(i + 1);
 		}
 	}
 }
@@ -69,25 +58,19 @@ void Player::HandleInput(char symbol, Map &map) {
 		}
 
 		move(symbol, map);
+		for (size_t i = 0; i < map.getObjects().size(); i++) {
+			InteractiveObject* obj = map.getObjects()[i];
+			if (obj->getX() == getX() && obj->getY() == getY()) {
+				Equip(obj);
+				map.removeObject(obj);
+				break;
+			}
+		}
 		setInteract(false);
 		system("cls");
 		map.setMapRendered(true);
 		
 	}
-	if (symbol == 'e') {
-		if (Inventory.empty()) {
-			cout << "\r" << string(80, ' ') << "\r";
-			std::cout << "Nothing in Inventory" << std::endl;
-		}
-		else {
-			for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
-				cout << "\r" << string(80, ' ') << "\r";
-				std::cout << Inventory[objIdx]->getName() << " " << Inventory[objIdx]->getId();
-			}
-		}
-
-	}
-
 	else if (symbol == 'l') { /////////////////////////debugging?///////
 		map.nextCarriage();
 		map.buildMap();
