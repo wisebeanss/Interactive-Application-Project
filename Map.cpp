@@ -134,6 +134,7 @@ void Map::buildMap() {
 
 				}
 			}
+
 			//carriage 2
 			else if (carriageNum == 2) {
 				if (i == 1 || i == 5) {

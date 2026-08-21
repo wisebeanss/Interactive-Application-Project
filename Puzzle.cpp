@@ -229,24 +229,24 @@ bool Puzzle::ROOM5(int roomID, Map& map)
     {
         map.clearObjects();
         /*   map.clearObjects();
-                map.setObjects(new Letters("Dear you, I wish I could tell you what happened.\n Maybe tomorrow.\n Written on Monday\n", 1, 4, 101));
-                map.setObjects(new Letters("Dear you, I tried calling today.\n You didn't answer.\n I'll try again.\n Written on Wednesday \n", 4, 4, 102));
-                map.setObjects(new Letters("Dear you, I don't know if you're still listening.\n I'm sorry.\n Written on Friday\n", 1, 8, 103));
-                map.setObjects(new Letters("Dear you,I don't know why I keep writing these.\n You're not going to read them anyway.\n No date\n", 4, 8, 103));
-                map.setObjects(new Note("The last letter was written after I stopped expecting an answer.\n", 16, 4, 201);
-                map.setObjects(new Note("I stopped calling before I stopped writing.", 23, 6, 301));
-                map.setObjects(new Safe(" ", 23, 6, 301));
-                map.setObjects(new Lockers("The locker is empty.\n A faded sticker on the locker reads: "PROPERTY OF STAFF"\n ", 23, 6, 301));
-                map.setObjects(new Lockers("Inside is an old school notebook.\nThe name has been scratched out.\n", 23, 6, 301));
-                map.setObjects(new Lockers("A scarf is hanging inside.\nYou recognize it.\n You remember seeing it before.\n But you can't remember where.\n ", 23, 6, 301));
-                map.setObjects(new Lockers("The locker contains a train ticket.\n Destination: UNKNOWN Seat: 18\n ", 23, 6, 301));
-                map.setObjects(new Lockers("There is nothing inside.\n But someone's name is carved into the door.\n ", 23, 6, 301));
-                map.setObjects(new Note("They always kept their belongings close.\n", 23, 6, 301));
-                 map.setObjects(new Note(" a photograph showing the missing person wearing a scarf,\n the same scarf from Locker 3"\n, 23, 6, 301));
-                  map.setObjects(new Note(" Another ticket says: "I sat opposite you." \n Your seat is 17. ", 23, 6, 301));
-                   map.setObjects(new Note("I never left anything behind.\n", 23, 6, 301));
+               map.setObjects(new Letters("Dear you, I wish I could tell you what happened.\n Maybe tomorrow.\n Written on Monday\n", 1, 4, 101));
+               map.setObjects(new Letters("Dear you, I tried calling today.\n You didn't answer.\n I'll try again.\n Written on Wednesday \n", 4, 4, 102));
+               map.setObjects(new Letters("Dear you, I don't know if you're still listening.\n I'm sorry.\n Written on Friday\n", 1, 8, 103));
+               map.setObjects(new Letters("Dear you,I don't know why I keep writing these.\n You're not going to read them anyway.\n No date\n", 4, 8, 103));
+               map.setObjects(new Note("The last letter was written after I stopped expecting an answer.\n", 16, 4, 201);
+               map.setObjects(new Note("I stopped calling before I stopped writing.", 23, 6, 301));
+               map.setObjects(new Safe(" ", 23, 6, 301));
+               map.setObjects(new Lockers("The locker is empty.\n A faded sticker on the locker reads: "PROPERTY OF STAFF"\n ", 23, 6, 301));
+               map.setObjects(new Lockers("Inside is an old school notebook.\nThe name has been scratched out.\n", 23, 6, 301));
+               map.setObjects(new Lockers("A scarf is hanging inside.\nYou recognize it.\n You remember seeing it before.\n But you can't remember where.\n ", 23, 6, 301));
+               map.setObjects(new Lockers("The locker contains a train ticket.\n Destination: UNKNOWN Seat: 18\n ", 23, 6, 301));
+               map.setObjects(new Lockers("There is nothing inside.\n But someone's name is carved into the door.\n ", 23, 6, 301));
+               map.setObjects(new Note("They always kept their belongings close.\n", 23, 6, 301));
+               map.setObjects(new Note(" a photograph showing the missing person wearing a scarf,\n the same scarf from Locker 3"\n, 23, 6, 301));
+               map.setObjects(new Note(" Another ticket says: "I sat opposite you." \n Your seat is 17. ", 23, 6, 301));
+               map.setObjects(new Note("I never left anything behind.\n", 23, 6, 301));
                map.setObjects(new Doors(" ", 23, 6, 301));
-                add = true;*/
+               add = true;*/
     }
 }
 
