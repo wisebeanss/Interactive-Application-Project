@@ -217,32 +217,12 @@ void Map::buildMap() {
 	}
 	for (size_t k = 0; k < Objects.size(); k++) {
 		InteractiveObject* obj = Objects[k];
-		if (obj == nullptr) continue;
-
-		if (Doors* door = dynamic_cast<Doors*>(obj)) {
-			mapSize[door->getY()][door->getX()] = door->getSymbol(); 
-		}
-		if (Mirrors* mirror = dynamic_cast<Mirrors*>(Objects.at(k))) {
-			mapSize[mirror->getY()][mirror->getX()] = mirror->getSymbol();
-		}
-		if (Clocks* clock = dynamic_cast<Clocks*>(Objects.at(k))) {
-			mapSize[clock->getY()][clock->getX()] = clock->getSymbol();
-		}
-		if (Letters* letter = dynamic_cast<Letters*>(Objects.at(k))) {
-			mapSize[letter->getY()][letter->getX()] = letter->getSymbol();
-		}
-		if (PhotoFragment* photoFrag = dynamic_cast<PhotoFragment*>(Objects.at(k))) {
-			mapSize[photoFrag->getY()][photoFrag->getX()] = photoFrag->getSymbol();
-		}
-		if (Suitcase* suitcase = dynamic_cast<Suitcase*>(Objects.at(k))) {
-			mapSize[suitcase->getY()][suitcase->getX()] = suitcase->getSymbol();
-		}
 		if (Posters* poster = dynamic_cast<Posters*>(Objects.at(k))) {
 			mapSize[poster->getY()][poster->getX() - 1] = '[';
 			mapSize[poster->getY()][poster->getX()] = poster->getSymbol();
 		}
-		if (Note* note = dynamic_cast<Note*>(Objects.at(k))) {
-			mapSize[note->getY()][note->getX()] = note->getSymbol();
+		else {
+			mapSize[obj->getY()][obj->getX()] = obj->getSymbol();
 		}
 	}
 }
@@ -341,25 +321,6 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, Player&
 	}
 }
 
-//void Map::printMap() const {
-//
-//	for (int i = 0; i < 13; i++) {
-//
-//		for (int j = 0; j < 24; j++) {
-//			std::cout << mapSize[i][j] << " ";
-//		}	
-//		std::cout << "\n";
-//	}
-//}
-
-//void Map::printCarrIndicator() const {
-//	std::cout << "+-- -- -- -- -- --+    +-- -- -- -- -- --+\n";
-//	std::cout << "|                 |    |                 |\n";
-//	std::cout << "|   CARRIAGE " << carriageNum << "    |    |     ROOM   " << carriageRoom << "    |\n";
-//	std::cout << "|                 |    |                 |\n";
-//	std::cout << "+-- -- -- -- -- --+    +-- -- -- -- -- --+\n";
-//
-//}
 void Map::updateMap(int x, int y, char symbol) {
 	if (x > 0 && x < 24 && y > 2 && y < 10) {
 		mapSize[y][x] = symbol;

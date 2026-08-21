@@ -8,6 +8,11 @@
 #include "PhotoFragment.h"
 #include "Note.h"
 #include "Posters.h"
+#include "Letters.h"
+#include "Phones.h"
+#include "Photograph.h"
+#include "Watch.h"
+#include "Suitcase.h"
 class Puzzle :
     public InteractiveObject
 {

@@ -56,7 +56,6 @@ void Player::HandleInput(char symbol, Map &map) {
 				obj->enableUI(); // Toggles uiActive back to false webn they walk
 			}
 		}
-
 		move(symbol, map);
 		for (size_t i = 0; i < map.getObjects().size(); i++) {
 			InteractiveObject* obj = map.getObjects()[i];
@@ -69,7 +68,6 @@ void Player::HandleInput(char symbol, Map &map) {
 		setInteract(false);
 		system("cls");
 		map.setMapRendered(true);
-		
 	}
 	else if (symbol == 'l') { /////////////////////////debugging?///////
 		map.nextCarriage();
@@ -86,6 +84,13 @@ void Player::HandleInput(char symbol, Map &map) {
 			nearbyObject->use();
 			map.setMapRendered(false);
 		}
+	}
+	else if (isdigit(static_cast<unsigned char>(symbol)) && symbol >= '1' && symbol <= '6') {
+		int InvSlotIdx = static_cast<int>(symbol - '1');
+		if (Inventory.at(InvSlotIdx) != nullptr) {
+			Inventory.at(InvSlotIdx)->use();
+		}
+		
 	}
 }
 void Player::move(char movement, Map &map)

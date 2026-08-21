@@ -13,8 +13,10 @@ std::string centerLetter(const std::string& text, int width) {
 
     return std::string(left, ' ') + text + std::string(right, ' ');
 }
-Letters::Letters(string text, int id) : InteractiveObject("Letter", id, false) {
+Letters::Letters(string text, int X, int Y,  int id) : InteractiveObject("Letter", id, false) {
 	this->text = text;
+    setX(X);
+    setY(Y);
 	Ids.push_back(id);
     setSymbol('?');
 }
