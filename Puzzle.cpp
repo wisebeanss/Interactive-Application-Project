@@ -16,13 +16,12 @@ Puzzle::~Puzzle()
 }
 
 bool add = false;
-bool Puzzle::ROOM1(int roomID, Map& map)
+bool Puzzle::ROOMS(int roomID, Map& map)
 {
     if (roomID == 1)
     {
         //bool P11 = false;
         //bool P12 = false;
-
         if (getCurrentRoom() != 1)
         {
                 map.clearObjects();
@@ -54,11 +53,10 @@ bool Puzzle::ROOM1(int roomID, Map& map)
                //map.setObjects(new Posters("1.THE STRONG 2.THE SMART 3.THE SUCCESSFUL 4.THE PERFECT \n", 21, 8, 203));
                map.setObjects(new Doors(" ", 23, 6, 2));
                setCurrentRoom(2);
-               map.buildMap();
-               //add = true;
+ /*              add = true;*/
            }
 
-           return true;
+
     }
 
     if (roomID == 3)
@@ -166,7 +164,7 @@ bool Puzzle::ROOM2(int roomID, Map& map) {
             map.setObjects(new Note("The Smart poster is immediately before the Perfect poster. \n", 21, 4, 202));
             map.setObjects(new Note("The Successful poster is last.\n", 21, 8, 203));
             map.setObjects(new Posters("1.THE STRONG 2.THE SMART 3.THE SUCCESSFUL 4.THE PERFECT \n", 21, 8, 203));
-            map.setObjects(new Doors(" ", 23, 6, 5));
+            map.setObjects(new Doors(" ", 23, 6, 301));
             add = true;
         }*/
 
