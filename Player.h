@@ -2,15 +2,19 @@
 #include "GameObject.h"
 #include "InteractiveObject.h"
 #include "Map.h"
+#include <string>
 using namespace std;
 class Player: public GameObject
 {
 private:
 	vector<InteractiveObject*> Inventory;
 	bool interact;
+	int static const maxInv = 6;
+	std::string inventorySlot[maxInv];
 public:
 	Player();
 	~Player();
+	std::string getInvItemSlot(int index) const;
 	void Interact(InteractiveObject& object);
 	void Equip(InteractiveObject* object);
 	void Discard(InteractiveObject* object);

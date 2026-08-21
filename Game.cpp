@@ -34,7 +34,7 @@ void Game::Run() {
 		//map.updateMap(oldX, oldY, ' ');
 		map.updateMap(player.getX(), player.getY(), player.getSymbol());
 
-		std::string mirrorBuffer[15];
+		std::string uiBuffer[15];
 		bool isUIActive = false;
 		std::string statusMsg = "";
 
@@ -42,13 +42,13 @@ void Game::Run() {
 		InteractiveObject* obj = player.getNearbyObject(map);
 		if (obj != nullptr && obj->getUIActive()) {
 			isUIActive = true;
-			obj->getUIBuffer(mirrorBuffer); // Fills 13-line array
+			obj->getUIBuffer(uiBuffer); // Fills 13-line array
 		}
 		else { statusMsg = "Click 'F' to Interact"; }
 
 		// Render map and UI simultaneously
 		map.resetCursorPosition();
-		map.printSidebar(map.getCarriage(), map.getRoom(), isUIActive, mirrorBuffer);
+		map.printSidebar(map.getCarriage(), map.getRoom(), isUIActive, uiBuffer);
 
 		//map.printMap();
 
