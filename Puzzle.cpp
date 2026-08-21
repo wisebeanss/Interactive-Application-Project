@@ -148,7 +148,7 @@ bool Puzzle::ROOMS(int roomID, Map& map)
 void Puzzle::setCurrentRoom(int room) { currentRoom = room; }
 int Puzzle::getCurrentRoom() { return currentRoom; }
 
-bool Puzzle::ROOM2(int roomID, Map& map) {
+bool Puzzle::ROOMS(int roomID, Map& map) {
     if (roomID != 2) return false;
     if (roomID == 2)
     {
@@ -171,7 +171,7 @@ bool Puzzle::ROOM2(int roomID, Map& map) {
         
     }
 }
-bool Puzzle::ROOM3(int roomID, Map& map)
+bool Puzzle::ROOMS(int roomID, Map& map)
 {
 
     if (roomID != 3)return false;
@@ -197,7 +197,7 @@ bool Puzzle::ROOM3(int roomID, Map& map)
 }
 
 
-bool Puzzle::ROOM4(int roomID, Map& map)
+bool Puzzle::ROOMS(int roomID, Map& map)
 {
     if (roomID != 4) return false;
     if (roomID == 4)
@@ -221,7 +221,7 @@ bool Puzzle::ROOM4(int roomID, Map& map)
         }
     }
 }
-bool Puzzle::ROOM5(int roomID, Map& map)
+bool Puzzle::ROOMS(int roomID, Map& map)
 {
     if (roomID != 5) return false;
     if (roomID == 5)
@@ -249,7 +249,7 @@ bool Puzzle::ROOM5(int roomID, Map& map)
     }
 }
 
-bool Puzzle::ROOM6(int roomID, Map& map)
+bool Puzzle::ROOMS(int roomID, Map& map)
 {
     if (roomID != 6) return false;
     if (roomID == 6)
