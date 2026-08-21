@@ -2,6 +2,7 @@
 #include "InteractiveObject.h"
 #include <string>
 #include "Timer.h"
+#include "Map.h"
 class Doors : public InteractiveObject
 {
 private:

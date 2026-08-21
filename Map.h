@@ -27,9 +27,11 @@ private:
 	bool offMap;
 	bool renderMap;
 	vector<InteractiveObject*> Objects;
+	
+public:
 	int timerSeconds;
 	Timer timer;
-public:
+	Timer& getTimerObject();
 	char mapSize[13][24];
 	void resetCursorPosition();
 	bool isMapRendered();

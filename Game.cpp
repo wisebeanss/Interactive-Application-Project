@@ -29,7 +29,7 @@ void Game::Run() {
 		}
 		//timer
 		map.updateTimer();
-
+		getGameMap().updateTimer();
 		//mapping
 	
 		map.updateFrame(); //upd map env frame
