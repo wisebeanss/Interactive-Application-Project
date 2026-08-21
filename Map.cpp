@@ -400,6 +400,7 @@ void Map::reduceTimer()
 }
 
 
+
 vector<InteractiveObject*> Map::getObjects() {
 	return Objects;
 }

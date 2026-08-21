@@ -57,6 +57,7 @@ void Doors::use()
 			}
 			else {
 				cout << "\nThat doesn't seem right.\n";
+				getGameMap().getTimerObject().decreaseTime(120);
 
 				if (attempts == 3) {
 					std::cout << "Remember Clock 4 is 5 mins faster!\n";

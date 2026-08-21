@@ -25,6 +25,7 @@ private:
 	int timerSeconds;
 	Timer timer;
 public:
+	Timer& getTimerObject();
 	char mapSize[13][24];
 	void resetCursorPosition();
 	bool isMapRendered();
