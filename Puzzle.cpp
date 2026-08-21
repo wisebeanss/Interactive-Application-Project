@@ -18,8 +18,6 @@ Puzzle::~Puzzle()
 bool add = false;
 bool Puzzle::ROOM1(int roomID, Map& map)
 {
-    if (roomID != 1) return false;
-
     if (roomID == 1)
     {
         //bool P11 = false;
@@ -37,9 +35,10 @@ bool Puzzle::ROOM1(int roomID, Map& map)
                 map.setObjects(new Mirrors("MirrorC:You raise your\nleft hand.The reflection\nraises its left hand.\nYou blink.\nIt blinks with you.\n", 21, 8, 203));
                 map.setObjects(new Doors(" ", 23, 6, 1));
                 setCurrentRoom(1);
+                map.buildMap();
         }
+        return true;
     }
-    if (roomID != 2) return false;
     if (roomID == 2)
     {
            if (getCurrentRoom() != 2)
@@ -55,12 +54,13 @@ bool Puzzle::ROOM1(int roomID, Map& map)
                //map.setObjects(new Posters("1.THE STRONG 2.THE SMART 3.THE SUCCESSFUL 4.THE PERFECT \n", 21, 8, 203));
                map.setObjects(new Doors(" ", 23, 6, 2));
                setCurrentRoom(2);
- /*              add = true;*/
+               map.buildMap();
+               //add = true;
            }
 
-
+           return true;
     }
-    if (roomID != 3)return false;
+
     if (roomID == 3)
     {
         if (getCurrentRoom() != 3)
@@ -79,8 +79,8 @@ bool Puzzle::ROOM1(int roomID, Map& map)
             setCurrentRoom(3);
             // add = true;
         }
+        return true;
     }
-    if (roomID != 4) return false;
     if (roomID == 4)
     {
         if (getCurrentRoom() != 4)
@@ -96,8 +96,8 @@ bool Puzzle::ROOM1(int roomID, Map& map)
             setCurrentRoom(4);
             //add = true;
         }
+        return true;
     }
-    if (roomID != 5) return false;
     if (roomID == 5)
     {
         if (getCurrentRoom() != 5)
@@ -119,9 +119,10 @@ bool Puzzle::ROOM1(int roomID, Map& map)
             //map.setObjects(new Note(" a photograph showing the missing person wearing a scarf,the same scarf from Locker 3", 23, 6, 301));
             //map.setObjects(new Note(" Another ticket says: "I sat opposite you." The player's seat is 17. ", 23, 6, 301));
             //map.setObjects(new Note("I never left anything behind.", 23, 6, 301));
-            //map.setObjects(new Doors(" ", 23, 6, 301));
+            map.setObjects(new Doors(" ", 23, 6, 3));
             setCurrentRoom(5);
         }
+        return true;
     }
     if (roomID != 6) return false;
     if (roomID == 6)
@@ -141,7 +142,7 @@ bool Puzzle::ROOM1(int roomID, Map& map)
             //map.setObjects(new Suitcase(" ", 23, 6, 301));
             //map.setObjects(new Doors(" ", 23, 6, 301));
             //map.setObjects(new Doors(" ", 23, 6, 301));
-            //map.setObjects(new Doors(" ", 23, 6, 301));
+            map.setObjects(new Doors(" ", 23, 6, 4));
             setCurrentRoom(6);
         }
     }
@@ -165,7 +166,7 @@ bool Puzzle::ROOM2(int roomID, Map& map) {
             map.setObjects(new Note("The Smart poster is immediately before the Perfect poster. \n", 21, 4, 202));
             map.setObjects(new Note("The Successful poster is last.\n", 21, 8, 203));
             map.setObjects(new Posters("1.THE STRONG 2.THE SMART 3.THE SUCCESSFUL 4.THE PERFECT \n", 21, 8, 203));
-            map.setObjects(new Doors(" ", 23, 6, 301));
+            map.setObjects(new Doors(" ", 23, 6, 5));
             add = true;
         }*/
 

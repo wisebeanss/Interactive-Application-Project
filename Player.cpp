@@ -131,24 +131,26 @@ void Player::move(char movement, Map &map)
 		setX(newX);
 		setY(newY);
 
-		//door next carriage
-		for (InteractiveObject* obj : map.getObjects())
-		{
-			Doors* door = dynamic_cast<Doors*>(obj);
-
-			if (door != nullptr &&
-				door->getRoomID() == map.getCarriage() &&
-				getX() == door->getX() &&
-				getY() == door->getY() &&
-				door->isUnlocked())
+		if (map.mapSize[newY][newX] == 'D') {
+			//door next carriage
+			for (InteractiveObject* obj : map.getObjects())
 			{
-				map.nextCarriage();
-				map.buildMap();
+				Doors* door = dynamic_cast<Doors*>(obj);
 
-				setX(2);
-				setY(6);
+				if (door != nullptr &&
+					door->getRoomID() == map.getCarriage() &&
+					getX() == door->getX() &&
+					getY() == door->getY() &&
+					door->isUnlocked())
+				{
+					map.nextCarriage();
 
-				break;
+					setX(2);
+					setY(6);
+
+					map.buildMap();
+					break;
+				}
 			}
 		}
 	}
