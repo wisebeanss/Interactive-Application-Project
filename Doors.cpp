@@ -1,5 +1,5 @@
 #include "Doors.h"
-
+#include "Timer.H"
 Doors::Doors(string lines, int x, int y, int id) : InteractiveObject("Doors", id, false)
 {
 	line = lines;
@@ -87,6 +87,9 @@ void Doors::use()
 			}
 			else {
 				cout << "\nThat mirror lies. Think again.\n";
+				timer.decreaseTime(2 * 60);
+
+				cout << "2 minutes have been deducted!\n";
 				if (attempts >= 3)
 				{
 					cout << " Hint: The reflection should match you.\n";

@@ -1,6 +1,7 @@
 #pragma once
 #include "InteractiveObject.h"
 #include <string>
+#include "Timer.h"
 class Doors : public InteractiveObject
 {
 private:
@@ -9,6 +10,7 @@ private:
     int question = 0;
     int attempts = 0;
     bool unlocked;
+    Timer timer;
 
 public:
     Doors(string lines, int X, int Y, int id);
