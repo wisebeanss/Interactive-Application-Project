@@ -293,7 +293,7 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, const s
 	for (int i = 0; i < 13; i++) {
 		std::string lineBuffer = "";
 		if (i == 2) {
-			lineBuffer += formatPanelLine("        [ CONTROLS ]",targetWidth);}
+			lineBuffer += formatPanelLine("          [ CONTROLS ]",targetWidth);}
 		else if (i == 3) { lineBuffer += formatPanelLine("   WASD : Move Player",targetWidth); }
 		else if (i == 4) { lineBuffer += formatPanelLine("   F    : Interact / Use Object",targetWidth); }
 		else if (i == 6) { lineBuffer += formatPanelLine(" - - - - - - - - - - - - - - - -",targetWidth); }
@@ -301,6 +301,8 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, const s
 		else if (i == 8) { lineBuffer += formatPanelLine("    " + player.getInvItemSlot(0) + "    |   " + player.getInvItemSlot(1), targetWidth); }
 		else if (i == 9) { lineBuffer += formatPanelLine("    " + player.getInvItemSlot(2) + "    |   " + player.getInvItemSlot(3), targetWidth); }
 		else if (i == 10) { lineBuffer += formatPanelLine("    " + player.getInvItemSlot(4) + "    |   " + player.getInvItemSlot(5), targetWidth); }
+		else if (i == 11) { lineBuffer += formatPanelLine("         [TIME LEFT]", targetWidth); }
+		else if (i == 12) { lineBuffer += formatPanelLine("            " + std::to_string(timer.getMinutes()) + ":" + (timer.getSeconds() < 10 ? "0" : "") + std::to_string(timer.getSeconds()), targetWidth); }
 		else lineBuffer += formatPanelLine("",targetWidth);
 		
 		for (int j = 0; j < 24; j++) {
@@ -313,13 +315,6 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, const s
 		else {
 			lineBuffer += "                                  ";
 		}
-		//===========time=======/
-			/*lineBuffer += formatPanelLine(
-				"       TIME: " +
-				std::to_string(timer.getMinutes()) + ":" +
-				(timer.getSeconds() < 10 ? "0" : "") +
-				std::to_string(timer.getSeconds()),
-				targetWidth);*/
 			
 
 		std::cout << lineBuffer << "\n";
