@@ -1,5 +1,5 @@
 #include "Doors.h"
-
+#include "Timer.H"
 Doors::Doors(string lines, int x, int y, int id) : InteractiveObject("Doors", id, false)
 {
 	line = lines;
@@ -52,6 +52,7 @@ void Doors::use()
 				cout << "You stare at its hands. The time feels familiar, yet you cannot recall why.\n";
 				cout << "You can now solve Puzzle 2.\n";
 				question = 2;
+				attempts = 0;
 				return;
 			}
 			else {
@@ -81,10 +82,14 @@ void Doors::use()
 				cout << "Room 2 unlocked!\n";
 				changeUnlockedState(true);
 				question = 3;
+				attempts = 0;
 				return;
 			}
 			else {
 				cout << "\nThat mirror lies. Think again.\n";
+				timer.decreaseTime(2 * 60);
+
+				cout << "2 minutes have been deducted!\n";
 				if (attempts >= 3)
 				{
 					cout << " Hint: The reflection should match you.\n";
@@ -103,6 +108,6 @@ void Doors::use()
 	}
 
 	if (roomID == 2) {
-
+		
 	}
 }

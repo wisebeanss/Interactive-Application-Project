@@ -1,12 +1,14 @@
 #include "Map.h"
 #include "Player.h"
 #include <iostream>
+#include "Timer.h"
 
 Map::Map() {
 	buildMap();
 	carriageNum = 1;
 	carriageRoom = 1;
 	animFrame = 0;
+	
 }
 Map::~Map() {
 	clearObjects();
@@ -44,6 +46,7 @@ void Map::nextCarriage() {
 		carriageNum++;
 	}
 	else { carriageNum = 1; }
+	Objects.clear();
 }
 void Map::nextRoom() {
 	if (carriageRoom < 3) {
@@ -53,6 +56,8 @@ void Map::nextRoom() {
 }
 
 void Map::buildMap() {
+
+
 	for (int i = 0; i < 13; i++) {
 		for (int j = 0; j < 24; j++) {
 			mapSize[i][j] = ' ';
@@ -212,15 +217,11 @@ void Map::buildMap() {
 	}
 	for (size_t k = 0; k < Objects.size(); k++) {
 		InteractiveObject* obj = Objects[k];
+		if (obj == nullptr) continue;
 
-		Doors* door = dynamic_cast<Doors*>(Objects[k]);
-
-		if (door != nullptr &&
-			door->getRoomID() == carriageNum)
-		{
-			mapSize[door->getY()][door->getX()] = door->getSymbol();
+		if (Doors* door = dynamic_cast<Doors*>(obj)) {
+			mapSize[door->getY()][door->getX()] = door->getSymbol(); 
 		}
-
 		if (Mirrors* mirror = dynamic_cast<Mirrors*>(Objects.at(k))) {
 			mapSize[mirror->getY()][mirror->getX()] = mirror->getSymbol();
 		}
@@ -285,14 +286,14 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, const s
 
 	std::cout << margin << "+-- -- -- -- -- --+    +-- -- -- -- -- --+\n";
 	std::cout << margin << "|                 |    |                 |\n";
-	std::cout << margin << "|   CARRIAGE " << carriageNum << "    |     |    ROOM   " << carriageRoom << "   |\n";
+	std::cout << margin << "|   CARRIAGE " << carriageNum << "    |    |     ROOM    " << carriageRoom << "   |\n";
 	std::cout << margin << "|                 |    |                 |\n";
 	std::cout << margin << "+-- -- -- -- -- --+    +-- -- -- -- -- --+\n";
 
 	for (int i = 0; i < 13; i++) {
 		std::string lineBuffer = "";
 		if (i == 2) {
-			lineBuffer += formatPanelLine("        [ CONTROLS ]",targetWidth);}
+			lineBuffer += formatPanelLine("          [ CONTROLS ]",targetWidth);}
 		else if (i == 3) { lineBuffer += formatPanelLine("   WASD : Move Player",targetWidth); }
 		else if (i == 4) { lineBuffer += formatPanelLine("   F    : Interact / Use Object",targetWidth); }
 		else if (i == 6) { lineBuffer += formatPanelLine(" - - - - - - - - - - - - - - - -",targetWidth); }
@@ -300,6 +301,8 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, const s
 		else if (i == 8) { lineBuffer += formatPanelLine("    " + player.getInvItemSlot(0) + "    |   " + player.getInvItemSlot(1), targetWidth); }
 		else if (i == 9) { lineBuffer += formatPanelLine("    " + player.getInvItemSlot(2) + "    |   " + player.getInvItemSlot(3), targetWidth); }
 		else if (i == 10) { lineBuffer += formatPanelLine("    " + player.getInvItemSlot(4) + "    |   " + player.getInvItemSlot(5), targetWidth); }
+		else if (i == 11) { lineBuffer += formatPanelLine("         [TIME LEFT]", targetWidth); }
+		else if (i == 12) { lineBuffer += formatPanelLine("            " + std::to_string(timer.getMinutes()) + ":" + (timer.getSeconds() < 10 ? "0" : "") + std::to_string(timer.getSeconds()), targetWidth); }
 		else lineBuffer += formatPanelLine("",targetWidth);
 		
 		for (int j = 0; j < 24; j++) {
@@ -312,6 +315,7 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, const s
 		else {
 			lineBuffer += "                                  ";
 		}
+			
 
 		std::cout << lineBuffer << "\n";
 	}
@@ -385,6 +389,17 @@ bool Map::validMove(int x, int y) {
 	return false;
 }
 
+void Map::updateTimer()
+{
+	timer.update();
+}
+
+void Map::reduceTimer()
+{
+	timer.decreaseTime(120);
+}
+
+
 vector<InteractiveObject*> Map::getObjects() {
 	return Objects;
 }
@@ -405,48 +420,3 @@ void Map::setOffMap(bool OffMap)
 {
 	offMap = OffMap;
 }
-///*cout << R"(
-//-------------------------- -------------------------- -------------------------- -------------------------- -------------------------- -------------
-//|  |_ |_ |_ |_ |_ |_ |_   |  |_ |_ |_ |_ |_ |_ |_    |  |_ |_ |_ |_ |_ |_ |_    |  |_ |_ |_ |_ |_ |_ |_    |  |_ |_ |_ |_ |_ |_ |_    |             \
-	//|                         |                          |                          |                          |                          |              \
-	//|                         |                          |                          |                          |                          |               \
-	//|                        | |                        | |                        | |                        | |                        | |               |
-	//|                         |                          |                          |                          |                          |               /
-	//|                         |                          |                          |                          |                          |              /
-	//|  |_ |_ |_ |_ |_ |_ |_   |  |_ |_ |_ |_ |_ |_ |_    |  |_ |_ |_ |_ |_ |_ |_    |  |_ |_ |_ |_ |_ |_ |_    |  |_ |_ |_ |_ |_ |_ |_    |             /
-	//-------------------------- -------------------------- -------------------------- -------------------------- -------------------------- -------------
-	//)" << endl;*/
-
-	//cout << R"(
-	// -------------------------
-	//|  |_ |_ |_ |_ |_ |_ |_   |
-	//|                         |
-	//|                         |
-	//|                        | |
-	//|                         |
-	//|                         |
-	//|  |_ |_ |_ |_ |_ |_ |_   |
-	// -------------------------
- //   )" << endl;
-	//cout << R"(
-	//  ------------------------- 
-	// |  |_ |_ |_ |_ |_ |_ |_   |
-	// |                         |
-	// |                         |
-	//| |                       | |
-	// |                         |
-	// |                         |
-	// |  |_ |_ |_ |_ |_ |_ |_   |
-	//  ------------------------- 
- //   )" << endl;
-	//cout << R"(
-	//  -------------
-	// |              \
-	// |               \
-	// |                \
-	//| |                |
-	// |                /
-	// |               /
-	// |              /
-	//  -------------
- //   )" << endl;
