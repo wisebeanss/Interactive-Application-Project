@@ -52,6 +52,7 @@ void Doors::use()
 				cout << "You stare at its hands. The time feels familiar, yet you cannot recall why.\n";
 				cout << "You can now solve Puzzle 2.\n";
 				question = 2;
+				attempts = 0;
 				return;
 			}
 			else {
@@ -81,6 +82,7 @@ void Doors::use()
 				cout << "Room 2 unlocked!\n";
 				changeUnlockedState(true);
 				question = 3;
+				attempts = 0;
 				return;
 			}
 			else {
@@ -106,6 +108,6 @@ void Doors::use()
 	}
 
 	if (roomID == 2) {
-
+		
 	}
 }

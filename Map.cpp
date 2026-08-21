@@ -44,6 +44,7 @@ void Map::nextCarriage() {
 		carriageNum++;
 	}
 	else { carriageNum = 1; }
+	Objects.clear();
 }
 void Map::nextRoom() {
 	if (carriageRoom < 3) {
@@ -212,15 +213,11 @@ void Map::buildMap() {
 	}
 	for (size_t k = 0; k < Objects.size(); k++) {
 		InteractiveObject* obj = Objects[k];
+		if (obj == nullptr) continue;
 
-		Doors* door = dynamic_cast<Doors*>(Objects[k]);
-
-		if (door != nullptr &&
-			door->getRoomID() == carriageNum)
-		{
-			mapSize[door->getY()][door->getX()] = door->getSymbol();
+		if (Doors* door = dynamic_cast<Doors*>(obj)) {
+			mapSize[door->getY()][door->getX()] = door->getSymbol(); 
 		}
-
 		if (Mirrors* mirror = dynamic_cast<Mirrors*>(Objects.at(k))) {
 			mapSize[mirror->getY()][mirror->getX()] = mirror->getSymbol();
 		}
@@ -285,7 +282,7 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, const s
 
 	std::cout << margin << "+-- -- -- -- -- --+    +-- -- -- -- -- --+\n";
 	std::cout << margin << "|                 |    |                 |\n";
-	std::cout << margin << "|   CARRIAGE " << carriageNum << "    |     |    ROOM   " << carriageRoom << "   |\n";
+	std::cout << margin << "|   CARRIAGE " << carriageNum << "    |    |     ROOM    " << carriageRoom << "   |\n";
 	std::cout << margin << "|                 |    |                 |\n";
 	std::cout << margin << "+-- -- -- -- -- --+    +-- -- -- -- -- --+\n";
 
@@ -298,7 +295,7 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, const s
 		else if (i == 6) { lineBuffer += formatPanelLine(" - - - - - - - - - - - - - - - -",targetWidth); }
 		else if (i == 7) { lineBuffer += formatPanelLine("         [ INVENTORY ]",targetWidth); }
 		else if (i == 8) { lineBuffer += formatPanelLine("    " + player.getInvItemSlot(0) + "    |   " + player.getInvItemSlot(1), targetWidth); }
-		else if (i == 9) { lineBuffer += formatPanelLine("    " + player.getInvItemSlot(2) + "    |    " + player.getInvItemSlot(3), targetWidth); }
+		else if (i == 9) { lineBuffer += formatPanelLine("    " + player.getInvItemSlot(2) + "    |   " + player.getInvItemSlot(3), targetWidth); }
 		else if (i == 10) { lineBuffer += formatPanelLine("    " + player.getInvItemSlot(4) + "    |   " + player.getInvItemSlot(5), targetWidth); }
 		else lineBuffer += formatPanelLine("",targetWidth);
 		
@@ -405,48 +402,3 @@ void Map::setOffMap(bool OffMap)
 {
 	offMap = OffMap;
 }
-///*cout << R"(
-//-------------------------- -------------------------- -------------------------- -------------------------- -------------------------- -------------
-//|  |_ |_ |_ |_ |_ |_ |_   |  |_ |_ |_ |_ |_ |_ |_    |  |_ |_ |_ |_ |_ |_ |_    |  |_ |_ |_ |_ |_ |_ |_    |  |_ |_ |_ |_ |_ |_ |_    |             \
-	//|                         |                          |                          |                          |                          |              \
-	//|                         |                          |                          |                          |                          |               \
-	//|                        | |                        | |                        | |                        | |                        | |               |
-	//|                         |                          |                          |                          |                          |               /
-	//|                         |                          |                          |                          |                          |              /
-	//|  |_ |_ |_ |_ |_ |_ |_   |  |_ |_ |_ |_ |_ |_ |_    |  |_ |_ |_ |_ |_ |_ |_    |  |_ |_ |_ |_ |_ |_ |_    |  |_ |_ |_ |_ |_ |_ |_    |             /
-	//-------------------------- -------------------------- -------------------------- -------------------------- -------------------------- -------------
-	//)" << endl;*/
-
-	//cout << R"(
-	// -------------------------
-	//|  |_ |_ |_ |_ |_ |_ |_   |
-	//|                         |
-	//|                         |
-	//|                        | |
-	//|                         |
-	//|                         |
-	//|  |_ |_ |_ |_ |_ |_ |_   |
-	// -------------------------
- //   )" << endl;
-	//cout << R"(
-	//  ------------------------- 
-	// |  |_ |_ |_ |_ |_ |_ |_   |
-	// |                         |
-	// |                         |
-	//| |                       | |
-	// |                         |
-	// |                         |
-	// |  |_ |_ |_ |_ |_ |_ |_   |
-	//  ------------------------- 
- //   )" << endl;
-	//cout << R"(
-	//  -------------
-	// |              \
-	// |               \
-	// |                \
-	//| |                |
-	// |                /
-	// |               /
-	// |              /
-	//  -------------
- //   )" << endl;

@@ -17,12 +17,12 @@ class Map
 private:
 	int carriageNum;
 	int carriageRoom;
-	char mapSize[13][24];
 	int animFrame;
 	bool offMap;
 	bool renderMap;
 	vector<InteractiveObject*> Objects;
 public:
+	char mapSize[13][24];
 	void resetCursorPosition();
 	bool isMapRendered();
 	void setMapRendered(bool rendered);

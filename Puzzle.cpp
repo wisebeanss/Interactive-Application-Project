@@ -16,14 +16,12 @@ Puzzle::~Puzzle()
 }
 
 bool add = false;
-bool Puzzle::ROOM1(int roomID, Map& map)
+bool Puzzle::ROOMS(int roomID, Map& map)
 {
-    if (roomID != 1) return false;
-
     if (roomID == 1)
     {
-     
-
+        //bool P11 = false;
+        //bool P12 = false;
         if (getCurrentRoom() != 1)
         {
                 map.clearObjects();
@@ -36,9 +34,10 @@ bool Puzzle::ROOM1(int roomID, Map& map)
                 map.setObjects(new Mirrors("MirrorC:You raise your\nleft hand.The reflection\nraises its left hand.\nYou blink.\nIt blinks with you.\n", 21, 8, 203));
                 map.setObjects(new Doors(" ", 23, 6, 1));
                 setCurrentRoom(1);
+                map.buildMap();
         }
+        return true;
     }
-    if (roomID != 2) return false;
     if (roomID == 2)
     {
            if (getCurrentRoom() != 2)
@@ -59,7 +58,7 @@ bool Puzzle::ROOM1(int roomID, Map& map)
 
 
     }
-    if (roomID != 3)return false;
+
     if (roomID == 3)
     {
         if (getCurrentRoom() != 3)
@@ -78,8 +77,8 @@ bool Puzzle::ROOM1(int roomID, Map& map)
             setCurrentRoom(3);
             // add = true;
         }
+        return true;
     }
-    if (roomID != 4) return false;
     if (roomID == 4)
     {
         if (getCurrentRoom() != 4)
@@ -95,8 +94,8 @@ bool Puzzle::ROOM1(int roomID, Map& map)
             setCurrentRoom(4);
             //add = true;
         }
+        return true;
     }
-    if (roomID != 5) return false;
     if (roomID == 5)
     {
         if (getCurrentRoom() != 5)
@@ -118,9 +117,10 @@ bool Puzzle::ROOM1(int roomID, Map& map)
             //map.setObjects(new Note(" a photograph showing the missing person wearing a scarf,the same scarf from Locker 3", 23, 6, 301));
             //map.setObjects(new Note(" Another ticket says: "I sat opposite you." The player's seat is 17. ", 23, 6, 301));
             //map.setObjects(new Note("I never left anything behind.", 23, 6, 301));
-            //map.setObjects(new Doors(" ", 23, 6, 301));
+            map.setObjects(new Doors(" ", 23, 6, 3));
             setCurrentRoom(5);
         }
+        return true;
     }
     if (roomID != 6) return false;
     if (roomID == 6)
@@ -140,7 +140,7 @@ bool Puzzle::ROOM1(int roomID, Map& map)
             //map.setObjects(new Suitcase(" ", 23, 6, 301));
             //map.setObjects(new Doors(" ", 23, 6, 301));
             //map.setObjects(new Doors(" ", 23, 6, 301));
-            //map.setObjects(new Doors(" ", 23, 6, 301));
+            map.setObjects(new Doors(" ", 23, 6, 4));
             setCurrentRoom(6);
         }
     }
