@@ -210,9 +210,16 @@ void Map::buildMap() {
 
 	}
 	for (size_t k = 0; k < Objects.size(); k++) {
-		if (Doors* door = dynamic_cast<Doors*>(Objects.at(k))) {
+		InteractiveObject* obj = Objects[k];
+
+		Doors* door = dynamic_cast<Doors*>(Objects[k]);
+
+		if (door != nullptr &&
+			door->getRoomID() == carriageNum)
+		{
 			mapSize[door->getY()][door->getX()] = door->getSymbol();
 		}
+
 		if (Mirrors* mirror = dynamic_cast<Mirrors*>(Objects.at(k))) {
 			mapSize[mirror->getY()][mirror->getX()] = mirror->getSymbol();
 		}
@@ -330,21 +337,40 @@ bool Map::validMove(int x, int y) {
 		char tile = mapSize[y][x];
 		bool isDoorUnlocked = false;
 		vector<char> blockedTiles = {'=', '|', '+', '[', ']', '@', '#', '?', '&', '^', '~', 'A', 'D'};
-		auto it = std::find(blockedTiles.begin(), blockedTiles.end(), 'D');
+		/*auto it = std::find(blockedTiles.begin(), blockedTiles.end(), 'D');
 		for (size_t k = 0; k < Objects.size(); k++) {
 			if (Doors* door = dynamic_cast<Doors*>(Objects.at(k))) {
 				isDoorUnlocked = door->isUnlocked();
 				break;
 			}
-		}
-		if (isDoorUnlocked) {
+		}*/
+		// If the player is trying to move onto a door
+		if (tile == 'D')
+		{
+			for (InteractiveObject* obj : Objects)
+			{
+				Doors* door = dynamic_cast<Doors*>(obj);
+
+				if (door != nullptr &&
+					door->getRoomID() == carriageNum &&
+					door->getX() == x &&
+					door->getY() == y)
+				{
+					return door->isUnlocked();
+				}
+			}
+
+			return false;
+		
+	/*	if (isDoorUnlocked) {
 			blockedTiles.erase(
 				std::remove(blockedTiles.begin(), blockedTiles.end(), 'D'),
 				blockedTiles.end()
-			);
+			);*/
 		}
-		bool isBlockedTiles = count(blockedTiles.begin(), blockedTiles.end(), tile) > 0;
-		return !isBlockedTiles;
+		return count(blockedTiles.begin(), blockedTiles.end(), tile) == 0;
+		/*bool isBlockedTiles = count(blockedTiles.begin(), blockedTiles.end(), tile) > 0;
+		return !isBlockedTiles;*/
 	}
 	return false;
 }

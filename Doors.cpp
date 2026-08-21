@@ -14,6 +14,10 @@ Doors::~Doors()
 {
 
 }
+int Doors::getRoomID() const
+{
+	return roomID;
+}
 bool Doors::isUnlocked() const {
 	return unlocked;
 }
@@ -24,7 +28,7 @@ void Doors::setLine(string lines)
 {
 	line = lines;
 }
-void Doors::setRoomID(bool id)
+void Doors::setRoomID(int id)
 {
 	roomID = id;
 }
@@ -88,6 +92,13 @@ void Doors::use()
 				
 			}
 
+			// Both puzzles solved
+			if (question == 3)
+			{
+				cout << "\r" << string(80, ' ') << "\r";
+				cout << "You step through the door into Carriage 2.\n";
+
+			}
 		}
 	}
 

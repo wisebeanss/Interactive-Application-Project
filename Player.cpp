@@ -1,5 +1,5 @@
 #include "Player.h"
-
+#include "Doors.h"
 
 Player::Player() : GameObject(2, 6, 'P') {
 	setInteract(false);
@@ -109,6 +109,27 @@ void Player::move(char movement, Map &map)
 	if (map.validMove(newX, newY)) {
 		setX(newX);
 		setY(newY);
+
+		//door next carriage
+		for (InteractiveObject* obj : map.getObjects())
+		{
+			Doors* door = dynamic_cast<Doors*>(obj);
+
+			if (door != nullptr &&
+				door->getRoomID() == map.getCarriage() &&
+				getX() == door->getX() &&
+				getY() == door->getY() &&
+				door->isUnlocked())
+			{
+				map.nextCarriage();
+				map.buildMap();
+
+				setX(2);
+				setY(6);
+
+				break;
+			}
+		}
 	}
 }
 void Player::setInteract(bool Interact)
