@@ -302,7 +302,11 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, const s
 		else if (i == 9) { lineBuffer += formatPanelLine("    " + player.getInvItemSlot(2) + "    |   " + player.getInvItemSlot(3), targetWidth); }
 		else if (i == 10) { lineBuffer += formatPanelLine("    " + player.getInvItemSlot(4) + "    |   " + player.getInvItemSlot(5), targetWidth); }
 		else if (i == 11) { lineBuffer += formatPanelLine("         [TIME LEFT]", targetWidth); }
-		else if (i == 12) { lineBuffer += formatPanelLine("            " + std::to_string(timer.getMinutes()) + ":" + (timer.getSeconds() < 10 ? "0" : "") + std::to_string(timer.getSeconds()), targetWidth); }
+		else if (i == 12) {
+			int m = getGameMap().timer.getMinutes();
+			int s = getGameMap().timer.getSeconds();
+			lineBuffer += formatPanelLine("            " + std::to_string(m) + ":" + (s < 10 ? "0" : "") + std::to_string(s), targetWidth);
+		}
 		else lineBuffer += formatPanelLine("",targetWidth);
 		
 		for (int j = 0; j < 24; j++) {
@@ -392,12 +396,15 @@ bool Map::validMove(int x, int y) {
 void Map::updateTimer()
 {
 	timer.update();
+	timerSeconds = timer.getMinutes() * 60 + timer.getSeconds();
 }
 
 void Map::reduceTimer()
 {
 	timer.decreaseTime(120);
+	timerSeconds = timer.getMinutes() * 60 + timer.getSeconds();
 }
+Timer& Map::getTimerObject() { return timer; }
 
 
 

@@ -1,5 +1,10 @@
 #include "Doors.h"
 #include "Timer.H"
+#include <iostream>
+#include <string>
+using namespace std;
+
+
 Doors::Doors(string lines, int x, int y, int id) : InteractiveObject("Doors", id, false)
 {
 	line = lines;
@@ -8,44 +13,53 @@ Doors::Doors(string lines, int x, int y, int id) : InteractiveObject("Doors", id
 	setRoomID(id);
 	setSymbol('D');
 	question = 1;
+	attempts = 0;
 	changeUnlockedState(false);
 }
+
 Doors::~Doors()
 {
-
 }
+
 int Doors::getRoomID() const
 {
 	return roomID;
 }
+
 bool Doors::isUnlocked() const {
 	return unlocked;
 }
+
 void Doors::changeUnlockedState(bool state) {
 	unlocked = state;
 }
+
 void Doors::setLine(string lines)
 {
 	line = lines;
 }
+
 void Doors::setRoomID(int id)
 {
 	roomID = id;
 }
+
 void Doors::use()
 {
 	int answerT1;
 	char answerT2 = ' ';
 
-	if (roomID == 1) {
-		if (question == 1) {
+	if (roomID == 1)
+	{
+		if (question == 1)
+		{
 			cout << "\r" << string(80, ' ') << "\r";
 			cout << "Enter the time as HHMMSS (e.g., 115012): ";
 			cin >> answerT1;
 			attempts++;
 
-
-			if (answerT1 == 115012) {
+			if (answerT1 == 115012)
+			{
 				cout << "\nThe clock begins ticking...\n";
 				cout << "11:50...\n";
 				cout << "11:51...\n";
@@ -55,60 +69,73 @@ void Doors::use()
 				attempts = 0;
 				return;
 			}
-			else {
+			else
+			{
 				cout << "\nThat doesn't seem right.\n";
-				getGameMap().getTimerObject().decreaseTime(120);
+			
+				Timer& t = getGameMap().getTimerObject();
 
-				if (attempts == 3) {
-					std::cout << "Remember Clock 4 is 5 mins faster!\n";
+				cout << "Before: " << t.getMinutes() << "m" << t.getSeconds() << "s\n";
+
+				t.decreaseTime(120);
+				getGameMap().timerSeconds = t.getMinutes() * 60 + t.getSeconds();
+
+				cout << "After:  " << t.getMinutes() << "m" << t.getSeconds() << "s\n";
+
+				if (attempts == 3)
+				{
+					cout << "Remember Clock 4 is 5 mins faster!\n";
 					attempts -= 1;
 				}
+				return;
 			}
-
 		}
 
-		if (question == 2) {
+		if (question == 2)
+		{
 			cout << "\r" << string(80, ' ') << "\r";
-			cout << "Enter which mirror is correct \n";
+			cout << "Enter which mirror is correct (A/B/C): ";
 			cin >> answerT2;
 			attempts++;
-			if (answerT2 == 'C' || answerT2 == 'c') {
+
+			answerT2 = toupper(answerT2);
+			if (answerT2 == 'C')
+			{
 				cout << "\r" << string(80, ' ') << "\r";
-				cout << "The mirrors go still\n";
-				cout << "\r" << string(80, ' ') << "\r";
-				cout << "Your reflection looks directly at you\n";
-				cout << "\r" << string(80, ' ') << "\r";
+				cout << "The mirrors go still.\n";
+				cout << "Your reflection looks directly at you.\n";
 				cout << "You know the truth.\n";
-				cout << "\r" << string(80, ' ') << "\r";
 				cout << "Room 2 unlocked!\n";
 				changeUnlockedState(true);
 				question = 3;
 				attempts = 0;
+				cout << "\r" << string(80, ' ') << "\r";
+				cout << "You step through the door into Carriage 2.\n";
 				return;
 			}
-			else {
+			else
+			{
 				cout << "\nThat mirror lies. Think again.\n";
-				timer.decreaseTime(2 * 60);
-
+				getGameMap().timer.decreaseTime(2 * 60);
 				cout << "2 minutes have been deducted!\n";
+
 				if (attempts >= 3)
 				{
 					cout << " Hint: The reflection should match you.\n";
 				}
-				
+				return;
 			}
+		}
 
-			// Both puzzles solved
-			if (question == 3)
-			{
-				cout << "\r" << string(80, ' ') << "\r";
-				cout << "You step through the door into Carriage 2.\n";
-
-			}
+		if (question == 3)
+		{
+			return;
 		}
 	}
 
-	if (roomID == 2) {
-		
+	if (roomID == 2)
+	{
+		// 第二节车厢逻辑待写
+		return;
 	}
 }
