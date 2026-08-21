@@ -22,8 +22,7 @@ bool Puzzle::ROOM1(int roomID, Map& map)
 
     if (roomID == 1)
     {
-        //bool P11 = false;
-        //bool P12 = false;
+     
 
         if (getCurrentRoom() != 1)
         {

@@ -159,6 +159,7 @@
     <ClCompile Include="Puzzle.cpp" />
     <ClCompile Include="Safe.cpp" />
     <ClCompile Include="Suitcase.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Watch.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +182,7 @@
     <ClInclude Include="Puzzle.h" />
     <ClInclude Include="Safe.h" />
     <ClInclude Include="Suitcase.h" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="Watch.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
