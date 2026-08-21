@@ -298,7 +298,7 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, const s
 		else if (i == 6) { lineBuffer += formatPanelLine(" - - - - - - - - - - - - - - - -",targetWidth); }
 		else if (i == 7) { lineBuffer += formatPanelLine("         [ INVENTORY ]",targetWidth); }
 		else if (i == 8) { lineBuffer += formatPanelLine("    " + player.getInvItemSlot(0) + "    |   " + player.getInvItemSlot(1), targetWidth); }
-		else if (i == 9) { lineBuffer += formatPanelLine("    " + player.getInvItemSlot(2) + "    |    " + player.getInvItemSlot(3), targetWidth); }
+		else if (i == 9) { lineBuffer += formatPanelLine("    " + player.getInvItemSlot(2) + "    |   " + player.getInvItemSlot(3), targetWidth); }
 		else if (i == 10) { lineBuffer += formatPanelLine("    " + player.getInvItemSlot(4) + "    |   " + player.getInvItemSlot(5), targetWidth); }
 		else lineBuffer += formatPanelLine("",targetWidth);
 		
