@@ -1,4 +1,5 @@
 #include "Map.h"
+#include "Player.h"
 #include <iostream>
 
 Map::Map() {
@@ -271,27 +272,36 @@ void Map::buildMap() {
 	}
 }
 
+std::string formatPanelLine(const std::string& text, size_t targetWidth = 30) {
+	if (text.length() >= targetWidth) {
+		return text.substr(0, targetWidth); // Truncate if too long
+	}
+	return text + std::string(targetWidth - text.length(), ' '); // Pad remaining spaces
+}
+Player player;
 void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, const std::string uiBuffer[13]) const {
-	std::string leftPanelPadding = "                                  ";
-	std::cout << leftPanelPadding << "+-- -- -- -- -- --+    +-- -- -- -- -- --+\n";
-	std::cout << leftPanelPadding << "|                 |    |                 |\n";
-	std::cout << leftPanelPadding << "|   CARRIAGE " << carriageNum << "    |    |     ROOM   " << carriageRoom << "    |\n";
-	std::cout << leftPanelPadding << "|                 |    |                 |\n";
-	std::cout << leftPanelPadding << "+-- -- -- -- -- --+    +-- -- -- -- -- --+\n";
+	const size_t targetWidth = 33;
+	std::string margin(targetWidth + 2, ' ');
+
+	std::cout << margin << "+-- -- -- -- -- --+    +-- -- -- -- -- --+\n";
+	std::cout << margin << "|                 |    |                 |\n";
+	std::cout << margin << "|   CARRIAGE " << carriageNum << "    |     |    ROOM   " << carriageRoom << "   |\n";
+	std::cout << margin << "|                 |    |                 |\n";
+	std::cout << margin << "+-- -- -- -- -- --+    +-- -- -- -- -- --+\n";
 
 	for (int i = 0; i < 13; i++) {
 		std::string lineBuffer = "";
 		if (i == 2) {
-			lineBuffer += "   [ CONTROLS ]                   ";
-		}
-		else if (i == 3) {
-			lineBuffer += "   WASD : Move Player             ";
-		}
-		else if (i == 4) {
-			lineBuffer += "   F    : Interact / Use Object   ";
-		}
-		else lineBuffer += leftPanelPadding;
-
+			lineBuffer += formatPanelLine("        [ CONTROLS ]",targetWidth);}
+		else if (i == 3) { lineBuffer += formatPanelLine("   WASD : Move Player",targetWidth); }
+		else if (i == 4) { lineBuffer += formatPanelLine("   F    : Interact / Use Object",targetWidth); }
+		else if (i == 6) { lineBuffer += formatPanelLine(" - - - - - - - - - - - - - - - -",targetWidth); }
+		else if (i == 7) { lineBuffer += formatPanelLine("         [ INVENTORY ]",targetWidth); }
+		else if (i == 8) { lineBuffer += formatPanelLine("    " + player.getInvItemSlot(0) + "    |   " + player.getInvItemSlot(1), targetWidth); }
+		else if (i == 9) { lineBuffer += formatPanelLine("    " + player.getInvItemSlot(2) + "    |    " + player.getInvItemSlot(3), targetWidth); }
+		else if (i == 10) { lineBuffer += formatPanelLine("    " + player.getInvItemSlot(4) + "    |   " + player.getInvItemSlot(5), targetWidth); }
+		else lineBuffer += formatPanelLine("",targetWidth);
+		
 		for (int j = 0; j < 24; j++) {
 			lineBuffer += mapSize[i][j];
 			lineBuffer += ' ';
@@ -300,7 +310,7 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, const s
 			lineBuffer += uiBuffer[i]; 
 		}
 		else {
-			lineBuffer += "                                      ";
+			lineBuffer += "                                  ";
 		}
 
 		std::cout << lineBuffer << "\n";

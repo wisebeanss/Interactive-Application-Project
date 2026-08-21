@@ -3,12 +3,20 @@
 
 Player::Player() : GameObject(2, 6, 'P') {
 	setInteract(false);
+	for (int i = 0; i < maxInv; i++) {
+		inventorySlot[i] = "Empty " + std::to_string(i + 1);
+	}
 }
 Player::~Player() {
 	for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
 		delete Inventory[objIdx];
 		Inventory[objIdx] = nullptr;
 	}
+}
+std::string Player::getInvItemSlot(int index) const {
+	if (index >= 0 && index < maxInv) {
+		return inventorySlot[index];
+	} return "Empty";
 }
 void Player::Equip(InteractiveObject* object) {
 	Inventory.push_back(object);
@@ -67,7 +75,7 @@ void Player::HandleInput(char symbol, Map &map) {
 
 	}
 
-	else if (symbol == 'l') {
+	else if (symbol == 'l') { /////////////////////////debugging?///////
 		map.nextCarriage();
 		map.buildMap();
 	}
