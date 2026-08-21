@@ -19,7 +19,12 @@ std::string Player::getInvItemSlot(int index) const {
 	} return "Empty";
 }
 void Player::Equip(InteractiveObject* object) {
-	Inventory.push_back(object);
+	if (object == nullptr) return;
+	if (Inventory.size() < maxInv) {
+		Inventory.push_back(object);
+		int slotIdx = Inventory.size() - 1;
+		inventorySlot[slotIdx] = object->getName();
+	}
 }
 void Player::Discard(InteractiveObject* object) {
 	for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
@@ -27,6 +32,14 @@ void Player::Discard(InteractiveObject* object) {
 			delete Inventory[objIdx];
 			Inventory.erase(Inventory.begin() + objIdx);
 			break;
+		}
+	}
+	for (int i = 0; i < maxInv; i++) {
+		if (i < Inventory.size()) {
+			inventorySlot[i] = Inventory[i]->getName();
+		}
+		else {
+			inventorySlot[i] = "Empty " + std::to_string(i + 1);
 		}
 	}
 }
