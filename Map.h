@@ -27,10 +27,10 @@ public:
 	bool isMapRendered();
 	void setMapRendered(bool rendered);
 	void updateFrame();
-	void printCarrIndicator() const;
+	//void printCarrIndicator() const;
 	void printSidebar(int carriageNum, int carriageRoom, bool uiActive, const std::string uiBuffer[13] = nullptr) const;
 	void buildMap();
-	void printMap() const;
+	//void printMap() const;
 	void mapTile(int posX, int posY, char symbol);
 	void updateMap(int x, int y, char symbol);
 	bool validMove(int x, int y);
