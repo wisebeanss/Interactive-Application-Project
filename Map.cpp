@@ -330,7 +330,7 @@ bool Map::validMove(int x, int y) {
 	if (x > 0 && x < 24 && y > 2 && y < 10) {
 		char tile = mapSize[y][x];
 		bool isDoorUnlocked = false;
-		vector<char> blockedTiles = {'=', '|', '+', '[', ']', '@', '#', '?', '&', '~', 'A', 'D'};
+		vector<char> blockedTiles = {'=', '|', '+', '[', ']', '@', '#', '?', '&', 'A', 'D'};
 		// If the player is trying to move onto a door
 		if (tile == 'D')
 		{

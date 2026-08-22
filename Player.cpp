@@ -85,7 +85,7 @@ void Player::HandleInput(char symbol, Map &map) {
 			map.setMapRendered(false);
 		}
 	}
-	else if (isdigit(static_cast<unsigned char>(symbol)) && symbol >= '1' && symbol <= '6') {
+	else if (symbol >= '1' && symbol <= '6') {
 		int InvSlotIdx = static_cast<int>(symbol - '1');
 		if (Inventory.at(InvSlotIdx) != nullptr) {
 			Inventory.at(InvSlotIdx)->use();
@@ -134,7 +134,7 @@ void Player::move(char movement, Map &map)
 					map.nextCarriage();
 
 					setX(2);
-					setY(6);
+					setY(6);	 
 
 					map.buildMap();
 					break;
