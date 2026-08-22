@@ -279,7 +279,7 @@ std::string formatPanelLine(const std::string& text, size_t targetWidth = 30) {
 void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, Player& player, const std::string uiBuffer[13]) const {
 	const size_t targetWidth = 33;
 	std::string margin(targetWidth + 2, ' ');
-
+const std::string blankUiLine(35, ' ');
 	std::cout << margin << "+-- -- -- -- -- --+    +-- -- -- -- -- --+\n";
 	std::cout << margin << "|                 |    |                 |\n";
 	std::cout << margin << "|   CARRIAGE " << carriageNum << "    |    |     ROOM    " << carriageRoom << "   |\n";
@@ -287,35 +287,34 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, Player&
 	std::cout << margin << "+-- -- -- -- -- --+    +-- -- -- -- -- --+\n";
 
 	for (int i = 0; i < 13; i++) {
+		
 		std::string lineBuffer = "";
-		if (i == 2) {
-			lineBuffer += formatPanelLine("          [ CONTROLS ]",targetWidth);}
-		else if (i == 3) { lineBuffer += formatPanelLine("   WASD : Move Player",targetWidth); }
-		else if (i == 4) { lineBuffer += formatPanelLine("   F    : Interact / Use Object",targetWidth); }
-		else if (i == 6) { lineBuffer += formatPanelLine(" - - - - - - - - - - - - - - - -",targetWidth); }
-		else if (i == 7) { lineBuffer += formatPanelLine("         [ INVENTORY ]",targetWidth); }
-		else if (i == 8) { lineBuffer += formatPanelLine("    " + player.getInvItemSlot(0) + "    |   " + player.getInvItemSlot(1), targetWidth); }
-		else if (i == 9) { lineBuffer += formatPanelLine("    " + player.getInvItemSlot(2) + "    |   " + player.getInvItemSlot(3), targetWidth); }
-		else if (i == 10) { lineBuffer += formatPanelLine("    " + player.getInvItemSlot(4) + "    |   " + player.getInvItemSlot(5), targetWidth); }
-		else if (i == 11) { lineBuffer += formatPanelLine("         [TIME LEFT]", targetWidth); }
-		else if (i == 12) {
+		switch (i) {
+		case 2:lineBuffer += formatPanelLine("          [ CONTROLS ]", targetWidth); break;
+		case 3:lineBuffer += formatPanelLine("   WASD : Move Player", targetWidth); break;
+		case 4:lineBuffer += formatPanelLine("   F    : Interact / Use Object", targetWidth); break;
+		case 6:lineBuffer += formatPanelLine(" - - - - - - - - - - - - - - - -", targetWidth); break;
+		case 7:lineBuffer += formatPanelLine("         [ INVENTORY ]", targetWidth); break;
+		case 8:lineBuffer += formatPanelLine("    " + player.getInvItemSlot(0) + "    |   " + player.getInvItemSlot(1), targetWidth); break;
+		case 9: lineBuffer += formatPanelLine("    " + player.getInvItemSlot(2) + "    |   " + player.getInvItemSlot(3), targetWidth); break;
+		case 10:lineBuffer += formatPanelLine("    " + player.getInvItemSlot(4) + "    |   " + player.getInvItemSlot(5), targetWidth); break;
+		case 11: lineBuffer += formatPanelLine("         [TIME LEFT]", targetWidth); break;
+		case 12: {
 			int m = getGameMap().timer.getMinutes();
 			int s = getGameMap().timer.getSeconds();
-			lineBuffer += formatPanelLine("            " + std::to_string(m) + ":" + (s < 10 ? "0" : "") + std::to_string(s), targetWidth);
+			lineBuffer += formatPanelLine(
+				"            " + std::to_string(m) + ":" + (s < 10 ? "0" : "") + std::to_string(s),
+				targetWidth);
+			break;
 		}
-		else lineBuffer += formatPanelLine("",targetWidth);
-		
+		default:lineBuffer += formatPanelLine("", targetWidth); break;
+
+		}
 		for (int j = 0; j < 24; j++) {
 			lineBuffer += mapSize[i][j];
 			lineBuffer += ' ';
 		}
-		if (uiActive) {
-			lineBuffer += uiBuffer[i]; 
-		}
-		else {
-			lineBuffer += "                                  ";
-		}
-			
+		lineBuffer += (uiActive) ? uiBuffer[i] : blankUiLine;
 
 		std::cout << lineBuffer << "\n";
 	}
