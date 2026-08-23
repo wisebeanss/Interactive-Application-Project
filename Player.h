@@ -7,7 +7,7 @@ using namespace std;
 class Player: public GameObject
 {
 private:
-	array<InteractiveObject*, 6> Inventory;
+	array<InteractiveObject*, 7> Inventory;
 	bool interact;
 public:
 	Player();
