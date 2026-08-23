@@ -4,6 +4,7 @@
 Player::Player() : GameObject(2, 6, 'P') {
 	setInteract(false);
 	Inventory.fill(nullptr);
+	discarding = false;
 }
 Player::~Player() {
 	for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
@@ -18,6 +19,7 @@ std::string Player::getInvItemSlot(int index) const {
 void Player::Equip(InteractiveObject* object) {
 	for (int objIdx = 0; objIdx < Inventory.size(); objIdx++) {
 		if (Inventory.at(objIdx) == nullptr) {
+			//Reminder to self, when inventory is full, make sure to ask user to discard
 			Inventory.at(objIdx) = object;
 			break;
 		}
@@ -31,6 +33,7 @@ void Player::Discard(InteractiveObject* object) {
 			break;
 		}
 	}
+	discarding = false;
 }
 InteractiveObject* Player::getNearbyObject(Map& map) {
 	for (int i = 0; i < map.getObjects().size(); i++) {
@@ -85,12 +88,20 @@ void Player::HandleInput(char symbol, Map &map) {
 			map.setMapRendered(false);
 		}
 	}
+	else if (symbol == 'q') {
+		cout << "Select which item you want to discard\n";
+		discarding = true;
+	}
 	else if (symbol >= '1' && symbol <= '6') {
 		int InvSlotIdx = static_cast<int>(symbol - '1');
 		if (Inventory.at(InvSlotIdx) != nullptr) {
-			Inventory.at(InvSlotIdx)->use();
+			if (!discarding) {
+				Inventory.at(InvSlotIdx)->use();
+			}
+			else {
+				Discard(Inventory.at(InvSlotIdx));
+			}
 		}
-		
 	}
 }
 void Player::move(char movement, Map &map)

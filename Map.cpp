@@ -4,11 +4,10 @@
 #include "Timer.h"
 
 Map::Map() {
-	buildMap();
 	carriageNum = 1;
 	carriageRoom = 1;
 	animFrame = 0;
-	
+	buildMap();
 }
 Map::~Map() {
 	clearObjects();
@@ -46,7 +45,7 @@ void Map::nextCarriage() {
 		carriageNum++;
 	}
 	else { carriageNum = 1; }
-	Objects.clear();
+	clearObjects();
 }
 void Map::nextRoom() {
 	if (carriageRoom < 3) {
@@ -92,145 +91,123 @@ void Map::buildMap() {
 			else if (poleOffset2 == 2) mapSize[10][j] = '-';
 			else if (poleOffset2 == 3) mapSize[10][j] = 'i';
 		}
-	
-	int trainOffset = 3;			
-	for (int i = 0; i < 7; i++) {
 
-		for (int j = 0; j < 24; j++) {
-			int gridY = trainOffset + i;
-			//boundary
-			if ((j == 0 && i == 0) || (j == 23 && i == 0) || (i == 6 && j == 0) || (j == 23 && i == 6)) {
-				mapSize[gridY][j] = '+';
-			}
-			else if (i == 0 || i == 6) {
-				mapSize[gridY][j] = '=';
-			}
-			else if (j == 0 || j == 23) {
-				mapSize[gridY][j] = '|';
-			}
-			else {
+		int trainOffset = 3;
+		for (int i = 0; i < 7; i++) {
+
+			for (int j = 0; j < 24; j++) {
+				int gridY = trainOffset + i;
+				//boundary
+				if ((j == 0 && i == 0) || (j == 23 && i == 0) || (i == 6 && j == 0) || (j == 23 && i == 6)) {
+					mapSize[gridY][j] = '+';
+				}
+				else if (i == 0 || i == 6) {
+					mapSize[gridY][j] = '=';
+				}
+				else if (j == 0 || j == 23) {
+					mapSize[gridY][j] = '|';
+				}
+				else {
 					mapSize[gridY][j] = ' ';
-			}
-			if (carriageNum > 1) {
-				if (i == 3 && j == 0) {
-					mapSize[gridY][j] = 'B';
 				}
-			}
-
-			//carriage 1
-			if (carriageNum == 1) {
-				if (i == 1 || i == 5) {
-					if (j > 4 && j < 20 && (j % 5 != 0)) {
-						mapSize[gridY][j] = 'H';
+				if (carriageNum > 1) {
+					if (i == 3 && j == 0) {
+						mapSize[gridY][j] = 'B';
 					}
 				}
-			}
 
-			//carriage 2
-			else if (carriageNum == 2) {
-				if (i == 1 || i == 5) {
-					if (j > 6 && j < 20 && (j % 7 != 0)) {
-						mapSize[gridY][j] = 'H';
+				//carriage 1
+				if (carriageNum == 1) {
+					if (i == 1 || i == 5) {
+						if (j > 4 && j < 20 && (j % 5 != 0)) {
+							mapSize[gridY][j] = 'H';
+						}
 					}
 				}
-				//if ((i == 1 && j == 2) || (i == 1 && j == 5) ||
-				//	(i == 5 && j == 20)) {
-				//	mapSize[gridY][j] = '~';
-				//}
-				////if ((i == 1 && j == 21) || (i == 5 && j == 7) ||
-				////	(i == 5 && j == 14) || (i == 1 && j == 21)) {
-				////	mapSize[i][j] = '^';
-				////}
-				//if (i == 5 && j == 3) {
-				//	mapSize[gridY][j] = '[';
-				//}
-				//if (i == 5 && j == 4) {
-				//	mapSize[gridY][j] = ']';
-				//}
-			}
-			//carriage 3
-			else if (carriageNum == 3) {
-				if (carriageRoom == 1) {
+
+				//carriage 2
+				else if (carriageNum == 2) {
+					if (i == 1 || i == 5) {
+						if (j > 6 && j < 20 && (j % 7 != 0)) {
+							mapSize[gridY][j] = 'H';
+						}
+					}
+					//if ((i == 1 && j == 2) || (i == 1 && j == 5) ||
+					//	(i == 5 && j == 20)) {
+					//	mapSize[gridY][j] = '~';
+					//}
+					////if ((i == 1 && j == 21) || (i == 5 && j == 7) ||
+					////	(i == 5 && j == 14) || (i == 1 && j == 21)) {
+					////	mapSize[i][j] = '^';
+					////}
+					//if (i == 5 && j == 3) {
+					//	mapSize[gridY][j] = '[';
+					//}
+					//if (i == 5 && j == 4) {
+					//	mapSize[gridY][j] = ']';
+					//}
+				}
+				//carriage 3
+				else if (carriageNum == 3) {
+					if (carriageRoom == 1) {
+						if (i == 1 || i == 5) {
+							if (j > 6 && j < 19 && (j % 7 != 0) && (j % 7 != 1)) {
+								mapSize[gridY][j] = 'H';
+							}
+						}
+						if ((i == 1 && j == 5) || (i == 5 && j == 2)) {
+							mapSize[gridY][j] = 'N';
+						}
+						if (i == 0 && j == 21) {
+							mapSize[gridY][j] = '_';
+						}
+					}
+				}
+				else if (carriageNum == 4) {
 					if (i == 1 || i == 5) {
 						if (j > 6 && j < 19 && (j % 7 != 0) && (j % 7 != 1)) {
 							mapSize[gridY][j] = 'H';
 						}
 					}
-					if (i == 1 && j == 2) {
+					if (i == 1 && j == 3) {
+						mapSize[gridY][j] = '[';
+					}
+					if (i == 1 && j == 4) {
+						mapSize[gridY][j] = ']';
+					}
+					if ((i == 5 && j == 5) || (i == 5 && j == 22) ||
+						(i == 1 && j == 14)) {
+						mapSize[gridY][j] = '~';
+					}
+				}
+				else if (carriageNum == 5) {
+					if (i == 1 || i == 5) {
+						if (j > 5 && j < 17 && (j % 7 != 0) && (j % 8 != 1)) {
+							mapSize[gridY][j] = 'H';
+						}
+					}
+					if ((i == 1 && j == 2) || (i == 5 && j == 5)) {
 						mapSize[gridY][j] = '^';
 					}
-					if (i == 5 && j == 5) {
-						mapSize[gridY][j] = '@';
+					if ((i == 1 && j == 18) || (i == 1 && j == 21) ||
+						(i == 5 && j == 18) || (i == 5 && j == 21)) {
+						mapSize[gridY][j] = '?';
 					}
-					if ((i == 1 && j == 5) || (i == 5 && j == 2)) {
-						mapSize[gridY][j] = 'A';
-					}
-					if (i == 0 && j == 21) {
-						mapSize[gridY][j] = '_';
+
+				}
+				else if (carriageNum == 6) {
+					if ((i == 1 && j == 5) || (i == 1 && j == 10) || (i == 1 && j == 15) ||
+						(i == 5 && j == 7) || (i == 5 && j == 14)) {
+						mapSize[gridY][j] = '#';
 					}
 				}
 			}
-			else if (carriageNum == 4) {
-				if (i == 1 || i == 5) {
-					if (j > 6 && j < 19 && (j % 7 != 0) && (j % 7 != 1)) {
-						mapSize[gridY][j] = 'H';
-					}
-				}
-				if (i == 1 && j == 3) {
-					mapSize[gridY][j] = '[';
-				}
-				if (i == 1 && j == 4) {
-					mapSize[gridY][j] = ']';
-				}
-				if ((i == 5 && j == 5) || (i == 5 && j == 22) ||
-					(i == 1 && j == 14)) {
-					mapSize[gridY][j] = '~';
-				}
-			}
-			else if (carriageNum == 5) {
-				if (i == 1 || i == 5) {
-					if (j > 5 && j < 17 && (j % 7 != 0) && (j % 8 != 1)) {
-						mapSize[gridY][j] = 'H';
-					}
-				}
-				if ((i == 1 && j == 2) || (i == 5 && j == 5)) {
-					mapSize[gridY][j] = '^';
-				}
-				if ((i == 1 && j == 18) || (i == 1 && j == 21) ||
-					(i == 5 && j == 18) || (i == 5 && j == 21)) {
-					mapSize[gridY][j] = '?';
-				}
-
-			}
-			else if (carriageNum == 6) {
-				if ((i == 1 && j == 5) || (i == 1 && j == 10) || (i == 1 && j == 15) ||
-					(i == 5 && j == 7) || (i == 5 && j == 14)) {
-					mapSize[gridY][j] = '#';
-				}
-
-
-			}
-
 		}
-
 
 	}
-	for (size_t k = 0; k < Objects.size(); k++) {
-		InteractiveObject* obj = Objects[k];
-		if (Posters* poster = dynamic_cast<Posters*>(Objects.at(k))) {
-			mapSize[poster->getY()][poster->getX() - 1] = '[';
-			mapSize[poster->getY()][poster->getX()] = poster->getSymbol();
-		}
-		else {
-			mapSize[obj->getY()][obj->getX()] = obj->getSymbol();
-		}
-	}
-}
-
 	//////////////////roooms////////////////////////
 	else if (carriageRoom == 2) {
-		for (int i = 0; i < 7; i++) {
-
+		for (int i = 0; i < 7; i++) {  
 			for (int j = 0; j < 12; j++) {
 				int trainOffset = 3;
 				int gridY = trainOffset + i;
@@ -264,8 +241,19 @@ void Map::buildMap() {
 				}
 			}
 		}
-
-
+	}		
+	for (InteractiveObject* obj : Objects) {
+		if (Suitcase* suitcase = dynamic_cast<Suitcase*>(obj)) {
+			mapSize[suitcase->getY()][suitcase->getX() - 1] = '[';
+			mapSize[suitcase->getY()][suitcase->getX()] = suitcase->getSymbol();
+		}
+		else if (Posters* poster = dynamic_cast<Posters*>(obj)) {
+			mapSize[poster->getY()][poster->getX() - 1] = '[';
+			mapSize[poster->getY()][poster->getX()] = poster->getSymbol();
+		}
+		else {
+			mapSize[obj->getY()][obj->getX()] = obj->getSymbol();
+		}
 	}
 }
 
@@ -279,7 +267,7 @@ std::string formatPanelLine(const std::string& text, size_t targetWidth = 30) {
 void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, Player& player, const std::string uiBuffer[13]) const {
 	const size_t targetWidth = 33;
 	std::string margin(targetWidth + 2, ' ');
-const std::string blankUiLine(35, ' ');
+	const std::string blankUiLine(35, ' ');
 	std::cout << margin << "+-- -- -- -- -- --+    +-- -- -- -- -- --+\n";
 	std::cout << margin << "|                 |    |                 |\n";
 	std::cout << margin << "|   CARRIAGE " << carriageNum << "    |    |     ROOM    " << carriageRoom << "   |\n";
@@ -287,7 +275,6 @@ const std::string blankUiLine(35, ' ');
 	std::cout << margin << "+-- -- -- -- -- --+    +-- -- -- -- -- --+\n";
 
 	for (int i = 0; i < 13; i++) {
-		
 		std::string lineBuffer = "";
 		switch (i) {
 		case 2:lineBuffer += formatPanelLine("          [ CONTROLS ]", targetWidth); break;
@@ -329,15 +316,11 @@ void Map::updateMap(int x, int y, char symbol) {
 bool Map::validMove(int x, int y) {	
 	if (x > 0 && x < 24 && y > 2 && y < 10) {
 		char tile = mapSize[y][x];
-		bool isDoorUnlocked = false;
-		vector<char> blockedTiles = {'=', '|', '+', '[', ']', '@', '#', '?', '&', 'A', 'D'};
+		static const array<char, 10> blockedTiles = {'=', '|', '+', '[', ']', '@', '#', '?', '&', 'A'};
 		// If the player is trying to move onto a door
-		if (tile == 'D')
-		{
-			for (InteractiveObject* obj : Objects)
-			{
+		if (tile == 'D') {
+			for (InteractiveObject* obj : Objects) {
 				Doors* door = dynamic_cast<Doors*>(obj);
-
 				if (door != nullptr &&
 					door->getRoomID() == carriageNum &&
 					door->getX() == x &&
@@ -369,7 +352,7 @@ Timer& Map::getTimerObject() { return timer; }
 
 
 
-vector<InteractiveObject*> Map::getObjects() {
+vector<InteractiveObject*>& Map::getObjects() {
 	return Objects;
 }
 void Map::clearObjects() {

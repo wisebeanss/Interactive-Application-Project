@@ -9,6 +9,7 @@ class Player: public GameObject
 private:
 	array<InteractiveObject*, 6> Inventory;
 	bool interact;
+	bool discarding;
 public:
 	Player();
 	~Player();
