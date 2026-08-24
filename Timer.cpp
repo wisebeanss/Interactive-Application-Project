@@ -10,9 +10,9 @@ void Timer::update()
 {
     auto currentTime = std::chrono::steady_clock::now();
 
-    int elapsed = std::chrono::duration_cast<std::chrono::seconds>(
+    int elapsed = std::chrono::duration_cast<std::chrono::seconds>( //convert to whole seconds
         currentTime - lastTime
-    ).count();
+    ).count();//give the second
 
     if (elapsed > 0)
     {
