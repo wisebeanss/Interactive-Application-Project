@@ -19,10 +19,22 @@ InteractiveObject* Player::getInventoryItem(int index) const {
 	if (index >= 0 && index < 7) return Inventory[index];
 	return nullptr;
 }
-void Player::Equip(InteractiveObject* object) {
+void Player::Equip(InteractiveObject* object ,Map& map) {
 	for (int objIdx = 0; objIdx < Inventory.size(); objIdx++) {
 		if (Inventory.at(objIdx) == nullptr) {
 			Inventory.at(objIdx) = object;
+			if (object->getName() == "Photo Piece")
+			{
+				for (InteractiveObject* itm : map.getObjects())
+				{
+					if (itm->getName() == "Suitcase")
+					{
+						cout << "runned";
+						Suitcase* suitcase = dynamic_cast<Suitcase*>(itm);
+						suitcase->collectPhoto();
+					}
+				}
+			}
 			break;
 		}
 	}
@@ -69,7 +81,7 @@ void Player::HandleInput(char symbol, Map &map) {
 			InteractiveObject* obj = map.getObjects()[i];
 			if (obj != nullptr && obj->getX() == getX() && obj->getY() == getY()) {
 				obj->disableUI(); // Ensure UI is OFF when entering inventory
-				Equip(obj);
+				Equip(obj, map);
 				map.removeObject(obj);
 				break; 
 			}

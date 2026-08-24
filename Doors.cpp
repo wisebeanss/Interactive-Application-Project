@@ -116,7 +116,7 @@ void Doors::use()
 
 				system("cls");
 				changeUnlockedState(true);
-				question = 3;
+				question = 1;
 				attempts = 0;
 				cout << "\r" << string(80, ' ') << "\r";
 				return;
