@@ -12,11 +12,15 @@ Suitcase::Suitcase(int x, int y, int id)
 
 void Suitcase::collectPhoto(int num)
 {
-    if (num == 1) photo1 = true;
-    if (num == 2) photo2 = true;
-    if (num == 3) photo3 = true;
-
-    if (photo1 && photo2 && photo3) {
+    switch (num) {
+    case 1:
+        photo1 = true;
+    case 2:
+        photo2 = true;
+    case 3:
+        photo3 = true;
+    }
+    if (hasAllPhotos()) {
         unlocked = true;
     }
 }
@@ -28,7 +32,7 @@ bool Suitcase::hasAllPhotos()
     return photo1 && photo2 && photo3;
 }
 
-bool Suitcase::tryUnlock()
+void Suitcase::use()
 {
     if (hasAllPhotos())
     {
@@ -38,8 +42,8 @@ bool Suitcase::tryUnlock()
         cout << "You stare at the completed image.\n";
         cout << "Was I really there?\n";
         unlocked = true;
-        return true;
     }
-    cout << "\n The suitcase is still locked. Find all 3 photos first.\n";
-    return false;
+    else {
+        cout << "\n The suitcase is still locked. Find all 3 photos first.\n";
+    }
 }

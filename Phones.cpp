@@ -24,7 +24,7 @@ Phones::Phones(string text, int X, int Y, int id)
     this->text = text;
 
     Ids.push_back(id);
-
+    setSymbol('A');
     setX(X);
     setY(Y);
 }

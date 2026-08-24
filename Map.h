@@ -1,18 +1,11 @@
 #pragma once
+
 #include <iostream>
 #include <vector>
 #include <Windows.h>
 #include <string>
 #include <algorithm>
-#include "Doors.h"
-#include "Mirrors.h"
-#include "Clocks.h"
-#include "Timer.h"
-#include "PhotoFragment.h"
-#include "Letters.h"
-#include "Suitcase.h"
-#include "Posters.h"
-#include "Note.h"
+#include "MapObjects.h"
 using namespace std;
 
 
@@ -46,7 +39,7 @@ public:
 	bool validMove(int x, int y);
 
 
-	vector<InteractiveObject*> getObjects();
+	vector<InteractiveObject*>& getObjects();
 	void setObjects(InteractiveObject* object);
 	void removeObject(InteractiveObject* object);
 	void clearObjects();
