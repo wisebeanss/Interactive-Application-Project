@@ -29,7 +29,6 @@ void Player::Equip(InteractiveObject* object ,Map& map) {
 				{
 					if (itm->getName() == "Suitcase")
 					{
-						cout << "runned";
 						Suitcase* suitcase = dynamic_cast<Suitcase*>(itm);
 						suitcase->collectPhoto();
 					}
