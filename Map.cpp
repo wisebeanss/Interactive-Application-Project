@@ -43,6 +43,7 @@ int Map::getRoom() const {
 void Map::nextCarriage() {
 	if (carriageNum < 6) {
 		carriageNum++;
+		
 	}
 	else { carriageNum = 1; }
 	clearObjects();
@@ -243,6 +244,7 @@ void Map::buildMap() {
 		}
 	}		
 	for (InteractiveObject* obj : Objects) {
+		if (obj == nullptr) { continue; }
 		if (Suitcase* suitcase = dynamic_cast<Suitcase*>(obj)) {
 			mapSize[suitcase->getY()][suitcase->getX() - 1] = '[';
 			mapSize[suitcase->getY()][suitcase->getX()] = suitcase->getSymbol();
