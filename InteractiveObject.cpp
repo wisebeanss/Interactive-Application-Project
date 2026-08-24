@@ -27,3 +27,6 @@ bool InteractiveObject::getUIActive() const {
 void InteractiveObject::enableUI() {
 	uiActive = !uiActive;
 }
+void InteractiveObject::disableUI() {
+	uiActive = false;
+}
