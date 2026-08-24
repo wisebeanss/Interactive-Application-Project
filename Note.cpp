@@ -26,6 +26,7 @@ Note::~Note() {
     }
 }
 void Note::use() {
+    system("cls");
     const int width = 22;
 
     std::cout << "+----------------------+" << std::endl;
@@ -44,4 +45,11 @@ void Note::use() {
     std::cout << "|" << centerDescription("", width) << "|" << std::endl;
     std::cout << "|" << centerDescription("", width) << "|" << std::endl;
     std::cout << "+----------------------+" << std::endl;
+
+    //clear
+    std::cout << "\nPress Enter to continue...";
+
+    std::cin.ignore();
+    std::cin.get();
+   
 }
