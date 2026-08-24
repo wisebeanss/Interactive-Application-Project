@@ -4,7 +4,6 @@
 Player::Player() : GameObject(2, 6, 'P') {
 	setInteract(false);
 	Inventory.fill(nullptr);
-	discarding = false;
 }
 Player::~Player() {
 	for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
@@ -20,12 +19,13 @@ InteractiveObject* Player::getInventoryItem(int index) const {
 	if (index >= 0 && index < 7) return Inventory[index];
 	return nullptr;
 }
-void Player::Equip(InteractiveObject* object) {
+bool Player::Equip(InteractiveObject* object) {
 	for (int objIdx = 0; objIdx < Inventory.size(); objIdx++) {
 		if (Inventory.at(objIdx) == nullptr) {
 			//Reminder to self, when inventory is full, make sure to ask user to discard
 			Inventory.at(objIdx) = object;
 			break;
+			return true;
 		}
 	}
 	return false;

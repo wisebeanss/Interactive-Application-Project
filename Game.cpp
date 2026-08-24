@@ -16,7 +16,7 @@ void Game::Run() {
 	Puzzle puzzle;
 	
 	const std::chrono::milliseconds frameBudget(33);
-
+	std::string uiBuffer[15];
 	while (true) {
 		auto frameStart = std::chrono::high_resolution_clock::now();
 
@@ -29,14 +29,12 @@ void Game::Run() {
 		}
 		//timer
 		getGameMap().updateTimer();
-		//mapping
-	
 		map.updateFrame(); //upd map env frame
 		map.buildMap();
 		//map.updateMap(oldX, oldY, ' ');
 		map.updateMap(player.getX(), player.getY(), player.getSymbol());
 
-		std::string uiBuffer[15];
+		
 		bool isUIActive = false;
 		std::string statusMsg = "";
 
@@ -58,7 +56,9 @@ void Game::Run() {
 
 		auto frameEnd = std::chrono::high_resolution_clock::now();
 		auto elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(frameEnd - frameStart);
-		std::this_thread::sleep_until(frameStart + frameBudget);
+		if (elapsedTime < frameBudget) {
+			std::this_thread::sleep_for(frameBudget - elapsedTime);
+		}
 	}
 }
 void Game::End() {
