@@ -9,18 +9,18 @@ class Player: public GameObject
 private:
 	array<InteractiveObject*, 7> Inventory;
 	bool interact;
-	bool discarding;
 public:
 	Player();
 	~Player();
 	std::string getInvItemSlot(int index) const;
 	void Interact(InteractiveObject& object);
-	bool Equip(InteractiveObject* object);
-	void ClearInv();
+	void Equip(InteractiveObject* object);
+	void Discard(InteractiveObject* object);
 	InteractiveObject* getNearbyObject(Map &map);
 	void HandleInput(char symbol, Map& map);
 	void move(char movement, Map& map);
 	void setInteract(bool Interact);
-	bool getInteract() const;
+	bool getInteract();
+	InteractiveObject* getInventoryItem(int index) const;
 };
 

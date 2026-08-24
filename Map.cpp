@@ -32,6 +32,7 @@ void Map::resetCursorPosition() {
 
 void Map::updateFrame() {
 	animFrame++;
+	checkSuitcaseUnlock();
 }
 
 int Map::getCarriage() const {
@@ -284,13 +285,13 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, Player&
 		case 2:lineBuffer += formatPanelLine("   F    : Interact / Use Object", targetWidth); break;
 		//case 6:lineBuffer += formatPanelLine(" - - - - - - - - - - - - - - - -", targetWidth); break;
 		case 3:lineBuffer += formatPanelLine("         [ INVENTORY ]", targetWidth); break;
-		case 4:lineBuffer += formatPanelLine(" -    " + player.getInvItemSlot(0),targetWidth); break;
-		case 5:lineBuffer += formatPanelLine(" -    " + player.getInvItemSlot(1), targetWidth); break;
-		case 6:lineBuffer += formatPanelLine(" -    " + player.getInvItemSlot(2), targetWidth); break;
-		case 7:lineBuffer += formatPanelLine(" -    " + player.getInvItemSlot(3), targetWidth); break;
-		case 8:lineBuffer += formatPanelLine(" -    " + player.getInvItemSlot(4), targetWidth); break;
-		case 9:lineBuffer += formatPanelLine(" -    " + player.getInvItemSlot(5), targetWidth); break;
-		case 10:lineBuffer += formatPanelLine(" -    " + player.getInvItemSlot(6), targetWidth); break;
+		case 4:lineBuffer += formatPanelLine(" 1. -    " + player.getInvItemSlot(0),targetWidth); break;
+		case 5:lineBuffer += formatPanelLine(" 2. -    " + player.getInvItemSlot(1), targetWidth); break;
+		case 6:lineBuffer += formatPanelLine(" 3. -    " + player.getInvItemSlot(2), targetWidth); break;
+		case 7:lineBuffer += formatPanelLine(" 4. -    " + player.getInvItemSlot(3), targetWidth); break;
+		case 8:lineBuffer += formatPanelLine(" 5. -    " + player.getInvItemSlot(4), targetWidth); break;
+		case 9:lineBuffer += formatPanelLine(" 6. -    " + player.getInvItemSlot(5), targetWidth); break;
+		case 10:lineBuffer += formatPanelLine(" 7. -    " + player.getInvItemSlot(6), targetWidth); break;
 		case 11: lineBuffer += formatPanelLine("         [TIME LEFT]", targetWidth); break;
 		case 12: {
 			int m = getGameMap().timer.getMinutes();
@@ -384,4 +385,30 @@ bool Map::getOffMap()
 void Map::setOffMap(bool OffMap)
 {
 	offMap = OffMap;
+}
+void Map::bindSuitcase(Suitcase* ptr) {
+	suitcasePtr = ptr;
+}
+
+Suitcase* Map::getSuitcase() {
+	return suitcasePtr;
+}
+
+void Map::checkSuitcaseUnlock()
+{
+	if (noteSpawned || suitcasePtr == nullptr)
+		return;
+
+	if (suitcasePtr->isUnlocked())
+	{
+		Note* foundNote = new Note(
+			"Was I really there?\n— The past remains.",
+			suitcasePtr->getX() + 1,
+			suitcasePtr->getY(),
+			201
+		);
+		setObjects(foundNote);
+		noteSpawned = true;
+		std::cout << "\n Notes have appeared nearby!\n";
+	}
 }

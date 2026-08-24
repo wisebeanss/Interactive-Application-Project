@@ -25,31 +25,51 @@ Note::~Note() {
         }
     }
 }
+void Note::getUIBuffer(string buffer[13]) const {
+        const int width = 26;
+        const int boxWidth = width + 2;
+
+        buffer[0] = "                      ";
+        buffer[1] = "                      ";
+        buffer[2] = "                      ";
+        buffer[3] = "+--~-~-~-~-~-~-~-~-~-~-~-~-+";
+
+        int row = 4;
+        size_t start = 0;
+        while (row < 9 && start < text.size()) {
+            size_t end = text.find('\n', start);
+            if (end == std::string::npos) end = text.size();
+            std::string line = text.substr(start, end - start);
+            buffer[row++] = "|" + centerDescription(line, width) + "|";
+            start = end + 1; // move past '\n'
+        }
+        // Fill remaining rows with empty centered lines
+        while (row < 9) {
+            buffer[row++] = "|" + centerDescription("", width) + "|";
+        }
+        buffer[9] = "+--~-~-~-~-~-~-~-~-~-~-~-~-+";
+        buffer[10] = "                      ";
+        buffer[11] = "                      ";
+        buffer[12] = "                      ";
+}
 void Note::use() {
-    system("cls");
-    const int width = 22;
+    enableUI();
+    //const int width = 22;
 
-    std::cout << "+----------------------+" << std::endl;
-    std::cout << "|" << centerDescription("", width) << "|" << std::endl;
-    std::cout << "|" << centerDescription("", width) << "|" << std::endl;
+    //std::cout << "+----------------------+" << std::endl;
+    //std::cout << "|" << centerDescription("", width) << "|" << std::endl;
+    //std::cout << "|" << centerDescription("", width) << "|" << std::endl;
 
-    size_t start = 0;
-    while (start < text.size()) {
-        size_t end = text.find('\n', start);
-        if (end == std::string::npos) end = text.size();
-        std::string line = text.substr(start, end - start);
-        std::cout << "|" << centerDescription(line, width) << "|" << std::endl;
-        start = end + 1;
-    }
+    //size_t start = 0;
+    //while (start < text.size()) {
+    //    size_t end = text.find('\n', start);
+    //    if (end == std::string::npos) end = text.size();
+    //    std::string line = text.substr(start, end - start);
+    //    std::cout << "|" << centerDescription(line, width) << "|" << std::endl;
+    //    start = end + 1;
+    //}
 
-    std::cout << "|" << centerDescription("", width) << "|" << std::endl;
-    std::cout << "|" << centerDescription("", width) << "|" << std::endl;
-    std::cout << "+----------------------+" << std::endl;
-
-    //clear
-    std::cout << "\nPress Enter to continue...";
-
-    std::cin.ignore();
-    std::cin.get();
-   
+    //std::cout << "|" << centerDescription("", width) << "|" << std::endl;
+    //std::cout << "|" << centerDescription("", width) << "|" << std::endl;
+    //std::cout << "+----------------------+" << std::endl;
 }

@@ -9,4 +9,6 @@ public:
 	Note(string text, int X, int Y, int id);
 	~Note();
 	void use();
+	void getUIBuffer(string buffer[13]) const override;
+
 };

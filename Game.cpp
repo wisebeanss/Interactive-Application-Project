@@ -55,6 +55,7 @@ void Game::Run() {
 		//map.printMap();
 
 		puzzle.ROOMS(map.getCarriage(), map);
+
 		auto frameEnd = std::chrono::high_resolution_clock::now();
 		auto elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(frameEnd - frameStart);
 		std::this_thread::sleep_until(frameStart + frameBudget);
