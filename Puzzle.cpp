@@ -50,7 +50,8 @@ bool Puzzle::ROOMS(int roomID, Map& map)
                map.setObjects(new Note("The Strong poster is\nsomewhere before the\nSuccessful poster.\n", 16, 4, 201));
                map.setObjects(new Note("The Smart poster is\nimmediately before the\nPerfect poster. \n", 21, 4, 202));
                map.setObjects(new Note("The Successful poster\nis last.\n", 21, 8, 203));
-               map.setObjects(new Posters("1.THE STRONG\n2.THE SMART\n3.THE SUCCESSFUL\n4.THE PERFECT \n", 4, 8, 203));
+               //map.setObjects(new Posters("1.THE STRONG\n2.THE SMART\n3.THE SUCCESSFUL\n4.THE PERFECT \n", 4, 8, 203));
+               map.setObjects(new Suitcase(4, 8, 203));
                map.setObjects(new Doors(" ", 23, 6, 2));
                setCurrentRoom(2);
  /*              add = true;*/
