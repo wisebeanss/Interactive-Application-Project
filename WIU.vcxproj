@@ -167,6 +167,7 @@
     <ClInclude Include="Drawers.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="MapObjects.h" />
     <ClInclude Include="InteractiveObject.h" />
     <ClInclude Include="Letters.h" />
     <ClInclude Include="Lockers.h" />

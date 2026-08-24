@@ -29,7 +29,7 @@ void Mirrors::use() {
     enableUI();
 }
 
-void Mirrors::getUIBuffer(string buffer[15]) const {
+void Mirrors::getUIBuffer(string buffer[13]) const {
     const int width = 26;
     const int boxWidth = width + 2;
 
@@ -55,8 +55,6 @@ void Mirrors::getUIBuffer(string buffer[15]) const {
     buffer[10] = centerMirrorText("\\    /", boxWidth);
     buffer[11] = centerMirrorText("\\  /", boxWidth);
     buffer[12] = centerMirrorText("\\/", boxWidth);
-    buffer[13] = "                      ";
-    buffer[14] = "                      ";
 }
 
 string Mirrors::centerMirrorText(string str, int width) const {

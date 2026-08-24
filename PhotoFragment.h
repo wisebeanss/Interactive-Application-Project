@@ -20,5 +20,6 @@ public:
     static void resetCollection() { Ids.clear(); }
 
     void use();
+    void getUIBuffer(string buffer[13]) const override;
 };
 

@@ -15,6 +15,10 @@ std::string Player::getInvItemSlot(int index) const {
 	InteractiveObject* obj = Inventory.at(index);
 	return (obj == nullptr) ? "Empty" : obj->getName() + to_string(obj->getId());
 }
+InteractiveObject* Player::getInventoryItem(int index) const {
+	if (index >= 0 && index < 7) return Inventory[index];
+	return nullptr;
+}
 void Player::Equip(InteractiveObject* object) {
 	for (int objIdx = 0; objIdx < Inventory.size(); objIdx++) {
 		if (Inventory.at(objIdx) == nullptr) {
@@ -50,19 +54,24 @@ void Player::HandleInput(char symbol, Map &map) {
 	//movement
 	if (symbol == 'w' || symbol == 'a' || symbol == 's' || symbol == 'd') {
 		for (size_t i = 0; i < map.getObjects().size(); i++) {
-
 			InteractiveObject* obj = map.getObjects()[i];
 			if (obj != nullptr && obj->getUIActive()) {
-				obj->enableUI(); // Toggles uiActive back to false webn they walk
+				obj->disableUI(); // Toggles uiActive back to false webn they walk
+			}
+		}
+		for (size_t i = 0; i < Inventory.size(); i++) {
+			if (Inventory[i] != nullptr) {
+				Inventory[i]->disableUI();
 			}
 		}
 		move(symbol, map);
 		for (size_t i = 0; i < map.getObjects().size(); i++) {
 			InteractiveObject* obj = map.getObjects()[i];
-			if (obj->getX() == getX() && obj->getY() == getY()) {
+			if (obj != nullptr && obj->getX() == getX() && obj->getY() == getY()) {
+				obj->disableUI(); // Ensure UI is OFF when entering inventory
 				Equip(obj);
 				map.removeObject(obj);
-				break;
+				break; 
 			}
 		}
 		setInteract(false);
@@ -85,12 +94,27 @@ void Player::HandleInput(char symbol, Map &map) {
 			map.setMapRendered(false);
 		}
 	}
-	else if (symbol >= '1' && symbol <= '6') {
+	else if (symbol >= '1' && symbol <= '7') {
 		int InvSlotIdx = static_cast<int>(symbol - '1');
-		if (Inventory.at(InvSlotIdx) != nullptr) {
-			Inventory.at(InvSlotIdx)->use();
+		for (size_t i = 0; i < map.getObjects().size(); i++) {
+			if (map.getObjects()[i] != nullptr) {
+				map.getObjects()[i]->disableUI();
+			}
 		}
-		
+		for (size_t i = 0; i < Inventory.size(); i++) {
+			if (Inventory[i] != nullptr && static_cast<int>(i) != InvSlotIdx) {
+				Inventory[i]->disableUI();
+			}
+		}
+		if (InvSlotIdx < static_cast<int>(Inventory.size()) && Inventory.at(InvSlotIdx) != nullptr) {
+			InteractiveObject* selectedItem = Inventory.at(InvSlotIdx);
+			if (selectedItem->getUIActive()) {
+				selectedItem->disableUI();
+			}
+			else {
+				selectedItem->use(); 
+			}
+		}
 	}
 }
 void Player::move(char movement, Map &map)
