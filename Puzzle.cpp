@@ -151,4 +151,4 @@ int Puzzle::getCurrentRoom() { return currentRoom; }
 void Puzzle::use()
 {
 
-}
+}   
