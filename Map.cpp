@@ -32,6 +32,7 @@ void Map::resetCursorPosition() {
 
 void Map::updateFrame() {
 	animFrame++;
+	checkSuitcaseUnlock();
 }
 
 int Map::getCarriage() const {
@@ -384,4 +385,30 @@ bool Map::getOffMap()
 void Map::setOffMap(bool OffMap)
 {
 	offMap = OffMap;
+}
+void Map::bindSuitcase(Suitcase* ptr) {
+	suitcasePtr = ptr;
+}
+
+Suitcase* Map::getSuitcase() {
+	return suitcasePtr;
+}
+
+void Map::checkSuitcaseUnlock()
+{
+	if (noteSpawned || suitcasePtr == nullptr)
+		return;
+
+	if (suitcasePtr->isUnlocked())
+	{
+		Note* foundNote = new Note(
+			"Was I really there?\n— The past remains.",
+			suitcasePtr->getX() + 1,
+			suitcasePtr->getY(),
+			201
+		);
+		setObjects(foundNote);
+		noteSpawned = true;
+		std::cout << "\n Notes have appeared nearby!\n";
+	}
 }

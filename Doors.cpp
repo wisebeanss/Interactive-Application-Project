@@ -65,13 +65,6 @@ void Doors::use()
 				cout << "11:51...\n";
 				cout << "You stare at its hands. The time feels familiar, yet you cannot recall why.\n";
 				cout << "You can now solve Puzzle 2.\n";
-				cout << "\nPress Enter to continue.";
-
-				//clear dialogue
-				cin.ignore();
-				cin.get();
-				system("cls");
-
 				question = 2;
 				attempts = 0;
 				return;
@@ -79,19 +72,15 @@ void Doors::use()
 			else
 			{
 				cout << "\nThat doesn't seem right.\n";
-				cout << "\nMinus 2 minutes from your time.\n";
-				cout << "\nPress Enter to continue.";
+			
 				Timer& t = getGameMap().getTimerObject();
 
-				//clear dialogue
-				cin.ignore();
-				cin.get();
-				system("cls");
+				cout << "Before: " << t.getMinutes() << "m" << t.getSeconds() << "s\n";
 
 				t.decreaseTime(120);
 				getGameMap().timerSeconds = t.getMinutes() * 60 + t.getSeconds();
 
-				
+				cout << "After:  " << t.getMinutes() << "m" << t.getSeconds() << "s\n";
 
 				if (attempts == 3)
 				{
@@ -116,17 +105,12 @@ void Doors::use()
 				cout << "The mirrors go still.\n";
 				cout << "Your reflection looks directly at you.\n";
 				cout << "You know the truth.\n";
-				cout << "Carriage 2 unlocked!\n";
-				cout << "\nPress Enter to continue.";
-
-				//clear dialogue
-				cin.ignore();
-				cin.get();
-				system("cls");
-
+				cout << "Room 2 unlocked!\n";
 				changeUnlockedState(true);
-				question = 3;
+				question = 1;
 				attempts = 0;
+				cout << "\r" << string(80, ' ') << "\r";
+				cout << "You step through the door into Carriage 2.\n";
 				return;
 			}
 			else
@@ -151,7 +135,47 @@ void Doors::use()
 
 	if (roomID == 2)
 	{
+		if (question == 1)
+		{
+			cout << "\r" << string(80, ' ') << "\r";
+			cout << "[Room 2] Answer the riddle to unlock the door.\n\n";
+
 		
+			cout << "Collect the photo, get the notes and make arrange\n";
+			cout << "Enter your answer: ";
+
+			string answer;
+			cin >> answer;
+
+			if (answer == "1243") 
+			{
+				cout << "\r" << string(80, ' ') << "\r";
+				cout << "You arrange it in the correct order.\n";
+				cout << "The Strong. The Smart. The Perfect. The Successful.\n";
+				cout << "All the things you thought you had to be.\n";
+				cout << "DID YOU?\n";
+				changeUnlockedState(true);
+				question = 2;
+				cout << "You step through the unlocked door...\n";
+				return;
+			}
+
+			
+			cout << " Wrong arrange.\n";
+			Timer& t = getGameMap().getTimerObject();
+			t.decreaseTime(120);
+			getGameMap().timerSeconds = t.getMinutes() * 60 + t.getSeconds();
+			cout << "Time remaining: " << t.getMinutes() << "m " << t.getSeconds() << "s\n";
+			return;
+		}
+
+		if (question == 2)
+		{
+			cout << "\r" << string(80, ' ') << "\r";
+			cout << "Room 2 complete! Moving forward...\n";
+			return;
+		}
+
 		return;
 	}
 }

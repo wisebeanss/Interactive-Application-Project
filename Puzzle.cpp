@@ -43,14 +43,15 @@ bool Puzzle::ROOMS(int roomID, Map& map)
            if (getCurrentRoom() != 2)
            {
                map.clearObjects();
-               map.setObjects(new PhotoFragment("Clock1: A ‘Hand’\n", 1, 4, 101));
-               map.setObjects(new PhotoFragment("Clock2: A “Face”\n", 4, 4, 102));
-               map.setObjects(new PhotoFragment("Clock3: “The Other person” \n", 1, 8, 103));
+               map.setObjects(new PhotoFragment("PhotoFragment1: A 'Hand'\n", 1, 4, 101));
+               map.setObjects(new PhotoFragment("PhotoFragment2: A \"Face\"\n", 4, 4, 102));
+               map.setObjects(new PhotoFragment("PhotoFragment3: \"The Other person\" \n", 1, 8, 103));
                map.setObjects(new Note("The Perfect poster\nis not first.\n", 16, 8, 200));
                map.setObjects(new Note("The Strong poster is\nsomewhere before the\nSuccessful poster.\n", 16, 4, 201));
                map.setObjects(new Note("The Smart poster is\nimmediately before the\nPerfect poster. \n", 21, 4, 202));
                map.setObjects(new Note("The Successful poster\nis last.\n", 21, 8, 203));
-               map.setObjects(new Posters("1.THE STRONG\n2.THE SMART\n3.THE SUCCESSFUL\n4.THE PERFECT \n", 4, 8, 203));
+               //map.setObjects(new Posters("1.THE STRONG\n2.THE SMART\n3.THE SUCCESSFUL\n4.THE PERFECT \n", 4, 8, 203));
+               map.setObjects(new Suitcase(4, 8, 203));
                map.setObjects(new Doors(" ", 23, 6, 2));
                setCurrentRoom(2);
  /*              add = true;*/
@@ -151,4 +152,4 @@ int Puzzle::getCurrentRoom() { return currentRoom; }
 void Puzzle::use()
 {
 
-}
+}   

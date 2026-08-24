@@ -1,49 +1,64 @@
 #include "Suitcase.h"
 #include <iostream>
-
+#include <string>
 using namespace std;
+
 Suitcase::Suitcase(int x, int y, int id)
-    : InteractiveObject("Suitcase", id , false)
+    : InteractiveObject("Suitcase", id, false)
 {
     setX(x);
     setY(y);
     setSymbol(']');
 }
 
-void Suitcase::collectPhoto(int num)
+bool Suitcase::isUnlocked() 
 {
-    switch (num) {
-    case 1:
-        photo1 = true;
-    case 2:
-        photo2 = true;
-    case 3:
-        photo3 = true;
-    }
-    if (hasAllPhotos()) {
-        unlocked = true;
-    }
+    return unlocked;
 }
-bool Suitcase::isUnlocked() const { 
-    return unlocked; 
+
+void Suitcase::collectPhoto()
+{
+    noOfPhotos = noOfPhotos + 1;
 }
 bool Suitcase::hasAllPhotos()
 {
-    return photo1 && photo2 && photo3;
+    if (noOfPhotos == 3) { return true; }
+    else { return false; }
 }
 
-void Suitcase::use()
+bool Suitcase::tryUnlock()
 {
-    if (hasAllPhotos())
+    if (hasAllPhotos()) 
     {
+        cout << "\r" << string(80, ' ') << "\r";
         cout << "A hand reaching out.\n";
         cout << "A face turned away.\n";
         cout << "Someone sitting beside you.\n";
         cout << "You stare at the completed image.\n";
         cout << "Was I really there?\n";
+
         unlocked = true;
+        cout << "\n📝A note has appeared nearby.\n";
+        return true;
     }
-    else {
-        cout << "\n The suitcase is still locked. Find all 3 photos first.\n";
+    else
+    {
+        cout << "\nThe suitcase is still locked. Find all 3 photos first.\n";
+        cout << "Pieces collected: " << noOfPhotos << "/3\n";
+        return false;
     }
+}
+
+void Suitcase::use()
+{
+    cout << "\r" << string(80, ' ') << "\r";
+
+    if (isUnlocked())
+    {
+        cout << "The suitcase is already open.\n";
+        cout << "Read the note nearby.\n";
+        return;
+    }
+
+    tryUnlock();
 }
