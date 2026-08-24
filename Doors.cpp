@@ -2,6 +2,7 @@
 #include "Timer.H"
 #include <iostream>
 #include <string>
+#include <cctype>
 using namespace std;
 
 
@@ -48,6 +49,7 @@ void Doors::use()
 {
 	int answerT1;
 	char answerT2 = ' ';
+	string answerT3;
 
 	if (roomID == 1)
 	{
@@ -108,8 +110,9 @@ void Doors::use()
 				cout << "\r" << string(80, ' ') << "\r";
 				cout << "The mirrors go still.\n";
 				cout << "Your reflection looks directly at you.\n";
-				cout << "You know the truth.\n";
-				cout << "Room 2 unlocked!\n";
+				cout << "You look away. \n";
+				cout << "\"Stop pretending you don't.\"\n";
+				cout << "The door unlocks.";
 				cout << "\nPress Enter to continue...";
 				cin.ignore();
 				cin.get();
@@ -163,7 +166,11 @@ void Doors::use()
 				cout << "You arrange it in the correct order.\n";
 				cout << "The Strong. The Smart. The Perfect. The Successful.\n";
 				cout << "All the things you thought you had to be.\n";
-				cout << "DID YOU?\n";
+				cout << "\"Which one are you ? \"\n";
+				cout << "You don't answer.\n";
+				cout << "The poster go dark.\n";
+				cout << "The door clicks.\n";
+				
 				changeUnlockedState(true);
 				question = 2;
 			
@@ -171,7 +178,7 @@ void Doors::use()
 			}
 
 			else {
-				cout << " Wrong arrange.\n";
+				cout << "Wrong arrangement.\n";
 				getGameMap().timer.decreaseTime(2 * 60);
 				cout << "2 minutes have been deducted!\n";
 				cout << "\nPress Enter to continue.4";
@@ -182,9 +189,127 @@ void Doors::use()
 				return;
 			}
 		}
-
-	
+		if (question == 2)
+		{
+		}
 
 		return;
 	}
+
+	if (roomID == 3)
+	{
+		if (question == 1)
+		{
+			cout << "What is the answer:\n";
+			cin >> answerT3;
+
+			//uppercase
+			for (char& c : answerT3)
+			{
+				c = toupper(c);
+			}
+
+			if (answerT3 == "WATCH")
+			{
+				cout << "\nYou pick up the watch.\n";
+				cout << "11:35.\n";
+				cout << "The same time again. \n";
+				cout << "You stare at it, remembering the blame you carried all this time. \n";
+				cout << "\"It happened at 11:35...\"\n";
+				cout << "\"But you weren't there.\"\n";
+				cout << "The memory begins to crack.\n";
+				cout << "Maybe it was your fault. \n";
+				cout << "The door unlocks.  \n";
+
+				changeUnlockedState(true);
+
+				cout << "\nPress Enter to continue...";
+				cin.ignore();
+				cin.get();
+
+				system("cls");
+
+				question = 2;
+				return;
+			}
+			else
+			{
+				cout << "\nWrong answer.\n";
+
+				getGameMap().timer.decreaseTime(2 * 60);
+				cout << "2 minutes have been deducted!\n";
+
+				cout << "\nPress Enter to continue...";
+				cin.ignore();
+				cin.get();
+
+				system("cls");
+				return;
+			}
+		}
+
+		if (question == 2)
+		{
+		}
+
+		return;
+
+	}
+
+	if (roomID == 4)
+	{
+		if (question == 1)
+		{
+
+			cout << "\r" << string(80, ' ') << "\r";
+			cout << "What is the arrangement?\n";
+			cout << "Enter your answer: ";
+			cin >> answerT1;
+
+
+
+			if (answerT1 == 1243)
+			{
+				cout << "\r" << string(80, ' ') << "\r";
+				cout << "You arrange the memories in order.\n";
+				cout << "Childhood. Last Summer.Photograph.First Train Ride. \n";
+				cout << "You stare at the words.\n";
+				cout << "Something feels wrong. \n";
+				cout << "You read the diary page again.\n";
+				cout << "\"I don't remember writing one of the lines.\" \n";
+				cout << "You recognize the handwriting.\n";
+				cout << "\"Then who wrote it ? \" \n";
+				cout << "A faint memory surfaces. \n";
+				cout << "Someone sitting beside you.\n A train window.\nTheir voice. \n";
+				cout << "A voice whispers in your ears\n";
+				cout << "\"You promised you wouldn't forget.\"\n";
+				cout << "The door unlocks. \n";
+
+				changeUnlockedState(true);
+				question = 2;
+
+				return;
+			}
+			else {
+				cout << "Wrong arrangement.\n";
+				getGameMap().timer.decreaseTime(2 * 60);
+				cout << "2 minutes have been deducted!\n";
+				cout << "\nPress Enter to continue.4";
+				cin.ignore();
+				cin.get();
+
+				system("cls");
+				return;
+			}
+
+			if (question == 2)
+			{
+			}
+
+			return;
+
+
+		}
+	}
 }
+
