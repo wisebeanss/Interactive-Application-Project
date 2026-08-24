@@ -3,51 +3,96 @@
 #include <string>
 using namespace std;
 
-Suitcase::Suitcase(int x, int y, int id)
+Suitcase::Suitcase(int x, int y, int id, int room)
     : InteractiveObject("Suitcase", id, false),
-    unlocked(false)
+    roomID(room),
+    unlocked(false),
+    noOfPhotos(0),
+    puzzleSolved(false),
+    progressState(0)
 {
     setX(x);
     setY(y);
     setSymbol(']');
 }
 
-bool Suitcase::isUnlocked() 
+bool Suitcase::isUnlocked()
 {
     return unlocked;
 }
 
 void Suitcase::collectPhoto()
 {
-    noOfPhotos = noOfPhotos + 1;
+    if (roomID == 1)
+    {
+        noOfPhotos = noOfPhotos + 1;
+    }
 }
+
 bool Suitcase::hasAllPhotos()
 {
-    if (noOfPhotos == 3) { return true; }
-    else { return false; }
+    if (roomID == 1)
+    {
+        return noOfPhotos == 3;
+    }
+    return false;
+}
+
+void Suitcase::markPuzzleSolved()
+{
+    if (roomID == 2)
+    {
+        puzzleSolved = true;
+    }
+}
+
+void Suitcase::setProgressState(int s)
+{
+    if (roomID == 3)
+    {
+        progressState = s;
+    }
 }
 
 bool Suitcase::tryUnlock()
 {
-    if (hasAllPhotos()) 
-    {
-        cout << "\r" << string(80, ' ') << "\r";
-        cout << "A hand reaching out.\n";
-        cout << "A face turned away.\n";
-        cout << "Someone sitting beside you.\n";
-        cout << "You stare at the completed image.\n";
-        cout << "Was I really there?\n";
+    bool canUnlock = false;
+    string hintMsg;
 
-        unlocked = true;
-        cout << "\nA note has appeared nearby.\n";
-        return true;
-    }
-    else
+    if (roomID == 1)
     {
-        cout << "\nThe suitcase is still locked. Find all 3 photos first.\n";
-        cout << "Pieces collected: " << noOfPhotos << "/3\n";
-        return false;
+        canUnlock = hasAllPhotos();
+        hintMsg = "The suitcase is still locked. Find all 3 photos first.\nPieces collected: " + to_string(noOfPhotos) + "/3";
+        if (canUnlock)
+        {
+            cout << "\r" << string(80, ' ') << "\r";
+            cout << "A hand reaching out.\n";
+            cout << "A face turned away.\n";
+            cout << "Someone sitting beside you.\n";
+            cout << "You stare at the completed image.\n";
+            cout << "Was I really there?\n";
+            unlocked = true;
+            cout << "\nA note has appeared nearby.\n";
+            return true;
+        }
+        else
+        {
+            cout << "\n" << hintMsg << "\n";
+            return false;
+        }
     }
+    else if (roomID == 2)
+    {
+        canUnlock = puzzleSolved;
+        hintMsg = "The suitcase is still locked. Solve the puzzle first.";
+    }
+    else if (roomID == 3)
+    {
+        canUnlock = (progressState >= 2);
+        hintMsg = "The suitcase is still locked. Complete the sequence first.";
+    }
+
+
 }
 
 void Suitcase::use()

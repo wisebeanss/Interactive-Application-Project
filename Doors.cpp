@@ -148,7 +148,7 @@ void Doors::use()
 
 	if (roomID == 2)
 	{
-		if (question == 2)
+		if (question == 1)
 		{
 			cout << "\r" << string(80, ' ') << "\r";
 			cout << "What is the arrangement?\n";

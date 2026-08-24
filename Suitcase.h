@@ -4,15 +4,21 @@
 class Suitcase : public InteractiveObject
 {
 private:
-    int noOfPhotos = 0;
-    bool unlocked = false;
+    int roomID;
+    bool unlocked;
+    int noOfPhotos;
+    bool puzzleSolved;
+    int progressState;
 
 public:
-    Suitcase(int x, int y, int id);
+    Suitcase(int x, int y, int id, int room = 1);
 
     bool isUnlocked();
-    void collectPhoto(); 
-    bool hasAllPhotos(); 
-    bool tryUnlock();
     void use() override;
+
+    void collectPhoto();
+    void markPuzzleSolved();
+    void setProgressState(int s);
+    bool hasAllPhotos();
+    bool tryUnlock();
 };
