@@ -11,11 +11,6 @@ private:
 public:
     // Puzzle functions
     bool ROOMS(int roomID, Map& map);
-    //bool  ROOM2(int roomID, Map& map);
-    //bool  ROOM3(int roomID, Map& map);
-    //bool  ROOM4(int roomID, Map& map);
-    //bool  ROOM5(int roomID, Map& map);
-    //bool  ROOM6(int roomID, Map& map);
     void setCurrentRoom(int room);
     int getCurrentRoom();
 
