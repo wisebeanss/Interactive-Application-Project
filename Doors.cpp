@@ -79,15 +79,19 @@ void Doors::use()
 			else
 			{
 				cout << "\nThat doesn't seem right.\n";
-			
+				cout << "\nMinus 2 minutes from your time.\n";
+				cout << "\nPress Enter to continue.";
 				Timer& t = getGameMap().getTimerObject();
 
-				cout << "Before: " << t.getMinutes() << "m" << t.getSeconds() << "s\n";
+				//clear dialogue
+				cin.ignore();
+				cin.get();
+				system("cls");
 
 				t.decreaseTime(120);
 				getGameMap().timerSeconds = t.getMinutes() * 60 + t.getSeconds();
 
-				cout << "After:  " << t.getMinutes() << "m" << t.getSeconds() << "s\n";
+				
 
 				if (attempts == 3)
 				{
