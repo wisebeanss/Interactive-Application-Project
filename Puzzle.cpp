@@ -24,37 +24,37 @@ bool Puzzle::ROOMS(int roomID, Map& map)
         //bool P12 = false;
         if (getCurrentRoom() != 1)
         {
-                map.clearObjects();
-                map.setObjects(new Clocks("Clock1: The incident happened one hour after 10 \n", 1, 4, 101));
-                map.setObjects(new Clocks("Clock2: The minute hand stopped at 45.\n", 4, 4, 102));
-                map.setObjects(new Clocks("Clock3: The seconds hand stopped at 12.\n", 1, 8, 103));
-                map.setObjects(new Clocks("Clock4: This clock was 5 minutes slow.\n", 4, 8, 103));
-                map.setObjects(new Mirrors("MirrorA: The reflection\nis smiling But you are not\n", 16, 4, 201));
-                map.setObjects(new Mirrors("MirrorB: You raise your\nleft hand. The reflection\nraises its right hand\n", 21, 4, 202));
-                map.setObjects(new Mirrors("MirrorC:You raise your\nleft hand.The reflection\nraises its left hand.\nYou blink.\nIt blinks with you.\n", 21, 8, 203));
-                map.setObjects(new Doors(" ", 23, 6, 1));
-                setCurrentRoom(1);
-                map.buildMap();
+            map.clearObjects();
+            map.setObjects(new Clocks("Clock1: The incident happened one hour after 10 \n", 1, 4, 101));
+            map.setObjects(new Clocks("Clock2: The minute hand stopped at 45.\n", 4, 4, 102));
+            map.setObjects(new Clocks("Clock3: The seconds hand stopped at 12.\n", 1, 8, 103));
+            map.setObjects(new Clocks("Clock4: This clock was 5 minutes slow.\n", 4, 8, 103));
+            map.setObjects(new Mirrors("MirrorA: The reflection\nis smiling But you are not\n", 16, 4, 201));
+            map.setObjects(new Mirrors("MirrorB: You raise your\nleft hand. The reflection\nraises its right hand\n", 21, 4, 202));
+            map.setObjects(new Mirrors("MirrorC:You raise your\nleft hand.The reflection\nraises its left hand.\nYou blink.\nIt blinks with you.\n", 21, 8, 203));
+            map.setObjects(new Doors(" ", 23, 6, 1));
+            setCurrentRoom(1);
+            map.buildMap();
         }
         return true;
     }
     if (roomID == 2)
     {
-           if (getCurrentRoom() != 2)
-           {
-               map.clearObjects();
-               map.setObjects(new PhotoFragment("PhotoFragement1:\nA 'Hand'\n", 1, 4, 101));
-               map.setObjects(new PhotoFragment("PhotoFragement2:\nA \"Face\"\n", 4, 4, 102));
-               map.setObjects(new PhotoFragment("PhotoFragement3:\n\"The Other person\" \n", 1, 8, 103));
-               map.setObjects(new Note("The Perfect poster\nis not first.\n", 16, 8, 200));
-               map.setObjects(new Note("The Strong poster is\nsomewhere before the\nSuccessful poster.\n", 16, 4, 201));
-               map.setObjects(new Note("The Smart poster is\nimmediately before the\nPerfect poster. \n", 21, 4, 202));
-               map.setObjects(new Note("The Successful poster\nis last.\n", 21, 8, 203));
-               map.setObjects(new Posters("1.THE STRONG\n2.THE SMART\n3.THE SUCCESSFUL\n4.THE PERFECT \n", 4, 8, 203));
-               map.setObjects(new Doors(" ", 23, 6, 2));
-               setCurrentRoom(2);
- /*              add = true;*/
-           }
+        if (getCurrentRoom() != 2)
+        {
+            map.clearObjects();
+            map.setObjects(new PhotoFragment("PhotoFragement1:\nA 'Hand'\n", 1, 4, 101));
+            map.setObjects(new PhotoFragment("PhotoFragement2:\nA \"Face\"\n", 4, 4, 102));
+            map.setObjects(new PhotoFragment("PhotoFragement3:\n\"The Other person\" \n", 1, 8, 103));
+            map.setObjects(new Note("The Perfect poster\nis not first.\n", 16, 8, 200));
+            map.setObjects(new Note("The Strong poster is\nsomewhere before the\nSuccessful poster.\n", 16, 4, 201));
+            map.setObjects(new Note("The Smart poster is\nimmediately before the\nPerfect poster. \n", 21, 4, 202));
+            map.setObjects(new Note("The Successful poster\nis last.\n", 21, 8, 203));
+            map.setObjects(new Posters("1.THE STRONG\n2.THE SMART\n3.THE SUCCESSFUL\n4.THE PERFECT \n", 4, 8, 203));
+            map.setObjects(new Doors(" ", 23, 6, 2));
+            setCurrentRoom(2);
+/*              add = true;*/
+        }
 
 
     }
