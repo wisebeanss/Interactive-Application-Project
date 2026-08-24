@@ -148,19 +148,16 @@ void Doors::use()
 
 	if (roomID == 2)
 	{
-		if (question == 1)
+		if (question == 2)
 		{
 			cout << "\r" << string(80, ' ') << "\r";
-			cout << "[Room 2] Answer the riddle to unlock the door.\n\n";
-
-		
-			cout << "Collect the photo, get the notes and make arrange\n";
+			cout << "What is the arrangement?\n";
 			cout << "Enter your answer: ";
+			cin >> answerT1;
+			
+		
 
-			string answer;
-			cin >> answer;
-
-			if (answer == "1243") 
+			if (answerT1 == 1243 )
 			{
 				cout << "\r" << string(80, ' ') << "\r";
 				cout << "You arrange it in the correct order.\n";
@@ -169,25 +166,24 @@ void Doors::use()
 				cout << "DID YOU?\n";
 				changeUnlockedState(true);
 				question = 2;
-				cout << "You step through the unlocked door...\n";
+			
 				return;
 			}
 
-			
-			cout << " Wrong arrange.\n";
-			Timer& t = getGameMap().getTimerObject();
-			t.decreaseTime(120);
-			getGameMap().timerSeconds = t.getMinutes() * 60 + t.getSeconds();
-			cout << "Time remaining: " << t.getMinutes() << "m " << t.getSeconds() << "s\n";
-			return;
+			else {
+				cout << " Wrong arrange.\n";
+				getGameMap().timer.decreaseTime(2 * 60);
+				cout << "2 minutes have been deducted!\n";
+				cout << "\nPress Enter to continue.4";
+				cin.ignore();
+				cin.get();
+
+				system("cls");
+				return;
+			}
 		}
 
-		if (question == 2)
-		{
-			cout << "\r" << string(80, ' ') << "\r";
-			cout << "Room 2 complete! Moving forward...\n";
-			return;
-		}
+	
 
 		return;
 	}
