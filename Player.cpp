@@ -4,6 +4,7 @@
 Player::Player() : GameObject(2, 6, 'P') {
 	setInteract(false);
 	Inventory.fill(nullptr);
+	discarding = false;
 }
 Player::~Player() {
 	for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
@@ -15,20 +16,22 @@ std::string Player::getInvItemSlot(int index) const {
 	InteractiveObject* obj = Inventory.at(index);
 	return (obj == nullptr) ? "Empty" : obj->getName() + to_string(obj->getId());
 }
-void Player::Equip(InteractiveObject* object) {
+bool Player::Equip(InteractiveObject* object) {
 	for (int objIdx = 0; objIdx < Inventory.size(); objIdx++) {
 		if (Inventory.at(objIdx) == nullptr) {
+			//Reminder to self, when inventory is full, make sure to ask user to discard
 			Inventory.at(objIdx) = object;
+			return true;
 			break;
 		}
 	}
+	return false;
 }
-void Player::Discard(InteractiveObject* object) {
-	for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
-		if (Inventory[objIdx] == object) {
-			delete Inventory[objIdx];
-			Inventory[objIdx] = nullptr;
-			break;
+void Player::ClearInv() {
+	for (int objIdx = 0; objIdx < Inventory.size(); objIdx++) {
+		if (Inventory.at(objIdx) != nullptr) {
+			delete Inventory.at(objIdx);
+			Inventory.at(objIdx) = nullptr;
 		}
 	}
 }
@@ -60,8 +63,9 @@ void Player::HandleInput(char symbol, Map &map) {
 		for (size_t i = 0; i < map.getObjects().size(); i++) {
 			InteractiveObject* obj = map.getObjects()[i];
 			if (obj->getX() == getX() && obj->getY() == getY()) {
-				Equip(obj);
-				map.removeObject(obj);
+				if (Equip(obj)) {
+					map.removeObject(obj);
+				}
 				break;
 			}
 		}
@@ -90,7 +94,6 @@ void Player::HandleInput(char symbol, Map &map) {
 		if (Inventory.at(InvSlotIdx) != nullptr) {
 			Inventory.at(InvSlotIdx)->use();
 		}
-		
 	}
 }
 void Player::move(char movement, Map &map)
@@ -132,7 +135,7 @@ void Player::move(char movement, Map &map)
 					door->isUnlocked())
 				{
 					map.nextCarriage();
-
+					ClearInv();
 					setX(2);
 					setY(6);	 
 
@@ -147,7 +150,7 @@ void Player::setInteract(bool Interact)
 {
 	interact = Interact;
 }
-bool Player::getInteract()
+bool Player::getInteract() const
 {
 	return interact;
 }

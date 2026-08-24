@@ -63,9 +63,6 @@
     <ClCompile Include="Lockers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Safe.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Drawers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -137,9 +134,6 @@
     <ClInclude Include="Lockers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Safe.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Drawers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -150,6 +144,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MapObjects.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
