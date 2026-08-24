@@ -19,7 +19,7 @@ InteractiveObject* Player::getInventoryItem(int index) const {
 	if (index >= 0 && index < 7) return Inventory[index];
 	return nullptr;
 }
-bool Player::Equip(InteractiveObject* object) {
+bool Player::Equip(InteractiveObject* object, Map &map) {
 	for (int objIdx = 0; objIdx < Inventory.size(); objIdx++) {
 		if (Inventory.at(objIdx) == nullptr) {
 			//Reminder to self, when inventory is full, make sure to ask user to discard
@@ -82,7 +82,7 @@ void Player::HandleInput(char symbol, Map &map) {
 			InteractiveObject* obj = map.getObjects()[i];
 			if (obj != nullptr && obj->getX() == getX() && obj->getY() == getY()) {
 				obj->disableUI(); // Ensure UI is OFF when entering inventory
-				Equip(obj);
+				Equip(obj, map);
 				map.removeObject(obj);
 				break;
 			}
