@@ -14,7 +14,7 @@ public:
 	~Player();
 	std::string getInvItemSlot(int index) const;
 	void Interact(InteractiveObject& object);
-	void Equip(InteractiveObject* object);
+	void Equip(InteractiveObject* object, Map& map);
 	void Discard(InteractiveObject* object);
 	InteractiveObject* getNearbyObject(Map &map);
 	void HandleInput(char symbol, Map& map);

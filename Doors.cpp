@@ -107,7 +107,7 @@ void Doors::use()
 				cout << "You know the truth.\n";
 				cout << "Room 2 unlocked!\n";
 				changeUnlockedState(true);
-				question = 3;
+				question = 1;
 				attempts = 0;
 				cout << "\r" << string(80, ' ') << "\r";
 				cout << "You step through the door into Carriage 2.\n";
