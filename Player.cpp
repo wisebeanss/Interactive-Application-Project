@@ -4,6 +4,7 @@
 Player::Player() : GameObject(2, 6, 'P') {
 	setInteract(false);
 	Inventory.fill(nullptr);
+	discarding = false;
 }
 Player::~Player() {
 	for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
@@ -19,9 +20,10 @@ InteractiveObject* Player::getInventoryItem(int index) const {
 	if (index >= 0 && index < 7) return Inventory[index];
 	return nullptr;
 }
-void Player::Equip(InteractiveObject* object ,Map& map) {
+void Player::Equip(InteractiveObject* object) {
 	for (int objIdx = 0; objIdx < Inventory.size(); objIdx++) {
 		if (Inventory.at(objIdx) == nullptr) {
+			//Reminder to self, when inventory is full, make sure to ask user to discard
 			Inventory.at(objIdx) = object;
 			if (object->getName() == "Photo Piece")
 			{
@@ -37,13 +39,13 @@ void Player::Equip(InteractiveObject* object ,Map& map) {
 			break;
 		}
 	}
+	return false;
 }
-void Player::Discard(InteractiveObject* object) {
-	for (size_t objIdx = 0; objIdx < Inventory.size(); objIdx++) {
-		if (Inventory[objIdx] == object) {
-			delete Inventory[objIdx];
-			Inventory[objIdx] = nullptr;
-			break;
+void Player::ClearInv() {
+	for (int objIdx = 0; objIdx < Inventory.size(); objIdx++) {
+		if (Inventory.at(objIdx) != nullptr) {
+			delete Inventory.at(objIdx);
+			Inventory.at(objIdx) = nullptr;
 		}
 	}
 }
@@ -80,9 +82,9 @@ void Player::HandleInput(char symbol, Map &map) {
 			InteractiveObject* obj = map.getObjects()[i];
 			if (obj != nullptr && obj->getX() == getX() && obj->getY() == getY()) {
 				obj->disableUI(); // Ensure UI is OFF when entering inventory
-				Equip(obj, map);
+				Equip(obj);
 				map.removeObject(obj);
-				break; 
+				break;
 			}
 		}
 		setInteract(false);
@@ -167,7 +169,7 @@ void Player::move(char movement, Map &map)
 					door->isUnlocked())
 				{
 					map.nextCarriage();
-
+					ClearInv();
 					setX(2);
 					setY(6);	 
 
@@ -182,7 +184,7 @@ void Player::setInteract(bool Interact)
 {
 	interact = Interact;
 }
-bool Player::getInteract()
+bool Player::getInteract() const
 {
 	return interact;
 }
