@@ -28,7 +28,6 @@ void Game::Run() {
 			player.HandleInput(letter, map);
 		}
 		//timer
-		map.updateTimer();
 		getGameMap().updateTimer();
 		//mapping
 	
@@ -58,9 +57,7 @@ void Game::Run() {
 		puzzle.ROOMS(map.getCarriage(), map);
 		auto frameEnd = std::chrono::high_resolution_clock::now();
 		auto elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(frameEnd - frameStart);
-		if (elapsedTime < frameBudget) {
-			std::this_thread::sleep_for(frameBudget - elapsedTime);
-		}
+		std::this_thread::sleep_until(frameStart + frameBudget);
 	}
 }
 void Game::End() {
