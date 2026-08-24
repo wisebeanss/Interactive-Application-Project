@@ -27,6 +27,8 @@ private:
 	bool offMap;
 	bool renderMap;
 	vector<InteractiveObject*> Objects;
+	Suitcase* suitcasePtr = nullptr;
+	bool noteSpawned = false;
 	
 public:
 	int timerSeconds;
@@ -56,6 +58,10 @@ public:
 	void nextCarriage(); //debug
 	int getRoom() const;
 	void nextRoom(); //debug
+
+	void bindSuitcase(Suitcase* ptr);
+	Suitcase* getSuitcase();
+	void checkSuitcaseUnlock();
 	
 	bool getOffMap();
 	void setOffMap(bool printmap);

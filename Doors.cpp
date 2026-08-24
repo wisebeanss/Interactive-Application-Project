@@ -135,7 +135,47 @@ void Doors::use()
 
 	if (roomID == 2)
 	{
-		// 第二节车厢逻辑待写
+		if (question == 1)
+		{
+			cout << "\r" << string(80, ' ') << "\r";
+			cout << "[Room 2] Answer the riddle to unlock the door.\n\n";
+
+		
+			cout << "Collect the photo, get the notes and make arrange\n";
+			cout << "Enter your answer: ";
+
+			string answer;
+			cin >> answer;
+
+			if (answer == "1243") 
+			{
+				cout << "\r" << string(80, ' ') << "\r";
+				cout << "You arrange it in the correct order.\n";
+				cout << "The Strong. The Smart. The Perfect. The Successful.\n";
+				cout << "All the things you thought you had to be.\n";
+				cout << "DID YOU?\n";
+				changeUnlockedState(true);
+				question = 2;
+				cout << "You step through the unlocked door...\n";
+				return;
+			}
+
+			
+			cout << " Wrong arrange.\n";
+			Timer& t = getGameMap().getTimerObject();
+			t.decreaseTime(120);
+			getGameMap().timerSeconds = t.getMinutes() * 60 + t.getSeconds();
+			cout << "Time remaining: " << t.getMinutes() << "m " << t.getSeconds() << "s\n";
+			return;
+		}
+
+		if (question == 2)
+		{
+			cout << "\r" << string(80, ' ') << "\r";
+			cout << "Room 2 complete! Moving forward...\n";
+			return;
+		}
+
 		return;
 	}
 }

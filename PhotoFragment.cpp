@@ -10,6 +10,8 @@ std::string centerText(const std::string& text, int width) {
 
     return std::string(left, ' ') + text + std::string(right, ' ');
 }
+
+
 vector<int> PhotoFragment::Ids;
 void PhotoFragment::use() {
     const int width = 22;
@@ -40,5 +42,6 @@ PhotoFragment::~PhotoFragment() {
         if (Ids.at(i) == getId()) {
             Ids.erase(Ids.begin() + i);
         }
+      
     }
-}
+   }
