@@ -25,9 +25,8 @@ Note::~Note() {
         }
     }
 }
-void Note::getUIBuffer(string buffer[13]) const {
-        const int width = 26;
-        const int boxWidth = width + 2;
+void Note::use() {
+    const int width = 22;
 
         buffer[0] = "                      ";
         buffer[1] = "                      ";
@@ -69,7 +68,7 @@ void Note::use() {
     //    start = end + 1;
     //}
 
-    //std::cout << "|" << centerDescription("", width) << "|" << std::endl;
-    //std::cout << "|" << centerDescription("", width) << "|" << std::endl;
-    //std::cout << "+----------------------+" << std::endl;
+    std::cout << "|" << centerDescription("", width) << "|" << std::endl;
+    std::cout << "|" << centerDescription("", width) << "|" << std::endl;
+    std::cout << "+----------------------+" << std::endl;
 }
