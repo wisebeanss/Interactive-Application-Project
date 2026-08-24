@@ -11,23 +11,51 @@ std::string centerText(const std::string& text, int width) {
     return std::string(left, ' ') + text + std::string(right, ' ');
 }
 vector<int> PhotoFragment::Ids;
-void PhotoFragment::use() {
-    const int width = 22;
+void PhotoFragment::getUIBuffer(string buffer[13]) const {
+    const int width = 26;
+    const int boxWidth = width + 2;
 
-    std::cout << "+----------------------+" << std::endl;
-    std::cout << "|" << centerText("", width) << "|" << std::endl;
-    std::cout << "|" << centerText("", width) << "|" << std::endl;
+    buffer[0] = "                      ";
+    buffer[1] = "                      ";
+    buffer[2] = "                      ";
+    buffer[3] = "+--~-~-~-~-~-~-~-~-~-~-~-~-+";
+
+    int row = 4;
     size_t start = 0;
-    while (start < description.size()) {
+    while (row < 9 && start < description.size()) {
         size_t end = description.find('\n', start);
         if (end == std::string::npos) end = description.size();
         std::string line = description.substr(start, end - start);
-        std::cout << "|" << centerText(line, width) << "|" << std::endl;
-        start = end + 1;
+        buffer[row++] = "|" + centerText(line, width) + "|";
+        start = end + 1; // move past '\n'
     }
-    std::cout << "|" << centerText("", width) << "|" << std::endl;
-    std::cout << "|" << centerText("", width) << "|" << std::endl;
-    std::cout << "+----------------------+" << std::endl;
+    // Fill remaining rows with empty centered lines
+    while (row < 9) {
+        buffer[row++] = "|" + centerText("", width) + "|";
+    }
+    buffer[9] = "+--~-~-~-~-~-~-~-~-~-~-~-~-+";
+    buffer[10] = "                      ";
+    buffer[11] = "                      ";
+    buffer[12] = "                      ";
+}
+void PhotoFragment::use() {
+    enableUI();
+    //const int width = 22;
+
+    //std::cout << "+----------------------+" << std::endl;
+    //std::cout << "|" << centerText("", width) << "|" << std::endl;
+    //std::cout << "|" << centerText("", width) << "|" << std::endl;
+    //size_t start = 0;
+    //while (start < description.size()) {
+    //    size_t end = description.find('\n', start);
+    //    if (end == std::string::npos) end = description.size();
+    //    std::string line = description.substr(start, end - start);
+    //    std::cout << "|" << centerText(line, width) << "|" << std::endl;
+    //    start = end + 1;
+    //}
+    //std::cout << "|" << centerText("", width) << "|" << std::endl;
+    //std::cout << "|" << centerText("", width) << "|" << std::endl;
+    //std::cout << "+----------------------+" << std::endl;
 }
 PhotoFragment::PhotoFragment(string Description, int X, int Y, int id) : InteractiveObject("Photo Piece", id, false){
     setX(X);

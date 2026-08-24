@@ -9,12 +9,14 @@ Game::~Game() {
 void Game::Init() {
 	map.buildMap();
 	map.updateMap(player.getX(), player.getY(), player.getSymbol());
-	map.printSidebar(1, 1, false, player);
 	//map.printMap();
+	std::string defaultBuffer[13];
+	for (int i = 0; i < 13; i++) defaultBuffer[i] = "                                   ";
+	map.printSidebar(1, 1, false, player);
 }
 void Game::Run() {
 	Puzzle puzzle;
-	
+
 	const std::chrono::milliseconds frameBudget(33);
 
 	while (true) {
@@ -31,23 +33,40 @@ void Game::Run() {
 		map.updateTimer();
 		getGameMap().updateTimer();
 		//mapping
-	
+
 		map.updateFrame(); //upd map env frame
 		map.buildMap();
 		//map.updateMap(oldX, oldY, ' ');
 		map.updateMap(player.getX(), player.getY(), player.getSymbol());
 
-		std::string uiBuffer[15];
+		std::string uiBuffer[13];
+		for (int i = 0; i < 13; i++) {
+			uiBuffer[i] = "                                   "; // 35 spaces
+		}
 		bool isUIActive = false;
 		std::string statusMsg = "";
 
 		// If player is interacting with mirror object
-		InteractiveObject* obj = player.getNearbyObject(map);
-		if (obj != nullptr && obj->getUIActive()) {
-			isUIActive = true;
-			obj->getUIBuffer(uiBuffer); // Fills 13-line array
+		InteractiveObject* activeObj = nullptr;
+		InteractiveObject* nearObj = player.getNearbyObject(map);
+		if (nearObj != nullptr && nearObj->getUIActive()) {
+			activeObj = nearObj;
+			/*		isUIActive = true;
+					obj->getUIBuffer(uiBuffer); */
 		}
-		else { statusMsg = "Click 'F' to Interact"; }
+		if (activeObj == nullptr) {
+			for (int i = 0; i < 7; i++) {
+				InteractiveObject* invItem = player.getInventoryItem(i);
+				if (invItem != nullptr && invItem->getUIActive()) {
+					activeObj = invItem;
+					break;
+				}
+			}
+		}
+		if (activeObj != nullptr) {
+			isUIActive = true;
+			activeObj->getUIBuffer(uiBuffer);
+		}
 
 		// Render map and UI simultaneously
 		map.resetCursorPosition();
@@ -63,7 +82,9 @@ void Game::Run() {
 			std::this_thread::sleep_for(frameBudget - elapsedTime);
 		}
 	}
+
+
 }
 void Game::End() {
 
-}
+} 

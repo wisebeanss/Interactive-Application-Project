@@ -10,5 +10,6 @@ public:
     PhotoFragment(string description, int X, int Y, int id);
     ~PhotoFragment();
     void use();
+    void getUIBuffer(string buffer[13]) const override;
 };
 

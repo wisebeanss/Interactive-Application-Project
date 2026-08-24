@@ -21,5 +21,6 @@ public:
 	void move(char movement, Map& map);
 	void setInteract(bool Interact);
 	bool getInteract();
+	InteractiveObject* getInventoryItem(int index) const;
 };
 

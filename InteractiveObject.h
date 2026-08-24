@@ -24,5 +24,6 @@ public:
 		for (int i = 0; i < 13; i++) buffer[i] = "                      ";
 	}
 	void enableUI();
+	void disableUI();
 };
 
