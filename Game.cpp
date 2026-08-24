@@ -47,7 +47,7 @@ void Game::Run() {
 
 		// If player is interacting with mirror object
 		InteractiveObject* activeObj = nullptr;
-		InteractiveObject* nearObj = player.getNearbyObject(map);
+		InteractiveObject* nearObj = player.getNearbyObject();
 		if (nearObj != nullptr && nearObj->getUIActive()) {
 			activeObj = nearObj;
 			/*		isUIActive = true;
@@ -64,12 +64,11 @@ void Game::Run() {
 		}
 		if (activeObj != nullptr) {
 			InteractiveObject* obj = player.getNearbyObject();
+			if (obj != nullptr && obj->getUIActive()) {
+				isUIActive = true;
+				activeObj->getUIBuffer(uiBuffer);
+			}
 		}
-		if (obj != nullptr && obj->getUIActive()) {
-			isUIActive = true;
-			activeObj->getUIBuffer(uiBuffer);
-		}
-
 		// Render map and UI simultaneously
 		map.resetCursorPosition();
 		map.printSidebar(map.getCarriage(), map.getRoom(), isUIActive, player, uiBuffer);
