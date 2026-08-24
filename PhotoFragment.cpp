@@ -19,8 +19,9 @@ void PhotoFragment::getUIBuffer(string buffer[13]) const {
 
     buffer[0] = "                      ";
     buffer[1] = "                      ";
-    buffer[2] = "                      ";
-    buffer[3] = "+--~-~-~-~-~-~-~-~-~-~-~-~-+";
+    buffer[2] = "+--~-~-~-~-~-~-~-~-~-~-~-~-+";
+    buffer[3] = "|--------------------------|";
+    
 
     int row = 4;
     size_t start = 0;
