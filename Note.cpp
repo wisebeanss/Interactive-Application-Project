@@ -54,6 +54,7 @@ void Note::getUIBuffer(string buffer[13]) const {
 }
 void Note::use() {
     enableUI();
+}
     //const int width = 22;
 
     //std::cout << "+----------------------+" << std::endl;
