@@ -92,7 +92,7 @@ bool Puzzle::ROOMS(int roomID, Map& map)
              map.setObjects(new Letters("No timestamp.\n", 21, 8, 203));
              map.setObjects(new Photograph("Taken at 10:20. \n", 21, 8, 203));
              map.setObjects(new Watch("Stopped at 11:35. \n", 1, 8, 103));
-             map.setObjects(new Doors(" ", 23, 6, 301));
+             map.setObjects(new Doors(" ", 23, 6, 2));
             setCurrentRoom(3);
             // add = true;
         }
