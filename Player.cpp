@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "Doors.h"
 
-Player::Player() : GameObject(2, 6, 'P') {
+Player::Player(Map &map) : GameObject(2, 6, 'P') , map(map){
 	setInteract(false);
 	Inventory.fill(nullptr);
 }
@@ -19,7 +19,7 @@ InteractiveObject* Player::getInventoryItem(int index) const {
 	if (index >= 0 && index < 7) return Inventory[index];
 	return nullptr;
 }
-bool Player::Equip(InteractiveObject* object, Map &map) {
+bool Player::Equip(InteractiveObject* object) {
 	for (int objIdx = 0; objIdx < Inventory.size(); objIdx++) {
 		if (Inventory.at(objIdx) == nullptr) {
 			//Reminder to self, when inventory is full, make sure to ask user to discard
@@ -49,7 +49,7 @@ void Player::ClearInv() {
 		}
 	}
 }
-InteractiveObject* Player::getNearbyObject(Map& map) {
+InteractiveObject* Player::getNearbyObject() {
 	for (int i = 0; i < map.getObjects().size(); i++) {
 		int objX = map.getObjects()[i]->getX();
 		int objY = map.getObjects()[i]->getY();
@@ -63,7 +63,7 @@ InteractiveObject* Player::getNearbyObject(Map& map) {
 	}
 	return nullptr;
 }
-void Player::HandleInput(char symbol, Map &map) {
+void Player::HandleInput(char symbol) {
 	//movement
 	if (symbol == 'w' || symbol == 'a' || symbol == 's' || symbol == 'd') {
 		for (size_t i = 0; i < map.getObjects().size(); i++) {
@@ -77,12 +77,12 @@ void Player::HandleInput(char symbol, Map &map) {
 				Inventory[i]->disableUI();
 			}
 		}
-		move(symbol, map);
+		move(symbol);
 		for (size_t i = 0; i < map.getObjects().size(); i++) {
 			InteractiveObject* obj = map.getObjects()[i];
 			if (obj != nullptr && obj->getX() == getX() && obj->getY() == getY()) {
 				obj->disableUI(); // Ensure UI is OFF when entering inventory
-				Equip(obj, map);
+				Equip(obj);
 				map.removeObject(obj);
 				break;
 			}
@@ -100,7 +100,7 @@ void Player::HandleInput(char symbol, Map &map) {
 		map.buildMap();
 	}	
 	else if (symbol == 'f') {
-		InteractiveObject* nearbyObject = getNearbyObject(map);
+		InteractiveObject* nearbyObject = getNearbyObject();
 		if (nearbyObject != nullptr) {
 			setInteract(true);
 			nearbyObject->use();
@@ -130,7 +130,7 @@ void Player::HandleInput(char symbol, Map &map) {
 		}
 	}
 }
-void Player::move(char movement, Map &map)
+void Player::move(char movement)
 {
 	int newX = getX();
 	int newY = getY();

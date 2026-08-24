@@ -1,7 +1,6 @@
 #include "Game.h"
 
-Game::Game() {
-
+Game::Game() : player(map){
 }
 Game::~Game() {
 
@@ -25,7 +24,7 @@ void Game::Run() {
 
 		if (_kbhit()) {
 			char letter = _getch();
-			player.HandleInput(letter, map);
+			player.HandleInput(letter);
 		}
 		//timer
 		getGameMap().updateTimer();
@@ -39,7 +38,7 @@ void Game::Run() {
 		std::string statusMsg = "";
 
 		// If player is interacting with mirror object
-		InteractiveObject* obj = player.getNearbyObject(map);
+		InteractiveObject* obj = player.getNearbyObject();
 		if (obj != nullptr && obj->getUIActive()) {
 			isUIActive = true;
 			obj->getUIBuffer(uiBuffer); // Fills 13-line array
