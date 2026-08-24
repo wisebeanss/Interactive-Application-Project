@@ -31,7 +31,7 @@ void Timer::decreaseTime(int seconds)
     if (timeLeft < 0)
         timeLeft = 0;
 
-    // Reset the reference point so the penalty doesn't get counted again
+    //reset so the penalty doesn't get counted again
     lastTime = std::chrono::steady_clock::now();
 }
 
