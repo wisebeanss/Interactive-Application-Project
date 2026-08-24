@@ -13,6 +13,6 @@ public:
     Suitcase(int x, int y, int id);
     void collectPhoto(int num);
     bool hasAllPhotos();
-    bool tryUnlock();
+    void use();
     bool isUnlocked() const;
 };

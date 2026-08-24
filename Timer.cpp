@@ -10,9 +10,9 @@ void Timer::update()
 {
     auto currentTime = std::chrono::steady_clock::now();
 
-    int elapsed = std::chrono::duration_cast<std::chrono::seconds>(
+    int elapsed = static_cast<int>(std::chrono::duration_cast<std::chrono::seconds>(
         currentTime - lastTime
-    ).count();
+    ).count());
 
     if (elapsed > 0)
     {
@@ -31,7 +31,7 @@ void Timer::decreaseTime(int seconds)
     if (timeLeft < 0)
         timeLeft = 0;
 
-    // Reset the reference point so the penalty doesn't get counted again
+    //reset so the penalty doesn't get counted again
     lastTime = std::chrono::steady_clock::now();
 }
 
