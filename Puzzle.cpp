@@ -43,9 +43,9 @@ bool Puzzle::ROOMS(int roomID, Map& map)
            if (getCurrentRoom() != 2)
            {
                map.clearObjects();
-               map.setObjects(new PhotoFragment("Clock1: A ‘Hand’\n", 1, 4, 101));
-               map.setObjects(new PhotoFragment("Clock2: A “Face”\n", 4, 4, 102));
-               map.setObjects(new PhotoFragment("Clock3: “The Other person” \n", 1, 8, 103));
+               map.setObjects(new PhotoFragment("PhotoFragement1:\nA 'Hand'\n", 1, 4, 101));
+               map.setObjects(new PhotoFragment("PhotoFragement2:\nA \"Face\"\n", 4, 4, 102));
+               map.setObjects(new PhotoFragment("PhotoFragement3:\n\"The Other person\" \n", 1, 8, 103));
                map.setObjects(new Note("The Perfect poster\nis not first.\n", 16, 8, 200));
                map.setObjects(new Note("The Strong poster is\nsomewhere before the\nSuccessful poster.\n", 16, 4, 201));
                map.setObjects(new Note("The Smart poster is\nimmediately before the\nPerfect poster. \n", 21, 4, 202));
