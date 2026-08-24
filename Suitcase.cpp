@@ -4,7 +4,10 @@
 using namespace std;
 
 Suitcase::Suitcase(int x, int y, int id)
-    : InteractiveObject("Suitcase", id, false)
+    : InteractiveObject("Suitcase", id, false), photo1(false),
+    photo2(false),
+    photo3(false),
+    unlocked(false)
 {
     setX(x);
     setY(y);

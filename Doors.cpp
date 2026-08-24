@@ -65,6 +65,11 @@ void Doors::use()
 				cout << "11:51...\n";
 				cout << "You stare at its hands. The time feels familiar, yet you cannot recall why.\n";
 				cout << "You can now solve Puzzle 2.\n";
+				cout << "\nPress Enter to continue...";
+				cin.ignore();
+				cin.get();
+
+				system("cls");
 				question = 2;
 				attempts = 0;
 				return;
@@ -75,12 +80,11 @@ void Doors::use()
 			
 				Timer& t = getGameMap().getTimerObject();
 
-				cout << "Before: " << t.getMinutes() << "m" << t.getSeconds() << "s\n";
+				cout << "\nPress Enter to continue...";
+				cin.ignore();
+				cin.get();
 
-				t.decreaseTime(120);
-				getGameMap().timerSeconds = t.getMinutes() * 60 + t.getSeconds();
-
-				cout << "After:  " << t.getMinutes() << "m" << t.getSeconds() << "s\n";
+				system("cls");
 
 				if (attempts == 3)
 				{
@@ -106,11 +110,15 @@ void Doors::use()
 				cout << "Your reflection looks directly at you.\n";
 				cout << "You know the truth.\n";
 				cout << "Room 2 unlocked!\n";
+				cout << "\nPress Enter to continue...";
+				cin.ignore();
+				cin.get();
+
+				system("cls");
 				changeUnlockedState(true);
 				question = 3;
 				attempts = 0;
 				cout << "\r" << string(80, ' ') << "\r";
-				cout << "You step through the door into Carriage 2.\n";
 				return;
 			}
 			else
@@ -118,6 +126,11 @@ void Doors::use()
 				cout << "\nThat mirror lies. Think again.\n";
 				getGameMap().timer.decreaseTime(2 * 60);
 				cout << "2 minutes have been deducted!\n";
+				cout << "\nPress Enter to continue...";
+				cin.ignore();
+				cin.get();
+
+				system("cls");
 
 				if (attempts >= 3)
 				{
