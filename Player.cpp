@@ -24,6 +24,17 @@ bool Player::Equip(InteractiveObject* object) {
 		if (Inventory.at(objIdx) == nullptr) {
 			//Reminder to self, when inventory is full, make sure to ask user to discard
 			Inventory.at(objIdx) = object;
+			if (object->getName() == "Photo Piece")
+			{
+				for (InteractiveObject* itm : map.getObjects())
+				{
+					if (itm->getName() == "Suitcase")
+					{
+						Suitcase* suitcase = dynamic_cast<Suitcase*>(itm);
+						suitcase->collectPhoto();
+					}
+				}
+			}
 			break;
 			return true;
 		}

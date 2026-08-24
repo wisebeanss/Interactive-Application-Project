@@ -41,7 +41,7 @@ bool Suitcase::tryUnlock()
         cout << "Was I really there?\n";
 
         unlocked = true;
-        cout << "\n📝A note has appeared nearby.\n";
+        cout << "\nA note has appeared nearby.\n";
         return true;
     }
     else
