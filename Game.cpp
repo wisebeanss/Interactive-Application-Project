@@ -11,7 +11,7 @@ void Game::Init() {
 	//map.printMap();
 	std::string defaultBuffer[13];
 	for (int i = 0; i < 13; i++) defaultBuffer[i] = "                                   ";
-	map.printSidebar(1, 1, false, player);
+	map.printSidebar(1, 1, false, player, defaultBuffer);
 }
 void Game::Run() {
 	Puzzle puzzle;
@@ -62,12 +62,9 @@ void Game::Run() {
 				}
 			}
 		}
-		if (activeObj != nullptr) {
-			InteractiveObject* obj = player.getNearbyObject();
-			if (obj != nullptr && obj->getUIActive()) {
-				isUIActive = true;
-				activeObj->getUIBuffer(uiBuffer);
-			}
+		if (activeObj != nullptr && activeObj->getUIActive()) {
+			isUIActive = true;
+			activeObj->getUIBuffer(uiBuffer);
 		}
 		// Render map and UI simultaneously
 		map.resetCursorPosition();

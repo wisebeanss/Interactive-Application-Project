@@ -92,7 +92,7 @@ bool Puzzle::ROOMS(int roomID, Map& map)
              map.setObjects(new Letters("No timestamp.\n", 21, 8, 203));
              map.setObjects(new Photograph("Taken at 10:20. \n", 21, 8, 203));
              map.setObjects(new Watch("Stopped at 11:35. \n", 1, 8, 103));
-             map.setObjects(new Doors(" ", 23, 6, 301));
+             map.setObjects(new Doors(" ", 23, 6, 2));
             setCurrentRoom(3);
             // add = true;
         }
@@ -109,7 +109,7 @@ bool Puzzle::ROOMS(int roomID, Map& map)
             map.setObjects(new Posters("1.FIRST TRAIN RIDE 2.CHILDHOOD 3.LAST SUMMER 4. PHOTOGRAPH\n", 4, 8, 103));
             map.setObjects(new Note("Childhood came before the first train ride.The last summer was immediately before the photograph. The first train ride happened after childhood. The photograph was before my first train ride. I dont remember writing one of the lines. \n", 16, 4, 201));
             map.setObjects(new Suitcase(23, 6, 301));
-            map.setObjects(new Doors(" ", 23, 6, 301));
+            map.setObjects(new Doors(" ", 23, 6, 2));
             setCurrentRoom(4);
             //add = true;
         }
