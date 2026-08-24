@@ -65,6 +65,13 @@ void Doors::use()
 				cout << "11:51...\n";
 				cout << "You stare at its hands. The time feels familiar, yet you cannot recall why.\n";
 				cout << "You can now solve Puzzle 2.\n";
+				cout << "\nPress Enter to continue.";
+
+				//clear dialogue
+				cin.ignore();
+				cin.get();
+				system("cls");
+
 				question = 2;
 				attempts = 0;
 				return;
@@ -105,12 +112,17 @@ void Doors::use()
 				cout << "The mirrors go still.\n";
 				cout << "Your reflection looks directly at you.\n";
 				cout << "You know the truth.\n";
-				cout << "Room 2 unlocked!\n";
+				cout << "Carriage 2 unlocked!\n";
+				cout << "\nPress Enter to continue.";
+
+				//clear dialogue
+				cin.ignore();
+				cin.get();
+				system("cls");
+
 				changeUnlockedState(true);
 				question = 3;
 				attempts = 0;
-				cout << "\r" << string(80, ' ') << "\r";
-				cout << "You step through the door into Carriage 2.\n";
 				return;
 			}
 			else
@@ -135,7 +147,7 @@ void Doors::use()
 
 	if (roomID == 2)
 	{
-		// 第二节车厢逻辑待写
+		
 		return;
 	}
 }
