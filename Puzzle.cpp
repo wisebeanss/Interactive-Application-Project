@@ -83,8 +83,8 @@ bool Puzzle::ROOMS(int roomID, Map& map)
         if (getCurrentRoom() != 3)
         {
             map.clearObjects();
-             map.setObjects(new Phones("First call: 11:32", 2, 8, 101));
-             map.setObjects(new Phones("Final call: 11:37", 5, 4, 102));
+             map.setObjects(new Phones(" First call:\n 11:32", 2, 8, 101));
+             map.setObjects(new Phones(" Final call:\n 11:37", 5, 4, 102));
              map.setObjects(new Letters("I called again\n two minutes later. \n", 3, 8, 103));
              map.setObjects(new Clocks("Stopped at 11:35 \n", 5, 8, 103));
              map.setObjects(new Suitcase(16, 4, 201, 3));

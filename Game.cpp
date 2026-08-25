@@ -61,7 +61,7 @@ void Game::Run() {
 					break;
 				}
 			}
-		}
+		} 
 		if (activeObj != nullptr && activeObj->getUIActive()) {
 			isUIActive = true;
 			activeObj->getUIBuffer(uiBuffer);
