@@ -159,13 +159,13 @@ bool Puzzle::ROOMS(int roomID, Map& map)
             map.setObjects(new Letters("Dear you, I don't\nknow if you're\nstill listening.\nI'm sorry.\nWritten on Friday\n", 1, 8, 103));
             map.setObjects(new Letters("\"Dear you,I don't know\nwhy I keep writing\nthese.You're not going\nto read them anyway.\"\nNo date\n", 4, 8, 103));
             map.setObjects(new Note("The last letter was\nwritten after I stopped expecting\nan answer.\n", 16, 4, 201));
-            map.setObjects(new Note("I stopped calling\nbefore I stopped writing.", 23, 6, 301));
+            map.setObjects(new Note("I stopped calling\nbefore I stopped writing.",9, 4, 301));
             map.setObjects(new Suitcase(5, 8, 301, 5));
-            map.setObjects(new Lockers("The locker is empty.A faded sticker reads: \"PROPERTY OF STAFF\"", 23, 6, 301));
-            map.setObjects(new Lockers("Inside is an old school notebook.The name has been scratched out.", 23, 6, 301));
-            map.setObjects(new Lockers("A scarf is hanging inside.You recognize it. You remember seeing it before. But you can't remember where. ", 23, 6, 301));
-            map.setObjects(new Lockers("The locker contains a train ticket. Destination: UNKNOWN Seat: 18 ", 23, 6, 301));
-            map.setObjects(new Lockers("There is nothing inside.But someone's name is carved into the door. ", 23, 6, 301));
+            map.setObjects(new Lockers("The locker is empty.A faded sticker reads: \"PROPERTY OF STAFF\"", 12, 4, 301));
+            map.setObjects(new Lockers("Inside is an old school notebook.The name has been scratched out.", 13, 4, 301));
+            map.setObjects(new Lockers("A scarf is hanging inside.You recognize it. You remember seeing it before. But you can't remember where. ", 21, 8, 301));
+            map.setObjects(new Lockers("The locker contains a train ticket. Destination: UNKNOWN Seat: 18 ", 12, 8, 301));
+            map.setObjects(new Lockers("There is nothing inside.But someone's name is carved into the door. ", 13, 8, 301));
             map.setObjects(new Doors(" ", 23, 6, 5));
             setCurrentRoom(5);
         }
