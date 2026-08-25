@@ -9,7 +9,6 @@ private:
     string line;
     int roomID = 0;
     int question = 0;
-    int attempts = 0;
     bool unlocked;
     Timer timer;
 
