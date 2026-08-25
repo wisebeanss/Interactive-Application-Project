@@ -47,8 +47,14 @@ void Lockers::use()
     cout << "+----------------------+" << endl;
     cout << "|" << centerLockerText("", width) << "|" << endl;
     cout << "|" << centerLockerText("LOCKER " + to_string(getId()), width) << "|" << endl;
-    cout << "|" << centerLockerText("", width) << "|" << endl;
-    cout << "|" << centerLockerText(text, width) << "|" << endl;
+    size_t start = 0;
+    while (start < text.size()) {
+        size_t end = text.find('\n', start);
+        if (end == std::string::npos) end = text.size();
+        std::string line = text.substr(start, end - start);
+        std::cout << "|" << centerLockerText(line, width) << "|" << std::endl;
+        start = end + 1;
+    }
     cout << "|" << centerLockerText("", width) << "|" << endl;
     cout << "|" << centerLockerText("", width) << "|" << endl;
     cout << "+----------------------+" << endl;

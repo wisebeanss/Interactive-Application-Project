@@ -24,7 +24,7 @@ bool Suitcase::isUnlocked()
 
 void Suitcase::collectPhoto()
 {
-    if (roomID == 2)
+    if (roomID == 2 || roomID == 4)
     {
         noOfPhotos = noOfPhotos + 1;
     }
@@ -32,7 +32,7 @@ void Suitcase::collectPhoto()
 
 bool Suitcase::hasAllPhotos()
 {
-    if (roomID == 2)
+    if (roomID == 2 || roomID == 4)
     {
         return noOfPhotos == 3;
     }
@@ -49,7 +49,7 @@ void Suitcase::setProgressState(int s)
     progressState = s;
 }
 
-bool Suitcase::tryUnlock()
+void Suitcase::tryUnlock()
 {
     string hintMsg;
     if (roomID == 2)
@@ -59,11 +59,10 @@ bool Suitcase::tryUnlock()
         {
             canunlock = hasAllPhotos();
             cout << "\n" << hintMsg << "\n";
-            return false;
         }
         if (canunlock)
         {
-            cout << "\r" << string(80, ' ') << "\r";
+            cout << "\r";
             cout << "A hand reaching out.\n";
             cout << "A face turned away.\n";
             cout << "Someone sitting beside you.\n";
@@ -71,7 +70,6 @@ bool Suitcase::tryUnlock()
             cout << "Was I really there?\n";
             cout << "\nA note has appeared nearby.\n";
             unlocked = canunlock;
-            return true;
         }
     }
     else if (roomID == 3)
@@ -107,7 +105,6 @@ bool Suitcase::tryUnlock()
                     }
                 }
             }
-            return false;
         }
         if (canunlock)
         {
@@ -119,22 +116,67 @@ bool Suitcase::tryUnlock()
             cout << "\"I wasn't there.\"\n";
             cout << "You step back.\n";
             unlocked = canunlock;
-            return true;
         }
         //1132 1134 1135 1137
     }
-    else if (roomID == 4)
+    if (roomID == 4)
     {
-        unlocked = (progressState >= 2);
-        hintMsg = "The suitcase is still locked. Complete the sequence first.";
+        hintMsg = "The suitcase is still locked. Find all 3 photos first.\nPieces collected: " + to_string(noOfPhotos) + "/3";
+        if (!canunlock)
+        {
+            canunlock = hasAllPhotos();
+            cout << "\n" << hintMsg << "\n";
+        }
+        if (canunlock)
+        {
+            cout << "\r";
+            cout << "You place the fragments together.\n";
+            cout << "The photograph slowly becomes whole.\n";
+            cout << "You see yourself as a child.\n";
+            cout << "Then, sitting beside them.\n";
+            cout << "Then, standing beside them.\n";
+            cout << "You stare at the faded face beside yours.\n";
+            cout << "\"I remember you\"\n";
+            cout << "Your fingers tighten around the photograph.\n";
+            cout << "\"I just wish I didn't.\"\n";
+            cout << "The suitcase opens\n";
+            unlocked = canunlock;
+        }
     }
+    if (roomID == 5)
+    {
+        hintMsg = "which letter was written last :";
+        if (!canunlock)
+        {
+            cout << "\n" << hintMsg << "\n";
+            string answer;
+            cin >> answer;
+            if (answer == "D")
+            {
+                canunlock = true;
+            }
+        }
+        if (canunlock)
+        {
+            cout << "Letters lie scattered across the table,\n";
+            cout << "written one after another as hope slowly faded.\n";
+            cout << "Two notes are pinned to the wall.\n";
+            cout << "\"The last letter was written after I stopped expecting an answer.\"\n";
+            cout << "\"I stopped calling before I stopped writing.\"\n";
+            cout << "Three letters bear dates, marking the days she still waited.\n";
+            cout << "And one - without a date -\n";
+            cout << "written after she had finally stopped waiting entirely.\n";
+            cout << "You choose the letter with no date.\n";
+            cout << "The safe clicks open.\n";
 
-
+            unlocked = true;
+        }
+    }
 }
 
 void Suitcase::use()
 {
-    cout << "\r" << string(80, ' ') << "\r";
+    cout << "\r";
 
     if (isUnlocked())
     {

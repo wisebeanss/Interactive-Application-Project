@@ -7,6 +7,7 @@ class Puzzle
 {
 private:
     int currentRoom;
+    bool suitcaseUnlock;
 public:
     // Puzzle functions
     void Carriages(int carriageID, int roomID, Map& map);

@@ -21,10 +21,10 @@ void Puzzle::Carriages(int carriageID, int roomID, Map& map) {
     case 1:
         if (getCurrentCarriage() != 1) {
             map.clearObjects();
-            map.setObjects(new Clocks("Clock1: The incident happened one hour after 10 \n", 1, 4, 101));
-            map.setObjects(new Clocks("Clock2: The minute hand stopped at 45.\n", 4, 4, 102));
-            map.setObjects(new Clocks("Clock3: The seconds hand stopped at 12.\n", 1, 8, 103));
-            map.setObjects(new Clocks("Clock4: This clock was 5 minutes slow.\n", 4, 8, 103));
+            map.setObjects(new Clocks("\n  Clock1:\nThe incident\n happened one\n hour after 10\n", 1, 4, 101));
+            map.setObjects(new Clocks("\n  Clock2:\n The minute hand\n stopped at 45.\n", 4, 4, 102));
+            map.setObjects(new Clocks("\n  Clock3:\n The seconds hand\n stopped at 12 \n", 1, 8, 103));
+            map.setObjects(new Clocks("\n  Clock4:\n This clock was\n 5 minutes slow.\n", 4, 8, 103));
             map.setObjects(new Mirrors("MirrorA: The reflection\nis smiling But you are not\n", 16, 4, 201));
             map.setObjects(new Mirrors("MirrorB: You raise your\nleft hand. The reflection\nraises its right hand\n", 21, 4, 202));
             map.setObjects(new Mirrors("MirrorC:You raise your\nleft hand.The reflection\nraises its left hand.\nYou blink.\nIt blinks with you.\n", 21, 8, 203));
@@ -71,8 +71,8 @@ void Puzzle::Carriages(int carriageID, int roomID, Map& map) {
     case 3: {
         if (getCurrentCarriage() != 3) {
             map.clearObjects();
-            map.setObjects(new Phones("First call: 11:32", 2, 8, 101));
-            map.setObjects(new Phones("Final call: 11:37", 5, 4, 102));
+            map.setObjects(new Phones("First call:\n11:32", 2, 8, 101));
+            map.setObjects(new Phones("Final call:\n11:37", 5, 4, 102));
             map.setObjects(new Letters("I called again\n two minutes later. \n", 3, 8, 103));
             map.setObjects(new Clocks("Stopped at 11:35 \n", 5, 8, 103));
             map.setObjects(new Suitcase(16, 4, 201, 3));
@@ -117,7 +117,7 @@ void Puzzle::Carriages(int carriageID, int roomID, Map& map) {
                     if (suitcase->isUnlocked() == true) {
                         map.clearObjects();
                         map.setObjects(new Posters("1.FIRST TRAIN RIDE\n2.CHILDHOOD\n3.LAST SUMMER\n4. PHOTOGRAPH\n", 4, 8, 103));
-                        map.setObjects(new Note("Childhood came before\nthe first train ride.\nThe last summer was\nimmediately before the\nphotograph.The first train\nride happened after childhood.\nThe photograph was\nbefore my first train ride.\nI dont remember writing\none of the lines. \n", 16, 4, 201));
+                        map.setObjects(new Note("Childhood came before\nthe first train ride.\nThe last summer was\nimmediately before the\nphotograph.The first train\nride happened after\nchildhood.The photograph\nwasbefore my first train\nride.I dont remember\nwriting one of the lines. \n", 16, 4, 201));
                         map.setObjects(new Doors(" ", 23, 6, 4));
                     }
                 }
@@ -132,14 +132,14 @@ void Puzzle::Carriages(int carriageID, int roomID, Map& map) {
             map.setObjects(new Letters("Dear you, I tried\ncalling today.\nYou didn't answer.\nI'll try again.\nWritten on Wednesday \n", 4, 4, 102));
             map.setObjects(new Letters("Dear you, I don't\nknow if you're\nstill listening.\nI'm sorry.\nWritten on Friday\n", 1, 8, 103));
             map.setObjects(new Letters("\"Dear you,I don't know\nwhy I keep writing\nthese.You're not going\nto read them anyway.\"\nNo date\n", 4, 8, 103));
-            map.setObjects(new Note("The last letter was\nwritten after I stopped expecting\nan answer.\n", 16, 4, 201));
-            map.setObjects(new Note("I stopped calling\nbefore I stopped writing.", 23, 6, 301));
+            map.setObjects(new Note("The last letter was\nwritten after I stopped\nexpecting an answer.\n", 16, 4, 201));
+            map.setObjects(new Note("I stopped calling\nbefore I stopped writing.",9, 4, 301));
             map.setObjects(new Suitcase(5, 8, 301, 5));
-            map.setObjects(new Lockers("The locker is empty.A faded sticker reads: \"PROPERTY OF STAFF\"", 23, 6, 301));
-            map.setObjects(new Lockers("Inside is an old school notebook.The name has been scratched out.", 23, 6, 301));
-            map.setObjects(new Lockers("A scarf is hanging inside.You recognize it. You remember seeing it before. But you can't remember where. ", 23, 6, 301));
-            map.setObjects(new Lockers("The locker contains a train ticket. Destination: UNKNOWN Seat: 18 ", 23, 6, 301));
-            map.setObjects(new Lockers("There is nothing inside.But someone's name is carved into the door. ", 23, 6, 301));
+            map.setObjects(new Lockers("The locker is empty.\nA faded sticker reads:\n\"PROPERTY OF STAFF\"", 12, 4, 301));
+            map.setObjects(new Lockers("Inside is an old\nschool notebook.The \nname has been\nscratched out.", 13, 4, 301));
+            map.setObjects(new Lockers("A scarf is hanging\ninside. You recognize it.\nYou remember seeing it\nbefore. But you can't\nremember where. ", 21, 8, 301));
+            map.setObjects(new Lockers("The locker contains\na train ticket.\nDestination:UNKNOWN\nSeat: 18 ", 12, 8, 301));
+            map.setObjects(new Lockers("There is nothing\ninside. But someone's\nname is carved into\nthe door. ", 13, 8, 301));
             map.setObjects(new Doors(" ", 23, 6, 5));
             setCurrentCarriage(5);
         }
@@ -174,13 +174,14 @@ void Puzzle::Carriages(int carriageID, int roomID, Map& map) {
             map.setObjects(new Drawers("A photograph.You recognize the person in it.On the back: \"I\'ll see you again.\" \n", 1, 8, 103));
             map.setObjects(new Drawers("A small key.You don't recognize it. \n", 4, 8, 103));
             map.setObjects(new Drawers("A folded piece of paper.You recognize the handwriting. It's yours.\n", 16, 4, 201));
-            map.setObjects(new Note("You searched for answers everywhere except where you left them.", 23, 6, 301));
-            map.setObjects(new Note("The truth is not something you were given.", 23, 6, 301));
-            map.setObjects(new Note("You already knew.", 23, 6, 301));
-            map.setObjects(new Note("The third path is the one that stops the train.", 23, 6, 301));
+            map.setObjects(new Note("You searched for answers everywhere except where you left them.", 16, 8, 301));
+            map.setObjects(new Note("The truth is not something you were given.", 20, 8, 301));
+            map.setObjects(new Note("You already knew.", 20, 4, 301));
+            map.setObjects(new Note("The third path is the one that stops the train.", 5, 8, 301));
             map.setObjects(new Suitcase(23, 6, 301, 6));
             map.setObjects(new Doors(" ", 23, 6, 301));
             map.setObjects(new Doors(" ", 23, 6, 4));
+            map.setObjects(new Doors(" ", 23, 8, 6));
             setCurrentCarriage(6);
         }
     }
