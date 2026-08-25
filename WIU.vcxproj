@@ -150,6 +150,7 @@
     <ClCompile Include="Letters.cpp" />
     <ClCompile Include="Lockers.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Note.cpp" />
     <ClCompile Include="PhotoFragment.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="entirescenes.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="MapObjects.h" />
     <ClInclude Include="InteractiveObject.h" />
     <ClInclude Include="Letters.h" />
