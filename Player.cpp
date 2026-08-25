@@ -22,7 +22,6 @@ InteractiveObject* Player::getInventoryItem(int index) const {
 bool Player::Equip(InteractiveObject* object) {
 	for (int objIdx = 0; objIdx < Inventory.size(); objIdx++) {
 		if (Inventory.at(objIdx) == nullptr) {
-			//Reminder to self, when inventory is full, make sure to ask user to discard
 			Inventory.at(objIdx) = object;
 			if (object->getName() == "Photo Piece")
 			{
@@ -35,8 +34,9 @@ bool Player::Equip(InteractiveObject* object) {
 					}
 				}
 			}
-			break;
 			return true;
+			break;
+			
 		}
 	}
 	return false;
@@ -86,6 +86,23 @@ void Player::HandleInput(char symbol) {
 				map.removeObject(obj);
 				break;
 			}
+			if (map.mapSize[getY()][getX()] == '_') {
+				cout << map.getRoom();
+				if (map.getRoom() == 1) {
+					map.nextRoom();
+					setX(2);
+					setY(5);
+					break;
+				}
+				else {
+					map.prevRoom();
+					setX(22);
+					setY(2);
+					break;
+				}
+				
+			}
+			
 		}
 		setInteract(false);
 		system("cls");

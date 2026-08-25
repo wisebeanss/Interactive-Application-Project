@@ -200,7 +200,7 @@ void Doors::use()
 	{
 		if (question == 1)
 		{
-			cout << "What is the answer:\n";
+			cout << "You should pick up.......\n";
 			cin >> answerT3;
 
 			//uppercase
@@ -318,15 +318,207 @@ void Doors::use()
 			cout << "1.	The last letter was written after I stopped expecting an answer.\n";
 			cout << "Tell me which letter is the last one \n";
 			cout << "Enter your answer: ";
-			cin >> answerT1;
+			cin >> answerT2;
 			if (answerT2 == 'D') {
 				cout << "\r" << string(80, ' ') << "\r";
 				cout << "Letters lie scattered across the table, written one after another as hope slowly faded.\n";
 				cout << "Two notes are pinned to the wall:\n";
 				cout << "All the things you thought you had to be.\n";
 				cout << "\"Which one are you ? \"\n";
-				
+				cout << "\nPress Enter to continue...";
+				cin.ignore();
+				cin.get();
 
+				system("cls");
+				attempts = 0;
+				question = 2;
+				return;
+			}
+			else{
+				cout << "\nWrong answer.\n";
+
+				getGameMap().timer.decreaseTime(2 * 60);
+				cout << "2 minutes have been deducted!\n";
+
+				cout << "\nPress Enter to continue...";
+				cin.ignore();
+				cin.get();
+
+				system("cls");
+				return;
+				if (attempts >= 3) {
+					cout << "TAKE NOTE: \n";
+					cout << "I stopped calling before i  stopped writing.\n ";
+					attempts -= 1;
+
+				}
+				return;
+
+			}
+		}
+
+		if (question == 2) {
+			cout << "\r" << string(80, ' ') << "\r";
+			cout << "Open the correct locker , get the answer you want\n";
+			cout << "Enter your answer: ";
+			cin >> answerT1;
+			if (answerT1 == 3) {
+				cout << "\r" << string(80, ' ') << "\r";
+				cout << "The scarf hangs there, untouched.\n";
+				cout << "You reach for it.\n";
+				cout << "For a moment, you remember sitting across from them.\n";
+				cout << "\The seat beside you was empty.\n";
+				cout << "You look at it now.\n";
+				cout << "Still empty.\n";
+				cout << "YOU ARE HERE\n";
+				cout << "\nPress Enter to continue...";
+				cin.ignore();
+				cin.get();
+
+				system("cls");
+				attempts = 0;
+				question = 3;
+				return;
+			}
+			else {
+				cout << "\nWrong answer.\n";
+
+				getGameMap().timer.decreaseTime(2 * 60);
+				cout << "2 minutes have been deducted!\n";
+
+				cout << "\nPress Enter to continue...";
+				cin.ignore();
+				cin.get();
+
+				system("cls");
+				return;
+			}
+			return;
+		}
+	}
+	if (roomID == 6) {
+		if (question == 1) {
+			cout << "\r" << string(80, ' ') << "\r";
+			cout << "TAKE NOTE:\n";
+			cout << "1.	The last letter was written after I stopped expecting an answer.\n";
+			cout << "Tell me which letter is the last one \n";
+			cout << "Enter your answer: ";
+			cin >> answerT2;
+			if (answerT2 == 'D') {
+				cout << "\r" << string(80, ' ') << "\r";
+				cout << "Letters lie scattered across the table, written one after another as hope slowly faded.\n";
+				cout << "Two notes are pinned to the wall:\n";
+				cout << "All the things you thought you had to be.\n";
+				cout << "\"Which one are you ? \"\n";
+				cout << "\nPress Enter to continue...";
+				cin.ignore();
+				cin.get();
+
+				system("cls");
+				attempts = 0;
+				question = 2;
+				return;
+			}
+			else {
+				cout << "\nWrong answer.\n";
+
+				getGameMap().timer.decreaseTime(2 * 60);
+				cout << "2 minutes have been deducted!\n";
+
+				cout << "\nPress Enter to continue...";
+				cin.ignore();
+				cin.get();
+
+				system("cls");
+				return;
+				if (attempts >= 3) {
+					cout << "TAKE NOTE: \n";
+					cout << "I stopped calling before i  stopped writing.\n ";
+					attempts -= 1;
+
+				}
+				return;
+
+			}
+		}
+
+		if (question == 2) {
+			cout << "\r" << string(80, ' ') << "\r";
+			cout << "Open the correct locker , get the answer you want\n";
+			cout << "Enter your answer: ";
+			cin >> answerT1;
+			if (answerT1 == 3) {
+				cout << "\r" << string(80, ' ') << "\r";
+				cout << "The scarf hangs there, untouched.\n";
+				cout << "You reach for it.\n";
+				cout << "For a moment, you remember sitting across from them.\n";
+				cout << "\The seat beside you was empty.\n";
+				cout << "You look at it now.\n";
+				cout << "Still empty.\n";
+				cout << "YOU ARE HERE\n";
+				cout << "\nPress Enter to continue...";
+				cin.ignore();
+				cin.get();
+
+				system("cls");
+				attempts = 0;
+				question = 3;
+				return;
+			}
+			else {
+				cout << "\nWrong answer.\n";
+
+				getGameMap().timer.decreaseTime(2 * 60);
+				cout << "2 minutes have been deducted!\n";
+
+				cout << "\nPress Enter to continue...";
+				cin.ignore();
+				cin.get();
+
+				system("cls");
+				return;
+			}
+			return;
+		}
+		if (question == 2) {
+			cout << "\r" << string(80, ' ') << "\r";
+			cout << "When the train finally stops, the flames die out, and silence swallows everything around you — what is the very last sound you hear ?\n";
+			cout << "Nothing. The world has been muted.\n";
+			cout << "A name — you can't quite place whose, but your chest tightens.\n";
+			cout << "Your own heartbeat — steady, clear, present.\n";
+			cout << "Choose A/B/C \n";
+
+			if (answerT2 == 'A') {
+				cout << "You step through the door, expecting freedom.\n";
+				cout << "Instead, you find yourself back in Carriage 1.\n";
+				cout << "The furnace erupts in violet flames as the train accelerates into the darkness.\n";
+				cout << "You turn back—but the door is gone.\n";
+				cout << "The notes, photographs, and keys have disappeared from your pockets.\n";
+				cout << "	You couldn't face what happened at 11:35.\n";
+				cout << "The clock ticks backward.\n";
+				cout << "Here, you never have to remember.\n";
+				cout << "You never have to mourn.\n";
+				cout << "You never have to admit they're gone.\n";
+				cout << "You run toward Carriage 2.\n";
+				cout << "The loop begins again.\n";
+				cout << "MISSION COMPLETE\n";
+
+			}
+
+			else if (answerT2 == 'B') {
+				cout << "You step through the door, expecting freedom.\n";
+				cout << "Instead, you find yourself back in Carriage 1.\n";
+				cout << "The furnace erupts in violet flames as the train accelerates into the darkness.\n";
+				cout << "You turn back—but the door is gone.\n";
+				cout << "The notes, photographs, and keys have disappeared from your pockets.\n";
+				cout << "	You couldn't face what happened at 11:35.\n";
+				cout << "The clock ticks backward.\n";
+				cout << "Here, you never have to remember.\n";
+				cout << "You never have to mourn.\n";
+				cout << "You never have to admit they're gone.\n";
+				cout << "You run toward Carriage 2.\n";
+				cout << "The loop begins again.\n";
+				cout << "MISSION COMPLETE\n";
 			}
 		}
 	}

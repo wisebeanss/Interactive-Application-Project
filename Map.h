@@ -51,6 +51,7 @@ public:
 	void nextCarriage();
 	int getRoom() const;
 	void nextRoom();
+	void prevRoom();
 
 	void bindSuitcase(Suitcase* ptr);
 	Suitcase* getSuitcase();
