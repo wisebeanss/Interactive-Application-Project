@@ -38,10 +38,32 @@ Drawers::~Drawers()
         }
     }
 }
+void Drawers::getUIBuffer(string buffer[13]) const {
+    const int width = 26;
+    const int boxWidth = width + 2;
 
+    buffer[0] = "+=====--=====--=====--=====+";
+
+
+    int row = 1;
+    size_t start = 0;
+    while (row < 12 && start < text.size()) {
+        size_t end = text.find('\n', start);
+        if (end == std::string::npos) end = text.size();
+        std::string line = text.substr(start, end - start);
+        buffer[row++] = "[" + centerDrawerText(line, width) + "]";
+        start = end + 1; // move past '\n'
+    }
+    // Fill remaining rows with empty centered lines
+    while (row < 12) {
+        buffer[row++] = "[" + centerDrawerText("", width) + "]";
+    }
+    buffer[12] = "+=====--=====--=====--=====+";
+}
 void Drawers::use()
 {
-    const int width = 22;
+    enableUI();
+    /*const int width = 22;
 
     cout << "+----------------------+" << endl;
     cout << "|" << centerDrawerText("", width) << "|" << endl;
@@ -55,5 +77,5 @@ void Drawers::use()
         start = end + 1;
     }
     cout << "|" << centerDrawerText("", width) << "|" << endl;
-    cout << "+----------------------+" << endl;
+    cout << "+----------------------+" << endl;*/
 }
