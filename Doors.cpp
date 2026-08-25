@@ -339,6 +339,7 @@ void Doors::use()
 				cin.ignore();
 				cin.get();
 
+				changeUnlockedState(true);
 				system("cls");
 				attempts = 0;
 				question = 2;
