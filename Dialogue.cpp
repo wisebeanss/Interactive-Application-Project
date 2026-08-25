@@ -13,15 +13,16 @@ Dialogue::Dialogue()
 void Dialogue::show(const vector<string>& lines)
 {
     const int width = 42;
+    const std::string margin(35, ' ');
 
     // Top of box
-    cout << "+------------------------------------------+\n";
-    cout << "|                                          |\n";
+    cout << margin << "+------------------------------------------+\n";
+    //cout << margin << "|                                          |\n";
 
     // Print each dialogue line
     for (const string& line : lines)
     {
-        cout << "| ";
+        cout << margin << "| ";
 
         // Typewriter animation
         for (char c : line)
@@ -44,6 +45,6 @@ void Dialogue::show(const vector<string>& lines)
     }
 
     // Bottom of box
-    cout << "|                                          |\n";
-    cout << "+------------------------------------------+\n";
+    //cout << margin << "|                                          |\n";
+    cout << margin << "+------------------------------------------+\n";
 }
