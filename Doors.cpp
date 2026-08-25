@@ -362,6 +362,7 @@ void Doors::use()
 			cout << "Open the correct locker , get the answer you want\n";
 			cout << "Enter your answer: ";
 			cin >> answerT1;
+
 			if (answerT1 == 3) {
 				cout << "\r" << string(80, ' ') << "\r";
 				cout << "The scarf hangs there, untouched.\n";
