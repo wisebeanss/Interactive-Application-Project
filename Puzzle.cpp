@@ -158,42 +158,52 @@ bool Puzzle::ROOMS(int roomID, Map& map)
             map.setObjects(new Letters("Dear you, I tried\ncalling today.\nYou didn't answer.\nI'll try again.\nWritten on Wednesday \n", 4, 4, 102));
             map.setObjects(new Letters("Dear you, I don't\nknow if you're\nstill listening.\nI'm sorry.\nWritten on Friday\n", 1, 8, 103));
             map.setObjects(new Letters("\"Dear you,I don't know\nwhy I keep writing\nthese.You're not going\nto read them anyway.\"\nNo date\n", 4, 8, 103));
-            map.setObjects(new Note("The last letter was\nwritten after I stopped expecting\nan answer.\n", 16, 4, 201));
+            map.setObjects(new Note("The last letter was\nwritten after I stopped\nexpecting an answer.\n", 16, 4, 201));
             map.setObjects(new Note("I stopped calling\nbefore I stopped writing.",9, 4, 301));
             map.setObjects(new Suitcase(5, 8, 301, 5));
-            map.setObjects(new Lockers("The locker is empty.A faded sticker reads: \"PROPERTY OF STAFF\"", 12, 4, 301));
-            map.setObjects(new Lockers("Inside is an old school notebook.The name has been scratched out.", 13, 4, 301));
-            map.setObjects(new Lockers("A scarf is hanging inside.You recognize it. You remember seeing it before. But you can't remember where. ", 21, 8, 301));
-            map.setObjects(new Lockers("The locker contains a train ticket. Destination: UNKNOWN Seat: 18 ", 12, 8, 301));
-            map.setObjects(new Lockers("There is nothing inside.But someone's name is carved into the door. ", 13, 8, 301));
+            map.setObjects(new Lockers("The locker is empty.\nA faded sticker reads:\n\"PROPERTY OF STAFF\"", 12, 4, 301));
+            map.setObjects(new Lockers("Inside is an old\nschool notebook.The \nname has been\nscratched out.", 13, 4, 301));
+            map.setObjects(new Lockers("A scarf is hanging\ninside. You recognize it.\nYou remember seeing it\nbefore. But you can't\nremember where. ", 21, 8, 301));
+            map.setObjects(new Lockers("The locker contains\na train ticket.\nDestination:UNKNOWN\nSeat: 18 ", 12, 8, 301));
+            map.setObjects(new Lockers("There is nothing\ninside. But someone's\nname is carved into\nthe door. ", 13, 8, 301));
             map.setObjects(new Doors(" ", 23, 6, 5));
             setCurrentRoom(5);
+            suitcaseUnlock = false;
         }
         if (getCurrentRoom() == 5)
         {
-            int i = 0;
-            for (InteractiveObject* itm : map.getObjects())
+            if (getCurrentRoom() == 5 && !suitcaseUnlock)
             {
-                i++;
-                if (itm->getName() == "Suitcase")
+                for (InteractiveObject* itm : map.getObjects())
                 {
-                    Suitcase* suitcase = dynamic_cast<Suitcase*>(itm);
-                    if (suitcase->isUnlocked() == true)
+                    if (itm->getName() == "Suitcase")
                     {
-                        map.clearObjects();
-                        map.setObjects(new Note("They always kept their belongings close.", 23, 6, 301));
-                        map.setObjects(new Note(" a photograph showing the missing person wearing a scarf,the same scarf from Locker 3", 23, 6, 301));
-                        map.setObjects(new Note(" Another ticket says: \"I sat opposite you.\" The player's seat is 17. ", 23, 6, 301));
-                        map.setObjects(new Note("I never left anything behind.", 23, 6, 301));
-                        map.setObjects(new Lockers("The locker is empty.A faded sticker reads: \"PROPERTY OF STAFF\"", 12, 4, 301));
-                        map.setObjects(new Lockers("Inside is an old school notebook.The name has been scratched out.", 13, 4, 301));
-                        map.setObjects(new Lockers("A scarf is hanging inside.You recognize it. You remember seeing it before. But you can't remember where. ", 21, 8, 301));
-                        map.setObjects(new Lockers("The locker contains a train ticket. Destination: UNKNOWN Seat: 18 ", 12, 8, 301));
-                        map.setObjects(new Lockers("There is nothing inside.But someone's name is carved into the door. ", 13, 8, 301));
-                        map.setObjects(new Doors(" ", 23, 6, 5));
+                        Suitcase* suitcase = dynamic_cast<Suitcase*>(itm);
+
+                        if (suitcase != nullptr && suitcase->isUnlocked())
+                        {
+                            suitcaseUnlock = true;
+                            break;
+                        }
                     }
                 }
+
+                if (suitcaseUnlock)
+                {
+                    map.clearObjects();
+                    map.setObjects(new Note("They always kept\ntheir belongings close.", 1, 4, 301));
+                    map.setObjects(new Note(" a photograph showing\nthe missing person wearing a scarf,\nthe same scarf from Locker 3", 1, 8, 301));
+                    map.setObjects(new Note(" Another ticket says:\n\"I sat opposite you.\" The player's seat is 17. ", 4, 4, 301));
+                    map.setObjects(new Note("I never left\nanything behind.", 4, 8, 301));
+                    map.setObjects(new Lockers("The locker is empty.\nA faded sticker reads:\n\"PROPERTY OF STAFF\"", 12, 4, 301));
+                    map.setObjects(new Lockers("Inside is an old\nschool notebook.The \nname has been\nscratched out.", 13, 4, 301));
+                    map.setObjects(new Lockers("A scarf is hanging\ninside. You recognize it.\nYou remember seeing it\nbefore. But you can't\nremember where. ", 21, 8, 301));
+                    map.setObjects(new Lockers("The locker contains\na train ticket.\nDestination:UNKNOWN\nSeat: 18 ", 12, 8, 301));
+                    map.setObjects(new Lockers("There is nothing\ninside. But someone's\nname is carved into\nthe door. ", 13, 8, 301));
+                    map.setObjects(new Doors(" ", 23, 6, 5));
+                }
             }
+
         }
         return true;
     }

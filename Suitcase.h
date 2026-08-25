@@ -21,5 +21,5 @@ public:
     void markPuzzleSolved();
     void setProgressState(int s);
     bool hasAllPhotos();
-    bool tryUnlock();
+    void tryUnlock();
 };
