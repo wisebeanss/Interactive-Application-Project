@@ -11,7 +11,7 @@ Player::~Player() {
 		Inventory[objIdx] = nullptr;
 	}
 }
-std::string Player::getInvItemSlot(int index) const {
+std::string Player::getInvItemName(int index) const {
 	InteractiveObject* obj = Inventory.at(index);
 	return (obj == nullptr) ? "Empty" : obj->getName() + to_string(obj->getId());
 }

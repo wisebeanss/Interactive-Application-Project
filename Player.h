@@ -13,7 +13,7 @@ private:
 public:
 	Player(Map &map);
 	~Player();
-	std::string getInvItemSlot(int index) const;
+	std::string getInvItemName(int index) const;
 	void Interact(InteractiveObject& object);
 	bool Equip(InteractiveObject* object);
 	void ClearInv();
