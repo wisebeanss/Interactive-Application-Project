@@ -6,11 +6,14 @@ class Clocks :
     public InteractiveObject
 {
 private:
-    string line;
+    string text;
+    static vector<int> Ids;
 public:
-    Clocks(string lines, int X, int Y, int id);
+    Clocks(string text, int X, int Y, int id);
     ~Clocks();
     void setLine(string line);
+    string centerClockText(const string& str, int width) const;
+    void getUIBuffer(string buffer[13]) const;
     void use();
 };
 
