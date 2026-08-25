@@ -9,6 +9,7 @@ class Puzzle :
 private:
     int currentRoom;
     bool suitcaseUnlock;
+    bool spawned;
 public:
     // Puzzle functions
     bool ROOMS(int roomID, Map& map);
