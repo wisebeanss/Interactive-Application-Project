@@ -83,12 +83,12 @@ bool Puzzle::ROOMS(int roomID, Map& map)
         if (getCurrentRoom() != 3)
         {
             map.clearObjects();
-             map.setObjects(new Phones("First call: 11:32\n", 2, 8, 101));
-             map.setObjects(new Phones("Final call: 11:37\n", 5, 4, 102));
-             map.setObjects(new Letters("I called again two minutes later. \n", 3, 8, 103));
+             map.setObjects(new Phones("First call: 11:32", 2, 8, 101));
+             map.setObjects(new Phones("Final call: 11:37", 5, 4, 102));
+             map.setObjects(new Letters("I called again\n two minutes later. \n", 3, 8, 103));
              map.setObjects(new Clocks("Stopped at 11:35 \n", 5, 8, 103));
              map.setObjects(new Suitcase(16, 4, 201));
-             map.setObjects(new Note("You blamed yourself for what happened at 11:35, but you weren't there when it happened.\n", 2, 4, 202));
+             map.setObjects(new Note("You blamed yourself for\nwhat happened at 11:35,\nbut you weren't there\nwhen it happened.\n", 2, 4, 202));
              map.setObjects(new Letters("No timestamp.\n", 21, 8, 203));
              map.setObjects(new Photograph("Taken at 10:20. \n", 21, 8, 203));
              map.setObjects(new Watch("Stopped at 11:35. \n", 1, 8, 103));

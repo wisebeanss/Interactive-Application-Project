@@ -26,7 +26,14 @@ void Letters::use() {
     std::cout << "+----------------------+" << std::endl;
     std::cout << "|" << centerLetter("", width) << "|" << std::endl;
     std::cout << "|" << centerLetter("", width) << "|" << std::endl;
-    std::cout << "|" << centerLetter(text, width) << "|" << std::endl;
+    size_t start = 0;
+    while (start < text.size()) {
+        size_t end = text.find('\n', start);
+        if (end == std::string::npos) end = text.size();
+        std::string line = text.substr(start, end - start);
+        std::cout << "|" << centerLetter(line, width) << "|" << std::endl;
+        start = end + 1;
+    }
     std::cout << "|" << centerLetter("", width) << "|" << std::endl;
     std::cout << "|" << centerLetter("", width) << "|" << std::endl;
     std::cout << "+----------------------+" << std::endl;
