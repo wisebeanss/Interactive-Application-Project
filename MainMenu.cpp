@@ -5,7 +5,7 @@
 #include <cstdlib>
 #include <string>
 using namespace std;
-
+static const string margin(35, ' ');
 string MainMenu::FormatLine(const string& text, size_t width)
 {
     if (text.length() >= width)
@@ -16,8 +16,6 @@ string MainMenu::FormatLine(const string& text, size_t width)
 void MainMenu::DrawTitle()
 {
     system("cls");
-    string margin(35, ' ');
-
     cout << "\n\n\n";
     cout << margin << "+--------------------------------------+\n";
     cout << margin << "|                                      |\n";
@@ -31,7 +29,6 @@ void MainMenu::DrawTitle()
 
 void MainMenu::DrawMenu(int selected, bool isPause)
 {
-    string margin(35, ' ');
 
     if (!isPause)
     {
@@ -39,10 +36,10 @@ void MainMenu::DrawMenu(int selected, bool isPause)
         cout << margin << "|         M A I N   M E N U       |\n";
         cout << margin << "+---------------------------------+\n";
         cout << margin << "|                                 |\n";
-        cout << margin << "|   " << (selected == 0 ? "--> " : "   ") << "Start Game               |\n";
-        cout << margin << "|   " << (selected == 1 ? "--> " : "   ") << "How to Play              |\n";
-        cout << margin << "|   " << (selected == 2 ? "--> " : "   ") << "Credits                  |\n";
-        cout << margin << "|   " << (selected == 3 ? "--> " : "   ") << "Exit                     |\n";
+        cout << margin << "|   " << (selected == 0 ? "-->  " : "     ") << "Start Game               |\n";
+        cout << margin << "|   " << (selected == 1 ? "-->  " : "     ") << "How to Play              |\n";
+        cout << margin << "|   " << (selected == 2 ? "-->  " : "     ") << "Credits                  |\n";
+        cout << margin << "|   " << (selected == 3 ? "-->  " : "     ") << "Exit                     |\n";
         cout << margin << "|                                 |\n";
         cout << margin << "+---------------------------------+\n";
         cout << "\n" << margin << "   Use  'W'/'S to move | Enter to confirm\n";
@@ -50,12 +47,12 @@ void MainMenu::DrawMenu(int selected, bool isPause)
     else
     {
         cout << margin << "+----------------------------------+\n";
-        cout << margin << "|       P A U S E D                |\n";
+        cout << margin << "|            P A U S E D           |\n";
         cout << margin << "+----------------------------------+\n";
         cout << margin << "|                                  |\n";
-        cout << margin << "|   " << (selected == 0 ? "--> " : " ") << "Resume Game               |\n";
-        cout << margin << "|   " << (selected == 1 ? "--> " : " ") << "Return to Main Menu       |\n";
-        cout << margin << "|   " << (selected == 2 ? "--> " : " ") << "Exit Game                 |\n";
+        cout << margin << "|   " << (selected == 0 ? "-->  " : "     ") << "Resume Game               |\n";
+        cout << margin << "|   " << (selected == 1 ? "-->  " : "     ") << "Return to Main Menu       |\n";
+        cout << margin << "|   " << (selected == 2 ? "-->  " : "     ") << "Exit Game                 |\n";
         cout << margin << "|                                  |\n";
         cout << margin << "+----------------------------------+\n";
         cout << "\n" << margin << "   Use 'W'/'S' to move | Enter to confirm\n";
@@ -107,7 +104,6 @@ void MainMenu::Show()
         else if (choice == 2)
         {
             DrawTitle();
-            string margin(35, ' ');
             cout << margin << "+----------------------------------+\n";
             cout << margin << "|       H O W   T O   P L A Y      |\n";
             cout << margin << "+----------------------------------+\n";
@@ -127,7 +123,6 @@ void MainMenu::Show()
         else if (choice == 3)
         {
             DrawTitle();
-            string margin(35, ' ');
             cout << margin << "+----------------------------------+\n";
             cout << margin << "|           C R E D I T S          |\n";
             cout << margin << "+----------------------------------+\n";
@@ -157,7 +152,6 @@ void MainMenu::Show()
         }
     }
 }
-
 int MainMenu::ShowPauseMenu()
 {
     int selected = 0;
@@ -166,17 +160,12 @@ int MainMenu::ShowPauseMenu()
     while (true)
     {
         system("cls");
-        string margin(35, ' ');
         cout << "\n\n\n";
         DrawMenu(selected, true);
 
         int key = _getch();
-        if (key == 224)
-        {
-            int arrow = _getch();
-            if (arrow == 72) { selected--; if (selected < 0) selected = total - 1; }
-            else if (arrow == 80) { selected++; if (selected >= total) selected = 0; }
-        }
+        if (key == 'W' || key == 'w') { selected--; if (selected < 0) selected = total - 1; }
+        else if (key == 'S' || key == 's') { selected++; if (selected >= total) selected = 0; }
         else if (key == 13)
         {
             return selected + 1; 
