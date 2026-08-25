@@ -1,5 +1,5 @@
 #include "Game.h"
-
+#include "MainMenu.h"
 Game::Game() : player(map){
 }
 Game::~Game() {
@@ -26,7 +26,24 @@ void Game::Run() {
 
 		if (_kbhit()) {
 			char letter = _getch();
-			player.HandleInput(letter);
+			if (letter == 27) {
+				MainMenu pauseMenu;
+				int choice = pauseMenu.ShowPauseMenu();
+				switch (choice) {
+				case 1:
+					continue;
+				case 2:
+					End();
+					return;
+				case 3:
+					End();
+					Sleep(800);
+					exit(0);
+				}
+			}
+			else {
+				player.HandleInput(letter);
+			}
 		}
 		//timer
 		map.updateTimer();
@@ -84,5 +101,5 @@ void Game::Run() {
 
 }
 void Game::End() {
-
+	cout << "Ending Program\n";
 }

@@ -7,41 +7,15 @@ using namespace std;
 int main(void)
 {
     MainMenu mainMenu;
-    mainMenu.Show();
+   
 
     Game Application;
-    Application.Init();
-
-    bool running = true;
-    while (running)
-    {
+    
+    while (true)
+    {   
+        mainMenu.Show();
+        Application.Init();
         Application.Run();
-
-        if (_kbhit())
-        {
-            char key = _getch();
-
-            if (key == 27) 
-            {
-                MainMenu pauseMenu;
-                int choice = pauseMenu.ShowPauseMenu();
-
-                if (choice == 1)
-                {
-                    continue;
-                }
-                else if (choice == 2)
-                {
-                    Application.End();
-                    Application.Init();
-                    mainMenu.Show();
-                }
-                else if (choice == 3)
-                {
-                    running = false;
-                }
-            }
-        }
     }
 
     Application.End();
