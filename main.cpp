@@ -44,9 +44,4 @@ int main(void)
     }
     Application.End();
     return 0;
-            }
-        }
-    }
-    Application.End();
-    return 0;
 }
