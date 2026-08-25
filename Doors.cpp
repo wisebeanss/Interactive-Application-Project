@@ -318,16 +318,170 @@ void Doors::use()
 			cout << "1.	The last letter was written after I stopped expecting an answer.\n";
 			cout << "Tell me which letter is the last one \n";
 			cout << "Enter your answer: ";
-			cin >> answerT1;
-			if (answerT2 = 'D') {
+			cin >> answerT2;
+			if (answerT2 == 'D') {
 				cout << "\r" << string(80, ' ') << "\r";
 				cout << "Letters lie scattered across the table, written one after another as hope slowly faded.\n";
 				cout << "Two notes are pinned to the wall:\n";
 				cout << "All the things you thought you had to be.\n";
 				cout << "\"Which one are you ? \"\n";
-				
+				cout << "\nPress Enter to continue...";
+				cin.ignore();
+				cin.get();
+
+				system("cls");
+				attempts = 0;
+				question = 2;
+				return;
+			}
+			else{
+				cout << "\nWrong answer.\n";
+
+				getGameMap().timer.decreaseTime(2 * 60);
+				cout << "2 minutes have been deducted!\n";
+
+				cout << "\nPress Enter to continue...";
+				cin.ignore();
+				cin.get();
+
+				system("cls");
+				return;
+				if (attempts >= 3) {
+					cout << "TAKE NOTE: \n";
+					cout << "I stopped calling before i  stopped writing.\n ";
+					attempts -= 1;
+
+				}
+				return;
 
 			}
+		}
+
+		if (question == 2) {
+			cout << "\r" << string(80, ' ') << "\r";
+			cout << "Open the correct locker , get the answer you want\n";
+			cout << "Enter your answer: ";
+			cin >> answerT1;
+			if (answerT1 == 3) {
+				cout << "\r" << string(80, ' ') << "\r";
+				cout << "The scarf hangs there, untouched.\n";
+				cout << "You reach for it.\n";
+				cout << "For a moment, you remember sitting across from them.\n";
+				cout << "\The seat beside you was empty.\n";
+				cout << "You look at it now.\n";
+				cout << "Still empty.\n";
+				cout << "YOU ARE HERE\n";
+				cout << "\nPress Enter to continue...";
+				cin.ignore();
+				cin.get();
+
+				system("cls");
+				attempts = 0;
+				question = 3;
+				return;
+			}
+			else {
+				cout << "\nWrong answer.\n";
+
+				getGameMap().timer.decreaseTime(2 * 60);
+				cout << "2 minutes have been deducted!\n";
+
+				cout << "\nPress Enter to continue...";
+				cin.ignore();
+				cin.get();
+
+				system("cls");
+				return;
+			}
+			return;
+		}
+	}
+	if (roomID == 6) {
+		if (question == 1) {
+			cout << "\r" << string(80, ' ') << "\r";
+			cout << "TAKE NOTE:\n";
+			cout << "1.	The last letter was written after I stopped expecting an answer.\n";
+			cout << "Tell me which letter is the last one \n";
+			cout << "Enter your answer: ";
+			cin >> answerT2;
+			if (answerT2 == 'D') {
+				cout << "\r" << string(80, ' ') << "\r";
+				cout << "Letters lie scattered across the table, written one after another as hope slowly faded.\n";
+				cout << "Two notes are pinned to the wall:\n";
+				cout << "All the things you thought you had to be.\n";
+				cout << "\"Which one are you ? \"\n";
+				cout << "\nPress Enter to continue...";
+				cin.ignore();
+				cin.get();
+
+				system("cls");
+				attempts = 0;
+				question = 2;
+				return;
+			}
+			else {
+				cout << "\nWrong answer.\n";
+
+				getGameMap().timer.decreaseTime(2 * 60);
+				cout << "2 minutes have been deducted!\n";
+
+				cout << "\nPress Enter to continue...";
+				cin.ignore();
+				cin.get();
+
+				system("cls");
+				return;
+				if (attempts >= 3) {
+					cout << "TAKE NOTE: \n";
+					cout << "I stopped calling before i  stopped writing.\n ";
+					attempts -= 1;
+
+				}
+				return;
+
+			}
+		}
+
+		if (question == 2) {
+			cout << "\r" << string(80, ' ') << "\r";
+			cout << "Open the correct locker , get the answer you want\n";
+			cout << "Enter your answer: ";
+			cin >> answerT1;
+			if (answerT1 == 3) {
+				cout << "\r" << string(80, ' ') << "\r";
+				cout << "The scarf hangs there, untouched.\n";
+				cout << "You reach for it.\n";
+				cout << "For a moment, you remember sitting across from them.\n";
+				cout << "\The seat beside you was empty.\n";
+				cout << "You look at it now.\n";
+				cout << "Still empty.\n";
+				cout << "YOU ARE HERE\n";
+				cout << "\nPress Enter to continue...";
+				cin.ignore();
+				cin.get();
+
+				system("cls");
+				attempts = 0;
+				question = 3;
+				return;
+			}
+			else {
+				cout << "\nWrong answer.\n";
+
+				getGameMap().timer.decreaseTime(2 * 60);
+				cout << "2 minutes have been deducted!\n";
+
+				cout << "\nPress Enter to continue...";
+				cin.ignore();
+				cin.get();
+
+				system("cls");
+				return;
+			}
+			return;
+		}
+		if (question == 2) {
+
 		}
 	}
 }
