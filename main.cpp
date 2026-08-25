@@ -5,13 +5,20 @@
 using namespace std;
 
 int main(void)
-{
+{   
+    
+    MainMenu Mainmenu;
     Game Application;
     Application.Init();
-
-    bool running = true;
-    while (running)
+    bool MainMenuRunning = false; // set this to true when main menu is done
+    bool GameRunning = true; // set this to false when main menu is done
+    while (MainMenuRunning) {
+        //Mainmenu.Run();
+    }
+    while (GameRunning)
     {
+        //Mainmenu.Run();
+
         Application.Run();
 
         
