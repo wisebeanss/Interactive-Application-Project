@@ -6,11 +6,9 @@ using namespace std;
 int answer1;
 int attempts = 0;
 char answer2 = ' ';
-Puzzle::Puzzle() : InteractiveObject("puzzle", 1, false)
+Puzzle::Puzzle()
 {
-    setCurrentRoom(0);
-    suitcaseUnlock = false;
-    spawned = false;
+    setCurrentCarriage(0);
 }
 Puzzle::~Puzzle()
 {
@@ -18,17 +16,10 @@ Puzzle::~Puzzle()
 }
 
 bool add = false;
-bool Puzzle::ROOMS(int roomID, Map& map)
-{
-    if (roomID == 1)
-    {
-        if (currentRoom != 1)
-        {
-            spawned = false;
-        }
-        if (spawned == false)
-        {
-            setCurrentRoom(1);
+void Puzzle::Carriages(int carriageID, int roomID, Map& map) {
+    switch (carriageID) {
+    case 1:
+        if (getCurrentCarriage() != 1) {
             map.clearObjects();
             map.setObjects(new Clocks("\n  Clock1:\nThe incident\n happened one\n hour after 10\n", 1, 4, 101));
             map.setObjects(new Clocks("\n  Clock2:\n The minute hand\n stopped at 45.\n", 4, 4, 102));
@@ -38,173 +29,104 @@ bool Puzzle::ROOMS(int roomID, Map& map)
             map.setObjects(new Mirrors("MirrorB: You raise your\nleft hand. The reflection\nraises its right hand\n", 21, 4, 202));
             map.setObjects(new Mirrors("MirrorC:You raise your\nleft hand.The reflection\nraises its left hand.\nYou blink.\nIt blinks with you.\n", 21, 8, 203));
             map.setObjects(new Doors(" ", 23, 6, 1));
+            setCurrentCarriage(1);
             map.buildMap();
-            spawned = true;
         }
-        return true;
-    }
-    if (roomID == 2)
-    {
-        if (currentRoom != 2)
-        {
-            spawned = false;
-        }
-        if (spawned == false)
-        {
+
+    case 2: {
+        if (getCurrentCarriage() != 2) {
             map.clearObjects();
             map.setObjects(new PhotoFragment("PhotoFragment1:\nA 'Hand'\n", 1, 4, 101));
             map.setObjects(new PhotoFragment("PhotoFragment2:\nA \"Face\"\n", 4, 4, 102));
             map.setObjects(new PhotoFragment("PhotoFragment3:\n\"The Other person\" \n", 1, 8, 103));
+            //map.setObjects(new Posters("1.THE STRONG\n2.THE SMART\n3.THE SUCCESSFUL\n4.THE PERFECT \n", 4, 8, 203));
             map.setObjects(new Suitcase(4, 8, 203, 2));
             map.setObjects(new Doors(" ", 23, 6, 2));
-            setCurrentRoom(2);
-            suitcaseUnlock = false;
-            spawned = true;
+            setCurrentCarriage(2);
         }
-        if (getCurrentRoom() == 2 && suitcaseUnlock == false)
-        {
-            for (InteractiveObject* itm : map.getObjects())
-            {
-                if (itm->getName() == "Suitcase")
-                {
-                    Suitcase* suitcase = dynamic_cast<Suitcase*>(itm);
-                    if (suitcase->isUnlocked() == true)
-                    {
-
-                        suitcaseUnlock = true;
-                        spawned = false;
-                    }
-                }
-            }
-        }
-        if (suitcaseUnlock == true)
-        {
-            if (spawned == false)
-            {
-                map.clearObjects();
-                map.setObjects(new Note("The Perfect poster\nis not first.\n", 16, 8, 200));
-                map.setObjects(new Note("The Strong poster is\nsomewhere before the\nSuccessful poster.\n", 16, 4, 201));
-                map.setObjects(new Note("The Smart poster is\nimmediately before the\nPerfect poster. \n", 21, 4, 202));
-                map.setObjects(new Note("The Successful poster\nis last.\n", 21, 8, 203));
-                map.setObjects(new Posters("1.THE STRONG\n2.THE SMART\n3.THE SUCCESSFUL\n4.THE PERFECT \n", 4, 8, 203));
-                map.setObjects(new Doors(" ", 23, 6, 2));
-                spawned = true;
-            }
-        }
-        return true;
-
-    }
-
-    if (roomID == 3)
-    {
-        if (currentRoom != 3)
-        {
-            spawned = false;
-        }
-        if (map.getRoom() == 1)
-        {
-            if (spawned == false)
-            {
-                map.clearObjects();
-                map.setObjects(new Phones("First call:\n11:32", 2, 8, 101));
-                map.setObjects(new Phones("Final call:\n11:37", 5, 4, 102));
-                map.setObjects(new Letters("I called again\n two minutes later. \n", 3, 8, 103));
-                map.setObjects(new Clocks("Stopped at 11:35 \n", 5, 8, 103));
-                map.setObjects(new Suitcase(16, 4, 201, 3));
-                map.setObjects(new Doors(" ", 23, 6, 3));
-                suitcaseUnlock = false;
-                spawned = true;
-                setCurrentRoom(3);
-            }
-        }
-        if (getCurrentRoom() == 3 && suitcaseUnlock == false) {
+        if (getCurrentCarriage() == 2) {
             int i = 0;
-            for (InteractiveObject* itm : map.getObjects())
-            {
+            for (InteractiveObject* itm : map.getObjects()) {
                 i++;
-                if (itm->getName() == "Suitcase")
-                {
-                    Suitcase* suitcase = dynamic_cast<Suitcase*>(itm);
-                    if (suitcase->isUnlocked() == true)
-                    {
-                        suitcaseUnlock = true;
-                        spawned = false;
+                if (itm->getName() == "Suitcase") {
+                    Suitcase* suitcase = dynamic_cast <Suitcase*> (itm);
+                    if (suitcase->isUnlocked() == true) {
+                        map.clearObjects();
+                        map.setObjects(new Note("The Perfect poster\nis not first.\n", 16, 8, 200));
+                        map.setObjects(new Note("The Strong poster is\nsomewhere before the\nSuccessful poster.\n", 16, 4, 201));
+                        map.setObjects(new Note("The Smart poster is\nimmediately before the\nPerfect poster. \n", 21, 4, 202));
+                        map.setObjects(new Note("The Successful poster\nis last.\n", 21, 8, 203));
+                        map.setObjects(new Posters("1.THE STRONG\n2.THE SMART\n3.THE SUCCESSFUL\n4.THE PERFECT \n", 4, 8, 203));
+                        map.setObjects(new Doors(" ", 23, 6, 2));
+                    }
+                }
+            }
+            if (roomID != 2) {
+                map.clearObjects();
+                
+            }
+        }
+    }
 
+    case 3: {
+        if (getCurrentCarriage() != 3) {
+            map.clearObjects();
+            map.setObjects(new Phones("First call:\n11:32", 2, 8, 101));
+            map.setObjects(new Phones("Final call:\n11:37", 5, 4, 102));
+            map.setObjects(new Letters("I called again\n two minutes later. \n", 3, 8, 103));
+            map.setObjects(new Clocks("Stopped at 11:35 \n", 5, 8, 103));
+            map.setObjects(new Suitcase(16, 4, 201, 3));
+            map.setObjects(new Doors(" ", 23, 6, 3));
+            setCurrentCarriage(3);
+        }
+        if (getCurrentCarriage() == 3) {
+            int i = 0;
+            for (InteractiveObject* itm : map.getObjects()) {
+                i++;
+                if (itm->getName() == "Suitcase") {
+                    Suitcase* suitcase = dynamic_cast <Suitcase*> (itm);
+                    if (suitcase->isUnlocked() == true) {
+                        map.clearObjects();
+                        map.setObjects(new Note("You blamed yourself for\nwhat happened at 11:35,\nbut you weren't there\nwhen it happened.\n", 2, 4, 202));
+                        map.setObjects(new Letters("No timestamp.\n", 21, 8, 203));
+                        map.setObjects(new Photograph("Taken at 10:20. \n", 20, 4, 203));
+                        map.setObjects(new Watch("Stopped at 11:35. \n", 1, 8, 103));
+                        map.setObjects(new Doors(" ", 23, 6, 3));
                     }
                 }
             }
         }
-        if (suitcaseUnlock == true)
-        {
-            if (spawned == false)
-            {
-                map.clearObjects();
-                map.setObjects(new Note("You blamed yourself for\nwhat happened at 11:35,\nbut you weren't there\nwhen it happened.\n", 2, 4, 202));
-                map.setObjects(new Letters("No timestamp.\n", 21, 8, 203));
-                map.setObjects(new Photograph("Taken at 10:20. \n", 20, 4, 203));
-                map.setObjects(new Watch("Stopped at 11:35. \n", 1, 8, 103));
-                map.setObjects(new Doors(" ", 23, 6, 3));
-            }
-        }
-        return true;
     }
-    if (roomID == 4)
-    {
-        if (currentRoom != 4)
-        {
-            spawned = false;
-        }
-        if (spawned == false)
-        {
+    case 4: {
+        if (getCurrentCarriage() != 4) {
             map.clearObjects();
             map.setObjects(new PhotoFragment("A photograph of you\nas a child.\n", 1, 4, 101));
             map.setObjects(new PhotoFragment("You and someone else\nare sitting together\non a train. \n", 5, 4, 102));
             map.setObjects(new PhotoFragment("You and the same person\nare standing together.\n", 1, 8, 103));
-            map.setObjects(new Suitcase(4, 8, 301,4));
-            map.setObjects(new Doors(" ", 23, 6, 4,41));
-            setCurrentRoom(4);
-            spawned = true;
+            map.setObjects(new Suitcase(4, 8, 301, 4));
+            map.setObjects(new Doors(" ", 23, 6, 4));
+            setCurrentCarriage(4);
             //add = true;
         }
-        if (getCurrentRoom() == 4)
-        {
+        if (getCurrentCarriage() == 4) {
             int i = 0;
-            for (InteractiveObject* itm : map.getObjects())
-            {
+            for (InteractiveObject* itm : map.getObjects()) {
                 i++;
-                if (itm->getName() == "Suitcase")
-                {
-                    Suitcase* suitcase = dynamic_cast<Suitcase*>(itm);
-                    if (suitcase->isUnlocked() == true)
-                    {
-                        suitcaseUnlock = true;
-                        spawned = false;
+                if (itm->getName() == "Suitcase") {
+                    Suitcase* suitcase = dynamic_cast <Suitcase*> (itm);
+                    if (suitcase->isUnlocked() == true) {
+                        map.clearObjects();
+                        map.setObjects(new Posters("1.FIRST TRAIN RIDE\n2.CHILDHOOD\n3.LAST SUMMER\n4. PHOTOGRAPH\n", 4, 8, 103));
+                        map.setObjects(new Note("Childhood came before\nthe first train ride.\nThe last summer was\nimmediately before the\nphotograph.The first train\nride happened after\nchildhood.The photograph\nwasbefore my first train\nride.I dont remember\nwriting one of the lines. \n", 16, 4, 201));
+                        map.setObjects(new Doors(" ", 23, 6, 4));
                     }
                 }
             }
-            if (suitcaseUnlock == true)
-            {
-                if (spawned == false)
-                {
-                    map.clearObjects();
-                    map.setObjects(new Posters("1.FIRST TRAIN RIDE\n2.CHILDHOOD\n3.LAST SUMMER\n4. PHOTOGRAPH\n", 4, 8, 103));
-                    map.setObjects(new Note("Childhood came before\nthe first train ride.\nThe last summer was\nimmediately before the\nphotograph.The first train\nride happened after\nchildhood.The photograph\nwasbefore my first train\nride.I dont remember\nwriting one of the lines. \n", 16, 4, 201));
-                    map.setObjects(new Doors(" ", 23, 6, 4));
-                }
-
-            }
 
         }
-        return true;
     }
-    if (roomID == 5)
-    {
-        if (currentRoom != 5)
-        {
-            spawned = false;
-        }
-        if (spawned == false)
-        {
+    case 5: {
+        if (getCurrentCarriage() != 5) {
             map.clearObjects();
             map.setObjects(new Letters("Dear you, I wish I\ncould tell you\nwhat happened.\nMaybe tomorrow.\nWritten on Monday\n", 1, 4, 101));
             map.setObjects(new Letters("Dear you, I tried\ncalling today.\nYou didn't answer.\nI'll try again.\nWritten on Wednesday \n", 4, 4, 102));
@@ -219,55 +141,33 @@ bool Puzzle::ROOMS(int roomID, Map& map)
             map.setObjects(new Lockers("The locker contains\na train ticket.\nDestination:UNKNOWN\nSeat: 18 ", 12, 8, 301));
             map.setObjects(new Lockers("There is nothing\ninside. But someone's\nname is carved into\nthe door. ", 13, 8, 301));
             map.setObjects(new Doors(" ", 23, 6, 5));
-            spawned = true;
-            setCurrentRoom(5);
+            setCurrentCarriage(5);
         }
-        if (getCurrentRoom() == 5)
-        {
+        if (getCurrentCarriage() == 5) {
             int i = 0;
-            for (InteractiveObject* itm : map.getObjects())
-            {
+            for (InteractiveObject* itm : map.getObjects()) {
                 i++;
-                if (itm->getName() == "Suitcase")
-                {
-                    Suitcase* suitcase = dynamic_cast<Suitcase*>(itm);
-                    if (suitcase->isUnlocked() == true)
-                    {
-                        suitcaseUnlock = true;
-                        spawned = false;
+                if (itm->getName() == "Suitcase") {
+                    Suitcase* suitcase = dynamic_cast <Suitcase*> (itm);
+                    if (suitcase->isUnlocked() == true) {
+                        map.clearObjects();
+                        map.setObjects(new Note("They always kept their belongings close.", 23, 6, 301));
+                        map.setObjects(new Note(" a photograph showing the missing person wearing a scarf,the same scarf from Locker 3", 23, 6, 301));
+                        map.setObjects(new Note(" Another ticket says: \"I sat opposite you.\" The player's seat is 17. ", 23, 6, 301));
+                        map.setObjects(new Note("I never left anything behind.", 23, 6, 301));
+                        map.setObjects(new Lockers("The locker is empty.A faded sticker reads: \"PROPERTY OF STAFF\"", 23, 6, 301));
+                        map.setObjects(new Lockers("Inside is an old school notebook.The name has been scratched out.", 23, 6, 301));
+                        map.setObjects(new Lockers("A scarf is hanging inside.You recognize it. You remember seeing it before. But you can't remember where. ", 23, 6, 301));
+                        map.setObjects(new Lockers("The locker contains a train ticket. Destination: UNKNOWN Seat: 18 ", 23, 6, 301));
+                        map.setObjects(new Lockers("There is nothing inside.But someone's name is carved into the door. ", 23, 6, 301));
+                        map.setObjects(new Doors(" ", 23, 6, 5));
                     }
                 }
             }
         }
-        if (suitcaseUnlock == true)
-        {
-            if (spawned == false)
-            {
-                map.clearObjects();
-                map.setObjects(new Note("They always kept their belongings close.", 23, 6, 301));
-                map.setObjects(new Note(" a photograph showing the missing person wearing a scarf,the same scarf from Locker 3", 23, 6, 301));
-                map.setObjects(new Note(" Another ticket says: \"I sat opposite you.\" The player's seat is 17. ", 23, 6, 301));
-                map.setObjects(new Note("I never left anything behind.", 23, 6, 301));
-                map.setObjects(new Lockers("The locker is empty.A faded sticker reads: \"PROPERTY OF STAFF\"", 23, 6, 301));
-                map.setObjects(new Lockers("Inside is an old school notebook.The name has been scratched out.", 23, 6, 301));
-                map.setObjects(new Lockers("A scarf is hanging inside.You recognize it. You remember seeing it before. But you can't remember where. ", 23, 6, 301));
-                map.setObjects(new Lockers("The locker contains a train ticket. Destination: UNKNOWN Seat: 18 ", 23, 6, 301));
-                map.setObjects(new Lockers("There is nothing inside.But someone's name is carved into the door. ", 23, 6, 301));
-                map.setObjects(new Doors(" ", 23, 6, 5));
-                spawned = true;
-            }
-        }
-        return true;
     }
-    if (roomID != 6) return false;
-    if (roomID == 6)
-    {
-        if (currentRoom != 6)
-        {
-            spawned = false;
-        }
-        if (spawned == false)
-        {
+    case 6: {
+        if (getCurrentCarriage() != 6) {
             map.clearObjects();
             map.setObjects(new Drawers("A blank sheet\nof paper.\nNothing else.\n", 1, 4, 101));
             map.setObjects(new Drawers("A train ticket.\nThe destination\nhas been scratched out.\n", 4, 4, 102));
@@ -279,17 +179,16 @@ bool Puzzle::ROOMS(int roomID, Map& map)
             map.setObjects(new Note("You already knew.", 20, 4, 301));
             map.setObjects(new Note("The third path is the\none that stops\nthe train.", 5, 8, 301));
             map.setObjects(new Suitcase(23, 6, 301, 6));
-            map.setObjects(new Doors(" ", 23, 4, 601,61));
-            map.setObjects(new Doors(" ", 23, 6, 602,62));
-            map.setObjects(new Doors(" ", 23, 8, 603,63));
-            setCurrentRoom(6);
-            spawned = true;
+            map.setObjects(new Doors(" ", 23, 6, 301));
+            map.setObjects(new Doors(" ", 23, 6, 4));
+            map.setObjects(new Doors(" ", 23, 8, 6));
+            setCurrentCarriage(6);
         }
     }
-    return false;
+    }
 }
-void Puzzle::setCurrentRoom(int room) { currentRoom = room; }
-int Puzzle::getCurrentRoom() { return currentRoom; }
+void Puzzle::setCurrentCarriage(int room) { currentRoom = room; }
+int Puzzle::getCurrentCarriage() { return currentRoom; }
 void Puzzle::use()
 {
 

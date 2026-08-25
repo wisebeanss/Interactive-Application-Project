@@ -142,6 +142,7 @@
     <ClCompile Include="Clocks.cpp" />
     <ClCompile Include="Doors.cpp" />
     <ClCompile Include="Drawers.cpp" />
+    <ClCompile Include="entirescenes.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="InteractiveObject.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="Clocks.h" />
     <ClInclude Include="Doors.h" />
     <ClInclude Include="Drawers.h" />
+    <ClInclude Include="entirescenes.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="MapObjects.h" />
