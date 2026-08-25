@@ -46,8 +46,14 @@ void Drawers::use()
     cout << "+----------------------+" << endl;
     cout << "|" << centerDrawerText("", width) << "|" << endl;
     cout << "|" << centerDrawerText("DRAWER " + to_string(getId()), width) << "|" << endl;
-    cout << "|" << centerDrawerText("", width) << "|" << endl;
-    cout << "|" << centerDrawerText(text, width) << "|" << endl;
+    size_t start = 0;
+    while (start < text.size()) {
+        size_t end = text.find('\n', start);
+        if (end == std::string::npos) end = text.size();
+        std::string line = text.substr(start, end - start);
+        std::cout << "|" << centerDrawerText(line, width) << "|" << std::endl;
+        start = end + 1;
+    }
     cout << "|" << centerDrawerText("", width) << "|" << endl;
     cout << "+----------------------+" << endl;
 }
