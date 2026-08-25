@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <cctype>
+#include "Dialogue.h"
 using namespace std;
 
 
@@ -14,7 +15,6 @@ Doors::Doors(string lines, int x, int y, int id) : InteractiveObject("Doors", id
 	setRoomID(id);
 	setSymbol('D');
 	question = 1;
-	attempts = 0;
 	changeUnlockedState(false);
 }
 
@@ -47,6 +47,7 @@ void Doors::setRoomID(int id)
 
 void Doors::use()
 {
+	Dialogue dialogue;
 	int answerT1;
 	char answerT2 = ' ';
 	string answerT3;
@@ -58,41 +59,47 @@ void Doors::use()
 			cout << "\r" << string(80, ' ') << "\r";
 			cout << "Enter the time as HHMMSS (e.g., 115012): ";
 			cin >> answerT1;
-			attempts++;
+		
 
 			if (answerT1 == 115012)
 			{
-				cout << "\nThe clock begins ticking...\n";
-				cout << "11:50...\n";
-				cout << "11:51...\n";
-				cout << "You stare at its hands. The time feels familiar, yet you cannot recall why.\n";
-				cout << "You can now solve Puzzle 2.\n";
-				cout << "\nPress Enter to continue...";
+				dialogue.show({
+				"The clock begins ticking...",
+				"11:50...",
+				"11:51...",
+				"You stare at its hands.",
+				"The time feels familiar,",
+				"yet you cannot recall why.",
+				"You can now solve Puzzle 2.",
+				"Press Enter to continue...",
+					});
+
+				
 				cin.ignore();
 				cin.get();
 
 				system("cls");
+
 				question = 2;
-				attempts = 0;
+				
 				return;
 			}
 			else
 			{
-				cout << "\nThat doesn't seem right.\n";
-			
-				Timer& t = getGameMap().getTimerObject();
+				dialogue.show({
+				"That doesn't seem right..",
+				"Two minutes have been deducted.",
+				"Press Enter to continue.",
 
-				cout << "\nPress Enter to continue...";
+
+					});
+				
 				cin.ignore();
 				cin.get();
 
 				system("cls");
-
-				if (attempts == 3)
-				{
-					cout << "Remember Clock 4 is 5 mins faster!\n";
-					attempts -= 1;
-				}
+				getGameMap().timer.decreaseTime(2 * 60);
+				
 				return;
 			}
 		}
@@ -102,7 +109,7 @@ void Doors::use()
 			cout << "\r" << string(80, ' ') << "\r";
 			cout << "Enter which mirror is correct (A/B/C): ";
 			cin >> answerT2;
-			attempts++;
+		
 
 			answerT2 = toupper(answerT2);
 			if (answerT2 == 'C')
@@ -120,7 +127,6 @@ void Doors::use()
 				system("cls");
 				changeUnlockedState(true);
 				question = 1;
-				attempts = 0;
 				cout << "\r" << string(80, ' ') << "\r";
 				return;
 			}
@@ -135,10 +141,7 @@ void Doors::use()
 
 				system("cls");
 
-				if (attempts >= 3)
-				{
-					cout << " Hint: The reflection should match you.\n";
-				}
+				
 				return;
 			}
 		}
@@ -330,7 +333,6 @@ void Doors::use()
 				cin.get();
 
 				system("cls");
-				attempts = 0;
 				question = 2;
 				return;
 			}
@@ -346,56 +348,19 @@ void Doors::use()
 
 				system("cls");
 				return;
-				if (attempts >= 3) {
-					cout << "TAKE NOTE: \n";
-					cout << "I stopped calling before i  stopped writing.\n ";
-					attempts -= 1;
+				
+				
 
-				}
-				return;
-
-			}
-		}
-
-		if (question == 2) {
-			cout << "\r" << string(80, ' ') << "\r";
-			cout << "Open the correct locker , get the answer you want\n";
-			cout << "Enter your answer: ";
-			cin >> answerT1;
-
-			if (answerT1 == 3) {
-				cout << "\r" << string(80, ' ') << "\r";
-				cout << "The scarf hangs there, untouched.\n";
-				cout << "You reach for it.\n";
-				cout << "For a moment, you remember sitting across from them.\n";
-				cout << "\The seat beside you was empty.\n";
-				cout << "You look at it now.\n";
-				cout << "Still empty.\n";
-				cout << "YOU ARE HERE\n";
-				cout << "\nPress Enter to continue...";
-				cin.ignore();
-				cin.get();
-
-				system("cls");
-				attempts = 0;
-				question = 3;
-				return;
-			}
-			else {
-				cout << "\nWrong answer.\n";
-
-				getGameMap().timer.decreaseTime(2 * 60);
-				cout << "2 minutes have been deducted!\n";
-
-				cout << "\nPress Enter to continue...";
-				cin.ignore();
-				cin.get();
-
-				system("cls");
-				return;
 			}
 			return;
 		}
+
+		if (question == 2) {
+
+		}
+
+			return;
+	
 	}
 	if (roomID == 6) {
 		if (question == 1) {
