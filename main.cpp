@@ -5,9 +5,10 @@
 using namespace std;
 
 int main(void)
-{   
-    
-    MainMenu Mainmenu;
+{
+    MainMenu mainMenu;
+    mainMenu.Show();
+
     Game Application;
     Application.Init();
     bool MainMenuRunning = false; // set this to true when main menu is done
@@ -21,34 +22,33 @@ int main(void)
 
         Application.Run();
 
-        
-        //if (_kbhit())
-        //{
-        //    char key = _getch();
+        if (_kbhit())
+        {
+            char key = _getch();
 
-        //    if (key == 27) // ESC = ASCII 27
-        //    {
-        //        MainMenu pauseMenu;
-        //        int choice = pauseMenu.ShowPauseMenu();
+            if (key == 27) 
+            {
+                MainMenu pauseMenu;
+                int choice = pauseMenu.ShowPauseMenu();
 
-        //        if (choice == 1)
-        //        {
-        //         
-        //            continue;
-        //        }
-        //        else if (choice == 2)
-        //        {
-        //            Application.End();
-        //            Application.Init();
-        //            mainMenu.Show();
-        //        }
-        //        else if (choice == 0)
-        //        {
-        //            running = false;
-        //        }
-        //    }
-        //}
+                if (choice == 1)
+                {
+                    continue;
+                }
+                else if (choice == 2)
+                {
+                    Application.End();
+                    Application.Init();
+                    mainMenu.Show();
+                }
+                else if (choice == 3)
+                {
+                    running = false;
+                }
+            }
+        }
     }
+
     Application.End();
     return 0;
 }
