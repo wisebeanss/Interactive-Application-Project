@@ -3,18 +3,18 @@
 #include <string>
 #include "map.h"
 #include "MapObjects.h"
-class Puzzle
+class Puzzle :
+    public InteractiveObject
 {
 private:
     int currentRoom;
     bool suitcaseUnlock;
 public:
     // Puzzle functions
-    void Carriages(int carriageID, int roomID, Map& map);
-    void setCurrentCarriage(int carriage);
-    int getCurrentCarriage();
+    bool ROOMS(int roomID, Map& map);
     void setCurrentRoom(int room);
     int getCurrentRoom();
+
 
     Puzzle();
 
