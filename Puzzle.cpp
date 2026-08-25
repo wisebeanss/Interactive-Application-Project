@@ -203,15 +203,15 @@ bool Puzzle::ROOMS(int roomID, Map& map)
         if (getCurrentRoom() != 6)
         {
             map.clearObjects();
-            map.setObjects(new Drawers("A blank sheet of paper.Nothing else.\n", 1, 4, 101));
-            map.setObjects(new Drawers("A train ticket.The destination has been scratched out.\n", 4, 4, 102));
-            map.setObjects(new Drawers("A photograph.You recognize the person in it.On the back: \"I\'ll see you again.\" \n", 1, 8, 103));
-            map.setObjects(new Drawers("A small key.You don't recognize it. \n", 4, 8, 103));
-            map.setObjects(new Drawers("A folded piece of paper.You recognize the handwriting. It's yours.\n", 16, 4, 201));
-            map.setObjects(new Note("You searched for answers everywhere except where you left them.", 16, 8, 301));
-            map.setObjects(new Note("The truth is not something you were given.", 20, 8, 301));
+            map.setObjects(new Drawers("A blank sheet\nof paper.\nNothing else.\n", 1, 4, 101));
+            map.setObjects(new Drawers("A train ticket.\nThe destination\nhas been scratched out.\n", 4, 4, 102));
+            map.setObjects(new Drawers("A photograph.\nYou recognize\nthe person in\nit.On the back:\n\"I\'ll see\nyou again.\" \n", 1, 8, 103));
+            map.setObjects(new Drawers("A small key.\nYou don't\nrecognize it. \n", 4, 8, 103));
+            map.setObjects(new Drawers("A folded piece\nof paper.You\nrecognize the\nhandwriting.\nIt's yours.\n", 16, 4, 201));
+            map.setObjects(new Note("You searched for\nanswers everywhere\nexcept where\nyou left them.", 16, 8, 301));
+            map.setObjects(new Note("The truth is not\nsomething you\nwere given.", 20, 8, 301));
             map.setObjects(new Note("You already knew.", 20, 4, 301));
-            map.setObjects(new Note("The third path is the one that stops the train.", 5, 8, 301));
+            map.setObjects(new Note("The third path is the\none that stops\nthe train.", 5, 8, 301));
             map.setObjects(new Suitcase(23, 6, 301, 6));
             map.setObjects(new Doors(" ", 23, 6, 301));
             map.setObjects(new Doors(" ", 23, 6, 4));
