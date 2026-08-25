@@ -311,5 +311,24 @@ void Doors::use()
 
 		}
 	}
+	if (roomID == 5) {
+		if (question == 1) {
+			cout << "\r" << string(80, ' ') << "\r";
+			cout << "TAKE NOTE:\n";
+			cout << "1.	The last letter was written after I stopped expecting an answer.\n";
+			cout << "Tell me which letter is the last one \n";
+			cout << "Enter your answer: ";
+			cin >> answerT1;
+			if (answerT2 = 'D') {
+				cout << "\r" << string(80, ' ') << "\r";
+				cout << "Letters lie scattered across the table, written one after another as hope slowly faded.\n";
+				cout << "Two notes are pinned to the wall:\n";
+				cout << "All the things you thought you had to be.\n";
+				cout << "\"Which one are you ? \"\n";
+				
+
+			}
+		}
+	}
 }
 
