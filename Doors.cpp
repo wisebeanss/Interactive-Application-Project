@@ -376,7 +376,6 @@ void Doors::use()
 	
 	}
 	if (roomID == 6) {
-
 		if (doorID == 61)
 		{
 			// BAD ENDING

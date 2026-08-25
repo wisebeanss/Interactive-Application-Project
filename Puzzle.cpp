@@ -282,10 +282,10 @@ bool Puzzle::ROOMS(int roomID, Map& map)
             map.setObjects(new Note("The truth is not\nsomething you\nwere given.", 20, 8, 301));
             map.setObjects(new Note("You already knew.", 20, 4, 301));
             map.setObjects(new Note("The third path is the\none that stops\nthe train.", 5, 8, 301));
-            map.setObjects(new Suitcase(23, 6, 301, 6));
-            map.setObjects(new Doors(" ", 23, 4, 601,61));
-            map.setObjects(new Doors(" ", 23, 6, 602,62));
-            map.setObjects(new Doors(" ", 23, 8, 603,63));
+            map.setObjects(new Suitcase(15, 8, 301, 6));
+            map.setObjects(new Doors(" ", 23, 4, 6,61));
+            map.setObjects(new Doors(" ", 23, 6, 6,62));
+            map.setObjects(new Doors(" ", 23, 8, 6,63));
             suitcaseUnlock = false;
             setCurrentRoom(6);
             spawned = true;
