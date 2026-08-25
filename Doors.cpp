@@ -319,7 +319,7 @@ void Doors::use()
 			cout << "Tell me which letter is the last one \n";
 			cout << "Enter your answer: ";
 			cin >> answerT1;
-			if (answerT2 = 'D') {
+			if (answerT2 == 'D') {
 				cout << "\r" << string(80, ' ') << "\r";
 				cout << "Letters lie scattered across the table, written one after another as hope slowly faded.\n";
 				cout << "Two notes are pinned to the wall:\n";
