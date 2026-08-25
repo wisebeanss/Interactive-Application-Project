@@ -96,8 +96,8 @@ void Player::HandleInput(char symbol) {
 				}
 				else {
 					map.prevRoom();
-					setX(22);
-					setY(2);
+					setX(21);
+					setY(4);
 					break;
 				}
 				
