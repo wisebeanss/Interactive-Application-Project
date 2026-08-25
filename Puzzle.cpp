@@ -83,8 +83,8 @@ bool Puzzle::ROOMS(int roomID, Map& map)
         if (getCurrentRoom() != 3)
         {
             map.clearObjects();
-            map.setObjects(new Phones("First call: 11:32", 2, 8, 101));
-            map.setObjects(new Phones("Final call: 11:37", 5, 4, 102));
+            map.setObjects(new Phones("First call:\n11:32", 2, 8, 101));
+            map.setObjects(new Phones("Final call:\n11:37", 5, 4, 102));
             map.setObjects(new Letters("I called again\n two minutes later. \n", 3, 8, 103));
             map.setObjects(new Clocks("Stopped at 11:35 \n", 5, 8, 103));
             map.setObjects(new Suitcase(16, 4, 201, 3));
@@ -140,7 +140,7 @@ bool Puzzle::ROOMS(int roomID, Map& map)
                     {
                         map.clearObjects();
                         map.setObjects(new Posters("1.FIRST TRAIN RIDE\n2.CHILDHOOD\n3.LAST SUMMER\n4. PHOTOGRAPH\n", 4, 8, 103));
-                        map.setObjects(new Note("Childhood came before\nthe first train ride.\nThe last summer was\nimmediately before the\nphotograph.The first train\nride happened after childhood.\nThe photograph was\nbefore my first train ride.\nI dont remember writing\none of the lines. \n", 16, 4, 201));
+                        map.setObjects(new Note("Childhood came before\nthe first train ride.\nThe last summer was\nimmediately before the\nphotograph.The first train\nride happened after\nchildhood.The photograph\nwasbefore my first train\nride.I dont remember\nwriting one of the lines. \n", 16, 4, 201));
                         map.setObjects(new Doors(" ", 23, 6, 4));
                     }
                 }
@@ -208,13 +208,14 @@ bool Puzzle::ROOMS(int roomID, Map& map)
             map.setObjects(new Drawers("A photograph.You recognize the person in it.On the back: \"I\'ll see you again.\" \n", 1, 8, 103));
             map.setObjects(new Drawers("A small key.You don't recognize it. \n", 4, 8, 103));
             map.setObjects(new Drawers("A folded piece of paper.You recognize the handwriting. It's yours.\n", 16, 4, 201));
-            map.setObjects(new Note("You searched for answers everywhere except where you left them.", 23, 6, 301));
-            map.setObjects(new Note("The truth is not something you were given.", 23, 6, 301));
-            map.setObjects(new Note("You already knew.", 23, 6, 301));
-            map.setObjects(new Note("The third path is the one that stops the train.", 23, 6, 301));
+            map.setObjects(new Note("You searched for answers everywhere except where you left them.", 16, 8, 301));
+            map.setObjects(new Note("The truth is not something you were given.", 20, 8, 301));
+            map.setObjects(new Note("You already knew.", 20, 4, 301));
+            map.setObjects(new Note("The third path is the one that stops the train.", 5, 8, 301));
             map.setObjects(new Suitcase(23, 6, 301, 6));
-            map.setObjects(new Doors(" ", 23, 6, 301));
-            map.setObjects(new Doors(" ", 23, 6, 4));
+            map.setObjects(new Doors(" ", 23, 4, 6));
+            map.setObjects(new Doors(" ", 23, 6, 6));
+            map.setObjects(new Doors(" ", 23, 8, 6));
             setCurrentRoom(6);
         }
         return true;
