@@ -161,13 +161,12 @@ bool Puzzle::ROOMS(int roomID, Map& map)
             map.setObjects(new PhotoFragment("You and someone else\nare sitting together\non a train. \n", 5, 4, 102));
             map.setObjects(new PhotoFragment("You and the same person\nare standing together.\n", 1, 8, 103));
             map.setObjects(new Suitcase(4, 8, 301,4));
-            map.setObjects(new Doors(" ", 23, 6, 4));
-            suitcaseUnlock = false;
+            map.setObjects(new Doors(" ", 23, 6, 4,41));
             setCurrentRoom(4);
             spawned = true;
             //add = true;
         }
-        if (getCurrentRoom() == 4 && suitcaseUnlock == false)
+        if (getCurrentRoom() == 4)
         {
             int i = 0;
             for (InteractiveObject* itm : map.getObjects())
@@ -223,7 +222,7 @@ bool Puzzle::ROOMS(int roomID, Map& map)
             spawned = true;
             setCurrentRoom(5);
         }
-        if (getCurrentRoom() == 5 && suitcaseUnlock == false)
+        if (getCurrentRoom() == 5)
         {
             int i = 0;
             for (InteractiveObject* itm : map.getObjects())
@@ -280,7 +279,9 @@ bool Puzzle::ROOMS(int roomID, Map& map)
             map.setObjects(new Note("You already knew.", 20, 4, 301));
             map.setObjects(new Note("The third path is the\none that stops\nthe train.", 5, 8, 301));
             map.setObjects(new Suitcase(23, 6, 301, 6));
-            map.setObjects(new Doors(" ", 23, 6, 6));
+            map.setObjects(new Doors(" ", 23, 4, 601,61));
+            map.setObjects(new Doors(" ", 23, 6, 602,62));
+            map.setObjects(new Doors(" ", 23, 8, 603,63));
             setCurrentRoom(6);
             spawned = true;
         }
