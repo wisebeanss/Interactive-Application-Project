@@ -215,7 +215,7 @@ bool Puzzle::ROOMS(int roomID, Map& map)
             map.setObjects(new Suitcase(23, 6, 301, 6));
             map.setObjects(new Doors(" ", 23, 6, 301));
             map.setObjects(new Doors(" ", 23, 6, 4));
-            setCurrentCarriage(6);
+            setCurrentRoom(6);
         }
         
     }
