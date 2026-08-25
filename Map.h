@@ -36,6 +36,7 @@ public:
 	void setMapRendered(bool rendered);
 	void updateFrame();
 	void printSidebar(int carriageNum, int carriageRoom, bool uiActive, Player& player, const std::string uiBuffer[13] = nullptr) const;
+	void printDialogueBox(bool uiActive, const std::string textBuffer[7] = nullptr) const;
 	void buildMap();
 	void mapTile(int posX, int posY, char symbol);
 	void updateMap(int x, int y, char symbol);

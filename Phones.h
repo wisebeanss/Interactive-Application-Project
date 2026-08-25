@@ -11,5 +11,6 @@ public:
     Phones(string text, int X, int Y, int id);
     ~Phones();
     void use();
+    void getUIBuffer(string buffer[13]) const;
 };
 

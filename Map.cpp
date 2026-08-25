@@ -160,9 +160,9 @@ void Map::buildMap() {
 								mapSize[gridY][j] = 'H';
 							}
 						}
-						if ((i == 1 && j == 5) || (i == 5 && j == 2)) {
-							mapSize[gridY][j] = 'N';
-						}
+						//if ((i == 1 && j == 5) || (i == 5 && j == 2)) {
+						//	mapSize[gridY][j] = 'N';
+						//}
 						if (i == 0 && j == 21) {
 							mapSize[gridY][j] = '_';
 						}
@@ -174,16 +174,16 @@ void Map::buildMap() {
 							mapSize[gridY][j] = 'H';
 						}
 					}
-					if (i == 1 && j == 3) {
-						mapSize[gridY][j] = '[';
-					}
-					if (i == 1 && j == 4) {
-						mapSize[gridY][j] = ']';
-					}
-					if ((i == 5 && j == 5) || (i == 5 && j == 22) ||
-						(i == 1 && j == 14)) {
-						mapSize[gridY][j] = '~';
-					}
+					//if (i == 1 && j == 3) {
+					//	mapSize[gridY][j] = '[';
+					//}
+					//if (i == 1 && j == 4) {
+					//	mapSize[gridY][j] = ']';
+					//}
+					//if ((i == 5 && j == 5) || (i == 5 && j == 22) ||
+					//	(i == 1 && j == 14)) {
+					//	mapSize[gridY][j] = '~';
+					//}
 				}
 				else if (carriageNum == 5) {
 					if (i == 1 || i == 5) {
@@ -191,13 +191,13 @@ void Map::buildMap() {
 							mapSize[gridY][j] = 'H';
 						}
 					}
-					if ((i == 1 && j == 2) || (i == 5 && j == 5)) {
-						mapSize[gridY][j] = '^';
-					}
-					if ((i == 1 && j == 18) || (i == 1 && j == 21) ||
-						(i == 5 && j == 18) || (i == 5 && j == 21)) {
-						mapSize[gridY][j] = '?';
-					}
+					//if ((i == 1 && j == 2) || (i == 5 && j == 5)) {
+					//	mapSize[gridY][j] = '^';
+					//}
+					//if ((i == 1 && j == 18) || (i == 1 && j == 21) ||
+					//	(i == 5 && j == 18) || (i == 5 && j == 21)) {
+					//	mapSize[gridY][j] = '?';
+					//}
 
 				}
 				else if (carriageNum == 6) {
@@ -316,6 +316,33 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, Player&
 		std::cout << lineBuffer << "\n";
 	}
 }
+
+//=========dialogue box if we got time===================
+
+//std::string textBoxMax(const std::string& text, size_t targetWidth = 50) {
+//	if (text.length() >= targetWidth) {
+//		return text.substr(0, targetWidth); // Truncate if too long
+//	}
+//	return text + std::string(targetWidth - text.length(), ' '); // Pad remaining spaces
+//}
+//
+//void Map::printDialogueBox(bool uiActive, const std::string textBuffer[7] = nullptr) const {
+//	size_t boxWidth = 50;
+//	for (int i = 0; i < 7; i++) {
+//		std::string lineBuffer = "";
+//		switch (i) {
+//		case 0: lineBuffer += textBoxMax("+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-+", boxWidth); break;
+//		case 1: lineBuffer += textBoxMax("", boxWidth); break;
+//		case 2: lineBuffer += textBoxMax("", boxWidth); break;
+//		case 3: lineBuffer += textBoxMax("", boxWidth); break;
+//		case 4: lineBuffer += textBoxMax("", boxWidth); break;
+//		case 5: lineBuffer += textBoxMax("", boxWidth); break;
+//		case 6: lineBuffer += textBoxMax("+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-+", boxWidth); break;
+//
+//
+//		}
+//	}
+//}
 
 void Map::updateMap(int x, int y, char symbol) {
 	if (x > 0 && x < 24 && y > 2 && y < 10) {

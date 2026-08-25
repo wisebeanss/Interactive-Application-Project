@@ -40,26 +40,51 @@ Phones::~Phones()
         }
     }
 }
+void Phones::getUIBuffer(string buffer[13]) const {
+    const int width = 13;
+    const int boxWidth = width + 2;
+
+    buffer[0] = "+-===========-+";
+
+    int row = 1;
+    size_t start = 0;
+    while (row < 9 && start < text.size()) {
+        size_t end = text.find('\n', start);
+        if (end == std::string::npos) end = text.size();
+        std::string line = text.substr(start, end - start);
+        buffer[row++] = "|" + centerPhoneText(line, width) + "|";
+        start = end + 1; // move past '\n'
+    }
+    // Fill remaining rows with empty centered lines
+    while (row < 9) {
+        buffer[row++] = "|" + centerPhoneText("", width) + "|";
+    }
+    buffer[9] = "|     ()      |";
+    buffer[10] = "+-===========-+";
+    buffer[11] = "                      ";
+    buffer[12] = "                      ";
+}
 
 void Phones::use()
 {
-    const int width = 22;
+    enableUI();
+    //const int width = 22;
 
-    cout << "+----------------------+" << endl;
-    cout << "|" << centerPhoneText("", width) << "|" << endl;
-    cout << "|" << centerPhoneText("", width) << "|" << endl;
-    cout << "|" << centerPhoneText("", width) << "|" << endl;
-    cout << "|" << centerPhoneText("", width) << "|" << endl;
-    cout << "|" << centerPhoneText("", width) << "|" << endl;
-    cout << "|" << centerPhoneText("PHONE ", width) << "|" << endl;
-    cout << "|" << centerPhoneText("", width) << "|" << endl;
-    cout << "|" << centerPhoneText(text, width) << "|" << endl;
-    cout << "|" << centerPhoneText("", width) << "|" << endl;
-    cout << "|" << centerPhoneText("", width) << "|" << endl;
-    cout << "|" << centerPhoneText("", width) << "|" << endl;
-    cout << "|" << centerPhoneText("", width) << "|" << endl;
-    cout << "|" << centerPhoneText("", width) << "|" << endl;
-    cout << "|" << centerPhoneText("", width) << "|" << endl;
-    cout << "|" << centerPhoneText("", width) << "|" << endl;
-    cout << "+----------------------+" << endl;
+    //cout << "+----------------------+" << endl;
+    //cout << "|" << centerPhoneText("", width) << "|" << endl;
+    //cout << "|" << centerPhoneText("", width) << "|" << endl;
+    //cout << "|" << centerPhoneText("", width) << "|" << endl;
+    //cout << "|" << centerPhoneText("", width) << "|" << endl;
+    //cout << "|" << centerPhoneText("", width) << "|" << endl;
+    //cout << "|" << centerPhoneText("PHONE ", width) << "|" << endl;
+    //cout << "|" << centerPhoneText("", width) << "|" << endl;
+    //cout << "|" << centerPhoneText(text, width) << "|" << endl;
+    //cout << "|" << centerPhoneText("", width) << "|" << endl;
+    //cout << "|" << centerPhoneText("", width) << "|" << endl;
+    //cout << "|" << centerPhoneText("", width) << "|" << endl;
+    //cout << "|" << centerPhoneText("", width) << "|" << endl;
+    //cout << "|" << centerPhoneText("", width) << "|" << endl;
+    //cout << "|" << centerPhoneText("", width) << "|" << endl;
+    //cout << "|" << centerPhoneText("", width) << "|" << endl;
+    //cout << "+----------------------+" << endl;
 }

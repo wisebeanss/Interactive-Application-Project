@@ -29,12 +29,12 @@ void Note::getUIBuffer(string buffer[13]) const {
     const int width = 26;
     const int boxWidth = width + 2;
 
-    buffer[0] = "                      ";
-    buffer[1] = "                      ";
-    buffer[2] = "                      ";
-    buffer[3] = "+--~-~-~-~-~-~-~-~-~-~-~-~-+";
+    buffer[0] = "                    ";
+    buffer[1] = "                    ";
+    buffer[2] = "+--~-~-~-~-~-~-~-~-~-~-~-~-+";
 
-    int row = 4;
+
+    int row = 3;
     size_t start = 0;
     while (row < 9 && start < text.size()) {
         size_t end = text.find('\n', start);
