@@ -55,6 +55,9 @@ void Map::nextRoom() {
 	}
 	else { carriageRoom = 1; }
 }
+void Map::prevRoom() {
+	carriageRoom -= 1;
+}
 
 void Map::buildMap() {
 
