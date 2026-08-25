@@ -32,7 +32,7 @@ bool Puzzle::ROOMS(int roomID, Map& map)
             map.setObjects(new Mirrors("MirrorA: The reflection\nis smiling But you are not\n", 16, 4, 201));
             map.setObjects(new Mirrors("MirrorB: You raise your\nleft hand. The reflection\nraises its right hand\n", 21, 4, 202));
             map.setObjects(new Mirrors("MirrorC:You raise your\nleft hand.The reflection\nraises its left hand.\nYou blink.\nIt blinks with you.\n", 21, 8, 203));
-            map.setObjects(new Doors(" ", 23, 6, 1));
+            map.setObjects(new Doors(" ", 23, 6, 1,11));
             setCurrentRoom(1);
             map.buildMap();
         }
@@ -48,7 +48,7 @@ bool Puzzle::ROOMS(int roomID, Map& map)
                map.setObjects(new PhotoFragment("PhotoFragment3:\n\"The Other person\" \n", 1, 8, 103));
                //map.setObjects(new Posters("1.THE STRONG\n2.THE SMART\n3.THE SUCCESSFUL\n4.THE PERFECT \n", 4, 8, 203));
                map.setObjects(new Suitcase(4, 8, 203, 2));
-               map.setObjects(new Doors(" ", 23, 6, 2));
+               map.setObjects(new Doors(" ", 23, 6, 2,21));
                setCurrentRoom(2);
  /*              add = true;*/
            }
@@ -69,7 +69,7 @@ bool Puzzle::ROOMS(int roomID, Map& map)
                            map.setObjects(new Note("The Smart poster is\nimmediately before the\nPerfect poster. \n", 21, 4, 202));
                            map.setObjects(new Note("The Successful poster\nis last.\n", 21, 8, 203));
                            map.setObjects(new Posters("1.THE STRONG\n2.THE SMART\n3.THE SUCCESSFUL\n4.THE PERFECT \n", 4, 8, 203));
-                           map.setObjects(new Doors(" ", 23, 6, 2));
+                           map.setObjects(new Doors(" ", 23, 6, 2,22));
                        }
                    }
                }
@@ -88,7 +88,7 @@ bool Puzzle::ROOMS(int roomID, Map& map)
             map.setObjects(new Letters("I called again\n two minutes later. \n", 3, 8, 103));
             map.setObjects(new Clocks("Stopped at 11:35 \n", 5, 8, 103));
             map.setObjects(new Suitcase(16, 4, 201, 3));
-            map.setObjects(new Doors(" ", 23, 6, 3));
+            map.setObjects(new Doors(" ", 23, 6, 3,31));
             setCurrentRoom(3);
             // add = true;
         }
@@ -107,7 +107,7 @@ bool Puzzle::ROOMS(int roomID, Map& map)
                         map.setObjects(new Letters("No timestamp.\n", 21, 8, 203));
                         map.setObjects(new Photograph("Taken at 10:20. \n", 20, 4, 203));
                         map.setObjects(new Watch("Stopped at 11:35. \n", 1, 8, 103));
-                        map.setObjects(new Doors(" ", 23, 6, 3));
+                        map.setObjects(new Doors(" ", 23, 6, 3,32));
                     }
                 }
             }
@@ -123,7 +123,7 @@ bool Puzzle::ROOMS(int roomID, Map& map)
             map.setObjects(new PhotoFragment("You and someone else\nare sitting together\non a train. \n", 5, 4, 102));
             map.setObjects(new PhotoFragment("You and the same person\nare standing together.\n", 1, 8, 103));
             map.setObjects(new Suitcase(4, 8, 301,4));
-            map.setObjects(new Doors(" ", 23, 6, 4));
+            map.setObjects(new Doors(" ", 23, 6, 4,41));
             setCurrentRoom(4);
             //add = true;
         }
@@ -141,7 +141,7 @@ bool Puzzle::ROOMS(int roomID, Map& map)
                         map.clearObjects();
                         map.setObjects(new Posters("1.FIRST TRAIN RIDE\n2.CHILDHOOD\n3.LAST SUMMER\n4. PHOTOGRAPH\n", 4, 8, 103));
                         map.setObjects(new Note("Childhood came before\nthe first train ride.\nThe last summer was\nimmediately before the\nphotograph.The first train\nride happened after\nchildhood.The photograph\nwasbefore my first train\nride.I dont remember\nwriting one of the lines. \n", 16, 4, 201));
-                        map.setObjects(new Doors(" ", 23, 6, 4));
+                        map.setObjects(new Doors(" ", 23, 6, 4,42));
                     }
                 }
             }
@@ -166,7 +166,7 @@ bool Puzzle::ROOMS(int roomID, Map& map)
             map.setObjects(new Lockers("A scarf is hanging\ninside. You recognize it.\nYou remember seeing it\nbefore. But you can't\nremember where. ", 21, 8, 301));
             map.setObjects(new Lockers("The locker contains\na train ticket.\nDestination:UNKNOWN\nSeat: 18 ", 12, 8, 301));
             map.setObjects(new Lockers("There is nothing\ninside. But someone's\nname is carved into\nthe door. ", 13, 8, 301));
-            map.setObjects(new Doors(" ", 23, 6, 5));
+            map.setObjects(new Doors(" ", 23, 6, 5,51));
             setCurrentRoom(5);
         }
         if (getCurrentRoom() == 5)
@@ -190,7 +190,7 @@ bool Puzzle::ROOMS(int roomID, Map& map)
                         map.setObjects(new Lockers("A scarf is hanging inside.You recognize it. You remember seeing it before. But you can't remember where. ", 23, 6, 301));
                         map.setObjects(new Lockers("The locker contains a train ticket. Destination: UNKNOWN Seat: 18 ", 23, 6, 301));
                         map.setObjects(new Lockers("There is nothing inside.But someone's name is carved into the door. ", 23, 6, 301));
-                        map.setObjects(new Doors(" ", 23, 6, 5));
+                        map.setObjects(new Doors(" ", 23, 6, 5,52));
                     }
                 }
             }
@@ -213,8 +213,9 @@ bool Puzzle::ROOMS(int roomID, Map& map)
             map.setObjects(new Note("You already knew.", 20, 4, 301));
             map.setObjects(new Note("The third path is the\none that stops\nthe train.", 5, 8, 301));
             map.setObjects(new Suitcase(23, 6, 301, 6));
-            map.setObjects(new Doors(" ", 23, 6, 301));
-            map.setObjects(new Doors(" ", 23, 6, 4));
+            map.setObjects(new Doors(" ", 23, 4, 601,61));
+            map.setObjects(new Doors(" ", 23, 6, 602,62));
+            map.setObjects(new Doors(" ", 23, 8, 603,63));
             setCurrentRoom(6);
         }
         
