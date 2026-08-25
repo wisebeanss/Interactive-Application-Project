@@ -134,23 +134,6 @@ bool Suitcase::tryUnlock()
         }
         if (canunlock)
         {
-            //You place the fragments together.
-
-            //    The photograph slowly becomes whole.
-
-            //    You see yourself as a child.
-            //    Then, sitting beside them.
-            //    Then, standing beside them.
-
-            //    You stare at the faded face beside yours.
-
-            //    "I remember you."
-
-            //    Your fingers tighten around the photograph.
-
-            //    "I just wish I didn't."
-
-            //    The suitcase opens.
             cout << "\r" << string(80, ' ') << "\r";
             cout << "You place the fragments together.\n";
             cout << "The photograph slowly becomes whole.\n";
