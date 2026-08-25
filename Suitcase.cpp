@@ -69,6 +69,11 @@ void Suitcase::tryUnlock()
             cout << "You stare at the completed image.\n";
             cout << "Was I really there?\n";
             cout << "\nA note has appeared nearby.\n";
+            cout << "\nPress Enter to continue...";
+            cin.ignore();
+            cin.get();
+
+            system("cls");
             unlocked = canunlock;
         }
     }
@@ -105,6 +110,10 @@ void Suitcase::tryUnlock()
                     }
                 }
             }
+            if (canunlock == false)
+            {
+                cout << "wrong answer";
+            }
         }
         if (canunlock)
         {
@@ -115,6 +124,11 @@ void Suitcase::tryUnlock()
             cout << "A thought slowly surfaces.\n";
             cout << "\"I wasn't there.\"\n";
             cout << "You step back.\n";
+            cout << "\nPress Enter to continue...";
+            cin.ignore();
+            cin.get();
+
+            system("cls");
             unlocked = canunlock;
         }
         //1132 1134 1135 1137
@@ -140,6 +154,11 @@ void Suitcase::tryUnlock()
             cout << "Your fingers tighten around the photograph.\n";
             cout << "\"I just wish I didn't.\"\n";
             cout << "The suitcase opens\n";
+            cout << "\nPress Enter to continue...";
+            cin.ignore();
+            cin.get();
+
+            system("cls");
             unlocked = canunlock;
         }
     }
@@ -155,6 +174,10 @@ void Suitcase::tryUnlock()
             {
                 canunlock = true;
             }
+            else
+            {
+                cout<<"wrong answer";
+            }
         }
         if (canunlock)
         {
@@ -168,6 +191,11 @@ void Suitcase::tryUnlock()
             cout << "written after she had finally stopped waiting entirely.\n";
             cout << "You choose the letter with no date.\n";
             cout << "The safe clicks open.\n";
+            cout << "\nPress Enter to continue...";
+            cin.ignore();
+            cin.get();
+
+            system("cls");
 
             unlocked = true;
         }

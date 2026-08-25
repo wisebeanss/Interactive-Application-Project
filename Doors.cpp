@@ -326,7 +326,7 @@ void Doors::use()
 		if (question == 1) {
 			cout << "\r" << string(80, ' ') << "\r";
 			cout << "TAKE NOTE:\n";
-			cout << "1.	The last letter was written after I stopped expecting an answer.\n";
+			cout << "1. The last letter was written after I stopped expecting an answer.\n";
 			cout << "Tell me which letter is the last one \n";
 			cin >> answerT1;
 			if (answerT1 == 3 ) {

@@ -24,8 +24,6 @@ void Letters::use() {
     const int width = 22;
 
     std::cout << "+----------------------+" << std::endl;
-    std::cout << "|" << centerLetter("", width) << "|" << std::endl;
-    std::cout << "|" << centerLetter("", width) << "|" << std::endl;
     size_t start = 0;
     while (start < text.size()) {
         size_t end = text.find('\n', start);
