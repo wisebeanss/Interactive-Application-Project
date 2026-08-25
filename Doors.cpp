@@ -375,7 +375,6 @@ void Doors::use()
 				cin.get();
 
 				system("cls");
-				attempts = 0;
 				question = 3;
 				return;
 			}
