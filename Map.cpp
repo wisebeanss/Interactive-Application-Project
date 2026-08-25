@@ -288,13 +288,13 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, Player&
 		case 2:lineBuffer += formatPanelLine("   F    : Interact / Use Object", targetWidth); break;
 		//case 6:lineBuffer += formatPanelLine(" - - - - - - - - - - - - - - - -", targetWidth); break;
 		case 3:lineBuffer += formatPanelLine("         [ INVENTORY ]", targetWidth); break;
-		case 4:lineBuffer += formatPanelLine(" 1. -    " + player.getInvItemName(0),targetWidth); break;
-		case 5:lineBuffer += formatPanelLine(" 2. -    " + player.getInvItemName(1), targetWidth); break;
-		case 6:lineBuffer += formatPanelLine(" 3. -    " + player.getInvItemName(2), targetWidth); break;
-		case 7:lineBuffer += formatPanelLine(" 4. -    " + player.getInvItemName(3), targetWidth); break;
-		case 8:lineBuffer += formatPanelLine(" 5. -    " + player.getInvItemName(4), targetWidth); break;
-		case 9:lineBuffer += formatPanelLine(" 6. -    " + player.getInvItemName(5), targetWidth); break;
-		case 10:lineBuffer += formatPanelLine(" 7. -    " + player.getInvItemName(6), targetWidth); break;
+		case 4:lineBuffer += formatPanelLine(" 1. -    " + player.getInvItemSlot(0),targetWidth); break;
+		case 5:lineBuffer += formatPanelLine(" 2. -    " + player.getInvItemSlot(1), targetWidth); break;
+		case 6:lineBuffer += formatPanelLine(" 3. -    " + player.getInvItemSlot(2), targetWidth); break;
+		case 7:lineBuffer += formatPanelLine(" 4. -    " + player.getInvItemSlot(3), targetWidth); break;
+		case 8:lineBuffer += formatPanelLine(" 5. -    " + player.getInvItemSlot(4), targetWidth); break;
+		case 9:lineBuffer += formatPanelLine(" 6. -    " + player.getInvItemSlot(5), targetWidth); break;
+		case 10:lineBuffer += formatPanelLine(" 7. -    " + player.getInvItemSlot(6), targetWidth); break;
 		case 11: lineBuffer += formatPanelLine("         [TIME LEFT]", targetWidth); break;
 		case 12: {
 			int m = getGameMap().timer.getMinutes();
