@@ -24,7 +24,7 @@ bool Suitcase::isUnlocked()
 
 void Suitcase::collectPhoto()
 {
-    if (roomID == 2)
+    if (roomID == 2 || roomID == 4)
     {
         noOfPhotos = noOfPhotos + 1;
     }
@@ -32,7 +32,7 @@ void Suitcase::collectPhoto()
 
 bool Suitcase::hasAllPhotos()
 {
-    if (roomID == 2)
+    if (roomID == 2 || roomID == 4)
     {
         return noOfPhotos == 3;
     }
@@ -123,10 +123,48 @@ bool Suitcase::tryUnlock()
         }
         //1132 1134 1135 1137
     }
-    else if (roomID == 4)
+    if (roomID == 4)
     {
-        unlocked = (progressState >= 2);
-        hintMsg = "The suitcase is still locked. Complete the sequence first.";
+        hintMsg = "The suitcase is still locked. Find all 3 photos first.\nPieces collected: " + to_string(noOfPhotos) + "/3";
+        if (!canunlock)
+        {
+            canunlock = hasAllPhotos();
+            cout << "\n" << hintMsg << "\n";
+            return false;
+        }
+        if (canunlock)
+        {
+            //You place the fragments together.
+
+            //    The photograph slowly becomes whole.
+
+            //    You see yourself as a child.
+            //    Then, sitting beside them.
+            //    Then, standing beside them.
+
+            //    You stare at the faded face beside yours.
+
+            //    "I remember you."
+
+            //    Your fingers tighten around the photograph.
+
+            //    "I just wish I didn't."
+
+            //    The suitcase opens.
+            cout << "\r" << string(80, ' ') << "\r";
+            cout << "You place the fragments together.\n";
+            cout << "The photograph slowly becomes whole.\n";
+            cout << "You see yourself as a child.\n";
+            cout << "Then, sitting beside them.\n";
+            cout << "Then, standing beside them.\n";
+            cout << "You stare at the faded face beside yours.\n";
+            cout << "\"I remember you\"\n";
+            cout << "Your fingers tighten around the photograph.\n";
+            cout << "\"I just wish I didn't.\"\n";
+            cout << "The suitcase opens\n";
+            unlocked = canunlock;
+            return true;
+        }
     }
 
 

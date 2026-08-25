@@ -29,14 +29,12 @@ void Note::getUIBuffer(string buffer[13]) const {
     const int width = 26;
     const int boxWidth = width + 2;
 
-    buffer[0] = "                    ";
-    buffer[1] = "                    ";
-    buffer[2] = "+--~-~-~-~-~-~-~-~-~-~-~-~-+";
+    buffer[0] = "+--~-~-~-~-~-~-~-~-~-~-~-~-+";
 
 
-    int row = 3;
+    int row = 1;
     size_t start = 0;
-    while (row < 9 && start < text.size()) {
+    while (row < 12 && start < text.size()) {
         size_t end = text.find('\n', start);
         if (end == std::string::npos) end = text.size();
         std::string line = text.substr(start, end - start);
@@ -44,13 +42,10 @@ void Note::getUIBuffer(string buffer[13]) const {
         start = end + 1; // move past '\n'
     }
     // Fill remaining rows with empty centered lines
-    while (row < 9) {
+    while (row < 12) {
         buffer[row++] = "|" + centerDescription("", width) + "|";
     }
-    buffer[9] = "+--~-~-~-~-~-~-~-~-~-~-~-~-+";
-    buffer[10] = "                      ";
-    buffer[11] = "                      ";
-    buffer[12] = "                      ";
+    buffer[12] = "+--~-~-~-~-~-~-~-~-~-~-~-~-+";
 }
 void Note::use() {
     enableUI();
