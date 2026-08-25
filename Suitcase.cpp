@@ -23,7 +23,7 @@ bool Suitcase::isUnlocked()
 
 void Suitcase::collectPhoto()
 {
-    if (roomID == 1)
+    if (roomID == 2)
     {
         noOfPhotos = noOfPhotos + 1;
     }
@@ -31,7 +31,7 @@ void Suitcase::collectPhoto()
 
 bool Suitcase::hasAllPhotos()
 {
-    if (roomID == 1)
+    if (roomID == 2)
     {
         return noOfPhotos == 3;
     }
@@ -48,7 +48,7 @@ void Suitcase::markPuzzleSolved()
 
 void Suitcase::setProgressState(int s)
 {
-    if (roomID == 3)
+    if (roomID == 2)
     {
         progressState = s;
     }
@@ -59,7 +59,7 @@ bool Suitcase::tryUnlock()
     bool canUnlock = false;
     string hintMsg;
 
-    if (roomID == 1)
+    if (roomID == 2)
     {
         canUnlock = hasAllPhotos();
         hintMsg = "The suitcase is still locked. Find all 3 photos first.\nPieces collected: " + to_string(noOfPhotos) + "/3";
@@ -81,12 +81,12 @@ bool Suitcase::tryUnlock()
             return false;
         }
     }
-    else if (roomID == 2)
+    else if (roomID == 3)
     {
         canUnlock = puzzleSolved;
         hintMsg = "The suitcase is still locked. Solve the puzzle first.";
     }
-    else if (roomID == 3)
+    else if (roomID == 4)
     {
         canUnlock = (progressState >= 2);
         hintMsg = "The suitcase is still locked. Complete the sequence first.";

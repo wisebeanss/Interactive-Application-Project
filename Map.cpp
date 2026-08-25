@@ -247,11 +247,11 @@ void Map::buildMap() {
 	for (InteractiveObject* obj : Objects) {
 		if (obj == nullptr) { continue; }
 		if (Suitcase* suitcase = dynamic_cast<Suitcase*>(obj)) {
-			mapSize[suitcase->getY()][suitcase->getX() - 1] = '[';
+			//mapSize[suitcase->getY()][suitcase->getX() - 1] = '[';
 			mapSize[suitcase->getY()][suitcase->getX()] = suitcase->getSymbol();
 		}
 		else if (Posters* poster = dynamic_cast<Posters*>(obj)) {
-			mapSize[poster->getY()][poster->getX() - 1] = '[';
+			//mapSize[poster->getY()][poster->getX() - 1] = '[';
 			mapSize[poster->getY()][poster->getX()] = poster->getSymbol();
 		}
 		else {

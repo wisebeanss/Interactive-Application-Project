@@ -43,11 +43,11 @@ bool Puzzle::ROOMS(int roomID, Map& map)
            if (getCurrentRoom() != 2)
            {
                map.clearObjects();
-               map.setObjects(new PhotoFragment("PhotoFragment1: A 'Hand'\n", 1, 4, 101));
-               map.setObjects(new PhotoFragment("PhotoFragment2: A \"Face\"\n", 4, 4, 102));
-               map.setObjects(new PhotoFragment("PhotoFragment3: \"The Other person\" \n", 1, 8, 103));
+               map.setObjects(new PhotoFragment("PhotoFragment1:\nA 'Hand'\n", 1, 4, 101));
+               map.setObjects(new PhotoFragment("PhotoFragment2:\nA \"Face\"\n", 4, 4, 102));
+               map.setObjects(new PhotoFragment("PhotoFragment3:\n\"The Other person\" \n", 1, 8, 103));
                //map.setObjects(new Posters("1.THE STRONG\n2.THE SMART\n3.THE SUCCESSFUL\n4.THE PERFECT \n", 4, 8, 203));
-               map.setObjects(new Suitcase(4, 8, 203));
+               map.setObjects(new Suitcase(4, 8, 203, 2));
                map.setObjects(new Doors(" ", 23, 6, 2));
                setCurrentRoom(2);
  /*              add = true;*/
@@ -87,7 +87,7 @@ bool Puzzle::ROOMS(int roomID, Map& map)
              map.setObjects(new Phones("Final call: 11:37", 5, 4, 102));
              map.setObjects(new Letters("I called again\n two minutes later. \n", 3, 8, 103));
              map.setObjects(new Clocks("Stopped at 11:35 \n", 5, 8, 103));
-             map.setObjects(new Suitcase(16, 4, 201));
+             map.setObjects(new Suitcase(16, 4, 201, 3));
              map.setObjects(new Note("You blamed yourself for\nwhat happened at 11:35,\nbut you weren't there\nwhen it happened.\n", 2, 4, 202));
              map.setObjects(new Letters("No timestamp.\n", 21, 8, 203));
              map.setObjects(new Photograph("Taken at 10:20. \n", 21, 8, 203));
@@ -103,12 +103,12 @@ bool Puzzle::ROOMS(int roomID, Map& map)
         if (getCurrentRoom() != 4)
         {
             map.clearObjects();
-            map.setObjects(new PhotoFragment("A photograph of you as a child.\n", 1, 4, 101));
-            map.setObjects(new PhotoFragment("You and someone else are sitting together on a train. \n", 4, 4, 102));
-            map.setObjects(new PhotoFragment("You and the same person are standing together.\n", 1, 8, 103));
-            map.setObjects(new Posters("1.FIRST TRAIN RIDE 2.CHILDHOOD 3.LAST SUMMER 4. PHOTOGRAPH\n", 4, 8, 103));
-            map.setObjects(new Note("Childhood came before the first train ride.The last summer was immediately before the photograph. The first train ride happened after childhood. The photograph was before my first train ride. I dont remember writing one of the lines. \n", 16, 4, 201));
-            map.setObjects(new Suitcase(23, 6, 301));
+            map.setObjects(new PhotoFragment("A photograph of you\nas a child.\n", 1, 4, 101));
+            map.setObjects(new PhotoFragment("You and someone else\nare sitting together\non a train. \n", 4, 4, 102));
+            map.setObjects(new PhotoFragment("You and the same person\nare standing together.\n", 1, 8, 103));
+            map.setObjects(new Posters("1.FIRST TRAIN RIDE\n2.CHILDHOOD\n3.LAST SUMMER\n4. PHOTOGRAPH\n", 4, 8, 103));
+            map.setObjects(new Note("Childhood came before\nthe first train ride.\nThe last summer was\nimmediately before the\nphotograph.The first train\nride happened after childhood.\nThe photograph was\nbefore my first train ride.\nI dont remember writing\none of the lines. \n", 16, 4, 201));
+            map.setObjects(new Suitcase(23, 6, 301,4));
             map.setObjects(new Doors(" ", 23, 6, 2));
             setCurrentRoom(4);
             //add = true;
@@ -120,13 +120,13 @@ bool Puzzle::ROOMS(int roomID, Map& map)
         if (getCurrentRoom() != 5)
         {
             map.clearObjects();
-            map.setObjects(new Letters("Dear you, I wish I could tell you what happened. Maybe tomorrow. Written on Monday\n", 1, 4, 101));
-            map.setObjects(new Letters("Dear you, I tried calling today. You didn't answer. I'll try again. Written on Wednesday \n", 4, 4, 102));
-            map.setObjects(new Letters("Dear you, I don't know if you're still listening. I'm sorry. Written on Friday\n", 1, 8, 103));
-            map.setObjects(new Letters("\"Dear you,I don't know why I keep writing these. You're not going to read them anyway.\" No date\n", 4, 8, 103));
-            map.setObjects(new Note("The last letter was written after I stopped expecting an answer.\n", 16, 4, 201));
-            map.setObjects(new Note("I stopped calling before I stopped writing.", 23, 6, 301));
-            map.setObjects(new Suitcase(23, 6, 301));
+            map.setObjects(new Letters("Dear you, I wish I\ncould tell you\nwhat happened.\nMaybe tomorrow.\nWritten on Monday\n", 1, 4, 101));
+            map.setObjects(new Letters("Dear you, I tried\ncalling today.\nYou didn't answer.\nI'll try again.\nWritten on Wednesday \n", 4, 4, 102));
+            map.setObjects(new Letters("Dear you, I don't\nknow if you're\nstill listening.\nI'm sorry.\nWritten on Friday\n", 1, 8, 103));
+            map.setObjects(new Letters("\"Dear you,I don't know\nwhy I keep writing\nthese.You're not going\nto read them anyway.\"\nNo date\n", 4, 8, 103));
+            map.setObjects(new Note("The last letter was\nwritten after I stopped expecting\nan answer.\n", 16, 4, 201));
+            map.setObjects(new Note("I stopped calling\nbefore I stopped writing.", 23, 6, 301));
+            map.setObjects(new Suitcase(23, 6, 301, 5));
             map.setObjects(new Lockers("The locker is empty.A faded sticker reads: \"PROPERTY OF STAFF\"", 23, 6, 301));
             map.setObjects(new Lockers("Inside is an old school notebook.The name has been scratched out.", 23, 6, 301));
             map.setObjects(new Lockers("A scarf is hanging inside.You recognize it. You remember seeing it before. But you can't remember where. ", 23, 6, 301));
@@ -156,7 +156,7 @@ bool Puzzle::ROOMS(int roomID, Map& map)
             map.setObjects(new Note("The truth is not something you were given.", 23, 6, 301));
             map.setObjects(new Note("You already knew.", 23, 6, 301));
             map.setObjects(new Note("The third path is the one that stops the train.", 23, 6, 301));
-            map.setObjects(new Suitcase(23, 6, 301));
+            map.setObjects(new Suitcase(23, 6, 301, 6));
             map.setObjects(new Doors(" ", 23, 6, 301));
             map.setObjects(new Doors(" ", 23, 6, 4));
             setCurrentRoom(6);
