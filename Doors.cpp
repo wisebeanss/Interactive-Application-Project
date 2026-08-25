@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <cctype>
+#include "Dialogue.h"
 using namespace std;
 
 
@@ -58,6 +59,7 @@ void Doors::setRoomID(int id)
 
 void Doors::use()
 {
+	Dialogue dialogue;
 	int answerT1;
 	char answerT2 = ' ';
 	string answerT3;
@@ -73,12 +75,16 @@ void Doors::use()
 
 			if (answerT1 == 115012)
 			{
-				cout << "\nThe clock begins ticking...\n";
-				cout << "11:50...\n";
-				cout << "11:51...\n";
-				cout << "You stare at its hands. The time feels familiar, yet you cannot recall why.\n";
-				cout << "You can now solve Puzzle 2.\n";
-				cout << "\nPress Enter to continue...";
+				dialogue.show({
+				"The clock begins ticking...",
+				"11:50...",
+				"11:51...",
+				"You stare at its hands.",
+				"The time feels familiar,",
+				"yet you cannot recall why.",
+				"You can now solve Puzzle 2.",
+				"Press Enter to continue...",
+					});
 				cin.ignore();
 				cin.get();
 
@@ -89,11 +95,15 @@ void Doors::use()
 			}
 			else
 			{
-				cout << "\nThat doesn't seem right.\n";
-			
+				dialogue.show({
+				"That doesn't seem right..",
+				"Two minutes have been deducted.",
+				"Press Enter to continue.",
+
+
+					});
 				Timer& t = getGameMap().getTimerObject();
 
-				cout << "\nPress Enter to continue...";
 				cin.ignore();
 				cin.get();
 
