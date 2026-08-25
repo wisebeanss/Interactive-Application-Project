@@ -400,7 +400,7 @@ void Doors::use()
 		if (question == 1) {
 			cout << "\r" << string(80, ' ') << "\r";
 			cout << "TAKE NOTE:\n";
-			cout << "1.	The last letter was written after I stopped expecting an answer.\n";
+			cout << "1.The last letter was written after I stopped expecting an answer.\n";
 			cout << "Tell me which letter is the last one \n";
 			cout << "Enter your answer: ";
 			cin >> answerT2;
@@ -481,6 +481,7 @@ void Doors::use()
 			return;
 		}
 		if (question == 2) {
+			int DOORid;
 			cout << "\r" << string(80, ' ') << "\r";
 			cout << "When the train finally stops, the flames die out, and silence swallows everything around you — what is the very last sound you hear ?\n";
 			cout << "Nothing. The world has been muted.\n";
@@ -488,7 +489,7 @@ void Doors::use()
 			cout << "Your own heartbeat — steady, clear, present.\n";
 			cout << "Choose A/B/C \n";
 
-			if (answerT2 == 'A') {
+			if (answerT2 == 'A'&&DOORid==1) {
 				cout << "You step through the door, expecting freedom.\n";
 				cout << "Instead, you find yourself back in Carriage 1.\n";
 				cout << "The furnace erupts in violet flames as the train accelerates into the darkness.\n";
@@ -500,26 +501,45 @@ void Doors::use()
 				cout << "You never have to mourn.\n";
 				cout << "You never have to admit they're gone.\n";
 				cout << "You run toward Carriage 2.\n";
-				cout << "The loop begins again.\n";
+				cout << "[The loop begins again.]\n";
 				cout << "MISSION COMPLETE\n";
 
 			}
 
-			else if (answerT2 == 'B') {
-				cout << "You step through the door, expecting freedom.\n";
-				cout << "Instead, you find yourself back in Carriage 1.\n";
-				cout << "The furnace erupts in violet flames as the train accelerates into the darkness.\n";
-				cout << "You turn back—but the door is gone.\n";
-				cout << "The notes, photographs, and keys have disappeared from your pockets.\n";
+			else if (answerT2 == 'B'&&DOORid == 2) {
+				cout << "You step through the door, Your reflection stands waiting on the other side.\n";
+				cout << "'You know what happened.'\n";
+				cout << "This time, you don't deny it, You don't run either.\n";
+				cout << "You simply stare at yourself.\n";
+				cout << "The train begins to slow,The purple flames shrink, but they do not disappear.\n";
 				cout << "	You couldn't face what happened at 11:35.\n";
-				cout << "The clock ticks backward.\n";
-				cout << "Here, you never have to remember.\n";
-				cout << "You never have to mourn.\n";
-				cout << "You never have to admit they're gone.\n";
-				cout << "You run toward Carriage 2.\n";
-				cout << "The loop begins again.\n";
+				cout << "'I accept it.'\n";
+				cout << "The reflection smiles.\n";
+				cout << "The door behind you opens,Beyond it is a long, empty tunnel.\n";
+				cout << "You step forward.\n";
+				cout << "But the train remains behind you, still burning quietly in the darkness.\n";
+				cout << "[You have accepted the truth—but you haven't let go.]\n";
 				cout << "MISSION COMPLETE\n";
 			}
+			else if (answerT2 == 'C'&& DOORid == 3) {
+				cout << "You ignore the false exits and walk toward the furnace.\n";
+				cout << "'The dark-purple flames roar, burning with every suppressed tear, unanswered question, and buried memory.'\n";
+				cout << "You do not turn away.\n";
+				cout << "You reach through the flames and grasp the EMERGENCY BRAKE.\n";
+				cout << "You pull.\n";
+				cout << "	The train screeches violently before finally coming to a halt. The furnace fades to embers.\n";
+				cout << "Silence fills the carriage.\n";
+				cout << "The reflection smiles.\n";
+				cout << "You open the door.\n";
+				cout << "There is no abyss—only a quiet tunnel and a small circle of daylight ahead.\n";
+				cout << "You take a breath and walk toward the light.\n";
+				cout << "'For the first time, you move forward.'\n";
+				cout << "[The train will never run again..]\n";
+				cout << "MISSION COMPLETE\n";
+
+			}
+			return;
+
 		}
 	}
 }
