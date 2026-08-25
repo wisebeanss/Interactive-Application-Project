@@ -4,7 +4,6 @@
 
 using namespace std;
 int answer1;
-int attempts = 0;
 char answer2 = ' ';
 Puzzle::Puzzle() : InteractiveObject("puzzle", 1, false)
 {

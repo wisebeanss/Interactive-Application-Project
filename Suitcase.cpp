@@ -1,6 +1,7 @@
 #include "Suitcase.h"
 #include <iostream>
 #include <string>
+#include "Dialogue.h"
 using namespace std;
 
 Suitcase::Suitcase(int x, int y, int id, int room)
@@ -51,6 +52,7 @@ void Suitcase::setProgressState(int s)
 
 void Suitcase::tryUnlock()
 {
+    Dialogue dialogue;
     string hintMsg;
     if (roomID == 2)
     {
@@ -62,14 +64,13 @@ void Suitcase::tryUnlock()
         }
         if (canunlock)
         {
-            cout << "\r";
-            cout << "A hand reaching out.\n";
-            cout << "A face turned away.\n";
-            cout << "Someone sitting beside you.\n";
-            cout << "You stare at the completed image.\n";
-            cout << "Was I really there?\n";
-            cout << "\nA note has appeared nearby.\n";
-            cout << "\nPress Enter to continue...";
+            dialogue.show({
+            "You stare at the completed image.",
+            "\"Was I really there?\"",
+            "A note has appeared nearby.",
+            "Press Enter to continue...",
+                });
+
             cin.ignore();
             cin.get();
 
@@ -117,14 +118,17 @@ void Suitcase::tryUnlock()
         }
         if (canunlock)
         {
-            cout << "You stare at the clock..\n";
-            cout << "\"11:35...\"\n";
-            cout << "You remember blaming yourself for what happened.\n";
-            cout << "But the calls continued after the clock stopped.\n";
-            cout << "A thought slowly surfaces.\n";
-            cout << "\"I wasn't there.\"\n";
-            cout << "You step back.\n";
-            cout << "\nPress Enter to continue...";
+            dialogue.show({
+           "You stare at the clock.."
+           "\"11:35...\"",
+           "You remember blaming yourself for what happened.",
+           "But the calls continued after the clock stopped.",
+           "A thought slowly surfaces.",
+           "\"I wasn't there.\"",
+           "You step back.",
+           "Press Enter to continue...",
+                });
+
             cin.ignore();
             cin.get();
 

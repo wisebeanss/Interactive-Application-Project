@@ -16,7 +16,6 @@ Doors::Doors(string lines, int x, int y, int id, int dID) : InteractiveObject("D
 	setDoorID(dID);
 	setSymbol('D');
 	question = 1;
-	attempts = 0;
 	changeUnlockedState(false);
 }
 
@@ -71,8 +70,6 @@ void Doors::use()
 			cout << "\r" << string(80, ' ') << "\r";
 			cout << "Enter the time as HHMMSS (e.g., 115012): ";
 			cin >> answerT1;
-			attempts++;
-
 			if (answerT1 == 115012)
 			{
 				dialogue.show({
@@ -90,30 +87,23 @@ void Doors::use()
 
 				system("cls");
 				question = 2;
-				attempts = 0;
 				return;
 			}
 			else
 			{
 				dialogue.show({
-				"That doesn't seem right..",
-				"Two minutes have been deducted.",
-				"Press Enter to continue.",
-
-
-					});
-				Timer& t = getGameMap().getTimerObject();
-
+					"That doesn't seem right..",
+					"Two minutes have been deducted.",
+					"Press Enter to continue.",
+				});
+				
 				cin.ignore();
 				cin.get();
 
 				system("cls");
+				getGameMap().timer.decreaseTime(2 * 60);
 
-				if (attempts == 3)
-				{
-					cout << "Remember Clock 4 is 5 mins faster!\n";
-					attempts -= 1;
-				}
+			
 				return;
 			}
 		}
@@ -123,43 +113,43 @@ void Doors::use()
 			cout << "\r" << string(80, ' ') << "\r";
 			cout << "Enter which mirror is correct (A/B/C): ";
 			cin >> answerT2;
-			attempts++;
+			
 
 			answerT2 = toupper(answerT2);
 			if (answerT2 == 'C')
 			{
-				cout << "\r" << string(80, ' ') << "\r";
-				cout << "The mirrors go still.\n";
-				cout << "Your reflection looks directly at you.\n";
-				cout << "You look away. \n";
-				cout << "\"Stop pretending you don't.\"\n";
-				cout << "The door unlocks.";
-				cout << "\nPress Enter to continue...";
+				dialogue.show({
+				"The mirrors go still.",
+				"Your reflection looks directly at you.",
+				"You look away.",
+				"\"Stop pretending you don't.\"",
+				"The door unlocks.",
+				"Press Enter to continue...",
+					});
+
 				cin.ignore();
 				cin.get();
 
 				system("cls");
 				changeUnlockedState(true);
 				question = 1;
-				attempts = 0;
-				cout << "\r" << string(80, ' ') << "\r";
+			
 				return;
 			}
 			else
 			{
-				cout << "\nThat mirror lies. Think again.\n";
-				getGameMap().timer.decreaseTime(2 * 60);
-				cout << "2 minutes have been deducted!\n";
-				cout << "\nPress Enter to continue...";
+				dialogue.show({
+				"That mirror lies. Think again.",
+				"2 minutes have been deducted!",
+				"Press Enter to continue...",
+					});
+
 				cin.ignore();
 				cin.get();
 
 				system("cls");
+				getGameMap().timer.decreaseTime(2 * 60);
 
-				if (attempts >= 3)
-				{
-					cout << " Hint: The reflection should match you.\n";
-				}
 				return;
 			}
 		}
@@ -183,14 +173,21 @@ void Doors::use()
 
 			if (answerT1 == 1243 )
 			{
-				cout << "\r" << string(80, ' ') << "\r";
-				cout << "You arrange it in the correct order.\n";
-				cout << "The Strong. The Smart. The Perfect. The Successful.\n";
-				cout << "All the things you thought you had to be.\n";
-				cout << "\"Which one are you ? \"\n";
-				cout << "You don't answer.\n";
-				cout << "The poster go dark.\n";
-				cout << "The door clicks.\n";
+				dialogue.show({
+				"You arrange it in the correct order.",
+				"The Strong. The Smart. The Perfect. The Successful.",
+				"All the things you thought you had to be.",
+				"\"Which one are you ? \"",
+				"You don't answer.",
+				"The poster go dark.",
+				"The door clicks.",
+				"Press Enter to continue...",
+					});
+
+				cin.ignore();
+				cin.get();
+
+				system("cls");
 				
 				changeUnlockedState(true);
 				question = 2;
@@ -199,14 +196,17 @@ void Doors::use()
 			}
 
 			else {
-				cout << "Wrong arrangement.\n";
-				getGameMap().timer.decreaseTime(2 * 60);
-				cout << "2 minutes have been deducted!\n";
-				cout << "\nPress Enter to continue.4";
+				dialogue.show({
+				"Wrong arrangement."
+				"2 minutes have been deducted!"
+				"Press Enter to continue."
+					});
+
 				cin.ignore();
 				cin.get();
 
 				system("cls");
+				getGameMap().timer.decreaseTime(2 * 60);
 				return;
 			}
 		}
@@ -221,7 +221,8 @@ void Doors::use()
 	{
 		if (question == 1)
 		{
-			cout << "You should pick up.......\n";
+
+			cout << "What is the answer?";
 			cin >> answerT3;
 
 			//uppercase
@@ -232,19 +233,19 @@ void Doors::use()
 
 			if (answerT3 == "WATCH")
 			{
-				cout << "\nYou pick up the watch.\n";
-				cout << "11:35.\n";
-				cout << "The same time again. \n";
-				cout << "You stare at it, remembering the blame you carried all this time. \n";
-				cout << "\"It happened at 11:35...\"\n";
-				cout << "\"But you weren't there.\"\n";
-				cout << "The memory begins to crack.\n";
-				cout << "Maybe it was your fault. \n";
-				cout << "The door unlocks.  \n";
+				dialogue.show({
+				"11:35.",
+				"You stare at it, remembering the blame you carried all this time.",
+				"\"It happened at 11:35...\""
+				"\"But you weren't there.\""
+				"The memory begins to crack."
+				"Maybe it was your fault. "
+				"The door unlocks."
+				"Press Enter to continue..."
+					});
 
 				changeUnlockedState(true);
 
-				cout << "\nPress Enter to continue...";
 				cin.ignore();
 				cin.get();
 
@@ -255,16 +256,17 @@ void Doors::use()
 			}
 			else
 			{
-				cout << "\nWrong answer.\n";
+				dialogue.show({
+				"That's not the right object..",
+				"2 minutes have been deducted!",
+				"Press Enter to continue...",
+					});
 
-				getGameMap().timer.decreaseTime(2 * 60);
-				cout << "2 minutes have been deducted!\n";
-
-				cout << "\nPress Enter to continue...";
 				cin.ignore();
 				cin.get();
 
 				system("cls");
+				getGameMap().timer.decreaseTime(2 * 60);
 				return;
 			}
 		}
@@ -351,7 +353,6 @@ void Doors::use()
 
 				changeUnlockedState(true);
 				system("cls");
-				attempts = 0;
 				question = 2;
 				return;
 			}
@@ -367,13 +368,7 @@ void Doors::use()
 
 				system("cls");
 				return;
-				if (attempts >= 3) {
-					cout << "TAKE NOTE: \n";
-					cout << "I stopped calling before i  stopped writing.\n ";
-					attempts -= 1;
-
-				}
-				return;
+				
 
 			}
 		}

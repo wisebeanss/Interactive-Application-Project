@@ -1,5 +1,6 @@
 #pragma once
 #include "InteractiveObject.h"
+#include "Dialogue.h"
 
 class Suitcase : public InteractiveObject
 {
