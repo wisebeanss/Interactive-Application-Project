@@ -481,7 +481,7 @@ void Doors::use()
 			return;
 		}
 		if (question == 2) {
-			int DOORid;
+			int DOORid = 0;
 			cout << "\r" << string(80, ' ') << "\r";
 			cout << "When the train finally stops, the flames die out, and silence swallows everything around you — what is the very last sound you hear ?\n";
 			cout << "Nothing. The world has been muted.\n";
