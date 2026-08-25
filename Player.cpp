@@ -11,7 +11,7 @@ Player::~Player() {
 		Inventory[objIdx] = nullptr;
 	}
 }
-std::string Player::getInvItemSlot(int index) const {
+std::string Player::getInvItemName(int index) const {
 	InteractiveObject* obj = Inventory.at(index);
 	return (obj == nullptr) ? "Empty" : obj->getName() + to_string(obj->getId());
 }
@@ -96,8 +96,8 @@ void Player::HandleInput(char symbol) {
 				}
 				else {
 					map.prevRoom();
-					setX(22);
-					setY(2);
+					setX(21);
+					setY(4);
 					break;
 				}
 				
