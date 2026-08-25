@@ -8,6 +8,7 @@ class Puzzle :
 {
 private:
     int currentRoom;
+    bool suitcaseUnlock;
 public:
     // Puzzle functions
     bool ROOMS(int roomID, Map& map);
