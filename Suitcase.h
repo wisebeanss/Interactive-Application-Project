@@ -9,6 +9,7 @@ private:
     int noOfPhotos;
     bool puzzleSolved;
     int progressState;
+    bool canunlock;
 
 public:
     Suitcase(int x, int y, int id, int room = 1);

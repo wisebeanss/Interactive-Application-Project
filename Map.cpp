@@ -157,9 +157,9 @@ void Map::buildMap() {
 								mapSize[gridY][j] = 'H';
 							}
 						}
-						if ((i == 1 && j == 5) || (i == 5 && j == 2)) {
-							mapSize[gridY][j] = 'N';
-						}
+						//if ((i == 1 && j == 5) || (i == 5 && j == 2)) {
+						//	mapSize[gridY][j] = 'N';
+						//}
 						if (i == 0 && j == 21) {
 							mapSize[gridY][j] = '_';
 						}
@@ -171,16 +171,16 @@ void Map::buildMap() {
 							mapSize[gridY][j] = 'H';
 						}
 					}
-					if (i == 1 && j == 3) {
-						mapSize[gridY][j] = '[';
-					}
-					if (i == 1 && j == 4) {
-						mapSize[gridY][j] = ']';
-					}
-					if ((i == 5 && j == 5) || (i == 5 && j == 22) ||
-						(i == 1 && j == 14)) {
-						mapSize[gridY][j] = '~';
-					}
+					//if (i == 1 && j == 3) {
+					//	mapSize[gridY][j] = '[';
+					//}
+					//if (i == 1 && j == 4) {
+					//	mapSize[gridY][j] = ']';
+					//}
+					//if ((i == 5 && j == 5) || (i == 5 && j == 22) ||
+					//	(i == 1 && j == 14)) {
+					//	mapSize[gridY][j] = '~';
+					//}
 				}
 				else if (carriageNum == 5) {
 					if (i == 1 || i == 5) {
@@ -188,13 +188,13 @@ void Map::buildMap() {
 							mapSize[gridY][j] = 'H';
 						}
 					}
-					if ((i == 1 && j == 2) || (i == 5 && j == 5)) {
-						mapSize[gridY][j] = '^';
-					}
-					if ((i == 1 && j == 18) || (i == 1 && j == 21) ||
-						(i == 5 && j == 18) || (i == 5 && j == 21)) {
-						mapSize[gridY][j] = '?';
-					}
+					//if ((i == 1 && j == 2) || (i == 5 && j == 5)) {
+					//	mapSize[gridY][j] = '^';
+					//}
+					//if ((i == 1 && j == 18) || (i == 1 && j == 21) ||
+					//	(i == 5 && j == 18) || (i == 5 && j == 21)) {
+					//	mapSize[gridY][j] = '?';
+					//}
 
 				}
 				else if (carriageNum == 6) {

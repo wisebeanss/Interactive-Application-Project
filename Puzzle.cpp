@@ -83,18 +83,34 @@ bool Puzzle::ROOMS(int roomID, Map& map)
         if (getCurrentRoom() != 3)
         {
             map.clearObjects();
-             map.setObjects(new Phones("First call: 11:32", 2, 8, 101));
-             map.setObjects(new Phones("Final call: 11:37", 5, 4, 102));
-             map.setObjects(new Letters("I called again\n two minutes later. \n", 3, 8, 103));
-             map.setObjects(new Clocks("Stopped at 11:35 \n", 5, 8, 103));
-             map.setObjects(new Suitcase(16, 4, 201, 3));
-             map.setObjects(new Note("You blamed yourself for\nwhat happened at 11:35,\nbut you weren't there\nwhen it happened.\n", 2, 4, 202));
-             map.setObjects(new Letters("No timestamp.\n", 21, 8, 203));
-             map.setObjects(new Photograph("Taken at 10:20. \n", 21, 8, 203));
-             map.setObjects(new Watch("Stopped at 11:35. \n", 1, 8, 103));
-             map.setObjects(new Doors(" ", 23, 6, 2));
+            map.setObjects(new Phones("First call: 11:32", 2, 8, 101));
+            map.setObjects(new Phones("Final call: 11:37", 5, 4, 102));
+            map.setObjects(new Letters("I called again\n two minutes later. \n", 3, 8, 103));
+            map.setObjects(new Clocks("Stopped at 11:35 \n", 5, 8, 103));
+            map.setObjects(new Suitcase(16, 4, 201, 3));
+            map.setObjects(new Doors(" ", 23, 6, 3));
             setCurrentRoom(3);
             // add = true;
+        }
+        if (getCurrentRoom() == 3){
+            int i = 0;
+            for (InteractiveObject* itm : map.getObjects())
+            {
+                i++;
+                if (itm->getName() == "Suitcase")
+                {
+                    Suitcase* suitcase = dynamic_cast<Suitcase*>(itm);
+                    if (suitcase->isUnlocked() == true)
+                    {
+                        map.clearObjects();
+                        map.setObjects(new Note("You blamed yourself for\nwhat happened at 11:35,\nbut you weren't there\nwhen it happened.\n", 2, 4, 202));
+                        map.setObjects(new Letters("No timestamp.\n", 21, 8, 203));
+                        map.setObjects(new Photograph("Taken at 10:20. \n", 20, 4, 203));
+                        map.setObjects(new Watch("Stopped at 11:35. \n", 1, 8, 103));
+                        map.setObjects(new Doors(" ", 23, 6, 3));
+                    }
+                }
+            }
         }
         return true;
     }
@@ -104,14 +120,32 @@ bool Puzzle::ROOMS(int roomID, Map& map)
         {
             map.clearObjects();
             map.setObjects(new PhotoFragment("A photograph of you\nas a child.\n", 1, 4, 101));
-            map.setObjects(new PhotoFragment("You and someone else\nare sitting together\non a train. \n", 4, 4, 102));
+            map.setObjects(new PhotoFragment("You and someone else\nare sitting together\non a train. \n", 5, 4, 102));
             map.setObjects(new PhotoFragment("You and the same person\nare standing together.\n", 1, 8, 103));
-            map.setObjects(new Posters("1.FIRST TRAIN RIDE\n2.CHILDHOOD\n3.LAST SUMMER\n4. PHOTOGRAPH\n", 4, 8, 103));
-            map.setObjects(new Note("Childhood came before\nthe first train ride.\nThe last summer was\nimmediately before the\nphotograph.The first train\nride happened after childhood.\nThe photograph was\nbefore my first train ride.\nI dont remember writing\none of the lines. \n", 16, 4, 201));
-            map.setObjects(new Suitcase(23, 6, 301,4));
-            map.setObjects(new Doors(" ", 23, 6, 2));
+            map.setObjects(new Suitcase(4, 8, 301,4));
+            map.setObjects(new Doors(" ", 23, 6, 4));
             setCurrentRoom(4);
             //add = true;
+        }
+        if (getCurrentRoom() == 4)
+        {
+            int i = 0;
+            for (InteractiveObject* itm : map.getObjects())
+            {
+                i++;
+                if (itm->getName() == "Suitcase")
+                {
+                    Suitcase* suitcase = dynamic_cast<Suitcase*>(itm);
+                    if (suitcase->isUnlocked() == true)
+                    {
+                        map.clearObjects();
+                        map.setObjects(new Posters("1.FIRST TRAIN RIDE\n2.CHILDHOOD\n3.LAST SUMMER\n4. PHOTOGRAPH\n", 4, 8, 103));
+                        map.setObjects(new Note("Childhood came before\nthe first train ride.\nThe last summer was\nimmediately before the\nphotograph.The first train\nride happened after childhood.\nThe photograph was\nbefore my first train ride.\nI dont remember writing\none of the lines. \n", 16, 4, 201));
+                        map.setObjects(new Doors(" ", 23, 6, 4));
+                    }
+                }
+            }
+
         }
         return true;
     }
@@ -126,18 +160,40 @@ bool Puzzle::ROOMS(int roomID, Map& map)
             map.setObjects(new Letters("\"Dear you,I don't know\nwhy I keep writing\nthese.You're not going\nto read them anyway.\"\nNo date\n", 4, 8, 103));
             map.setObjects(new Note("The last letter was\nwritten after I stopped expecting\nan answer.\n", 16, 4, 201));
             map.setObjects(new Note("I stopped calling\nbefore I stopped writing.", 23, 6, 301));
-            map.setObjects(new Suitcase(23, 6, 301, 5));
+            map.setObjects(new Suitcase(5, 8, 301, 5));
             map.setObjects(new Lockers("The locker is empty.A faded sticker reads: \"PROPERTY OF STAFF\"", 23, 6, 301));
             map.setObjects(new Lockers("Inside is an old school notebook.The name has been scratched out.", 23, 6, 301));
             map.setObjects(new Lockers("A scarf is hanging inside.You recognize it. You remember seeing it before. But you can't remember where. ", 23, 6, 301));
             map.setObjects(new Lockers("The locker contains a train ticket. Destination: UNKNOWN Seat: 18 ", 23, 6, 301));
             map.setObjects(new Lockers("There is nothing inside.But someone's name is carved into the door. ", 23, 6, 301));
-            map.setObjects(new Note("They always kept their belongings close.", 23, 6, 301));
-            map.setObjects(new Note(" a photograph showing the missing person wearing a scarf,the same scarf from Locker 3", 23, 6, 301));
-            map.setObjects(new Note(" Another ticket says: \"I sat opposite you.\" The player's seat is 17. ", 23, 6, 301));
-            map.setObjects(new Note("I never left anything behind.", 23, 6, 301));
-            map.setObjects(new Doors(" ", 23, 6, 3));
+            map.setObjects(new Doors(" ", 23, 6, 5));
             setCurrentRoom(5);
+        }
+        if (getCurrentRoom() == 5)
+        {
+            int i = 0;
+            for (InteractiveObject* itm : map.getObjects())
+            {
+                i++;
+                if (itm->getName() == "Suitcase")
+                {
+                    Suitcase* suitcase = dynamic_cast<Suitcase*>(itm);
+                    if (suitcase->isUnlocked() == true)
+                    {
+                        map.clearObjects();
+                        map.setObjects(new Note("They always kept their belongings close.", 23, 6, 301));
+                        map.setObjects(new Note(" a photograph showing the missing person wearing a scarf,the same scarf from Locker 3", 23, 6, 301));
+                        map.setObjects(new Note(" Another ticket says: \"I sat opposite you.\" The player's seat is 17. ", 23, 6, 301));
+                        map.setObjects(new Note("I never left anything behind.", 23, 6, 301));
+                        map.setObjects(new Lockers("The locker is empty.A faded sticker reads: \"PROPERTY OF STAFF\"", 23, 6, 301));
+                        map.setObjects(new Lockers("Inside is an old school notebook.The name has been scratched out.", 23, 6, 301));
+                        map.setObjects(new Lockers("A scarf is hanging inside.You recognize it. You remember seeing it before. But you can't remember where. ", 23, 6, 301));
+                        map.setObjects(new Lockers("The locker contains a train ticket. Destination: UNKNOWN Seat: 18 ", 23, 6, 301));
+                        map.setObjects(new Lockers("There is nothing inside.But someone's name is carved into the door. ", 23, 6, 301));
+                        map.setObjects(new Doors(" ", 23, 6, 5));
+                    }
+                }
+            }
         }
         return true;
     }
