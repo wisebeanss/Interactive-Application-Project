@@ -8,12 +8,13 @@ class MainMenu
 public:
     void Show();
     void DrawTitle();
-    int GetChoice();
+    int GetChoiceInter();
     int ShowPauseMenu();
     void ShowCredits();
     void ShowHelp();
 
 private:
-    string FormatLine(const string& text, size_t width = 33);
+    string FormatLine(const string& text, size_t width);
+    void DrawMenu(int selected, bool isPause = false);
 };
 
