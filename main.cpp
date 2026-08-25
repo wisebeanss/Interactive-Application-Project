@@ -6,11 +6,11 @@ using namespace std;
 
 int main(void)
 {
-    // ✅ 启动时先显示主菜单
-    entirescenes mainMenu;
-    mainMenu.Show();  // 选「1」才会继续往下走
 
-    // ✅ 选「1」后初始化并启动游戏
+    entirescenes mainMenu;
+    mainMenu.Show(); 
+
+  
     Game Application;
     Application.Init();
 
