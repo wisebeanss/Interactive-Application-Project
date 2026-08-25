@@ -248,10 +248,10 @@ bool Puzzle::ROOMS(int roomID, Map& map)
             if (spawned == false)
             {
                 map.clearObjects();
-                map.setObjects(new Note("They always kept their belongings close.", 1, 4, 301));
-                map.setObjects(new Note(" a photograph showing the missing person wearing a scarf,the same scarf from Locker 3", 1, 8, 301));
-                map.setObjects(new Note(" Another ticket says: \"I sat opposite you.\" The player's seat is 17. ", 4, 4, 301));
-                map.setObjects(new Note("I never left anything behind.", 4, 8, 301));
+                map.setObjects(new Note("They always kept\ntheir belongings close.", 1, 4, 301));
+                map.setObjects(new Note(" a photograph showing\nthe missing person\nwearing a scarf,the\nsame scarf from Locker 3", 1, 8, 301));
+                map.setObjects(new Note(" Another ticket says:\n\"I sat opposite you.\"\nThe player's seat is 17. ", 4, 4, 301));
+                map.setObjects(new Note("I never left anything\nbehind.", 4, 8, 301));
                 map.setObjects(new Lockers("The locker is empty.\nA faded sticker reads:\n\"PROPERTY OF STAFF\"", 12, 4, 301));
                 map.setObjects(new Lockers("Inside is an old\nschool notebook.The \nname has been\nscratched out.", 13, 4, 301));
                 map.setObjects(new Lockers("A scarf is hanging\ninside. You recognize it.\nYou remember seeing it\nbefore. But you can't\nremember where. ", 21, 8, 301));
