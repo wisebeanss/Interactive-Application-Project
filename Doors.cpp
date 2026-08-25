@@ -200,7 +200,7 @@ void Doors::use()
 	{
 		if (question == 1)
 		{
-			cout << "What is the answer:\n";
+			cout << "You should pick up.......\n";
 			cin >> answerT3;
 
 			//uppercase
@@ -481,7 +481,45 @@ void Doors::use()
 			return;
 		}
 		if (question == 2) {
+			cout << "\r" << string(80, ' ') << "\r";
+			cout << "When the train finally stops, the flames die out, and silence swallows everything around you — what is the very last sound you hear ?\n";
+			cout << "Nothing. The world has been muted.\n";
+			cout << "A name — you can't quite place whose, but your chest tightens.\n";
+			cout << "Your own heartbeat — steady, clear, present.\n";
+			cout << "Choose A/B/C \n";
 
+			if (answerT2 == 'A') {
+				cout << "You step through the door, expecting freedom.\n";
+				cout << "Instead, you find yourself back in Carriage 1.\n";
+				cout << "The furnace erupts in violet flames as the train accelerates into the darkness.\n";
+				cout << "You turn back—but the door is gone.\n";
+				cout << "The notes, photographs, and keys have disappeared from your pockets.\n";
+				cout << "	You couldn't face what happened at 11:35.\n";
+				cout << "The clock ticks backward.\n";
+				cout << "Here, you never have to remember.\n";
+				cout << "You never have to mourn.\n";
+				cout << "You never have to admit they're gone.\n";
+				cout << "You run toward Carriage 2.\n";
+				cout << "The loop begins again.\n";
+				cout << "MISSION COMPLETE\n";
+
+			}
+
+			else if (answerT2 == 'B') {
+				cout << "You step through the door, expecting freedom.\n";
+				cout << "Instead, you find yourself back in Carriage 1.\n";
+				cout << "The furnace erupts in violet flames as the train accelerates into the darkness.\n";
+				cout << "You turn back—but the door is gone.\n";
+				cout << "The notes, photographs, and keys have disappeared from your pockets.\n";
+				cout << "	You couldn't face what happened at 11:35.\n";
+				cout << "The clock ticks backward.\n";
+				cout << "Here, you never have to remember.\n";
+				cout << "You never have to mourn.\n";
+				cout << "You never have to admit they're gone.\n";
+				cout << "You run toward Carriage 2.\n";
+				cout << "The loop begins again.\n";
+				cout << "MISSION COMPLETE\n";
+			}
 		}
 	}
 }
