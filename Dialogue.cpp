@@ -71,7 +71,7 @@ void Dialogue::show(const vector<string>& lines, int width, int height, int x, i
         for (int j = 0; j < static_cast<int>(lines[i].length()); j++)
         {
             //check if Z is being pressed
-            if (GetAsyncKeyState('Z'))
+            if (GetAsyncKeyState(VK_RETURN) & 0x8000)
             {
                 //print the rest of the line immediately
                 cout << lines[i].substr(j);

@@ -64,7 +64,7 @@ void MainMenu::DrawMenu(int selected, bool isPause)
 int MainMenu::GetChoiceInter()
 {
     int selected = 0;
-    int total = 4;
+    int total = 5;
 
     while (true)
     {
