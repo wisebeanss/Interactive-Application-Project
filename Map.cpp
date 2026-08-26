@@ -233,17 +233,17 @@ void Map::buildMap() {
 					mapSize[gridY][j] = ' ';
 				}
 
-				if (carriageNum == 3) {
-					if (i == 1 && j == 5) {
-						mapSize[gridY][j] = '^';
-					}
-					if (i == 1 && j == 9) {
-						mapSize[gridY][j] = '~';
-					}
-					if (i == 5 && j == 9) {
-						mapSize[gridY][j] = 'W';
-					}
-				}
+				//if (carriageNum == 3) {
+				//	if (i == 1 && j == 5) {
+				//		mapSize[gridY][j] = '^';
+				//	}
+				//	if (i == 1 && j == 9) {
+				//		mapSize[gridY][j] = '~';
+				//	}
+				//	if (i == 5 && j == 9) {
+				//		mapSize[gridY][j] = 'W';
+				//	}
+				//}
 			}
 		}
 	}		
