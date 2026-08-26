@@ -175,7 +175,7 @@ void Doors::use()
 			{
 				dialogue.show({
 				"You arrange it in the correct order.",
-				"The Strong. The Smart. The Perfect. The Successful.",
+				"The Strong, Smart, Perfect, Successful.",
 				"All the things you thought you had to be.",
 				"\"Which one are you ? \"",
 				"You don't answer.",
