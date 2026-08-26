@@ -123,7 +123,7 @@ void Doors::use()
 					"That doesn't seem right..",
 					"Two minutes have been deducted.",
 					
-				});
+				},42, 10, 35, 18);
 				
 				
 

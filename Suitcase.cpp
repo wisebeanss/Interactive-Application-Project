@@ -105,55 +105,27 @@ void Suitcase::tryUnlock()
 
         COORD questionPos = info.dwCursorPosition;
 
-        cout << "\r" << string(80, ' ') << "\r";
-        hintMsg = "give the order of the time of the calls";
-
-        string answer;
-        cin >> answer;
-
+        hintMsg = "give the order of the time of the calls(XXXXXXXXXXXXXXXX): ";
         clearQuestion(questionPos, 1);
         
         if (!canunlock)
         {
             string answer;
-            int i = 1;
-            cout << "\n" << hintMsg;
-            cout << "\ntime" << i << ": ";
+            cout << hintMsg;
             cin >> answer;
-            i++;
-            if (answer == "1132")
+            if (answer == "1132113411351137")
             {
-                cout << "time" << i << ": ";
-                cin >> answer;
-                i++;
-                if (answer == "1134")
-                {
-                    cout << "time" << i << ": ";
-                    cin >> answer;
-                    i++;
-                    if (answer == "1135")
-                    {
-                        cout << "time" << i << ": ";
-                        cin >> answer;
-                        i++;
-                        if (answer == "1137")
-                        {
-                            canunlock = true;
-                        }
-                    }
-                }
+                canunlock = true;
             }
             if (canunlock == false)
             {
                 cout << "wrong answer";
-
-                system("cls");
             }
         }
         if (canunlock)
         {
             dialogue.show({
-           "You stare at the clock.."
+           "You stare at the clock..",
            "\"11:35...\"",
            "You remember blaming yourself for what happened.",
            "But the calls continued after the clock stopped.",
@@ -161,7 +133,7 @@ void Suitcase::tryUnlock()
            "\"I wasn't there.\"",
            "You step back.",
            "The suitcase opens."
-                }, 42, 10, 35, 18);
+                }, 54, 10, 30, 18);
 
             
 
@@ -176,7 +148,7 @@ void Suitcase::tryUnlock()
         canunlock = hasAllPhotos();
         if (!canunlock)
         {
-            cout << "\n" << hintMsg << "\n";
+            cout << "\n" << hintMsg ;
         }
         if (canunlock)
         {
@@ -222,8 +194,16 @@ void Suitcase::tryUnlock()
             }
             else
             {
-                cout<< "Wrong answer.";
-                cout << "Two minutes have been dedcuted!";
+                dialogue.show({
+                     "That doesn't seem right..",
+                     "Two minutes have been deducted.",
+
+                    });
+
+
+
+                system("cls");
+                getGameMap().timer.decreaseTime(2 * 60);
             }
         }
         if (canunlock)
@@ -271,7 +251,16 @@ void Suitcase::tryUnlock()
             }
             else
             {
-                cout << "wrong answer";
+                dialogue.show({
+                    "That doesn't seem right..",
+                    "Two minutes have been deducted.",
+
+                    });
+
+
+
+                system("cls");
+                getGameMap().timer.decreaseTime(2 * 60);
             }
         }
         if (canunlock)
