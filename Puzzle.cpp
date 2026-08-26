@@ -24,6 +24,7 @@ bool Puzzle::ROOMS(int roomID, Map& map,Player& player)
         if (currentRoom != 1)
         {
             spawned = false;
+            suitcaseUnlock = false;
         }
         if (spawned == false)
         {
@@ -47,6 +48,7 @@ bool Puzzle::ROOMS(int roomID, Map& map,Player& player)
         if (currentRoom != 2)
         {
             spawned = false;
+            suitcaseUnlock = false;
         }
         if (spawned == false)
         {
@@ -99,6 +101,7 @@ bool Puzzle::ROOMS(int roomID, Map& map,Player& player)
         if (currentRoom != 3)
         {
             spawned = false;
+            suitcaseUnlock = false;
         }
         if (map.getRoom() == 1)
         {
@@ -139,7 +142,7 @@ bool Puzzle::ROOMS(int roomID, Map& map,Player& player)
                     if (suitcase->isUnlocked() == true)
                     {
                         suitcaseUnlock = true;
-                        spawned = false;
+                        spawned = true;
 
                     }
                 }
@@ -182,6 +185,7 @@ bool Puzzle::ROOMS(int roomID, Map& map,Player& player)
         if (currentRoom != 4)
         {
             spawned = false;
+            suitcaseUnlock == false;
         }
         if (spawned == false)
         {
@@ -233,6 +237,7 @@ bool Puzzle::ROOMS(int roomID, Map& map,Player& player)
         if (currentRoom != 5)
         {
             spawned = false;
+            suitcaseUnlock = false;
         }
         if (spawned == false)
         {
@@ -296,6 +301,7 @@ bool Puzzle::ROOMS(int roomID, Map& map,Player& player)
         if (currentRoom != 6)
         {
             spawned = false;
+            suitcaseUnlock = false;
         }
         if (spawned == false)
         {
