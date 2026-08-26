@@ -1,6 +1,7 @@
 #pragma once
 #include "InteractiveObject.h"
 #include "Dialogue.h"
+#include "Windows.h"
 
 class Suitcase : public InteractiveObject
 {
@@ -17,7 +18,7 @@ public:
 
     bool isUnlocked();
     void use() override;
-
+    void clearQuestion(COORD startPos, int lines);
     void collectPhoto();
     void markPuzzleSolved();
     void setProgressState(int s);
