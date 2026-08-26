@@ -114,6 +114,11 @@ void Suitcase::tryUnlock()
             if (canunlock == false)
             {
                 cout << "wrong answer";
+                cout << "Press Enter to continue...";
+                cin.ignore();
+                cin.get();
+
+                system("cls");
             }
         }
         if (canunlock)
