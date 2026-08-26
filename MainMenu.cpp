@@ -38,9 +38,10 @@ void MainMenu::DrawMenu(int selected, bool isPause)
         cout << margin << "  " << "+----------------------------------+\n";
         cout << margin << "  " << "|                                  |\n";
         cout << margin << "  " << "|   " << (selected == 0 ? "-->  " : "     ") << "Start Game                |\n";
-        cout << margin << "  " << "|   " << (selected == 1 ? "-->  " : "     ") << "How to Play               |\n";
-        cout << margin << "  " << "|   " << (selected == 2 ? "-->  " : "     ") << "Credits                   |\n";
-        cout << margin << "  " << "|   " << (selected == 3 ? "-->  " : "     ") << "Exit                      |\n";
+        cout << margin << "  " << "|   " << (selected == 1 ? "-->  " : "     ") << "Endings                   |\n";
+        cout << margin << "  " << "|   " << (selected == 2 ? "-->  " : "     ") << "How to Play               |\n";
+        cout << margin << "  " << "|   " << (selected == 3 ? "-->  " : "     ") << "Credits                   |\n";
+        cout << margin << "  " << "|   " << (selected == 4 ? "-->  " : "     ") << "Exit                      |\n";      
         cout << margin << "  " << "|                                  |\n";
         cout << margin << "  " << "+----------------------------------+\n";
         cout << "\n" << margin << "   Use  'W'/'S to move | Enter to confirm\n";
@@ -98,21 +99,37 @@ void MainMenu::Show()
         {
             DrawTitle();
             if (map.isThereEndings()) {
-                cout << "Which Carriage do you want to start in? (1-6)";
-                int num;
+                cout << margin << "Which Carriage do you want to start in? (1-6): ";
+                int num = 0;
                 do {
                     cin >> num;
                 } while (num > 6 && num < 1);
-                for (int i = 0; i < num; i++) {
-                    map.nextCarriage();
-                }
+                map.setEnded(false);
+                map.setCarriage(num);
             }
             cout << "\n          Starting game...\n";
             Sleep(800);
             system("cls");
             return;
         }
-        else if (choice == 2)
+        else if (choice == 2) {
+            DrawTitle();
+            cout << margin << "+----------------------------------+\n";
+            cout << margin << "|          E N D I N G S           |\n";
+            cout << margin << "+----------------------------------+\n";
+            cout << margin << "|                                  |\n";
+            cout << margin << "|                                  |\n";
+            cout << margin << "|                                  |\n";
+            cout << margin << "|      Bad Ending:     " << (map.getEndingReached(1) ? "True " : "False") << "       |\n";
+            cout << margin << "|      Neutral Ending: " << (map.getEndingReached(2) ? "True " : "False") << "       |\n";
+            cout << margin << "|      True Ending:    " << (map.getEndingReached(3) ? "True " : "False") << "       |\n";
+            cout << margin << "|                                  |\n";
+            cout << margin << "|                                  |\n";
+            cout << margin << "|                                  |\n";
+            cout << margin << "+----------------------------------+\n";
+            (void)_getch();
+        }
+        else if (choice == 3)
         {
             DrawTitle();
             cout << margin << "+----------------------------------+\n";
@@ -131,7 +148,7 @@ void MainMenu::Show()
             cout << margin << "+----------------------------------+\n";
             (void)_getch();
         }
-        else if (choice == 3)
+        else if (choice == 4)
         {
             DrawTitle();
             cout << margin << "+----------------------------------+\n";
@@ -154,7 +171,7 @@ void MainMenu::Show()
             cout << margin << "+----------------------------------+\n";
             (void)_getch();
         }
-        else if (choice == 4)
+        else if (choice == 5)
         {
             DrawTitle();
             cout << "\n          Goodbye...\n";

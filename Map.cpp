@@ -8,6 +8,7 @@ Map::Map() {
 	carriageRoom = 1;
 	animFrame = 0;
 	buildMap();
+	ended = false;
 }
 Map::~Map() {
 	clearObjects();
@@ -48,6 +49,17 @@ void Map::nextCarriage() {
 	}
 	else { carriageNum = 1; }
 	clearObjects();
+}
+void Map::setCarriage(int num) {
+	if (num < 1 || num > 6) {
+		carriageNum = 1;
+	}
+	else {
+		carriageNum = num;
+		
+	}
+	clearObjects();
+	
 }
 void Map::nextRoom() {
 	if (carriageRoom < 3) {
@@ -442,10 +454,15 @@ void Map::checkSuitcaseUnlock()
 		std::cout << "\n Notes have appeared nearby!\n";
 	}
 }
-
+bool Map::isEnded() {
+	return ended;
+}
+void Map::setEnded(bool ended) {
+	this->ended = ended;
+}
 void Map::setEndingReached(int id) {
-	if (!endingsReached.at(id - 1)) {
-		endingsReached.at(id - 1) = true;
+	if (!endingsReached.at(id)) {
+		endingsReached.at(id) = true;
 	}
 }
 bool Map::isThereEndings() const {

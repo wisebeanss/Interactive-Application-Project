@@ -16,7 +16,7 @@ using namespace std;
 class Game
 {
 private:
-	Map map = getGameMap();
+	Map& map = getGameMap();
 	Player player;
 public:
 	Game();

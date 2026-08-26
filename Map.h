@@ -27,6 +27,7 @@ private:
 	Suitcase* suitcasePtr = nullptr; 
 	bool noteSpawned = false;
 	array<bool, 3> endingsReached;
+	bool ended;
 
 public:
 	int timerSeconds;
@@ -51,6 +52,7 @@ public:
 
 	int getCarriage() const;
 	void nextCarriage();
+	void setCarriage(int num);
 	int getRoom() const;
 	void nextRoom();
 	void prevRoom();
@@ -67,6 +69,8 @@ public:
 	~Map();
 
 	//Ending
+	bool isEnded();
+	void setEnded(bool ended);
 	void setEndingReached(int id);
 	bool getEndingReached(int id) const;
 	bool isThereEndings() const;

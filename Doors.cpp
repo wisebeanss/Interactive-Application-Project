@@ -492,7 +492,11 @@ void Doors::use()
 				}, 84, 11, 15, 18);
 			system("cls");
 		}
-		getGameMap().setEndingReached(doorID - 60);
+		if(doorID >= 61) {
+			getGameMap().setEndingReached(doorID - 61);
+			getGameMap().setEnded(true);
+		}
+		
 		return;
 
 	}

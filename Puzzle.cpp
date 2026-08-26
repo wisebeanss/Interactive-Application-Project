@@ -185,7 +185,7 @@ bool Puzzle::ROOMS(int roomID, Map& map,Player& player)
         if (currentRoom != 4)
         {
             spawned = false;
-            suitcaseUnlock == false;
+            suitcaseUnlock = false;
         }
         if (spawned == false)
         {
