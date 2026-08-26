@@ -12,13 +12,13 @@ Dialogue::Dialogue()
 
 void Dialogue::show(const vector<string>& lines, int width, int height, int x, int y)
 {
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); //get console to control cursor
 
     COORD startPos;
     startPos.X = x;
     startPos.Y = y;
 
-    // Draw top
+    //draw top
     COORD pos = startPos;
     SetConsoleCursorPosition(hConsole, pos);
 
@@ -27,7 +27,7 @@ void Dialogue::show(const vector<string>& lines, int width, int height, int x, i
         cout << "-";
     cout << "+";
 
-    // Draw empty box
+    //draw side box
     for (int i = 1; i < height - 1; i++)
     {
         pos.Y = startPos.Y + i;
@@ -42,7 +42,7 @@ void Dialogue::show(const vector<string>& lines, int width, int height, int x, i
         cout << "|";
     }
 
-    // Draw bottom
+    //draw bottom
     pos.Y = startPos.Y + height - 1;
 
     SetConsoleCursorPosition(hConsole, pos);
@@ -52,27 +52,31 @@ void Dialogue::show(const vector<string>& lines, int width, int height, int x, i
         cout << "-";
     cout << "+";
 
-    // Print dialogue
+    //print dialogue
     for (int i = 0;
-        i < static_cast<int>(lines.size()) && i < height - 2;
+        i < static_cast<int>(lines.size()) && i < height - 2; //height for spacing,static cast to convert size_t to int (lines)
         i++)
     {
+        //spacing btwn text and box
         pos.X = startPos.X + 2;
+        //line by line
         pos.Y = startPos.Y + 1 + i;
 
         SetConsoleCursorPosition(hConsole, pos);
 
         for (char c : lines[i])
         {
+            // flush to make character appear immediately for typewrite effect 
             cout << c << flush;
 
+            //wait 50ms to print next character
             this_thread::sleep_for(
                 chrono::milliseconds(typingSpeed)
             );
         }
     }
 
-    // Put cursor below box
+    //put cursor below box
     pos.X = startPos.X;
     pos.Y = startPos.Y + height;
 
@@ -85,22 +89,23 @@ void Dialogue::waitForEnter()
 {
     HANDLE hConsole = GetStdHandle(STD_INPUT_HANDLE);
 
-    // Remove any keys that were pressed during the dialogue
+    //remove any keys that were pressed during the dialogue
     FlushConsoleInputBuffer(hConsole);
 
     cout << "\nPress Enter to continue...";
 
-    // Wait for a NEW Enter press
+    //wait for new Enter press
     while (true)
     {
-        INPUT_RECORD input;
-        DWORD eventsRead;
+        INPUT_RECORD input; //store input
+        DWORD eventsRead; //how many input
 
+        //read 1 console input event,what input, how many events
         ReadConsoleInput(hConsole, &input, 1, &eventsRead);
 
-        if (input.EventType == KEY_EVENT &&
-            input.Event.KeyEvent.bKeyDown &&
-            input.Event.KeyEvent.wVirtualKeyCode == VK_RETURN)
+        if (input.EventType == KEY_EVENT && //keyboard event
+            input.Event.KeyEvent.bKeyDown && //key was pressed down
+            input.Event.KeyEvent.wVirtualKeyCode == VK_RETURN) //key = enter
         {
             break;
         }
