@@ -57,9 +57,9 @@ void Suitcase::tryUnlock()
     if (roomID == 2)
     {
         hintMsg = "The suitcase is still locked. Find all 3 photos first.\nPieces collected: " + to_string(noOfPhotos) + "/3";
+        canunlock = hasAllPhotos();
         if (!canunlock)
         {
-            canunlock = hasAllPhotos();
             cout << "\n" << hintMsg << "\n";
         }
         if (canunlock)
@@ -140,9 +140,9 @@ void Suitcase::tryUnlock()
     if (roomID == 4)
     {
         hintMsg = "The suitcase is still locked. Find all 3 photos first.\nPieces collected: " + to_string(noOfPhotos) + "/3";
+        canunlock = hasAllPhotos();
         if (!canunlock)
         {
-            canunlock = hasAllPhotos();
             cout << "\n" << hintMsg << "\n";
         }
         if (canunlock)

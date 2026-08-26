@@ -149,7 +149,7 @@ bool Puzzle::ROOMS(int roomID, Map& map,Player& player)
         {
             if (map.getRoom() == 1)
             {
-                if (spawned == false)
+                if (spawned == true)
                 {
                     map.clearObjects();
                     if (!player.hasItem("Photograph"))
@@ -158,12 +158,12 @@ bool Puzzle::ROOMS(int roomID, Map& map,Player& player)
                     }
                     map.setObjects(new Letters("No timestamp.\n", 21, 8, 3));
                     map.setObjects(new Doors(" ", 23, 6, 3, 1));
-                    spawned = true;
+                    spawned = false;
                 }
             }
             if (map.getRoom() == 2)
             {
-                if (spawned == true)
+                if (spawned == false)
                 {
                     map.clearObjects();
                     if (!player.hasItem("Note"))
@@ -171,7 +171,7 @@ bool Puzzle::ROOMS(int roomID, Map& map,Player& player)
                         map.setObjects(new Note("You blamed yourself for\nwhat happened at 11:35,\nbut you weren't there\nwhen it happened.\n", 1, 4, 203));
                     }
                     map.setObjects(new Watch("Stopped at 11:35. \n", 1, 8, 3));
-                    spawned = false;
+                    spawned = true;
                 }
             }
         }
