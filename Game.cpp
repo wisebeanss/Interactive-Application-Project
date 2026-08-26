@@ -26,6 +26,7 @@ void Game::Run() {
 
 		if (_kbhit()) {
 			char letter = _getch();
+			//Check for Esc Key
 			if (letter == 27) {
 				MainMenu pauseMenu;
 				int choice = pauseMenu.ShowPauseMenu();

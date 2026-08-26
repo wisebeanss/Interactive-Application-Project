@@ -5,7 +5,7 @@
 #include <cstdlib>
 #include <string>
 using namespace std;
-static const string margin(35, ' ');
+static const string margin(40, ' ');
 string MainMenu::FormatLine(const string& text, size_t width)
 {
     if (text.length() >= width)
@@ -32,16 +32,16 @@ void MainMenu::DrawMenu(int selected, bool isPause)
 
     if (!isPause)
     {
-        cout << margin << "+---------------------------------+\n";
-        cout << margin << "|         M A I N   M E N U       |\n";
-        cout << margin << "+---------------------------------+\n";
-        cout << margin << "|                                 |\n";
-        cout << margin << "|   " << (selected == 0 ? "-->  " : "     ") << "Start Game               |\n";
-        cout << margin << "|   " << (selected == 1 ? "-->  " : "     ") << "How to Play              |\n";
-        cout << margin << "|   " << (selected == 2 ? "-->  " : "     ") << "Credits                  |\n";
-        cout << margin << "|   " << (selected == 3 ? "-->  " : "     ") << "Exit                     |\n";
-        cout << margin << "|                                 |\n";
-        cout << margin << "+---------------------------------+\n";
+        cout << margin << "  " << "+----------------------------------+\n";
+        cout << margin << "  " << "|         M A I N   M E N U        |\n";
+        cout << margin << "  " << "+----------------------------------+\n";
+        cout << margin << "  " << "|                                  |\n";
+        cout << margin << "  " << "|   " << (selected == 0 ? "-->  " : "     ") << "Start Game                |\n";
+        cout << margin << "  " << "|   " << (selected == 1 ? "-->  " : "     ") << "How to Play               |\n";
+        cout << margin << "  " << "|   " << (selected == 2 ? "-->  " : "     ") << "Credits                   |\n";
+        cout << margin << "  " << "|   " << (selected == 3 ? "-->  " : "     ") << "Exit                      |\n";
+        cout << margin << "  " << "|                                  |\n";
+        cout << margin << "  " << "+----------------------------------+\n";
         cout << "\n" << margin << "   Use  'W'/'S to move | Enter to confirm\n";
     }
     else
