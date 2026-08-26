@@ -42,14 +42,43 @@ Photograph::~Photograph()
         }
     }
 }
+void Photograph::getUIBuffer(string buffer[13]) const {
+    const int width = 23;
+    const int boxWidth = width + 2;
+
+    buffer[0] = "+--~-~-~-~-~-~-~-~-~-~--+";
+    buffer[1] = "|  .---.                |";
+    buffer[2] = "| /     \\     /\\        |";
+    buffer[3] = "||   o   |   /  \\   /\\  |";
+    buffer[4] = "| \\     /   /    \\ /  \\ | ";
+    buffer[5] = "|  '---'   /      V    \\|";
+    buffer[6] = "|~~~~~~~~~/~~~~~~~~~~~~~|";
+
+
+    int row = 7;
+    size_t start = 0;
+    while (row < 12 && start < text.size()) {
+        size_t end = text.find('\n', start);
+        if (end == std::string::npos) end = text.size();
+        std::string line = text.substr(start, end - start);
+        buffer[row++] = "|" + centerPhotoText(line, width) + "|";
+        start = end + 1; // move past '\n'
+    }
+    // Fill remaining rows with empty centered lines
+    while (row < 12) {
+        buffer[row++] = "|" + centerPhotoText("", width) + "|";
+    }
+    buffer[12] = "+--~-~-~-~-~-~-~-~-~-~--+";
+}
 
 void Photograph::use()
 {
-    const int width = 22;
+    enableUI();
+    //const int width = 22;
 
-    cout << "+----------------------+" << endl;
-    cout << "|" << centerPhotoText("", width) << "|" << endl;
-    cout << "|" << centerPhotoText(text, width) << "|" << endl;
-    cout << "|" << centerPhotoText("", width) << "|" << endl;
-    cout << "+----------------------+" << endl;
+    //cout << "+----------------------+" << endl;
+    //cout << "|" << centerPhotoText("", width) << "|" << endl;
+    //cout << "|" << centerPhotoText(text, width) << "|" << endl;
+    //cout << "|" << centerPhotoText("", width) << "|" << endl;
+    //cout << "+----------------------+" << endl;
 }
