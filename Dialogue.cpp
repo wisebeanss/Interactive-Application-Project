@@ -54,8 +54,8 @@ void Dialogue::show(const vector<string>& lines, int width, int height, int x, i
 
     //print dialogue
     for (int i = 0;
-        i < static_cast<int>(lines.size()) && i < height - 2;
-        i++) //static cast to convert time_t(line) to int 
+        i < static_cast<int>(lines.size()) && i < height - 2; //dont print more lines that actl exist and print outside box
+        i++) //static cast to convert size_t(line) to int 
     {
         //space between text and box
         pos.X = startPos.X + 2;
