@@ -3,6 +3,7 @@
 #include <string>
 #include "Dialogue.h"
 #include "Doors.h"
+#include "Windows.h"
 using namespace std;
 
 Suitcase::Suitcase(int x, int y, int id, int room)
@@ -51,6 +52,25 @@ void Suitcase::setProgressState(int s)
     progressState = s;
 }
 
+void Suitcase::clearQuestion(COORD startPos, int lines)
+{
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    for (int i = 0; i < lines; i++)
+    {
+        COORD pos;
+        pos.X = startPos.X;
+        pos.Y = startPos.Y + i;
+
+        SetConsoleCursorPosition(hConsole, pos);
+
+        cout << string(100, ' ');
+    }
+
+    // Return cursor to the original question position
+    SetConsoleCursorPosition(hConsole, startPos);
+}
+
 void Suitcase::tryUnlock()
 {
     Dialogue dialogue;
@@ -69,7 +89,7 @@ void Suitcase::tryUnlock()
             "You stare at the completed image.",
             "\"Was I really there?\"",
             "A note has appeared nearby.",
-                });
+                },42, 10, 35, 18);
 
 
             system("cls");
@@ -78,7 +98,21 @@ void Suitcase::tryUnlock()
     }
     else if (roomID == 3)
     {
+        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+        CONSOLE_SCREEN_BUFFER_INFO info;
+        GetConsoleScreenBufferInfo(hConsole, &info);
+
+        COORD questionPos = info.dwCursorPosition;
+
+        cout << "\r" << string(80, ' ') << "\r";
         hintMsg = "give the order of the time of the calls";
+
+        string answer;
+        cin >> answer;
+
+        clearQuestion(questionPos, 1);
+        
         if (!canunlock)
         {
             string answer;
@@ -126,7 +160,8 @@ void Suitcase::tryUnlock()
            "A thought slowly surfaces.",
            "\"I wasn't there.\"",
            "You step back.",
-                });
+           "The suitcase opens."
+                }, 42, 10, 35, 18);
 
             
 
@@ -145,17 +180,17 @@ void Suitcase::tryUnlock()
         }
         if (canunlock)
         {
-            cout << "\r";
-            cout << "You place the fragments together.\n";
-            cout << "The photograph slowly becomes whole.\n";
-            cout << "You see yourself as a child.\n";
-            cout << "Then, sitting beside them.\n";
-            cout << "Then, standing beside them.\n";
-            cout << "You stare at the faded face beside yours.\n";
-            cout << "\"I remember you\"\n";
-            cout << "Your fingers tighten around the photograph.\n";
-            cout << "\"I just wish I didn't.\"\n";
-            cout << "The suitcase opens\n";
+            dialogue.show({
+            "You place the fragments together.",
+            "The photograph slowly becomes whole.",
+            "You see yourself as a child,",
+            "sitting beside them.",
+            "You stare at the faded face beside yours.",
+            "\"I remember you\"",
+            "Your fingers tighten around the photograph.",
+            "\"I just wish I didn't.\"",
+            "The suitcase opens.",
+             }, 44, 11, 35, 18);
          
             system("cls");
             unlocked = canunlock;
@@ -163,35 +198,48 @@ void Suitcase::tryUnlock()
     }
     if (roomID == 5)
     {
-        hintMsg = "which letter was written last :";
+        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+        CONSOLE_SCREEN_BUFFER_INFO info;
+        GetConsoleScreenBufferInfo(hConsole, &info);
+
+        COORD questionPos = info.dwCursorPosition;
+
+        cout << "\r" << string(80, ' ') << "\r";
+        cout << "Which letter was written last: ";
+
+        string answer;
+        cin >> answer;
+
+        clearQuestion(questionPos, 1);
+
         if (!canunlock)
         {
-            cout << "\n" << hintMsg << "\n";
-            string answer;
-            cin >> answer;
-            if (answer == "D")
+            
+            if (answer == "D" || answer == "d")
             {
                 canunlock = true;
             }
             else
             {
-                cout<<"wrong answer";
+                cout<< "Wrong answer.";
+                cout << "Two minutes have been dedcuted!";
             }
         }
         if (canunlock)
         {
-            cout << "Letters lie scattered across the table,\n";
-            cout << "written one after another as hope slowly faded.\n";
-            cout << "Two notes are pinned to the wall.\n";
-            cout << "\"The last letter was written after I stopped expecting an answer.\"\n";
-            cout << "\"I stopped calling before I stopped writing.\"\n";
-            cout << "Three letters bear dates, marking the days she still waited.\n";
-            cout << "And one - without a date -\n";
-            cout << "written after she had finally stopped waiting entirely.\n";
-            cout << "You choose the letter with no date.\n";
-            cout << "The safe clicks open.\n";
-            
-            
+            dialogue.show({
+            "Letters lie scattered across the table,",
+            "written one after another as hope slowly faded.",
+            "Two notes are pinned to the wall.",
+            "\"The last letter was written after I stopped expecting an answer.\"",
+            "\"I stopped calling before I stopped writing.\"",
+            "Three letters bear dates, marking the days she still waited.",
+            "And one, without a date.",
+            "Written after she had finally stopped waiting entirely.\n",
+            "You choose the letter with no date.",
+            "The safe clicks open.\n",
+                }, 68, 11, 20, 18);
 
             system("cls");
 
@@ -200,12 +248,23 @@ void Suitcase::tryUnlock()
     }
     if (roomID == 6)
     {
-        hintMsg = "which locker holds the truth :";
+        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+        CONSOLE_SCREEN_BUFFER_INFO info;
+        GetConsoleScreenBufferInfo(hConsole, &info);
+
+        COORD questionPos = info.dwCursorPosition;
+
+        cout << "\r" << string(80, ' ') << "\r";
+        cout << "Which drawer holds the truth: ";
+
+        int answer;
+        cin >> answer;
+
+        clearQuestion(questionPos, 1);
         if (!canunlock)
         {
-            cout << "\n" << hintMsg << "\n";
-            int answer;
-            cin >> answer;
+           
             if (answer == 5)
             {
                 canunlock = true;
@@ -217,25 +276,22 @@ void Suitcase::tryUnlock()
         }
         if (canunlock)
         {
-            cout << "You pull open Drawer 5.\n";
-            cout << "A folded piece of paper lies inside.\n";
-            cout << " You recognize the handwriting immediately.\n";
-            cout << "\"It's yours. \"\n";
-            cout << "You unfold it.\n";
-            cout << "There is only one sentence :\n";
-            cout << "\"You already knew.\"\n";
-            cout << "Your hands begin to tremble.\n";
-            cout << "All this time, you had been searching for an answer.\n";
-            cout << "In the train.\n";
-            cout << "In the photographs.\n";
-            cout << "In the empty seats.\n";
-            cout << "But the answer was never somewhere else.\n";
-            cout << "It was always with you.\n";
-            cout << "You close your eyes.\n";
-            cout << "\"I knew...\"\n";
-            cout << "For the first time, you don't look away. \n";
-            cout << "Click. \n";
-            cout << "The doors unlocks. \n";
+            dialogue.show({
+            "You pull open Drawer 5,",
+            "a folded piece of paper lies inside.",
+            "You recognize the handwriting immediately.",
+            "\"It's yours. \"",
+            "You unfold it.",
+            "There is only one sentence:",
+            "\"You already knew.\"",
+            "All this time, you had been searching for an answer.",
+            "In the train, photographs, empty seats",
+            "But the answer was never somewhere else.",
+            "It was always with you.",
+            "\"I knew...\"",
+            "For the first time, you don't look away. ",
+            "The doors unlocks. ",
+                }, 56, 10, 26, 18);
 
 
             system("cls");

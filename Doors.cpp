@@ -205,11 +205,10 @@ void Doors::use()
 			COORD questionPos = info.dwCursorPosition;
 
 			cout << "\r" << string(80, ' ') << "\r";
-			cout << "What is the arrangement?\n";
-			cout << "Enter your answer: ";
+			cout << "What is the arrangement:";
 			cin >> answerT1;
 
-			clearQuestion(questionPos, 2);
+			clearQuestion(questionPos, 1);
 		
 
 			if (answerT1 == 1243 )
@@ -266,7 +265,7 @@ void Doors::use()
 			cout << "What is the answer?";
 			cin >> answerT3;
 
-			clearQuestion(questionPos, 2);
+			clearQuestion(questionPos, 1);
 
 			//uppercase
 			for (char& c : answerT3)
@@ -331,26 +330,29 @@ void Doors::use()
 
 
 			cout << "\r" << string(80, ' ') << "\r";
-			cout << "What is the arrangement?\n";
-			cout << "Enter your answer: ";
+			cout << "What is the arrangement:";
+			
 			cin >> answerT1;
 
-			clearQuestion(questionPos, 2);
+			clearQuestion(questionPos, 1);
 
 
-			if (answerT1 == 1243)
+			if (answerT1 == 2134)
 			{
 				dialogue.show({
 				"You arrange the memories in order.",
-				"\"I don't remember writing one of the lines.\""
-				"Something feels wrong, you recognize the handwriting.",
+				"\"I don't remember writing one of the lines.\"",
+				"Something feels wrong,",
+				"you recognize the handwriting.",
 				"Then who wrote it?",
-				"A faint memory surfaces — someone beside you.",
+				"A faint memory surfaces, someone beside you.",
 				"\"You promised you wouldn't forget.\"",
 				"The door unlocks.",
-					}, 42, 10, 35, 18);
+					}, 48, 11, 30, 18);
 
 				changeUnlockedState(true);
+
+				system("cls");
 				question = 2;
 
 				return;
@@ -386,19 +388,19 @@ void Doors::use()
 			COORD questionPos = info.dwCursorPosition;
 
 			cout << "\r" << string(80, ' ') << "\r";
-			cout << "Which letter is the last one?:";
+			cout << "Which is the correct locker:";
 			cin >> answerT1;
 
-			clearQuestion(questionPos, 2);
+			clearQuestion(questionPos, 1);
 
 			if (answerT1 == 3 ) {
 				dialogue.show({
 				"You open Locker 3. The scarf is still there.",
-				"A memory surfaces — you sitting across from them.",
+				"A memory surfaces, you sitting across from them.",
 				"The seat beside you was empty.",
 				"\"You were here...\"",
 				"\"Then why do I remember being alone?\"",
-					});
+					},50, 10, 28, 18);
 				
 
 				changeUnlockedState(true);
