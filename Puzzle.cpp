@@ -306,11 +306,11 @@ bool Puzzle::ROOMS(int roomID, Map& map,Player& player)
         if (spawned == false)
         {
             map.clearObjects();
-            map.setObjects(new Drawers("A blank sheet\nof paper.\nNothing else.\n", 1, 4, 1));
-            map.setObjects(new Drawers("A train ticket.\nThe destination\nhas been scratched out.\n", 4, 4, 2));
-            map.setObjects(new Drawers("A photograph.\nYou recognize\nthe person in\nit.On the back:\n\"I\'ll see\nyou again.\" \n", 1, 8, 3));
-            map.setObjects(new Drawers("A small key.\nYou don't\nrecognize it. \n", 4, 8, 3));
-            map.setObjects(new Drawers("A folded piece\nof paper.You\nrecognize the\nhandwriting.\nIt's yours.\n", 16, 4, 1));
+            map.setObjects(new Drawers("drawer1:\nA blank sheet\nof paper.\nNothing else.\n", 1, 4, 1));
+            map.setObjects(new Drawers("drawer2:\nA train ticket.\nThe destination\nhas been scratched out.\n", 4, 4, 2));
+            map.setObjects(new Drawers("drawer3:\nA photograph.\nYou recognize\nthe person in\nit.On the back:\n\"I\'ll see\nyou again.\" \n", 1, 8, 3));
+            map.setObjects(new Drawers("drawer4:\nA small key.\nYou don't\nrecognize it. \n", 4, 8, 3));
+            map.setObjects(new Drawers("drawer5:\nA folded piece\nof paper.You\nrecognize the\nhandwriting.\nIt's yours.\n", 16, 4, 1));
             map.setObjects(new Note("You searched for\nanswers everywhere\nexcept where\nyou left them.", 16, 8, 1));
             map.setObjects(new Note("The truth is not\nsomething you\nwere given.", 20, 8, 2));
             map.setObjects(new Note("You already knew.", 20, 4, 3));
