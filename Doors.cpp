@@ -453,6 +453,10 @@ void Doors::use()
 	
 	}
 	if (roomID == 6) {
+		if (doorID == 1)
+		{
+			cout << "unlock the suitcase first";
+		}
 		if (doorID == 61)
 		{
 			// BAD ENDING

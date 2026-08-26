@@ -204,6 +204,53 @@ void Suitcase::tryUnlock()
             unlocked = true;
         }
     }
+    if (roomID == 6)
+    {
+        hintMsg = "which locker holds the truth :";
+        if (!canunlock)
+        {
+            cout << "\n" << hintMsg << "\n";
+            int answer;
+            cin >> answer;
+            if (answer == 5)
+            {
+                canunlock = true;
+            }
+            else
+            {
+                cout << "wrong answer";
+            }
+        }
+        if (canunlock)
+        {
+            cout << "You pull open Drawer 5.\n";
+            cout << "A folded piece of paper lies inside.\n";
+            cout << " You recognize the handwriting immediately.\n";
+            cout << "\"It's yours. \"\n";
+            cout << "You unfold it.\n";
+            cout << "There is only one sentence :\n";
+            cout << "\"You already knew.\"\n";
+            cout << "Your hands begin to tremble.\n";
+            cout << "All this time, you had been searching for an answer.\n";
+            cout << "In the train.\n";
+            cout << "In the photographs.\n";
+            cout << "In the empty seats.\n";
+            cout << "But the answer was never somewhere else.\n";
+            cout << "It was always with you.\n";
+            cout << "You close your eyes.\n";
+            cout << "\"I knew...\"\n";
+            cout << "For the first time, you don't look away. \n";
+            cout << "Click. \n";
+            cout << "The doors unlocks. \n";
+
+            cin.ignore();
+            cin.get();
+
+            system("cls");
+
+            unlocked = true;
+        }
+    }
 }
 
 void Suitcase::use()

@@ -291,7 +291,6 @@ bool Puzzle::ROOMS(int roomID, Map& map,Player& player)
         }
         return true;
     }
-    if (roomID != 6) return false;
     if (roomID == 6)
     {
         if (currentRoom != 6)
@@ -311,15 +310,53 @@ bool Puzzle::ROOMS(int roomID, Map& map,Player& player)
             map.setObjects(new Note("You already knew.", 20, 4, 301));
             map.setObjects(new Note("The third path is the\none that stops\nthe train.", 5, 8, 301));
             map.setObjects(new Suitcase(15, 8, 301, 6));
-            map.setObjects(new Doors(" ", 23, 4, 6,61));
-            map.setObjects(new Doors(" ", 23, 6, 6,62));
-            map.setObjects(new Doors(" ", 23, 8, 6,63));
+            map.setObjects(new Doors(" ", 23, 4, 6,1));
+            map.setObjects(new Doors(" ", 23, 6, 6,1));
+            map.setObjects(new Doors(" ", 23, 8, 6,1));
             suitcaseUnlock = false;
             setCurrentRoom(6);
             spawned = true;
         }
+        if (getCurrentRoom() == 6 && suitcaseUnlock == false)
+        {
+            int i = 0;
+            for (InteractiveObject* itm : map.getObjects())
+            {
+                i++;
+                if (itm->getName() == "Suitcase")
+                {
+                    Suitcase* suitcase = dynamic_cast<Suitcase*>(itm);
+                    if (suitcase->isUnlocked() == true)
+                    {
+                        suitcaseUnlock = true;
+                        spawned = false;
+                    }
+                }
+            }
+        }
     }
-    return false;
+    if (suitcaseUnlock == true)
+    {
+        if (spawned == false)
+        {
+            map.clearObjects();
+            map.setObjects(new Drawers("A blank sheet\nof paper.\nNothing else.\n", 1, 4, 101));
+            map.setObjects(new Drawers("A train ticket.\nThe destination\nhas been scratched out.\n", 4, 4, 102));
+            map.setObjects(new Drawers("A photograph.\nYou recognize\nthe person in\nit.On the back:\n\"I\'ll see\nyou again.\" \n", 1, 8, 103));
+            map.setObjects(new Drawers("A small key.\nYou don't\nrecognize it. \n", 4, 8, 103));
+            map.setObjects(new Drawers("A folded piece\nof paper.You\nrecognize the\nhandwriting.\nIt's yours.\n", 16, 4, 201));
+            map.setObjects(new Note("You searched for\nanswers everywhere\nexcept where\nyou left them.", 16, 8, 301));
+            map.setObjects(new Note("The truth is not\nsomething you\nwere given.", 20, 8, 301));
+            map.setObjects(new Note("You already knew.", 20, 4, 301));
+            map.setObjects(new Note("The third path is the\none that stops\nthe train.", 5, 8, 301));
+            map.setObjects(new Suitcase(15, 8, 301, 6));
+            map.setObjects(new Doors(" ", 23, 4, 6, 61));
+            map.setObjects(new Doors(" ", 23, 6, 6, 62));
+            map.setObjects(new Doors(" ", 23, 8, 6, 63));
+            spawned = true;
+        }
+    }
+    return true;
 }
 void Puzzle::setCurrentRoom(int room) { currentRoom = room; }
 int Puzzle::getCurrentRoom() { return currentRoom; }
