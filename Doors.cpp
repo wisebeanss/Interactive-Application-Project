@@ -179,7 +179,7 @@ void Doors::use()
 				"That mirror lies. Think again.",
 				"2 minutes have been deducted!",
 				"Press Enter to continue...",
-					});
+					},42, 10, 35, 18);
 
 				cin.ignore();
 				cin.get();
@@ -222,11 +222,11 @@ void Doors::use()
 				"You arrange it in the correct order.",
 				"The Strong, Smart, Perfect, Successful.",
 				"All the things you thought you had to be.",
-				"\"Which one are you ? \"",
+				"\"Which one are you? \"",
 				"You don't answer.",
 				"The door clicks.",
 				"Press Enter to continue...",
-					});
+					}, 42, 10, 35, 18);
 
 				cin.ignore();
 				cin.get();
@@ -244,7 +244,7 @@ void Doors::use()
 				"Wrong arrangement."
 				"2 minutes have been deducted!"
 				"Press Enter to continue."
-					});
+					}, 42, 10, 35, 18);
 
 				cin.ignore();
 				cin.get();
@@ -296,7 +296,7 @@ void Doors::use()
 				"Maybe it was your fault. ",
 				"The door unlocks.",
 				"Press Enter to continue...",
-					});
+					}, 42, 10, 35, 18);
 
 				changeUnlockedState(true);
 
@@ -314,7 +314,7 @@ void Doors::use()
 				"That's not the right object..",
 				"2 minutes have been deducted!",
 				"Press Enter to continue...",
-					});
+					}, 42, 10, 35, 18);
 
 				cin.ignore();
 				cin.get();
@@ -364,7 +364,7 @@ void Doors::use()
 				"\"You promised you wouldn't forget.\"",
 				"The door unlocks.",
 				"Press Enter to continue..."
-					});
+					}, 42, 10, 35, 18);
 
 				changeUnlockedState(true);
 				question = 2;
@@ -372,9 +372,12 @@ void Doors::use()
 				return;
 			}
 			else {
-				cout << "Wrong arrangement.\n";
-				cout << "2 minutes have been deducted!\n";
-				cout << "\nPress Enter to continue.4";
+				dialogue.show({
+				"Wrong arrangement.",
+				"2 minutes have been deducted!",
+				"Press Enter to continue.",
+					}, 42, 10, 35, 18);
+
 				cin.ignore();
 				cin.get();
 
@@ -424,10 +427,13 @@ void Doors::use()
 				question = 2;
 				return;
 			}
-			else{
-				cout << "\nWrong answer.\n";
-				cout << "2 minutes have been deducted!\n";
-				cout << "\nPress Enter to continue...";
+			else {
+				dialogue.show({
+				"Wrong answer.",
+				"2 minutes have been deducted!",
+				"Press Enter to continue...",
+				}, 42, 10, 35, 18);
+
 				cin.ignore();
 				cin.get();
 
@@ -461,7 +467,7 @@ void Doors::use()
 				"The loop begins again. ",
 				"THE END...",
 				
-				}, 70, 15);
+				}, 42, 10, 35, 18);
 		}
 		else if (doorID == 62)
 		{
@@ -477,7 +483,7 @@ void Doors::use()
 					"You have accepted the truth—but you haven't let go.",
 					"THE END...",
 					
-				}, 70, 15);
+				}, 42, 10, 35, 18);
 			
 		}
 		else if (doorID == 63)
@@ -495,7 +501,7 @@ void Doors::use()
 					"For the first time, you move forward. ",
 					"The train will never run again. "
 					"THE END...",
-				}, 70, 15);
+				}, 42, 10, 35, 18);
 		}
 
 		return;
