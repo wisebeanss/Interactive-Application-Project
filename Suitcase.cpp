@@ -4,8 +4,9 @@
 #include "Dialogue.h"
 #include "Doors.h"
 #include "Windows.h"
+#include "Sound.h"
 using namespace std;
-
+Sound suitcase;
 Suitcase::Suitcase(int x, int y, int id, int room)
     : InteractiveObject("Suitcase", id, false),
     roomID(room),
@@ -73,6 +74,7 @@ void Suitcase::clearQuestion(COORD startPos, int lines)
 
 void Suitcase::tryUnlock()
 {
+    suitcase.PlaySuitcase();
     Dialogue dialogue;
     string hintMsg;
     if (roomID == 2)

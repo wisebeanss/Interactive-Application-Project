@@ -7,6 +7,7 @@ public:
 	void PlayError();
 	void PlayStart();
 	void PlayExit();
+	void PlayerWalk();
 	void PlayDoor();
 	void PlaySuitcase();
 	void StopAll();

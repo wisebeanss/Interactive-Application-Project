@@ -13,9 +13,10 @@ void Sound::StopAll() {
 
 
 void Sound::PlayKeyMusic() { PlayWav("open.wav"); }
-void Sound::PlaySelect() { PlayWav("equip.wav"); }
+void Sound::PlaySelect() { PlayWav("flippingbook.wav"); }
 void Sound::PlayError() { PlayWav("error.wav"); }
 void Sound::PlayStart() { PlayWav("equip.wav"); }
 void Sound::PlayExit() { PlayWav("flippingbook.wav"); }
+void Sound::PlayerWalk(){PlayWav("Walking.wav"); }
 void Sound::PlayDoor() { PlayWav("door.wav"); }
-void Sound::PlaySuitcase() { PlayWav("unholstr.wav"); }
+void Sound::PlaySuitcase() { PlayWav("unholster.wav"); }
