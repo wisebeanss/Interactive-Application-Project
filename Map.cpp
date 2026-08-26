@@ -9,6 +9,9 @@ Map::Map() {
 	animFrame = 0;
 	buildMap();
 	ended = false;
+	for (int i = 0; i < 3; i++) {
+		endingsReached.at(i) = false;
+	}
 }
 Map::~Map() {
 	clearObjects();
@@ -274,7 +277,19 @@ void Map::buildMap() {
 		}
 	}
 }
-
+void Map::printMap(int marginSize) {
+	std::string margin(marginSize, ' ');
+	const int carriageTop = 3;
+	const int carriageBottom = 10;
+	for (int y = carriageTop; y < carriageBottom; y++) {
+		std::cout << margin;
+		for (int x = 0; x < 24; x++) {
+			std::cout << " ";
+			std::cout << mapSize[y][x];
+		}
+		std::cout << std::endl;
+	}
+}
 std::string formatPanelLine(const std::string& text, size_t targetWidth = 30) {
 	if (text.length() >= targetWidth) {
 		return text.substr(0, targetWidth); // Truncate if too long

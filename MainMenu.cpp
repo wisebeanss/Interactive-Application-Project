@@ -45,7 +45,7 @@ void MainMenu::DrawMenu(int selected, bool isPause) {
         cout << margin << "  " << "|   " << (selected == 4 ? "-->  " : "     ") << "Exit                      |\n";
         cout << margin << "  " << "|                                  |\n";
         cout << margin << "  " << "+----------------------------------+\n";
-        cout << "\n" << margin << "   Use  'W'/'S to move | Enter to confirm\n";
+        cout << "\n" << margin << " Use  'W'/'S to move | Enter to confirm\n";
     }
     else {
         cout << margin << "+----------------------------------+\n";
@@ -57,7 +57,7 @@ void MainMenu::DrawMenu(int selected, bool isPause) {
         cout << margin << "|   " << (selected == 2 ? "-->  " : "     ") << "Exit Game                 |\n";
         cout << margin << "|                                  |\n";
         cout << margin << "+----------------------------------+\n";
-        cout << "\n" << margin << "   Use 'W'/'S to move | Enter to confirm\n";
+        cout << "\n" << margin << " Use 'W'/'S to move | Enter to confirm\n";
     }
 }
 
@@ -71,12 +71,12 @@ int MainMenu::GetChoiceInter() {
 
         int key = _getch();
 
-        if (key == 'W' || key == 'w') {
+        if (key == 'w') {
             sound.PlayKeyMusic();   
             selected--;
             if (selected < 0) selected = total - 1;
         }
-        else if (key == 'S' || key == 's') {
+        else if (key == 's') {
             sound.PlayKeyMusic();    
             selected++;
             if (selected >= total) selected = 0;
@@ -99,13 +99,9 @@ void MainMenu::Show() {
             sound.PlayStart();        // ✅ 开始游戏音效
             DrawTitle();
             if (map.isThereEndings()) {
-                cout << margin << "Which Carriage do you want to start in? (1-6): ";
-                int num = 0;
-                do {
-                    cin >> num;
-                } while (num > 6 && num < 1);
+                selectCarriage();
                 map.setEnded(false);
-                map.setCarriage(num);
+                /*map.setCarriage(num);*/
             }
             cout << "\n          Starting game...\n";
             Sleep(800);
@@ -208,4 +204,31 @@ int MainMenu::ShowPauseMenu() {
 void MainMenu::ShowCredits() {
     DrawTitle();
     cout << "Credits content here...\n";
+}
+void MainMenu::selectCarriage() {
+    int idx = 1;
+    while (true) {
+        DrawTitle();
+        cout << "\n" << margin << "   Use 'A'/'D' to move | Enter to confirm\n";
+        cout << margin << "              < Carriage " << idx << " >\n";
+        map.printMap(35);
+        int key = _getch();
+
+        if (key == 'a') {
+            idx--;
+            if (idx < 1) { idx = 6; }
+            map.setCarriage(idx);
+            map.buildMap();
+        }
+        else if (key == 'd') {
+            idx++;
+            if (idx > 6) { idx = 1; }
+            map.setCarriage(idx);
+            map.buildMap();
+        }
+        else if (key == 13) {
+            break;
+        }
+        
+    }
 }

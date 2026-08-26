@@ -44,6 +44,7 @@ public:
 	void mapTile(int posX, int posY, char symbol);
 	void updateMap(int x, int y, char symbol);
 	bool validMove(int x, int y);
+	void printMap(int marginSize);
 
 	vector<InteractiveObject*>& getObjects();
 	void setObjects(InteractiveObject* object);

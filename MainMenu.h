@@ -18,6 +18,7 @@ public:
     void ShowHelp();
     int getMenuChoice(int total, bool isPause);
     void showInfoScreen(const std::string& title, const std::vector<std::string>& lines);
+    void selectCarriage();
 private:
     string FormatLine(const string& text, size_t width);
     void DrawMenu(int selected, bool isPause = false);

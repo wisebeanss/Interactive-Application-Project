@@ -170,7 +170,7 @@ bool Puzzle::ROOMS(int roomID, Map& map,Player& player)
                     map.clearObjects();
                     if (!player.hasItem("Note"))
                     {
-                        map.setObjects(new Note("You blamed yourself for\nwhat happened at 11:35,\nbut you weren't there\nwhen it happened.\n", 1, 4, 203));
+                        map.setObjects(new Note("You blamed yourself for\nwhat happened at 11:35,\nbut you weren't there\nwhen it happened.\n", 1, 4, 3));
                     }
                     map.setObjects(new Watch("Stopped at 11:35. \n", 1, 8, 3));
                     spawned = true;
