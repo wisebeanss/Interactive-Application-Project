@@ -1,7 +1,7 @@
 #include "InteractiveObject.h"
 #include "Map.h"
 Map& InteractiveObject::map = getGameMap();
-InteractiveObject::InteractiveObject(string name, int id, bool isPickable) : GameObject(1, 1, ' ')
+InteractiveObject::InteractiveObject(string name , int id, bool isPickable) : GameObject(1, 1, ' ')
 {
 	this->name = name;
 	this->id = id;
