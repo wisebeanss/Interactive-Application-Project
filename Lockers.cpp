@@ -52,12 +52,12 @@ void Lockers::getUIBuffer(string buffer[13]) const {
         size_t end = text.find('\n', start);
         if (end == std::string::npos) end = text.size();
         std::string line = text.substr(start, end - start);
-        buffer[row++] = "|" + centerLockerText(line, width) + "|";
+        buffer[row++] = "[" + centerLockerText(line, width) + "]";
         start = end + 1; // move past '\n'
     }
     // Fill remaining rows with empty centered lines
     while (row < 12) {
-        buffer[row++] = "|" + centerLockerText("", width) + "|";
+        buffer[row++] = "[" + centerLockerText("", width) + "]";
     }
     buffer[12] = "+===__====__====__====__===+";
 }

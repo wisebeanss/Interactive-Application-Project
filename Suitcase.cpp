@@ -69,11 +69,8 @@ void Suitcase::tryUnlock()
             "You stare at the completed image.",
             "\"Was I really there?\"",
             "A note has appeared nearby.",
-            "Press Enter to continue...",
                 });
 
-            cin.ignore();
-            cin.get();
 
             system("cls");
             unlocked = canunlock;
@@ -115,9 +112,6 @@ void Suitcase::tryUnlock()
             if (canunlock == false)
             {
                 cout << "wrong answer";
-                cout << "Press Enter to continue...";
-                cin.ignore();
-                cin.get();
 
                 system("cls");
             }
@@ -132,7 +126,6 @@ void Suitcase::tryUnlock()
            "A thought slowly surfaces.",
            "\"I wasn't there.\"",
            "You step back.",
-           "Press Enter to continue...",
                 });
 
             
@@ -244,8 +237,6 @@ void Suitcase::tryUnlock()
             cout << "Click. \n";
             cout << "The doors unlocks. \n";
 
-            cin.ignore();
-            cin.get();
 
             system("cls");
 
