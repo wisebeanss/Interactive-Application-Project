@@ -109,10 +109,9 @@ void Doors::use()
 				"The time feels familiar,",
 				"yet you cannot recall why.",
 				"You can now solve Puzzle 2.",
-				"Press Enter to continue...",
+				
 					},42, 10, 35, 18);
-				cin.ignore();
-				cin.get();
+				
 
 				system("cls");
 				question = 2;
@@ -123,11 +122,10 @@ void Doors::use()
 				dialogue.show({
 					"That doesn't seem right..",
 					"Two minutes have been deducted.",
-					"Press Enter to continue.",
+					
 				});
 				
-				cin.ignore();
-				cin.get();
+				
 
 				system("cls");
 				getGameMap().timer.decreaseTime(2 * 60);
@@ -161,11 +159,10 @@ void Doors::use()
 				"You look away.",
 				"\"Stop pretending you don't.\"",
 				"The door unlocks.",
-				"Press Enter to continue...",
+			
 					}, 42, 10, 35, 18);
 
-				cin.ignore();
-				cin.get();
+				
 
 				system("cls");
 				changeUnlockedState(true);
@@ -178,11 +175,10 @@ void Doors::use()
 				dialogue.show({
 				"That mirror lies. Think again.",
 				"2 minutes have been deducted!",
-				"Press Enter to continue...",
+				
 					},42, 10, 35, 18);
 
-				cin.ignore();
-				cin.get();
+				
 
 				system("cls");
 				getGameMap().timer.decreaseTime(2 * 60);
@@ -225,11 +221,8 @@ void Doors::use()
 				"\"Which one are you? \"",
 				"You don't answer.",
 				"The door clicks.",
-				"Press Enter to continue...",
 					}, 42, 10, 35, 18);
 
-				cin.ignore();
-				cin.get();
 
 				system("cls");
 				
@@ -243,11 +236,8 @@ void Doors::use()
 				dialogue.show({
 				"Wrong arrangement."
 				"2 minutes have been deducted!"
-				"Press Enter to continue."
 					}, 42, 10, 35, 18);
 
-				cin.ignore();
-				cin.get();
 
 				system("cls");
 				getGameMap().timer.decreaseTime(2 * 60);
@@ -295,13 +285,10 @@ void Doors::use()
 				"The memory begins to crack.",
 				"Maybe it was your fault. ",
 				"The door unlocks.",
-				"Press Enter to continue...",
 					}, 42, 10, 35, 18);
 
 				changeUnlockedState(true);
 
-				cin.ignore();
-				cin.get();
 
 				system("cls");
 
@@ -313,11 +300,9 @@ void Doors::use()
 				dialogue.show({
 				"That's not the right object..",
 				"2 minutes have been deducted!",
-				"Press Enter to continue...",
 					}, 42, 10, 35, 18);
 
-				cin.ignore();
-				cin.get();
+				
 
 				system("cls");
 				getGameMap().timer.decreaseTime(2 * 60);
@@ -363,7 +348,6 @@ void Doors::use()
 				"A faint memory surfaces — someone beside you.",
 				"\"You promised you wouldn't forget.\"",
 				"The door unlocks.",
-				"Press Enter to continue..."
 					}, 42, 10, 35, 18);
 
 				changeUnlockedState(true);
@@ -375,11 +359,8 @@ void Doors::use()
 				dialogue.show({
 				"Wrong arrangement.",
 				"2 minutes have been deducted!",
-				"Press Enter to continue.",
 					}, 42, 10, 35, 18);
 
-				cin.ignore();
-				cin.get();
 
 				system("cls");
 				getGameMap().timer.decreaseTime(2 * 60);
@@ -416,11 +397,9 @@ void Doors::use()
 				"A memory surfaces — you sitting across from them.",
 				"The seat beside you was empty.",
 				"\"You were here...\"",
-				"\"Then why do I remember being alone?\""
-				"\nPress Enter to continue...",
+				"\"Then why do I remember being alone?\"",
 					});
-				cin.ignore();
-				cin.get();
+				
 
 				changeUnlockedState(true);
 				system("cls");
@@ -431,11 +410,8 @@ void Doors::use()
 				dialogue.show({
 				"Wrong answer.",
 				"2 minutes have been deducted!",
-				"Press Enter to continue...",
 				}, 42, 10, 35, 18);
 
-				cin.ignore();
-				cin.get();
 
 				system("cls");
 				getGameMap().timer.decreaseTime(2 * 60);
