@@ -1,5 +1,5 @@
 #include "Doors.h"
-#include "Timer.H"
+#include "Timer.h"
 #include <iostream>
 #include <string>
 #include <cctype>
@@ -484,7 +484,6 @@ void Doors::use()
 					"THE END...",
 					
 				}, 42, 10, 35, 18);
-			
 		}
 		else if (doorID == 63)
 		{
@@ -503,7 +502,7 @@ void Doors::use()
 					"THE END...",
 				}, 42, 10, 35, 18);
 		}
-
+		getGameMap().setEndingReached(doorID - 60);
 		return;
 
 	}

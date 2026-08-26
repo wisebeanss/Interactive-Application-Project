@@ -442,3 +442,20 @@ void Map::checkSuitcaseUnlock()
 		std::cout << "\n Notes have appeared nearby!\n";
 	}
 }
+
+void Map::setEndingReached(int id) {
+	if (!endingsReached.at(id - 1)) {
+		endingsReached.at(id - 1) = true;
+	}
+}
+bool Map::isThereEndings() const {
+	for (int i = 0; i < 3; i++) {
+		if (endingsReached.at(i)) {
+			return true;
+		}
+	}
+	return false;
+}
+bool Map::getEndingReached(int id) const {
+	return endingsReached.at(id-1);
+}

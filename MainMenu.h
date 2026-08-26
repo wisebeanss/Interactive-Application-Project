@@ -3,10 +3,13 @@
 #include<Windows.h>
 #include<string>
 #include <vector>
+#include "Map.h"
 using namespace std;
 class MainMenu
 {
 public:
+    MainMenu();
+    ~MainMenu();
     void Show();
     void DrawTitle();
     int GetChoiceInter();
@@ -18,5 +21,6 @@ public:
 private:
     string FormatLine(const string& text, size_t width);
     void DrawMenu(int selected, bool isPause = false);
+    Map& map;
 };
 

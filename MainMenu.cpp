@@ -12,7 +12,8 @@ string MainMenu::FormatLine(const string& text, size_t width)
         return text.substr(0, width);
     return text + string(width - text.length(), ' ');
 }
-
+MainMenu::MainMenu() : map(getGameMap()){}
+MainMenu::~MainMenu(){}
 void MainMenu::DrawTitle()
 {
     system("cls");
@@ -52,7 +53,7 @@ void MainMenu::DrawMenu(int selected, bool isPause)
         cout << margin << "|                                  |\n";
         cout << margin << "|   " << (selected == 0 ? "-->  " : "     ") << "Resume Game               |\n";
         cout << margin << "|   " << (selected == 1 ? "-->  " : "     ") << "Return to Main Menu       |\n";
-        cout << margin << "|   " << (selected == 2 ? "-->  " : "     ") << "Exit Game                 |\n";
+        cout << margin << "|   " << (selected ==    2 ? "-->  " : "     ") << "Exit Game                 |\n";
         cout << margin << "|                                  |\n";
         cout << margin << "+----------------------------------+\n";
         cout << "\n" << margin << "   Use 'W'/'S' to move | Enter to confirm\n";
@@ -96,6 +97,16 @@ void MainMenu::Show()
         if (choice == 1)
         {
             DrawTitle();
+            if (map.isThereEndings()) {
+                cout << "Which Carriage do you want to start in? (1-6)";
+                int num;
+                do {
+                    cin >> num;
+                } while (num > 6 && num < 1);
+                for (int i = 0; i < num; i++) {
+                    map.nextCarriage();
+                }
+            }
             cout << "\n          Starting game...\n";
             Sleep(800);
             system("cls");
@@ -164,8 +175,14 @@ int MainMenu::ShowPauseMenu()
         DrawMenu(selected, true);
 
         int key = _getch();
-        if (key == 'W' || key == 'w') { selected--; if (selected < 0) selected = total - 1; }
-        else if (key == 'S' || key == 's') { selected++; if (selected >= total) selected = 0; }
+        if (key == 'W' || key == 'w') { 
+            selected--; 
+            if (selected < 0) selected = total - 1; 
+        }
+        else if (key == 'S' || key == 's') {
+            selected++;
+            if (selected >= total) selected = 0;
+        }
         else if (key == 13)
         {
             return selected + 1; 
