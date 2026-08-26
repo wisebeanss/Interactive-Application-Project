@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Doors.h"
-
+#include"Sound.h"
+Sound Playinter;
 Player::Player(Map &map) : GameObject(2, 6, 'P') , map(map){
 	setInteract(false);
 	Inventory.fill(nullptr);
@@ -141,6 +142,7 @@ void Player::HandleInput(char symbol) {
 			}
 		}
 		for (size_t i = 0; i < Inventory.size(); i++) {
+			Playinter.PlaySelect();
 			if (Inventory[i] != nullptr && static_cast<int>(i) != InvSlotIdx) {
 				Inventory[i]->disableUI();
 			}
@@ -162,15 +164,19 @@ void Player::move(char movement)
 	int newY = getY();
 	switch (movement) {
 	case 'w':
+		Playinter.PlayerWalk();
 		newY -= 1;
 		break;
 	case 'a':
+		Playinter.PlayerWalk();
 		newX -= 1;
 		break;
 	case 's':
+		Playinter.PlayerWalk();
 		newY += 1;
 		break;
 	case 'd':
+		Playinter.PlayerWalk();
 		newX += 1;
 		break;
 	default:
