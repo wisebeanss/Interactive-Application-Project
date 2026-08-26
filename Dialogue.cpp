@@ -77,4 +77,32 @@ void Dialogue::show(const vector<string>& lines, int width, int height, int x, i
     pos.Y = startPos.Y + height;
 
     SetConsoleCursorPosition(hConsole, pos);
+
+    waitForEnter();
+}
+
+void Dialogue::waitForEnter()
+{
+    HANDLE hConsole = GetStdHandle(STD_INPUT_HANDLE);
+
+    // Remove any keys that were pressed during the dialogue
+    FlushConsoleInputBuffer(hConsole);
+
+    cout << "\nPress Enter to continue...";
+
+    // Wait for a NEW Enter press
+    while (true)
+    {
+        INPUT_RECORD input;
+        DWORD eventsRead;
+
+        ReadConsoleInput(hConsole, &input, 1, &eventsRead);
+
+        if (input.EventType == KEY_EVENT &&
+            input.Event.KeyEvent.bKeyDown &&
+            input.Event.KeyEvent.wVirtualKeyCode == VK_RETURN)
+        {
+            break;
+        }
+    }
 }

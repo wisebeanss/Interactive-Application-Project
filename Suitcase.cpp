@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "Dialogue.h"
+#include "Doors.h"
 using namespace std;
 
 Suitcase::Suitcase(int x, int y, int id, int room)
@@ -129,8 +130,7 @@ void Suitcase::tryUnlock()
            "Press Enter to continue...",
                 });
 
-            cin.ignore();
-            cin.get();
+            
 
             system("cls");
             unlocked = canunlock;
@@ -158,10 +158,7 @@ void Suitcase::tryUnlock()
             cout << "Your fingers tighten around the photograph.\n";
             cout << "\"I just wish I didn't.\"\n";
             cout << "The suitcase opens\n";
-            cout << "\nPress Enter to continue...";
-            cin.ignore();
-            cin.get();
-
+         
             system("cls");
             unlocked = canunlock;
         }
@@ -195,9 +192,8 @@ void Suitcase::tryUnlock()
             cout << "written after she had finally stopped waiting entirely.\n";
             cout << "You choose the letter with no date.\n";
             cout << "The safe clicks open.\n";
-            cout << "\nPress Enter to continue...";
-            cin.ignore();
-            cin.get();
+            
+            
 
             system("cls");
 

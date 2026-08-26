@@ -5,6 +5,7 @@
 #include <cctype>
 #include "Dialogue.h"
 #include <Windows.h>
+
 using namespace std;
 
 
@@ -109,10 +110,8 @@ void Doors::use()
 				"The time feels familiar,",
 				"yet you cannot recall why.",
 				"You can now solve Puzzle 2.",
-				"Press Enter to continue...",
 					},42, 10, 35, 18);
-				cin.ignore();
-				cin.get();
+				
 
 				system("cls");
 				question = 2;
@@ -123,11 +122,8 @@ void Doors::use()
 				dialogue.show({
 					"That doesn't seem right..",
 					"Two minutes have been deducted.",
-					"Press Enter to continue.",
 				});
 				
-				cin.ignore();
-				cin.get();
 
 				system("cls");
 				getGameMap().timer.decreaseTime(2 * 60);
@@ -161,11 +157,8 @@ void Doors::use()
 				"You look away.",
 				"\"Stop pretending you don't.\"",
 				"The door unlocks.",
-				"Press Enter to continue...",
 					}, 42, 10, 35, 18);
 
-				cin.ignore();
-				cin.get();
 
 				system("cls");
 				changeUnlockedState(true);
@@ -178,11 +171,9 @@ void Doors::use()
 				dialogue.show({
 				"That mirror lies. Think again.",
 				"2 minutes have been deducted!",
-				"Press Enter to continue...",
+				
 					},42, 10, 35, 18);
 
-				cin.ignore();
-				cin.get();
 
 				system("cls");
 				getGameMap().timer.decreaseTime(2 * 60);
@@ -225,11 +216,8 @@ void Doors::use()
 				"\"Which one are you? \"",
 				"You don't answer.",
 				"The door clicks.",
-				"Press Enter to continue...",
 					}, 42, 10, 35, 18);
 
-				cin.ignore();
-				cin.get();
 
 				system("cls");
 				
@@ -243,11 +231,9 @@ void Doors::use()
 				dialogue.show({
 				"Wrong arrangement."
 				"2 minutes have been deducted!"
-				"Press Enter to continue."
 					}, 42, 10, 35, 18);
 
-				cin.ignore();
-				cin.get();
+				
 
 				system("cls");
 				getGameMap().timer.decreaseTime(2 * 60);
@@ -295,13 +281,9 @@ void Doors::use()
 				"The memory begins to crack.",
 				"Maybe it was your fault. ",
 				"The door unlocks.",
-				"Press Enter to continue...",
 					}, 42, 10, 35, 18);
 
 				changeUnlockedState(true);
-
-				cin.ignore();
-				cin.get();
 
 				system("cls");
 
@@ -313,11 +295,8 @@ void Doors::use()
 				dialogue.show({
 				"That's not the right object..",
 				"2 minutes have been deducted!",
-				"Press Enter to continue...",
 					}, 42, 10, 35, 18);
 
-				cin.ignore();
-				cin.get();
 
 				system("cls");
 				getGameMap().timer.decreaseTime(2 * 60);
@@ -360,10 +339,9 @@ void Doors::use()
 				"\"I don't remember writing one of the lines.\""
 				"Something feels wrong, you recognize the handwriting.",
 				"Then who wrote it?",
-				"A faint memory surfaces — someone beside you.",
+				"A faint memory surfaces - someone beside you.",
 				"\"You promised you wouldn't forget.\"",
 				"The door unlocks.",
-				"Press Enter to continue..."
 					}, 42, 10, 35, 18);
 
 				changeUnlockedState(true);
@@ -375,12 +353,9 @@ void Doors::use()
 				dialogue.show({
 				"Wrong arrangement.",
 				"2 minutes have been deducted!",
-				"Press Enter to continue.",
 					}, 42, 10, 35, 18);
 
-				cin.ignore();
-				cin.get();
-
+				
 				system("cls");
 				getGameMap().timer.decreaseTime(2 * 60);
 				return;
@@ -417,10 +392,7 @@ void Doors::use()
 				"The seat beside you was empty.",
 				"\"You were here...\"",
 				"\"Then why do I remember being alone?\""
-				"\nPress Enter to continue...",
 					});
-				cin.ignore();
-				cin.get();
 
 				changeUnlockedState(true);
 				system("cls");
@@ -431,11 +403,7 @@ void Doors::use()
 				dialogue.show({
 				"Wrong answer.",
 				"2 minutes have been deducted!",
-				"Press Enter to continue...",
 				}, 42, 10, 35, 18);
-
-				cin.ignore();
-				cin.get();
 
 				system("cls");
 				getGameMap().timer.decreaseTime(2 * 60);
@@ -453,59 +421,64 @@ void Doors::use()
 	
 	}
 	if (roomID == 6) {
-		if (doorID == 61)
-		{
-			// BAD ENDING
 
-			dialogue.show({
-				"You step through the door, expecting freedom.",
-				"Instead, you find yourself back in Carriage 1. ",
-				"The furnace erupts in violet flames as the train accelerates into the darkness.",
-				"You turn back—but the door is gone. ",
-				"You couldn't face what happened at 11:35. ",
-				"Here, you never have to remember. You never have to mourn. You never have to admit they're gone. ",
-				"The loop begins again. ",
-				"THE END...",
-				
-				}, 42, 10, 35, 18);
-		}
-		else if (doorID == 62)
-		{
-			// NEUTRAL ENDING
-			dialogue.show({
-					"You step through Door 2. ",
-					"Your reflection stands waiting on the other side. ",
-					"\"You know what happened.\" ",
-					"You simply stare at yourself. The train begins to slow. ",
-					"The purple flames shrink, but they do not disappear. ",
-					"\"I accept it.\"",
-					"You step forward, but the train remains behind you, still burning quietly in the darkness.",
-					"You have accepted the truth—but you haven't let go.",
+			if (doorID == 61)
+			{
+
+				// BAD ENDING
+
+				dialogue.show({
+					"You step through the door, expecting freedom.",
+					"Instead, you find yourself back in Carriage 1. ",
+					"The furnace erupts in violet flames",
+					"as the train accelerates into the darkness.",
+					"You turn back, but the door is gone.",
+					"You couldn't face what happened at 11:35. ",
+					"Here, you'll never have to remember or mourn.",
+					"You never have to admit they're gone.",
+					"The loop begins again. ",
 					"THE END...",
-					
-				}, 42, 10, 35, 18);
-			
-		}
-		else if (doorID == 63)
-		{
-			// TRUE ENDING
-			dialogue.show({
-					"You ignore the false exits and walk toward the furnace.",
-					"The dark-purple flames roar, burning with every suppressed tear, unanswered question, and buried memory. ",
-					"You do not turn away.",
-					"You reach through the flames and grasp the EMERGENCY BRAKE.",
-					"You pull, and the train screeches violently before finally coming to a halt. The furnace fades to embers.",
-					"Silence fills the carriage. You open the door.",
-					"There is no abyss—only a quiet tunnel and a small circle of daylight ahead. ",
-					"You take a breath and walk toward the light.",
-					"For the first time, you move forward. ",
-					"The train will never run again. "
-					"THE END...",
-				}, 42, 10, 35, 18);
-		}
 
-		return;
+					}, 58, 12, 26, 18);
+			}
+			else if (doorID == 62)
+			{
+				// NEUTRAL ENDING
+				dialogue.show({
+						"You step through Door 2. ",
+						"Your reflection stands waiting on the other side. ",
+						"\"You know what happened.\" ",
+						"You simply stare at yourself. The train begins to slow. ",
+						"The purple flames shrink, but they do not disappear. ",
+						"\"I accept it.\"",
+						"You step forward, but the train remains behind you,",
+						"still burning quietly in the darkness.",
+						"You have accepted the truth, but you haven't let go.",
+						"THE END...",
 
+					}, 58, 12, 26, 18);
+
+			}
+			else if (doorID == 63)
+			{
+				// TRUE ENDING
+				dialogue.show({
+						"You ignore the false exits and walk toward the furnace.",
+						"The dark-purple flames roar, burning with every suppressed tear, unanswered question, and buried memory. ",
+						"You do not turn away.",
+						"You reach through the flames and grasp the EMERGENCY BRAKE.",
+						"You pull, and the train screeches violently before finally coming to a halt. The furnace fades to embers.",
+						"Silence fills the carriage. You open the door.",
+						"There is no abyss—only a quiet tunnel and a small circle of daylight ahead. ",
+						"You take a breath and walk toward the light.",
+						"For the first time, you move forward. ",
+						"The train will never run again. "
+						"THE END...",
+					}, 58, 12, 26, 18);
+			}
+
+			return;
+		
 	}
 }
 
