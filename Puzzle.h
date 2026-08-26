@@ -3,6 +3,7 @@
 #include <string>
 #include "map.h"
 #include "MapObjects.h"
+#include "Player.h"
 class Puzzle :
     public InteractiveObject
 {
@@ -12,7 +13,7 @@ private:
     bool spawned;
 public:
     // Puzzle functions
-    bool ROOMS(int roomID, Map& map);
+    bool ROOMS(int roomID, Map& map, Player& player);
     void setCurrentRoom(int room);
     int getCurrentRoom();
 

@@ -1,7 +1,9 @@
 #pragma once
+
 #include <string>
 #include <vector>
 
+using namespace std;
 class Dialogue
 {
 private:
@@ -10,5 +12,5 @@ private:
 public:
     Dialogue();
 
-    void show(const std::vector<std::string>& lines);
+    void show(const vector<string>& lines, int width = 42, int height = 10, int x = 35, int y = 15);
 };
