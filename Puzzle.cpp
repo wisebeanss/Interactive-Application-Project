@@ -112,7 +112,6 @@ bool Puzzle::ROOMS(int roomID, Map& map,Player& player)
                 map.setObjects(new Phones("Final call:\n11:37", 5, 4, 2));
                 map.setObjects(new Clocks("Stopped at 11:35 \n", 5, 8, 3));
                 map.setObjects(new Doors(" ", 23, 6, 3, 1));
-                suitcaseUnlock = false;
                 spawned = true;
                 setCurrentRoom(3);
             }

@@ -107,10 +107,6 @@ void Suitcase::tryUnlock()
 
         cout << "\r" << string(80, ' ') << "\r";
         hintMsg = "give the order of the time of the calls";
-
-        string answer;
-        cin >> answer;
-
         clearQuestion(questionPos, 1);
         
         if (!canunlock)
