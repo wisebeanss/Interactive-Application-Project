@@ -8,6 +8,7 @@
 #include "MapObjects.h"
 #include "Timer.h"       
 #include "Suitcase.h"   
+#include <array>
 using namespace std;
 
 class InteractiveObject;
@@ -25,6 +26,7 @@ private:
 	vector<InteractiveObject*> Objects;
 	Suitcase* suitcasePtr = nullptr; 
 	bool noteSpawned = false;
+	array<bool, 3> endingsReached;
 
 public:
 	int timerSeconds;
@@ -63,5 +65,10 @@ public:
 	void reduceTimer();
 	Map();
 	~Map();
+
+	//Ending
+	void setEndingReached(int id);
+	bool getEndingReached(int id) const;
+	bool isThereEndings() const;
 };
 Map& getGameMap();

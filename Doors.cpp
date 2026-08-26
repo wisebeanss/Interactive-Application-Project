@@ -1,5 +1,5 @@
 #include "Doors.h"
-#include "Timer.H"
+#include "Timer.h"
 #include <iostream>
 #include <string>
 #include <cctype>
@@ -492,7 +492,7 @@ void Doors::use()
 				}, 84, 11, 15, 18);
 			system("cls");
 		}
-
+		getGameMap().setEndingReached(doorID - 60);
 		return;
 
 	}
