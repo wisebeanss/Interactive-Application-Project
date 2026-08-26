@@ -17,7 +17,7 @@ Puzzle::~Puzzle()
 }
 
 bool add = false;
-bool Puzzle::ROOMS(int roomID, Map& map)
+bool Puzzle::ROOMS(int roomID, Map& map,Player& player)
 {
     if (roomID == 1)
     {
@@ -102,18 +102,30 @@ bool Puzzle::ROOMS(int roomID, Map& map)
         }
         if (map.getRoom() == 1)
         {
-            if (spawned == false)
+            if (spawned == false && suitcaseUnlock == false)
             {
                 map.clearObjects();
                 map.setObjects(new Phones("First call:\n11:32", 2, 8, 101));
                 map.setObjects(new Phones("Final call:\n11:37", 5, 4, 102));
-                map.setObjects(new Letters("I called again\n two minutes later. \n", 3, 8, 103));
                 map.setObjects(new Clocks("Stopped at 11:35 \n", 5, 8, 103));
-                map.setObjects(new Suitcase(16, 4, 201, 3));
                 map.setObjects(new Doors(" ", 23, 6, 3, 1));
                 suitcaseUnlock = false;
                 spawned = true;
                 setCurrentRoom(3);
+            }
+        }
+        if (map.getRoom() == 2)
+        {
+            if (spawned == true && suitcaseUnlock == false)
+            {
+                map.clearObjects();
+                if (!player.hasItem("Letter"))
+                {
+                    map.setObjects(new Letters("I called again\n two minutes later. \n", 3, 8, 103));
+                }
+
+                map.setObjects(new Suitcase(10, 4, 201, 3));
+                spawned = false;
             }
         }
         if (getCurrentRoom() == 3 && suitcaseUnlock == false) {
@@ -135,15 +147,32 @@ bool Puzzle::ROOMS(int roomID, Map& map)
         }
         if (suitcaseUnlock == true)
         {
-            if (spawned == false)
+            if (map.getRoom() == 1)
             {
-                map.clearObjects();
-                map.setObjects(new Note("You blamed yourself for\nwhat happened at 11:35,\nbut you weren't there\nwhen it happened.\n", 2, 4, 202));
-                map.setObjects(new Letters("No timestamp.\n", 21, 8, 203));
-                map.setObjects(new Photograph("Taken at 10:20. \n", 20, 4, 203));
-                map.setObjects(new Watch("Stopped at 11:35. \n", 1, 8, 103));
-                map.setObjects(new Doors(" ", 23, 6, 3,1));
-                spawned = true;
+                if (spawned == false)
+                {
+                    map.clearObjects();
+                    if (!player.hasItem("Photograph"))
+                    {
+                        map.setObjects(new Photograph("Taken at 10:20. \n", 2, 4, 202));  
+                    }
+                    map.setObjects(new Letters("No timestamp.\n", 21, 8, 203));
+                    map.setObjects(new Doors(" ", 23, 6, 3, 1));
+                    spawned = true;
+                }
+            }
+            if (map.getRoom() == 2)
+            {
+                if (spawned == true)
+                {
+                    map.clearObjects();
+                    if (!player.hasItem("Note"))
+                    {
+                        map.setObjects(new Note("You blamed yourself for\nwhat happened at 11:35,\nbut you weren't there\nwhen it happened.\n", 1, 4, 203));
+                    }
+                    map.setObjects(new Watch("Stopped at 11:35. \n", 1, 8, 103));
+                    spawned = false;
+                }
             }
         }
         return true;
