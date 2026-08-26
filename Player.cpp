@@ -19,6 +19,15 @@ InteractiveObject* Player::getInventoryItem(int index) const {
 	if (index >= 0 && index < 7) return Inventory[index];
 	return nullptr;
 }
+bool Player::hasItem(string name) const {
+	for (int i = 0; i < 7; i++) {
+		InteractiveObject* obj = Inventory[i];
+		if (obj != nullptr && obj->getName() == name) {
+			return true;
+		}
+	}
+	return false;
+}
 bool Player::Equip(InteractiveObject* object) {
 	for (int objIdx = 0; objIdx < Inventory.size(); objIdx++) {
 		if (Inventory.at(objIdx) == nullptr) {
@@ -91,7 +100,7 @@ void Player::HandleInput(char symbol) {
 				if (map.getRoom() == 1) {
 					map.nextRoom();
 					setX(2);
-					setY(5);
+					setY(8);
 					break;
 				}
 				else {

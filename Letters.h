@@ -9,6 +9,7 @@ private:
 public:
 	Letters(string text, int X, int Y, int id);
 	~Letters();
+	void getUIBuffer(string buffer[13]) const;
 	void use();
 };
 

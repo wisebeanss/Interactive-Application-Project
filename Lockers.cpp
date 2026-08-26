@@ -39,23 +39,45 @@ Lockers::~Lockers()
         }
     }
 }
+void Lockers::getUIBuffer(string buffer[13]) const {
+    const int width = 26;
+    const int boxWidth = width + 2;
 
-void Lockers::use()
-{
-    const int width = 22;
+    buffer[0] = "+===__====__====__====__===+";
 
-    cout << "+----------------------+" << endl;
-    cout << "|" << centerLockerText("", width) << "|" << endl;
-    cout << "|" << centerLockerText("LOCKER " + to_string(getId()), width) << "|" << endl;
+
+    int row = 1;
     size_t start = 0;
-    while (start < text.size()) {
+    while (row < 12 && start < text.size()) {
         size_t end = text.find('\n', start);
         if (end == std::string::npos) end = text.size();
         std::string line = text.substr(start, end - start);
-        std::cout << "|" << centerLockerText(line, width) << "|" << std::endl;
-        start = end + 1;
+        buffer[row++] = "|" + centerLockerText(line, width) + "|";
+        start = end + 1; // move past '\n'
     }
-    cout << "|" << centerLockerText("", width) << "|" << endl;
-    cout << "|" << centerLockerText("", width) << "|" << endl;
-    cout << "+----------------------+" << endl;
+    // Fill remaining rows with empty centered lines
+    while (row < 12) {
+        buffer[row++] = "|" + centerLockerText("", width) + "|";
+    }
+    buffer[12] = "+===__====__====__====__===+";
+}
+void Lockers::use()
+{
+    enableUI();
+    //const int width = 22;
+
+    //cout << "+----------------------+" << endl;
+    //cout << "|" << centerLockerText("", width) << "|" << endl;
+    //cout << "|" << centerLockerText("LOCKER " + to_string(getId()), width) << "|" << endl;
+    //size_t start = 0;
+    //while (start < text.size()) {
+    //    size_t end = text.find('\n', start);
+    //    if (end == std::string::npos) end = text.size();
+    //    std::string line = text.substr(start, end - start);
+    //    std::cout << "|" << centerLockerText(line, width) << "|" << std::endl;
+    //    start = end + 1;
+    //}
+    //cout << "|" << centerLockerText("", width) << "|" << endl;
+    //cout << "|" << centerLockerText("", width) << "|" << endl;
+    //cout << "+----------------------+" << endl;
 }
