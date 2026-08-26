@@ -141,7 +141,7 @@ bool Puzzle::ROOMS(int roomID, Map& map,Player& player)
                     if (suitcase->isUnlocked() == true)
                     {
                         suitcaseUnlock = true;
-                        spawned = true;
+                        spawned = false;
 
                     }
                 }
