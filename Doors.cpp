@@ -262,7 +262,7 @@ void Doors::use()
 			COORD questionPos = info.dwCursorPosition;
 
 
-			cout << "What is the answer?";
+			cout << "What is the answer:";
 			cin >> answerT3;
 
 			clearQuestion(questionPos, 1);
@@ -284,7 +284,7 @@ void Doors::use()
 				"The memory begins to crack.",
 				"Maybe it was your fault. ",
 				"The door unlocks.",
-					}, 42, 10, 35, 18);
+					}, 54, 10, 30, 18);
 
 				changeUnlockedState(true);
 
@@ -443,13 +443,15 @@ void Doors::use()
 				"You step through the door, expecting freedom.",
 				"Instead, you find yourself back in Carriage 1. ",
 				"The furnace erupts in violet flames as the train accelerates into the darkness.",
-				"You turn back—but the door is gone. ",
+				"You turn back, but the door is gone. ",
 				"You couldn't face what happened at 11:35. ",
-				"Here, you never have to remember. You never have to mourn. You never have to admit they're gone. ",
+				"Here, you never have to remember. You never have to mourn.",
+				"You never have to admit they're gone. ",
 				"The loop begins again. ",
 				"THE END...",
 				
-				}, 42, 10, 35, 18);
+				}, 84, 11, 15, 18);
+			system("cls");
 		}
 		else if (doorID == 62)
 		{
@@ -461,11 +463,13 @@ void Doors::use()
 					"You simply stare at yourself. The train begins to slow. ",
 					"The purple flames shrink, but they do not disappear. ",
 					"\"I accept it.\"",
-					"You step forward, but the train remains behind you, still burning quietly in the darkness.",
+					"You step forward, but the train remains behind you,",
+					"still burning quietly in the darkness.",
 					"You have accepted the truth—but you haven't let go.",
 					"THE END...",
 					
-				}, 42, 10, 35, 18);
+				}, 78, 11, 15, 18);
+			system("cls");
 			
 		}
 		else if (doorID == 63)
@@ -473,17 +477,20 @@ void Doors::use()
 			// TRUE ENDING
 			dialogue.show({
 					"You ignore the false exits and walk toward the furnace.",
-					"The dark-purple flames roar, burning with every suppressed tear, unanswered question, and buried memory. ",
+					"The dark purple flames roar, burning with every suppressed tear,",
+					"unanswered question, and buried memory. ",
 					"You do not turn away.",
 					"You reach through the flames and grasp the EMERGENCY BRAKE.",
-					"You pull, and the train screeches violently before finally coming to a halt. The furnace fades to embers.",
+					"You pull, and the train screeches violently before finally coming to a halt.",
+					"The furnace fades to embers.",
 					"Silence fills the carriage. You open the door.",
-					"There is no abyss—only a quiet tunnel and a small circle of daylight ahead. ",
+					"There is no abyss, only a quiet tunnel and a small circle of daylight ahead. ",
 					"You take a breath and walk toward the light.",
 					"For the first time, you move forward. ",
 					"The train will never run again. "
 					"THE END...",
-				}, 42, 10, 35, 18);
+				}, 84, 11, 15, 18);
+			system("cls");
 		}
 
 		return;
