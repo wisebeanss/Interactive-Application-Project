@@ -3,6 +3,7 @@
 #include <string>
 #include "Timer.h"
 #include "Map.h"
+#include <Windows.h>
 class Doors : public InteractiveObject
 {
 private:
@@ -24,5 +25,5 @@ public:
     void use();
     void setRoomID(int id);
     void setDoorID(int id);
-
+    void clearQuestion(COORD startPos, int lines);
 };

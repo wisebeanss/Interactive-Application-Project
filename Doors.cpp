@@ -4,6 +4,7 @@
 #include <string>
 #include <cctype>
 #include "Dialogue.h"
+#include <Windows.h>
 using namespace std;
 
 
@@ -56,6 +57,25 @@ void Doors::setRoomID(int id)
 	roomID = id;
 }
 
+void Doors::clearQuestion(COORD startPos, int lines)
+{
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	for (int i = 0; i < lines; i++)
+	{
+		COORD pos;
+		pos.X = startPos.X;
+		pos.Y = startPos.Y + i;
+
+		SetConsoleCursorPosition(hConsole, pos);
+
+		cout << string(100, ' ');
+	}
+
+	// Return cursor to the original question position
+	SetConsoleCursorPosition(hConsole, startPos);
+}
+
 void Doors::use()
 {
 	Dialogue dialogue;
@@ -67,9 +87,18 @@ void Doors::use()
 	{
 		if (question == 1)
 		{
+			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+			CONSOLE_SCREEN_BUFFER_INFO info;
+			GetConsoleScreenBufferInfo(hConsole, &info);
+
+			COORD questionPos = info.dwCursorPosition;
+
 			cout << "\r" << string(80, ' ') << "\r";
-			cout << "Enter the time as HHMMSS (e.g., 115012): ";
+			cout << "Enter the time as HHMMSS: ";
 			cin >> answerT1;
+
+			clearQuestion(questionPos, 1);
 			if (answerT1 == 115012)
 			{
 				dialogue.show({
@@ -81,7 +110,7 @@ void Doors::use()
 				"yet you cannot recall why.",
 				"You can now solve Puzzle 2.",
 				"Press Enter to continue...",
-					});
+					},42, 10, 35, 18);
 				cin.ignore();
 				cin.get();
 
@@ -110,10 +139,18 @@ void Doors::use()
 
 		if (question == 2)
 		{
+			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+			CONSOLE_SCREEN_BUFFER_INFO info;
+			GetConsoleScreenBufferInfo(hConsole, &info);
+
+			COORD questionPos = info.dwCursorPosition;
+
 			cout << "\r" << string(80, ' ') << "\r";
 			cout << "Enter which mirror is correct (A/B/C): ";
 			cin >> answerT2;
-			
+
+			clearQuestion(questionPos, 1);
 
 			answerT2 = toupper(answerT2);
 			if (answerT2 == 'C')
@@ -125,7 +162,7 @@ void Doors::use()
 				"\"Stop pretending you don't.\"",
 				"The door unlocks.",
 				"Press Enter to continue...",
-					});
+					}, 42, 10, 35, 18);
 
 				cin.ignore();
 				cin.get();
@@ -164,11 +201,19 @@ void Doors::use()
 	{
 		if (question == 1)
 		{
+			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+			CONSOLE_SCREEN_BUFFER_INFO info;
+			GetConsoleScreenBufferInfo(hConsole, &info);
+
+			COORD questionPos = info.dwCursorPosition;
+
 			cout << "\r" << string(80, ' ') << "\r";
 			cout << "What is the arrangement?\n";
 			cout << "Enter your answer: ";
 			cin >> answerT1;
-			
+
+			clearQuestion(questionPos, 2);
 		
 
 			if (answerT1 == 1243 )
@@ -179,7 +224,6 @@ void Doors::use()
 				"All the things you thought you had to be.",
 				"\"Which one are you ? \"",
 				"You don't answer.",
-				"The poster go dark.",
 				"The door clicks.",
 				"Press Enter to continue...",
 					});
@@ -221,9 +265,18 @@ void Doors::use()
 	{
 		if (question == 1)
 		{
+			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+			CONSOLE_SCREEN_BUFFER_INFO info;
+			GetConsoleScreenBufferInfo(hConsole, &info);
+
+			COORD questionPos = info.dwCursorPosition;
+
 
 			cout << "What is the answer?";
 			cin >> answerT3;
+
+			clearQuestion(questionPos, 2);
 
 			//uppercase
 			for (char& c : answerT3)
@@ -235,13 +288,14 @@ void Doors::use()
 			{
 				dialogue.show({
 				"11:35.",
-				"You stare at it, remembering the blame you carried all this time.",
-				"\"It happened at 11:35...\""
-				"\"But you weren't there.\""
-				"The memory begins to crack."
-				"Maybe it was your fault. "
-				"The door unlocks."
-				"Press Enter to continue..."
+				"You stare at it",
+				"remembering the blame you carried all this time.",
+				"\"It happened at 11:35...\"",
+				"\"But you weren't there.\"",
+				"The memory begins to crack.",
+				"Maybe it was your fault. ",
+				"The door unlocks.",
+				"Press Enter to continue...",
 					});
 
 				changeUnlockedState(true);
@@ -283,30 +337,34 @@ void Doors::use()
 	{
 		if (question == 1)
 		{
+			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+			CONSOLE_SCREEN_BUFFER_INFO info;
+			GetConsoleScreenBufferInfo(hConsole, &info);
+
+			COORD questionPos = info.dwCursorPosition;
+
 
 			cout << "\r" << string(80, ' ') << "\r";
 			cout << "What is the arrangement?\n";
 			cout << "Enter your answer: ";
 			cin >> answerT1;
 
+			clearQuestion(questionPos, 2);
 
 
 			if (answerT1 == 1243)
 			{
-				cout << "\r" << string(80, ' ') << "\r";
-				cout << "You arrange the memories in order.\n";
-				cout << "Childhood. Last Summer.Photograph.First Train Ride. \n";
-				cout << "You stare at the words.\n";
-				cout << "Something feels wrong. \n";
-				cout << "You read the diary page again.\n";
-				cout << "\"I don't remember writing one of the lines.\" \n";
-				cout << "You recognize the handwriting.\n";
-				cout << "\"Then who wrote it ? \" \n";
-				cout << "A faint memory surfaces. \n";
-				cout << "Someone sitting beside you.\n A train window.\nTheir voice. \n";
-				cout << "A voice whispers in your ears\n";
-				cout << "\"You promised you wouldn't forget.\"\n";
-				cout << "The door unlocks. \n";
+				dialogue.show({
+				"You arrange the memories in order.",
+				"\"I don't remember writing one of the lines.\""
+				"Something feels wrong, you recognize the handwriting.",
+				"Then who wrote it?",
+				"A faint memory surfaces — someone beside you.",
+				"\"You promised you wouldn't forget.\"",
+				"The door unlocks.",
+				"Press Enter to continue..."
+					});
 
 				changeUnlockedState(true);
 				question = 2;
@@ -315,13 +373,13 @@ void Doors::use()
 			}
 			else {
 				cout << "Wrong arrangement.\n";
-				getGameMap().timer.decreaseTime(2 * 60);
 				cout << "2 minutes have been deducted!\n";
 				cout << "\nPress Enter to continue.4";
 				cin.ignore();
 				cin.get();
 
 				system("cls");
+				getGameMap().timer.decreaseTime(2 * 60);
 				return;
 			}
 
@@ -336,18 +394,28 @@ void Doors::use()
 	}
 	if (roomID == 5) {
 		if (question == 1) {
+			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+			CONSOLE_SCREEN_BUFFER_INFO info;
+			GetConsoleScreenBufferInfo(hConsole, &info);
+
+			COORD questionPos = info.dwCursorPosition;
+
 			cout << "\r" << string(80, ' ') << "\r";
-			cout << "TAKE NOTE:\n";
-			cout << "1. The last letter was written after I stopped expecting an answer.\n";
-			cout << "Tell me which letter is the last one \n";
+			cout << "Which letter is the last one?:";
 			cin >> answerT1;
+
+			clearQuestion(questionPos, 2);
+
 			if (answerT1 == 3 ) {
-				cout << "\r" << string(80, ' ') << "\r";
-				cout << "Letters lie scattered across the table, written one after another as hope slowly faded.\n";
-				cout << "Two notes are pinned to the wall:\n";
-				cout << "All the things you thought you had to be.\n";
-				cout << "\"door unlocks. \"\n";
-				cout << "\nPress Enter to continue...";
+				dialogue.show({
+				"You open Locker 3. The scarf is still there.",
+				"A memory surfaces — you sitting across from them.",
+				"The seat beside you was empty.",
+				"\"You were here...\"",
+				"\"Then why do I remember being alone?\""
+				"\nPress Enter to continue...",
+					});
 				cin.ignore();
 				cin.get();
 
@@ -358,15 +426,13 @@ void Doors::use()
 			}
 			else{
 				cout << "\nWrong answer.\n";
-
-				getGameMap().timer.decreaseTime(2 * 60);
 				cout << "2 minutes have been deducted!\n";
-
 				cout << "\nPress Enter to continue...";
 				cin.ignore();
 				cin.get();
 
 				system("cls");
+				getGameMap().timer.decreaseTime(2 * 60);
 				return;
 				
 
@@ -384,20 +450,52 @@ void Doors::use()
 		if (doorID == 61)
 		{
 			// BAD ENDING
-			cout << "You chose the wrong door.\n";
-			cout << "The train continues endlessly...\n";
+
+			dialogue.show({
+				"You step through the door, expecting freedom.",
+				"Instead, you find yourself back in Carriage 1. ",
+				"The furnace erupts in violet flames as the train accelerates into the darkness.",
+				"You turn back—but the door is gone. ",
+				"You couldn't face what happened at 11:35. ",
+				"Here, you never have to remember. You never have to mourn. You never have to admit they're gone. ",
+				"The loop begins again. ",
+				"THE END...",
+				
+				}, 70, 15);
 		}
 		else if (doorID == 62)
 		{
 			// NEUTRAL ENDING
-			cout << "You pull the emergency brake.\n";
-			cout << "The train finally stops.\n";
+			dialogue.show({
+					"You step through Door 2. ",
+					"Your reflection stands waiting on the other side. ",
+					"\"You know what happened.\" ",
+					"You simply stare at yourself. The train begins to slow. ",
+					"The purple flames shrink, but they do not disappear. ",
+					"\"I accept it.\"",
+					"You step forward, but the train remains behind you, still burning quietly in the darkness.",
+					"You have accepted the truth—but you haven't let go.",
+					"THE END...",
+					
+				}, 70, 15);
+			
 		}
 		else if (doorID == 63)
 		{
 			// TRUE ENDING
-			cout << "You finally accept the truth.\n";
-			cout << "The doors open.\n";
+			dialogue.show({
+					"You ignore the false exits and walk toward the furnace.",
+					"The dark-purple flames roar, burning with every suppressed tear, unanswered question, and buried memory. ",
+					"You do not turn away.",
+					"You reach through the flames and grasp the EMERGENCY BRAKE.",
+					"You pull, and the train screeches violently before finally coming to a halt. The furnace fades to embers.",
+					"Silence fills the carriage. You open the door.",
+					"There is no abyss—only a quiet tunnel and a small circle of daylight ahead. ",
+					"You take a breath and walk toward the light.",
+					"For the first time, you move forward. ",
+					"The train will never run again. "
+					"THE END...",
+				}, 70, 15);
 		}
 
 		return;

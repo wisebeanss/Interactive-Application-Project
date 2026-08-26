@@ -2,54 +2,65 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include <string>
 #include <Windows.h>
-
-using namespace std;
 
 Dialogue::Dialogue()
 {
     typingSpeed = 50;
 }
 
-void Dialogue::show(const vector<string>& lines)
+void Dialogue::show(const vector<string>& lines, int width, int height, int x, int y)
 {
-    const int width = 42;
-    const int height = 10;
-    const string margin(35, ' ');
-
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
-    // Get current cursor position
-    CONSOLE_SCREEN_BUFFER_INFO consoleInfo;
-    GetConsoleScreenBufferInfo(hConsole, &consoleInfo);
+    COORD startPos;
+    startPos.X = x;
+    startPos.Y = y;
 
-    COORD startPos = consoleInfo.dwCursorPosition;
+    // Draw top
+    COORD pos = startPos;
+    SetConsoleCursorPosition(hConsole, pos);
 
-    // =========================
-    // DRAW ENTIRE BOX FIRST
-    // =========================
+    cout << "+";
+    for (int i = 0; i < width; i++)
+        cout << "-";
+    cout << "+";
 
-    cout << margin << "+------------------------------------------+\n";
-
-    for (int i = 0; i < height - 2; i++)
+    // Draw empty box
+    for (int i = 1; i < height - 1; i++)
     {
-        cout << margin << "|                                          |\n";
+        pos.Y = startPos.Y + i;
+
+        SetConsoleCursorPosition(hConsole, pos);
+
+        cout << "|";
+
+        for (int j = 0; j < width; j++)
+            cout << " ";
+
+        cout << "|";
     }
 
-    cout << margin << "+------------------------------------------+\n";
+    // Draw bottom
+    pos.Y = startPos.Y + height - 1;
 
-    // =========================
-    // PRINT TEXT INSIDE BOX
-    // =========================
+    SetConsoleCursorPosition(hConsole, pos);
 
-    for (int i = 0; i < lines.size() && i < height - 2; i++)
+    cout << "+";
+    for (int i = 0; i < width; i++)
+        cout << "-";
+    cout << "+";
+
+    // Print dialogue
+    for (int i = 0;
+        i < static_cast<int>(lines.size()) && i < height - 2;
+        i++)
     {
-        COORD textPos;
+        pos.X = startPos.X + 2;
+        pos.Y = startPos.Y + 1 + i;
 
-        textPos.X = startPos.X + static_cast<SHORT>(margin.length()) + 2;
-        textPos.Y = startPos.Y + 1 + i;
-
-        SetConsoleCursorPosition(hConsole, textPos);
+        SetConsoleCursorPosition(hConsole, pos);
 
         for (char c : lines[i])
         {
@@ -61,11 +72,9 @@ void Dialogue::show(const vector<string>& lines)
         }
     }
 
-    // Move cursor below the dialogue box
-    COORD endPos;
+    // Put cursor below box
+    pos.X = startPos.X;
+    pos.Y = startPos.Y + height;
 
-    endPos.X = startPos.X;
-    endPos.Y = startPos.Y + height;
-
-    SetConsoleCursorPosition(hConsole, endPos);
+    SetConsoleCursorPosition(hConsole, pos);
 }
