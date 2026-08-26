@@ -1,21 +1,25 @@
-#include "MainMenu.h"
-#include <iostream>
-#include <conio.h>
-#include <Windows.h>
-#include <cstdlib>
-#include <string>
+﻿#include "MainMenu.h" 
+#include <iostream> 
+#include <conio.h> 
+#include <Windows.h> 
+#include <cstdlib> 
+#include "Sound.h" 
+#include <string> 
 using namespace std;
+
 static const string margin(40, ' ');
-string MainMenu::FormatLine(const string& text, size_t width)
-{
+Sound sound;  
+
+string MainMenu::FormatLine(const string& text, size_t width) {
     if (text.length() >= width)
         return text.substr(0, width);
     return text + string(width - text.length(), ' ');
 }
-MainMenu::MainMenu() : map(getGameMap()){}
-MainMenu::~MainMenu(){}
-void MainMenu::DrawTitle()
-{
+
+MainMenu::MainMenu() : map(getGameMap()) {}
+MainMenu::~MainMenu() {}
+
+void MainMenu::DrawTitle() {
     system("cls");
     cout << "\n\n\n";
     cout << margin << "+--------------------------------------+\n";
@@ -28,11 +32,8 @@ void MainMenu::DrawTitle()
     cout << "\n";
 }
 
-void MainMenu::DrawMenu(int selected, bool isPause)
-{
-
-    if (!isPause)
-    {
+void MainMenu::DrawMenu(int selected, bool isPause) {
+    if (!isPause) {
         cout << margin << "  " << "+----------------------------------+\n";
         cout << margin << "  " << "|         M A I N   M E N U        |\n";
         cout << margin << "  " << "+----------------------------------+\n";
@@ -41,62 +42,61 @@ void MainMenu::DrawMenu(int selected, bool isPause)
         cout << margin << "  " << "|   " << (selected == 1 ? "-->  " : "     ") << "Endings                   |\n";
         cout << margin << "  " << "|   " << (selected == 2 ? "-->  " : "     ") << "How to Play               |\n";
         cout << margin << "  " << "|   " << (selected == 3 ? "-->  " : "     ") << "Credits                   |\n";
-        cout << margin << "  " << "|   " << (selected == 4 ? "-->  " : "     ") << "Exit                      |\n";      
+        cout << margin << "  " << "|   " << (selected == 4 ? "-->  " : "     ") << "Exit                      |\n";
         cout << margin << "  " << "|                                  |\n";
         cout << margin << "  " << "+----------------------------------+\n";
         cout << "\n" << margin << "   Use  'W'/'S to move | Enter to confirm\n";
     }
-    else
-    {
+    else {
         cout << margin << "+----------------------------------+\n";
         cout << margin << "|            P A U S E D           |\n";
         cout << margin << "+----------------------------------+\n";
         cout << margin << "|                                  |\n";
         cout << margin << "|   " << (selected == 0 ? "-->  " : "     ") << "Resume Game               |\n";
         cout << margin << "|   " << (selected == 1 ? "-->  " : "     ") << "Return to Main Menu       |\n";
-        cout << margin << "|   " << (selected ==    2 ? "-->  " : "     ") << "Exit Game                 |\n";
+        cout << margin << "|   " << (selected == 2 ? "-->  " : "     ") << "Exit Game                 |\n";
         cout << margin << "|                                  |\n";
         cout << margin << "+----------------------------------+\n";
-        cout << "\n" << margin << "   Use 'W'/'S' to move | Enter to confirm\n";
+        cout << "\n" << margin << "   Use 'W'/'S to move | Enter to confirm\n";
     }
 }
 
-int MainMenu::GetChoiceInter()
-{
+int MainMenu::GetChoiceInter() {
     int selected = 0;
     int total = 5;
 
-    while (true)
-    {
+    while (true) {
         DrawTitle();
         DrawMenu(selected);
 
         int key = _getch();
 
-        if (key == 'W' || key == 'w')
-        {
+        if (key == 'W' || key == 'w') {
+            sound.PlayKeyMusic();   
             selected--;
             if (selected < 0) selected = total - 1;
         }
-        else if (key == 'S' || key == 's')
-        {
+        else if (key == 'S' || key == 's') {
+            sound.PlayKeyMusic();    
             selected++;
             if (selected >= total) selected = 0;
         }
-        else if (key == 13)
-        {
+        else if (key == 13) {
+            sound.PlaySelect();      
             return selected + 1;
+        }
+        else {
+            sound.PlayError();        
         }
     }
 }
-void MainMenu::Show()
-{
-    while (true)
-    {
+
+void MainMenu::Show() {
+    while (true) {
         int choice = GetChoiceInter();
 
-        if (choice == 1)
-        {
+        if (choice == 1) {
+            sound.PlayStart();        // ✅ 开始游戏音效
             DrawTitle();
             if (map.isThereEndings()) {
                 cout << margin << "Which Carriage do you want to start in? (1-6): ";
@@ -118,19 +118,14 @@ void MainMenu::Show()
             cout << margin << "|          E N D I N G S           |\n";
             cout << margin << "+----------------------------------+\n";
             cout << margin << "|                                  |\n";
-            cout << margin << "|                                  |\n";
-            cout << margin << "|                                  |\n";
             cout << margin << "|      Bad Ending:     " << (map.getEndingReached(1) ? "True " : "False") << "       |\n";
             cout << margin << "|      Neutral Ending: " << (map.getEndingReached(2) ? "True " : "False") << "       |\n";
             cout << margin << "|      True Ending:    " << (map.getEndingReached(3) ? "True " : "False") << "       |\n";
             cout << margin << "|                                  |\n";
-            cout << margin << "|                                  |\n";
-            cout << margin << "|                                  |\n";
             cout << margin << "+----------------------------------+\n";
             (void)_getch();
         }
-        else if (choice == 3)
-        {
+        else if (choice == 3) {
             DrawTitle();
             cout << margin << "+----------------------------------+\n";
             cout << margin << "|       H O W   T O   P L A Y      |\n";
@@ -148,8 +143,7 @@ void MainMenu::Show()
             cout << margin << "+----------------------------------+\n";
             (void)_getch();
         }
-        else if (choice == 4)
-        {
+        else if (choice == 4) {
             DrawTitle();
             cout << margin << "+----------------------------------+\n";
             cout << margin << "|           C R E D I T S          |\n";
@@ -171,8 +165,8 @@ void MainMenu::Show()
             cout << margin << "+----------------------------------+\n";
             (void)_getch();
         }
-        else if (choice == 5)
-        {
+        else if (choice == 5) {
+            sound.PlayExit();       
             DrawTitle();
             cout << "\n          Goodbye...\n";
             Sleep(800);
@@ -180,35 +174,38 @@ void MainMenu::Show()
         }
     }
 }
-int MainMenu::ShowPauseMenu()
-{
+
+int MainMenu::ShowPauseMenu() {
     int selected = 0;
     int total = 3;
 
-    while (true)
-    {
+    while (true) {
         system("cls");
         cout << "\n\n\n";
         DrawMenu(selected, true);
 
         int key = _getch();
-        if (key == 'W' || key == 'w') { 
-            selected--; 
-            if (selected < 0) selected = total - 1; 
+        if (key == 'W' || key == 'w') {
+            sound.PlayKeyMusic();  
+            selected--;
+            if (selected < 0) selected = total - 1;
         }
         else if (key == 'S' || key == 's') {
+            sound.PlayKeyMusic();    
             selected++;
             if (selected >= total) selected = 0;
         }
-        else if (key == 13)
-        {
-            return selected + 1; 
+        else if (key == 13) {
+            sound.PlaySelect();
+            return selected + 1;
+        }
+        else {
+            sound.PlayError();       
         }
     }
 }
 
-void MainMenu::ShowCredits()
-{
+void MainMenu::ShowCredits() {
     DrawTitle();
     cout << "Credits content here...\n";
 }

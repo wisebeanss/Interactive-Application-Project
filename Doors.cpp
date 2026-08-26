@@ -5,9 +5,9 @@
 #include <cctype>
 #include "Dialogue.h"
 #include <Windows.h>
+#include"Sound.h"
 using namespace std;
-
-
+Sound Doorplay;
 Doors::Doors(string lines, int x, int y, int id, int dID) : InteractiveObject("Doors", id, false)
 {
 	line = lines;
@@ -78,6 +78,7 @@ void Doors::clearQuestion(COORD startPos, int lines)
 
 void Doors::use()
 {
+	Doorplay.PlayDoor();
 	Dialogue dialogue;
 	int answerT1;
 	char answerT2 = ' ';
