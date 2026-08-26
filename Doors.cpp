@@ -262,7 +262,7 @@ void Doors::use()
 			COORD questionPos = info.dwCursorPosition;
 
 
-			cout << "What is the answer?";
+			cout << "What is the answer:";
 			cin >> answerT3;
 
 			clearQuestion(questionPos, 1);
@@ -284,7 +284,7 @@ void Doors::use()
 				"The memory begins to crack.",
 				"Maybe it was your fault. ",
 				"The door unlocks.",
-					}, 42, 10, 35, 18);
+					}, 54, 10, 30, 18);
 
 				changeUnlockedState(true);
 
@@ -451,6 +451,7 @@ void Doors::use()
 				"THE END...",
 				
 				}, 84, 11, 15, 18);
+			system("cls");
 		}
 		else if (doorID == 62)
 		{
@@ -468,6 +469,7 @@ void Doors::use()
 					"THE END...",
 					
 				}, 78, 11, 15, 18);
+			system("cls");
 			
 		}
 		else if (doorID == 63)
@@ -488,6 +490,7 @@ void Doors::use()
 					"The train will never run again. "
 					"THE END...",
 				}, 84, 11, 15, 18);
+			system("cls");
 		}
 
 		return;
