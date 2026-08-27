@@ -56,7 +56,6 @@ bool Puzzle::ROOMS(int roomID, Map& map,Player& player)
             map.setObjects(new PhotoFragment("PhotoFragment1:\nA 'Hand'\n", 1, 4, 1));
             map.setObjects(new PhotoFragment("PhotoFragment2:\nA \"Face\"\n", 4, 4, 2));
             map.setObjects(new PhotoFragment("PhotoFragment3:\n\"The Other person\" \n", 1, 8, 3));
-            map.setObjects(new Suitcase(4, 8, 203, 2));
             map.setObjects(new Doors(" ", 23, 6, 2, 1));
             setCurrentRoom(2);
             suitcaseUnlock = false;
