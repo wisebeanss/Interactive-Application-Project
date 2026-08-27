@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Game.h"
 #include "MainMenu.h"
+#include "Player.h"
 #include <conio.h>
 using namespace std;
 
@@ -13,7 +14,7 @@ int main(void)
     
     while (true)
     {   
-        mainMenu.Show();
+        mainMenu.Show(Application.getPlayer());
         Application.Init();
         Application.Run();
     }

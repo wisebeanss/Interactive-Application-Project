@@ -16,6 +16,14 @@ Map::Map() {
 Map::~Map() {
 	clearObjects();
 }
+void Map::resetMap(Player& player) {
+	carriageNum = 1;
+	carriageRoom = 1;
+	animFrame = 0;
+	player.setX(2);
+	player.setY(6);
+	buildMap();
+}
 bool Map::isMapRendered() {
 	return renderMap;
 }
@@ -331,7 +339,7 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, Player&
 				targetWidth);
 			break;
 		}
-		default:lineBuffer += formatPanelLine("", targetWidth); break;
+		default:lineBuffer += formatPanelLine("                   ", targetWidth); break;
 
 		}
 		for (int j = 0; j < 24; j++) {
@@ -342,6 +350,7 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, Player&
 
 		std::cout << lineBuffer << "\n";
 	}
+	
 }
 
 //=========dialogue box if we got time===================
@@ -416,7 +425,7 @@ Timer& Map::getTimerObject() { return timer; }
 
 
 
-Vector<InteractiveObject*>& Map::getObjects() {
+Vector& Map::getObjects() {
 	return Objects;
 }
 void Map::clearObjects() {
