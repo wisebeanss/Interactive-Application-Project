@@ -416,7 +416,7 @@ Timer& Map::getTimerObject() { return timer; }
 
 
 
-vector<InteractiveObject*>& Map::getObjects() {
+Vector<InteractiveObject*>& Map::getObjects() {
 	return Objects;
 }
 void Map::clearObjects() {
@@ -432,7 +432,8 @@ void Map::setObjects(InteractiveObject* object) {
 void Map::removeObject(InteractiveObject* object) {
 	auto obj = find(Objects.begin(), Objects.end(), object);
 	if (obj != Objects.end()) {
-		Objects.erase(obj);
+		int index = static_cast<int>(obj - Objects.begin());
+		Objects.erase(index);
 	}
 }
 bool Map::getOffMap()
