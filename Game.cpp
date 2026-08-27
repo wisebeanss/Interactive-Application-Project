@@ -32,9 +32,12 @@ void Game::Run() {
 				case 1:
 					continue;
 				case 2:
+					background.StopAll();
 					End();
 					return;
 				case 3:
+					background.StopAll();
+					background.PlayExit();
 					End();
 					Sleep(800);
 					exit(0);
