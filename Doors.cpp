@@ -59,10 +59,11 @@ void Doors::setRoomID(int id)
 
 void Doors::clearQuestion(COORD startPos, int lines)
 {
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); //control cursor
 
 	for (int i = 0; i < lines; i++)
 	{
+		//cursor on question line
 		COORD pos;
 		pos.X = startPos.X;
 		pos.Y = startPos.Y + i;
@@ -91,9 +92,9 @@ void Doors::use()
 			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
 			CONSOLE_SCREEN_BUFFER_INFO info;
-			GetConsoleScreenBufferInfo(hConsole, &info);
+			GetConsoleScreenBufferInfo(hConsole, &info);//get where the cursor currently is
 
-			COORD questionPos = info.dwCursorPosition;
+			COORD questionPos = info.dwCursorPosition; //saves the cursor current position as questionPos
 
 			cout << "\r" << string(80, ' ') << "\r";
 			cout << "Enter the time as HHMMSS: ";
