@@ -5,7 +5,10 @@ Timer::Timer()
     timeLeft = 45 * 60; // 45 minutes
     lastTime = std::chrono::steady_clock::now();
 }
-
+void Timer::resetTimer() {
+    timeLeft = 45 * 60; // 45 minutes
+    lastTime = std::chrono::steady_clock::now();
+}
 void Timer::update()
 {
     auto currentTime = std::chrono::steady_clock::now();
@@ -48,4 +51,8 @@ int Timer::getSeconds() const
 bool Timer::isTimeUp() const
 {
     return timeLeft <= 0;
+}
+
+void Timer::debugTime() {
+    timeLeft -= 300;
 }

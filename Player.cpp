@@ -136,6 +136,9 @@ void Player::HandleInput(char symbol) {
 			map.setMapRendered(false);
 		}
 	}
+	else if (symbol == 't') {
+		map.timer.decreaseTime(300);
+	}
 	else if (symbol >= '1' && symbol <= '7') {
 		int InvSlotIdx = static_cast<int>(symbol - '1');
 		for (size_t i = 0; i < map.getObjects().size(); i++) {
