@@ -342,7 +342,7 @@ void Doors::use()
 			clearQuestion(questionPos, 1);
 
 
-			if (answerT1 == 2134)
+			if (answerT1 == 2341)
 			{
 				dialogue.show({
 				"You arrange the memories in order.",
