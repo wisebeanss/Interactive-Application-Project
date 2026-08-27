@@ -10,7 +10,7 @@ using namespace std;
 Sound Doorplay;
 Doors::Doors(string lines, int x, int y, int id, int dID) : InteractiveObject("Doors", id, false)
 {
-	line = lines;
+	line = lines; //object in puzzle
 	setX(x);
 	setY(y);
 	setRoomID(id);
