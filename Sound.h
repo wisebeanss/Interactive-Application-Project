@@ -3,7 +3,7 @@ class Sound
 {
 public:
 	void PlayKeyMusic();
-	void Background();
+	//void Background();
 	void Manumusic();
 	void PlaySelect();
 	void PlayError();

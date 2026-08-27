@@ -24,7 +24,7 @@ private:
 	int animFrame;
 	bool offMap;
 	bool renderMap;
-	Vector<InteractiveObject*> Objects;
+	Vector Objects;
 	Suitcase* suitcasePtr = nullptr; 
 	bool noteSpawned = false;
 	array<bool, 3> endingsReached;
@@ -47,7 +47,7 @@ public:
 	bool validMove(int x, int y);
 	void printMap(int marginSize);
 
-	Vector<InteractiveObject*>& getObjects();
+	Vector& getObjects();
 	void setObjects(InteractiveObject* object);
 	void removeObject(InteractiveObject* object);
 	void clearObjects();

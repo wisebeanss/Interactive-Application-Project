@@ -416,7 +416,7 @@ Timer& Map::getTimerObject() { return timer; }
 
 
 
-Vector<InteractiveObject*>& Map::getObjects() {
+Vector& Map::getObjects() {
 	return Objects;
 }
 void Map::clearObjects() {

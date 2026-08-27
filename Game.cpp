@@ -17,7 +17,7 @@ void Game::Init() {
 }
 void Game::Run() {
 	Puzzle puzzle;
-	background.Background();
+	/*background.Background();*/
 	const std::chrono::milliseconds frameBudget(33);
 
 	while (true) {
