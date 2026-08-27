@@ -6,6 +6,7 @@
 #pragma comment(lib, "winmm.lib")
 using namespace std;
 
+//transfer the file name 
 static void PlayBgmLoop(const char* audioFile)
 {
     PlaySoundA(audioFile, NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
