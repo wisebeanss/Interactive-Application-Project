@@ -1,6 +1,6 @@
 #include "Phones.h"
-
-
+#include"Sound.h"]
+Sound Phonering;
 std::string centerPhoneText(const std::string& text, int width)
 {
     int padding = width - static_cast<int>(text.size());
@@ -67,6 +67,7 @@ void Phones::getUIBuffer(string buffer[13]) const {
 
 void Phones::use()
 {
+    Phonering.PlayPhone();
     enableUI();
     //const int width = 22;
 

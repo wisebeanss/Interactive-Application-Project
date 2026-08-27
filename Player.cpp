@@ -91,6 +91,7 @@ void Player::HandleInput(char symbol) {
 		for (size_t i = 0; i < map.getObjects().size(); i++) {
 			InteractiveObject* obj = map.getObjects()[i];
 			if (obj != nullptr && obj->getX() == getX() && obj->getY() == getY()) {
+				Playinter.PickUp();
 				obj->disableUI(); // Ensure UI is OFF when entering inventory
 				Equip(obj);
 				map.removeObject(obj);
@@ -129,6 +130,7 @@ void Player::HandleInput(char symbol) {
 	else if (symbol == 'f') {
 		InteractiveObject* nearbyObject = getNearbyObject();
 		if (nearbyObject != nullptr) {
+			Playinter.PickUp();
 			setInteract(true);
 			nearbyObject->use();
 			map.setMapRendered(false);

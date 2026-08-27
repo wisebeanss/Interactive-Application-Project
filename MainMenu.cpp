@@ -94,16 +94,17 @@ int MainMenu::GetChoiceInter() {
 }
 
 void MainMenu::Show(Player& player) {
+    sound.Manumusic();
     while (true) {
         int choice = GetChoiceInter();
 
         if (choice == 1) {
-            sound.PlayStart();        // ✅ 开始游戏音效
+            sound.StopAll();
+            sound.PlayStart();        
             DrawTitle();
             if (map.isThereEndings()) {
                 selectCarriage();
                 map.setEnded(false);
-                /*map.setCarriage(num);*/
             }
             cout << "\n                                          Starting game...\n";
             map.resetMap(player);
@@ -167,11 +168,13 @@ void MainMenu::Show(Player& player) {
             (void)_getch();
         }
         else if (choice == 5) {
+            sound.StopAll();
             sound.PlayExit();       
             DrawTitle();
             cout << "\n          Goodbye...\n";
             Sleep(800);
             exit(0);
+           
         }
     }
 }
@@ -271,6 +274,7 @@ void MainMenu::selectCarriage() {
             if (idx < 1) { idx = 6; }
             map.setCarriage(idx);
             map.buildMap();
+            
         }
         else if (key == 'd') {
             idx++;

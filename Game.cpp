@@ -1,5 +1,7 @@
 #include "Game.h"
 #include "MainMenu.h"
+#include"Sound.h"
+Sound background;
 Game::Game() : player(map){
 }
 Game::~Game() {
@@ -16,7 +18,7 @@ void Game::Init() {
 void Game::Run() {
 	map.timer.resetTimer();
 	Puzzle puzzle;
-
+	background.Background();
 	const std::chrono::milliseconds frameBudget(33);
 
 	while (true) {
@@ -48,9 +50,6 @@ void Game::Run() {
 				exit(0);
 			}
 		}
-		int oldY = player.getY();
-		int oldX = player.getX();
-
 		if (_kbhit()) {
 			char letter = _getch();
 			//Check for Esc Key
@@ -61,9 +60,12 @@ void Game::Run() {
 				case 1:
 					continue;
 				case 2:
+					background.StopAll();
 					End();
 					return;
 				case 3:
+					background.StopAll();
+					background.PlayExit();
 					End();
 					Sleep(800);
 					exit(0);

@@ -74,11 +74,11 @@ void Suitcase::clearQuestion(COORD startPos, int lines)
 
 void Suitcase::tryUnlock()
 {
-    suitcase.PlaySuitcase();
     Dialogue dialogue;
     string hintMsg;
     if (roomID == 2)
     {
+        suitcase.PlayError();
         hintMsg = "The suitcase is still locked. Find all 3 photos first.\nPieces collected: " + to_string(noOfPhotos) + "/3";
         canunlock = hasAllPhotos();
         if (!canunlock)
@@ -87,6 +87,7 @@ void Suitcase::tryUnlock()
         }
         if (canunlock)
         {
+            suitcase.PlaySuitcase();
             dialogue.show({
             "You stare at the completed image.",
             "\"Was I really there?\"",
@@ -106,7 +107,7 @@ void Suitcase::tryUnlock()
         GetConsoleScreenBufferInfo(hConsole, &info);
 
         COORD questionPos = info.dwCursorPosition;
-
+        suitcase.Locker();
         hintMsg = "give the order of the time of the calls(XXXXXXXXXXXXXXXX): ";
         clearQuestion(questionPos, 1);
         
@@ -117,11 +118,19 @@ void Suitcase::tryUnlock()
             cin >> answer;
             if (answer == "1132113411351137")
             {
+                suitcase.PlaySuitcase();
                 canunlock = true;
             }
             if (canunlock == false)
             {
-                cout << "wrong answer";
+                dialogue.show({
+                      "That doesn't seem right..",
+                      "Two minutes have been deducted.",
+
+                });
+                system("cls");
+                getGameMap().timer.decreaseTime(2 * 60);
+                suitcase.PlayError();
             }
         }
         if (canunlock)
@@ -151,9 +160,11 @@ void Suitcase::tryUnlock()
         if (!canunlock)
         {
             cout << "\n" << hintMsg ;
+            suitcase.PlayError();
         }
         if (canunlock)
         {
+            suitcase.PlaySuitcase();
             dialogue.show({
             "You place the fragments together.",
             "The photograph slowly becomes whole.",
@@ -179,23 +190,27 @@ void Suitcase::tryUnlock()
 
         COORD questionPos = info.dwCursorPosition;
 
-        cout << "\r" << string(80, ' ') << "\r";
-        cout << "Which letter was written last: ";
-
-        string answer;
-        cin >> answer;
-
-        clearQuestion(questionPos, 1);
 
         if (!canunlock)
         {
-            
+            suitcase.Locker();
+            cout << "\r" << string(80, ' ') << "\r";
+            cout << "Which letter was written last: ";
+
+
+            string answer;
+            cin >> answer;
+
+            clearQuestion(questionPos, 1);
+
             if (answer == "D" || answer == "d")
             {
                 canunlock = true;
+                suitcase.PlaySuitcase();
             }
             else
             {
+                suitcase.PlayError();
                 dialogue.show({
                      "That doesn't seem right..",
                      "Two minutes have been deducted.",
@@ -225,7 +240,7 @@ void Suitcase::tryUnlock()
 
             system("cls");
 
-            unlocked = true;
+            unlocked = canunlock;
         }
     }
     if (roomID == 6)
@@ -237,28 +252,27 @@ void Suitcase::tryUnlock()
 
         COORD questionPos = info.dwCursorPosition;
 
-        cout << "\r" << string(80, ' ') << "\r";
-        cout << "Which drawer holds the truth: ";
-
-        int answer;
-        cin >> answer;
-
-        clearQuestion(questionPos, 1);
+        string answer;
         if (!canunlock)
         {
-           
-            if (answer == 5)
+            suitcase.Locker();
+            cout << "\r" << string(80, ' ') << "\r";
+            cout << "Which drawer holds the truth: ";
+
+            cin >> answer;
+            clearQuestion(questionPos, 1);
+            if (answer == "5")
             {
+                suitcase.PlaySuitcase();
                 canunlock = true;
             }
             else
             {
+                suitcase.PlayError();
                 dialogue.show({
                     "That doesn't seem right..",
                     "Two minutes have been deducted.",
-
                     });
-
 
 
                 system("cls");

@@ -1,4 +1,6 @@
 #include "Mirrors.h"
+#include"Sound.h"
+Sound Mirrorplace;
 std::string centerMirrorText(const std::string& text, int width) {
     int padding = width - static_cast<int>(text.size());
     if (padding <= 0) {
@@ -26,6 +28,7 @@ Mirrors::~Mirrors() {
     }
 }
 void Mirrors::use() {
+    Mirrorplace.Playmirror();
     enableUI();
 }
 

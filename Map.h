@@ -9,6 +9,7 @@
 #include "Timer.h"       
 #include "Suitcase.h"   
 #include <array>
+#include "Vector.h"
 using namespace std;
 
 class InteractiveObject;
@@ -23,7 +24,7 @@ private:
 	int animFrame;
 	bool offMap;
 	bool renderMap;
-	vector<InteractiveObject*> Objects;
+	Vector<InteractiveObject*> Objects;
 	Suitcase* suitcasePtr = nullptr; 
 	bool noteSpawned = false;
 	array<bool, 3> endingsReached;
@@ -48,7 +49,7 @@ public:
 	void resetMap(Player& player);
 
 
-	vector<InteractiveObject*>& getObjects();
+	Vector<InteractiveObject*>& getObjects();
 	void setObjects(InteractiveObject* object);
 	void removeObject(InteractiveObject* object);
 	void clearObjects();
