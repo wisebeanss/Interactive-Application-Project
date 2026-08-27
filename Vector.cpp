@@ -1,35 +1,31 @@
 #include "Vector.h"
-Vector::Vector() : count(0), capacity(5), Array(new InteractiveObject* [5]) {
+Vector::Vector() : length(0), capacity(5), Array(new InteractiveObject* [5]) {
 
 }
 
 Vector::~Vector() {
 	delete[] Array;
 }
-
+InteractiveObject*& Vector::at(int index) {
+	if(index > length)
+	return Array[index];
+}
 int Vector::size() {
-	return count;
+	return length;
 }
 
-InteractiveObject*& Vector::operator[](int index) {
-	return Array[index];
-}
-
-InteractiveObject* const& Vector::operator[](int index) const {
-	return Array[index];
-}
 
 void Vector::push_back(InteractiveObject*& object) {
-	if (count == capacity) {
+	if (length == capacity) {
 		resize(capacity == 0 ? 1 : capacity * 2);
 	}
-	Array[count] = object;
-	count++;
+	Array[length] = object;
+	length++;
 }
 
 void Vector::resize(int newCapacity) {
 	InteractiveObject** newArray = new InteractiveObject * [newCapacity];
-	int elementsToCopy = (count < newCapacity) ? count : newCapacity;
+	int elementsToCopy = (length < newCapacity) ? length : newCapacity;
 	for (int i = 0; i < elementsToCopy; i++) {
 		newArray[i] = Array[i];
 	}
@@ -42,15 +38,18 @@ InteractiveObject** Vector::begin() {
 }
 
 InteractiveObject** Vector::end() {
-	return Array + count;
+	return Array + length;
 }
 void Vector::erase(int index) {
-	for (int i = index; i < count - 1; i++) {
+	for (int i = index; i < length - 1; i++) {
 		Array[i] = Array[i + 1];
 	}
-	count--;
+	length--;
 }
 
 void Vector::clear() {
-	count = 0;
+	for (int i = 0; i < length; i++) {
+		delete Array[i];
+	}
+	length = 0;
 }

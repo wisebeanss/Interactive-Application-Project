@@ -2,14 +2,13 @@
 #include "InteractiveObject.h"
 class Vector {
 private:
-	int count;
+	int length;
 	int capacity;
 	InteractiveObject** Array;
 public:
 	Vector();
 	~Vector();
-	InteractiveObject*& operator[](int index);
-	 InteractiveObject* const& operator[](int index) const;
+	InteractiveObject*& at(int index);
 	int size();
 	void push_back(InteractiveObject*&object);
 	void resize(int newCapacity);
