@@ -36,8 +36,9 @@ void Game::Run() {
 				player.setX(2);         
 				player.setY(6);         
 				player.ClearInv();
-				map.buildMap();
+				
 				map.resetMap(player);
+				map.buildMap();
 				continue;              
 			}
 			else if (choice == 2) {

@@ -49,7 +49,7 @@ void Sound::PlayError() { PlayWavSFX("Error.wav"); }
 void Sound::PlayStart() { PlayWavSFX("equip.wav"); }
 
 void Sound::PlayExit() { PlayWavSFX("Exit.wav"); }
-void Sound::PlayerWalk() { PlayWavSFXAsync("Walking.wav"); }
+//void Sound::PlayerWalk() { PlayWavSFXAsync("Walking.wav"); }
 
 void Sound::PlayDoor() { PlayWavSFX("door.wav"); }
 void Sound::PlayKnock() { PlayWavSFX("Doorhandle.wav"); }
@@ -60,5 +60,5 @@ void Sound::PickUp() { PlayWavSFX("PickUp.wav"); }
 void Sound::PlayPhone() { PlayWavSFX("Phone.wav"); }
 void Sound::Locker() { PlayWavSFX("Unlocked.wav"); }
 void Sound::Ending1() { PlayWavSFX("Ending1.wav"); }
-void Sound::Ending2() { PlayWavSFX("Ending3.wav"); }
-void Sound::Ending3() { PlayWavSFX("Ending3.wav"); }
+void Sound::Ending2() { PlayWavSFX("Ending1.wav"); }
+void Sound::Ending3() { PlayWavSFX("Ending1.wav"); }

@@ -285,19 +285,7 @@ void Map::buildMap() {
 		}
 	}
 }
-void Map::printMap(int marginSize) {
-	std::string margin(marginSize, ' ');
-	const int carriageTop = 3;
-	const int carriageBottom = 10;
-	for (int y = carriageTop; y < carriageBottom; y++) {
-		std::cout << margin;
-		for (int x = 0; x < 24; x++) {
-			std::cout << " ";
-			std::cout << mapSize[y][x];
-		}
-		std::cout << std::endl;
-	}
-}
+
 std::string formatPanelLine(const std::string& text, size_t targetWidth = 30) {
 	if (text.length() >= targetWidth) {
 		return text.substr(0, targetWidth); // Truncate if too long
@@ -353,32 +341,6 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, Player&
 	
 }
 
-//=========dialogue box if we got time===================
-
-//std::string textBoxMax(const std::string& text, size_t targetWidth = 50) {
-//	if (text.length() >= targetWidth) {
-//		return text.substr(0, targetWidth); // Truncate if too long
-//	}
-//	return text + std::string(targetWidth - text.length(), ' '); // Pad remaining spaces
-//}
-//
-//void Map::printDialogueBox(bool uiActive, const std::string textBuffer[7] = nullptr) const {
-//	size_t boxWidth = 50;
-//	for (int i = 0; i < 7; i++) {
-//		std::string lineBuffer = "";
-//		switch (i) {
-//		case 0: lineBuffer += textBoxMax("+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-+", boxWidth); break;
-//		case 1: lineBuffer += textBoxMax("", boxWidth); break;
-//		case 2: lineBuffer += textBoxMax("", boxWidth); break;
-//		case 3: lineBuffer += textBoxMax("", boxWidth); break;
-//		case 4: lineBuffer += textBoxMax("", boxWidth); break;
-//		case 5: lineBuffer += textBoxMax("", boxWidth); break;
-//		case 6: lineBuffer += textBoxMax("+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-+", boxWidth); break;
-//
-//
-//		}
-//	}
-//}
 
 void Map::updateMap(int x, int y, char symbol) {
 	if (x > 0 && x < 24 && y > 2 && y < 10) {
