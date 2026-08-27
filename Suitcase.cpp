@@ -109,13 +109,14 @@ void Suitcase::tryUnlock()
         COORD questionPos = info.dwCursorPosition;
         suitcase.Locker();
         hintMsg = "give the order of the time of the calls(XXXXXXXXXXXXXXXX): ";
-        clearQuestion(questionPos, 1);
+        
         
         if (!canunlock)
         {
             string answer;
             cout << hintMsg;
             cin >> answer;
+            clearQuestion(questionPos, 1);
             if (answer == "1132113411351137")
             {
                 suitcase.PlaySuitcase();
@@ -127,7 +128,7 @@ void Suitcase::tryUnlock()
                       "That doesn't seem right..",
                       "Two minutes have been deducted.",
 
-                });
+                },42, 10, 35, 18);
                 system("cls");
                 getGameMap().timer.decreaseTime(2 * 60);
                 suitcase.PlayError();
@@ -215,7 +216,7 @@ void Suitcase::tryUnlock()
                      "That doesn't seem right..",
                      "Two minutes have been deducted.",
 
-                    });
+                    },42, 10, 35, 18);
 
 
 
@@ -272,7 +273,7 @@ void Suitcase::tryUnlock()
                 dialogue.show({
                     "That doesn't seem right..",
                     "Two minutes have been deducted.",
-                    });
+                    },42, 10, 35, 18);
 
 
                 system("cls");
