@@ -86,6 +86,9 @@ void Doors::use()
 	setRoomID(getGameMap().getCarriage());
 	if (roomID == 1)
 	{
+		if (isUnlocked() || question > 2) {
+			return;
+		}
 		Doorplay.PlayKnock();
 		if (question == 1)
 		{
@@ -397,7 +400,15 @@ void Doors::use()
 
 			cout << "\r" << string(80, ' ') << "\r";
 			cout << "Which is the correct locker:";
+			cin.clear();
+			cin.sync();
 			cin >> answerT1;
+
+			if (cin.fail()) {
+				cin.clear();
+				cin.ignore(1000, '\n');
+				answerT1 = -1; 
+			}
 
 			clearQuestion(questionPos, 1);
 
@@ -428,13 +439,13 @@ void Doors::use()
 				system("cls");
 				getGameMap().timer.decreaseTime(2 * 60);
 				return;
-
+				
 
 			}
 		}
 
 		if (question == 2) {
-
+			return;
 		}
 
 		return;
