@@ -1,5 +1,7 @@
 #include "Game.h"
 #include "MainMenu.h"
+#include"Sound.h"
+Sound background;
 Game::Game() : player(map){
 }
 Game::~Game() {
@@ -15,7 +17,7 @@ void Game::Init() {
 }
 void Game::Run() {
 	Puzzle puzzle;
-
+	background.Background();
 	const std::chrono::milliseconds frameBudget(33);
 
 	while (true) {
