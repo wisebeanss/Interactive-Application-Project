@@ -123,7 +123,13 @@ void Suitcase::tryUnlock()
             }
             if (canunlock == false)
             {
-                cout << "wrong answer";
+                dialogue.show({
+                      "That doesn't seem right..",
+                      "Two minutes have been deducted.",
+
+                });
+                system("cls");
+                getGameMap().timer.decreaseTime(2 * 60);
                 suitcase.PlayError();
             }
         }
