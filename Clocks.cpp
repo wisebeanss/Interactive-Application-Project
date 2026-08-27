@@ -65,8 +65,15 @@ void Clocks::getUIBuffer(string buffer[13]) const {
     buffer[11] = "                     ";
     buffer[12] = "                     ";
 }
-void Clocks::use()
-{
-    Clocksound.clock();
-	enableUI();
+void Clocks::use() {
+    if (getUIActive()) {
+    
+        Clocksound.StopAll(); 
+        disableUI();
+    }
+    else {
+    
+        Clocksound.clock();
+        enableUI();
+    }
 }
