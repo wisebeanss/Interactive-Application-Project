@@ -101,10 +101,7 @@ void MainMenu::Show() {
             sound.PlayStart();        
             DrawTitle();
             if (map.isThereEndings()) {
-                bool confirmed = selectCarriage();
-                if (!confirmed) {
-                    continue;
-                }
+                selectCarriage();
                 map.setEnded(false);
             }
             cout << "\n          Starting game...\n";
@@ -212,7 +209,7 @@ void MainMenu::ShowCredits() {
     DrawTitle();
     cout << "Credits content here...\n";
 }
-bool MainMenu::selectCarriage() {
+void MainMenu::selectCarriage() {
     int idx = 1;
     while (true) {
         DrawTitle();
@@ -235,10 +232,7 @@ bool MainMenu::selectCarriage() {
             map.buildMap();
         }
         else if (key == 13) {
-            return true;
-        }
-        else if (key == 27) {
-            return false;
+            break;
         }
         
     }

@@ -1,5 +1,6 @@
 #include "Lockers.h"
-
+#include"Sound.h"
+Sound Locker;
 std::string centerLockerText(const std::string& text, int width)
 {
     int padding = width - static_cast<int>(text.size());
@@ -63,6 +64,7 @@ void Lockers::getUIBuffer(string buffer[13]) const {
 }
 void Lockers::use()
 {
+    Locker.Locker();
     enableUI();
     //const int width = 22;
 
