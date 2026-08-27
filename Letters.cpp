@@ -1,4 +1,6 @@
 #include "Letters.h"
+#include"Sound.h"
+Sound PickUp;
 
 std::vector<int> Letters::Ids;
 
@@ -43,6 +45,7 @@ void Letters::getUIBuffer(string buffer[13]) const {
     buffer[12] = "+==^^==^^==^^==^^==^^==^^==+";
 }
 void Letters::use() {
+    PickUp.PickUp();
     enableUI();
     //const int width = 22;
 

@@ -74,11 +74,11 @@ void Suitcase::clearQuestion(COORD startPos, int lines)
 
 void Suitcase::tryUnlock()
 {
-    suitcase.PlaySuitcase();
     Dialogue dialogue;
     string hintMsg;
     if (roomID == 2)
     {
+        suitcase.PlayError();
         hintMsg = "The suitcase is still locked. Find all 3 photos first.\nPieces collected: " + to_string(noOfPhotos) + "/3";
         canunlock = hasAllPhotos();
         if (!canunlock)
@@ -87,6 +87,7 @@ void Suitcase::tryUnlock()
         }
         if (canunlock)
         {
+            suitcase.PlaySuitcase();
             dialogue.show({
             "You stare at the completed image.",
             "\"Was I really there?\"",
@@ -117,11 +118,13 @@ void Suitcase::tryUnlock()
             cin >> answer;
             if (answer == "1132113411351137")
             {
+                suitcase.PlaySuitcase();
                 canunlock = true;
             }
             if (canunlock == false)
             {
                 cout << "wrong answer";
+                suitcase.PlayError();
             }
         }
         if (canunlock)
@@ -146,6 +149,7 @@ void Suitcase::tryUnlock()
     }
     if (roomID == 4)
     {
+        suitcase.PlayError();
         hintMsg = "The suitcase is still locked. Find all 3 photos first.\nPieces collected: " + to_string(noOfPhotos) + "/3";
         canunlock = hasAllPhotos();
         if (!canunlock)
@@ -197,6 +201,7 @@ void Suitcase::tryUnlock()
             }
             else
             {
+                suitcase.PlayError();
                 dialogue.show({
                      "That doesn't seem right..",
                      "Two minutes have been deducted.",
@@ -252,6 +257,7 @@ void Suitcase::tryUnlock()
             }
             else
             {
+                suitcase.PlayError();
                 dialogue.show({
                     "That doesn't seem right..",
                     "Two minutes have been deducted.",

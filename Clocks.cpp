@@ -1,4 +1,6 @@
 #include "Clocks.h"
+#include"Sound.h"
+Sound Clocksound;
 Clocks::Clocks(string text,int x , int y, int id) : InteractiveObject("Clock", id, false)
 {
 	this->text = text;
@@ -65,5 +67,6 @@ void Clocks::getUIBuffer(string buffer[13]) const {
 }
 void Clocks::use()
 {
+    Clocksound.clock();
 	enableUI();
 }

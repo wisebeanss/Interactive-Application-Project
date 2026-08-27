@@ -12,8 +12,15 @@ public:
 	void PlayerWalk();
 	void PlayDoor();
 	void PlaySuitcase();
+	void clock();
 	void PlayPhone();
 	void PlayKnock();
+	void Playmirror();
+	void Locker();
+	void PickUp();
+	void Ending1();
+	void Ending2();
+	void Ending3();
 	void StopAll();
 };
 

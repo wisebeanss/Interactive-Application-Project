@@ -41,8 +41,16 @@ void Sound::PlayKeyMusic() { PlayWavSFX("open.wav"); }
 void Sound::PlaySelect() { PlayWavSFX("flippingbook.wav"); }
 void Sound::PlayError() { PlayWavSFX("Error.wav"); }
 void Sound::PlayStart() { PlayWavSFX("equip.wav"); }
-void Sound::PlayExit() { PlayWavSFX("flippingbook.wav"); }
+void Sound::PlayExit() { PlayWavSFX("Exit.wav"); }
 void Sound::PlayerWalk() { PlayWavSFX("Walking.wav"); }
 void Sound::PlayDoor() { PlayWavSFX("door.wav"); }
 void Sound::PlayKnock() { PlayWavSFX("Doorhandle.wav"); }
 void Sound::PlaySuitcase() { PlayWavSFX("unholster.wav"); }
+void Sound::clock() { PlayWavSFX("Clock.wav"); }
+void Sound::Playmirror() { PlayWavSFX("Mirror.wav"); }
+void Sound::PickUp() { PlayWavSFX("PickUp.wav"); }
+void Sound::PlayPhone() { PlayWavSFX("Phone.wav"); }
+void Sound::Locker() { PlayWavSFX("Unlocked.wav"); }
+void Sound::Ending1() { PlayWavSFX("Ending1.wav"); }
+void Sound::Ending2() { PlayWavSFX("Ending3.wav"); }
+void Sound::Ending3() { PlayWavSFX("Ending3.wav"); }

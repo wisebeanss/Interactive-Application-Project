@@ -174,6 +174,7 @@ void Doors::use()
 			}
 			else
 			{
+				Doorplay.PlayError();
 				dialogue.show({
 				"That mirror lies. Think again.",
 				"2 minutes have been deducted!",
@@ -235,6 +236,7 @@ void Doors::use()
 			}
 
 			else {
+				Doorplay.PlayError();
 				dialogue.show({
 				"Wrong arrangement."
 				"2 minutes have been deducted!"
@@ -300,6 +302,7 @@ void Doors::use()
 			}
 			else
 			{
+				Doorplay.PlayError();
 				dialogue.show({
 				"That's not the right object..",
 				"2 minutes have been deducted!",
@@ -363,6 +366,7 @@ void Doors::use()
 				return;
 			}
 			else {
+				Doorplay.PlayError();
 				dialogue.show({
 				"Wrong arrangement.",
 				"2 minutes have been deducted!",
@@ -416,6 +420,7 @@ void Doors::use()
 				return;
 			}
 			else {
+				Doorplay.PlayError();
 				dialogue.show({
 				"Wrong answer.",
 				"2 minutes have been deducted!",
@@ -445,8 +450,10 @@ void Doors::use()
 		}
 		if (doorID == 61)
 		{
+			Doorplay.StopAll();
 			// BAD ENDING
 			Doorplay.PlayDoor();
+			Doorplay.Ending1();
 			dialogue.show({
 				"You step through the door, expecting freedom.",
 				"Instead, you find yourself back in Carriage 1. ",
@@ -463,7 +470,10 @@ void Doors::use()
 		}
 		else if (doorID == 62)
 		{
+			Doorplay.StopAll();
+
 			// NEUTRAL ENDING
+			Doorplay.Ending2();
 			Doorplay.PlayDoor();
 			dialogue.show({
 					"You step through Door 2. ",
@@ -483,8 +493,10 @@ void Doors::use()
 		}
 		else if (doorID == 63)
 		{
+			Doorplay.StopAll();
 			// TRUE ENDING
 			Doorplay.PlayDoor();
+			Doorplay.Ending3();
 			dialogue.show({
 					"You ignore the false exits and walk toward the furnace.",
 					"The dark purple flames roar, burning with every suppressed tear,",
