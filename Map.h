@@ -46,6 +46,8 @@ public:
 	void updateMap(int x, int y, char symbol);
 	bool validMove(int x, int y);
 	void printMap(int marginSize);
+	void resetMap(Player& player);
+
 
 	Vector<InteractiveObject*>& getObjects();
 	void setObjects(InteractiveObject* object);

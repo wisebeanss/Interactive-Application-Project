@@ -15,6 +15,7 @@ public:
 
     int getMinutes() const;
     int getSeconds() const;
-
+    void resetTimer();
     bool isTimeUp() const;
+    void debugTime();
 };

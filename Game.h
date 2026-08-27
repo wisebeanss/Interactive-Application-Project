@@ -19,6 +19,7 @@ private:
 	Map& map = getGameMap();
 	Player player;
 public:
+	Player& getPlayer() { return player; }
 	Game();
 	~Game();
 	void Init();
