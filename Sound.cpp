@@ -42,7 +42,7 @@ void Sound::Manumusic() { PlayBgmLoop("Manu.wav"); }
 void Sound::PlayKeyMusic() { PlayWavSFX("open.wav"); }
 void Sound::PlaySelect() { PlayWavSFX("flippingbook.wav"); }
 void Sound::PlayError() { PlayWavSFX("Error.wav"); }
-void Sound::PlayStart() { PlayWavSFX("equip.wav"); }
+void Sound::PlayStart() { PlayWavSFXAsync("equip.wav"); }
 
 void Sound::PlayExit() { PlayWavSFX("Exit.wav"); }
 void Sound::PlayerWalk() { PlayWavSFX("Walking.wav"); }
