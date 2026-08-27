@@ -6,13 +6,10 @@
 #pragma comment(lib, "winmm.lib")
 using namespace std;
 
+// transfer the file name
 static void PlayBgmLoop(const char* audioFile)
 {
-    mciSendStringA("close mybgm", NULL, 0, NULL);
-    string openCmd = string("open \"") + audioFile + "\" alias mybgm";
-    if (mciSendStringA(openCmd.c_str(), NULL, 0, NULL) == 0) {
-        mciSendStringA("play mybgm repeat", NULL, 0, NULL);
-    }   
+    PlaySoundA(audioFile, NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 }
 // Play sound effect using MCI (doesn't interrupt background music)
 static void PlayWavSFX(const char* audioFile)
