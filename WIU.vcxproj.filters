@@ -174,4 +174,48 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="Unlocked.wav">
+      <Filter>Source Files</Filter>
+    </Media>
+    <Media Include="PickUp.wav">
+      <Filter>Source Files</Filter>
+    </Media>
+    <Media Include="Phone.wav">
+      <Filter>Source Files</Filter>
+    </Media>
+    <Media Include="Mirror.wav">
+      <Filter>Source Files</Filter>
+    </Media>
+    <Media Include="Exit.wav">
+      <Filter>Source Files</Filter>
+    </Media>
+    <Media Include="Ending1.wav">
+      <Filter>Source Files</Filter>
+    </Media>
+    <Media Include="Clock.wav">
+      <Filter>Source Files</Filter>
+    </Media>
+    <Media Include="Manu.wav">
+      <Filter>Source Files</Filter>
+    </Media>
+    <Media Include="Error.wav">
+      <Filter>Source Files</Filter>
+    </Media>
+    <Media Include="Doorhandle.wav">
+      <Filter>Source Files</Filter>
+    </Media>
+    <Media Include="unholster.wav">
+      <Filter>Source Files</Filter>
+    </Media>
+    <Media Include="open.wav">
+      <Filter>Source Files</Filter>
+    </Media>
+    <Media Include="flippingbook.wav">
+      <Filter>Source Files</Filter>
+    </Media>
+    <Media Include="equip.wav">
+      <Filter>Source Files</Filter>
+    </Media>
+  </ItemGroup>
 </Project>

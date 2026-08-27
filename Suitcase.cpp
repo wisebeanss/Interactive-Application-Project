@@ -109,13 +109,14 @@ void Suitcase::tryUnlock()
         COORD questionPos = info.dwCursorPosition;
         suitcase.Locker();
         hintMsg = "give the order of the time of the calls(XXXXXXXXXXXXXXXX): ";
-        clearQuestion(questionPos, 1);
+        
         
         if (!canunlock)
         {
             string answer;
             cout << hintMsg;
             cin >> answer;
+            clearQuestion(questionPos, 1);
             if (answer == "1132113411351137")
             {
                 suitcase.PlaySuitcase();
@@ -127,7 +128,7 @@ void Suitcase::tryUnlock()
                       "That doesn't seem right..",
                       "Two minutes have been deducted.",
 
-                });
+                },42, 10, 35, 18);
                 system("cls");
                 getGameMap().timer.decreaseTime(2 * 60);
                 suitcase.PlayError();
@@ -215,7 +216,7 @@ void Suitcase::tryUnlock()
                      "That doesn't seem right..",
                      "Two minutes have been deducted.",
 
-                    });
+                    },42, 10, 35, 18);
 
 
 
@@ -235,7 +236,7 @@ void Suitcase::tryUnlock()
             "And one, without a date.",
             "Written after she had finally stopped waiting entirely.\n",
             "You choose the letter with no date.",
-            "The safe clicks open.\n",
+            "The suitcase clicks open.\n",
                 }, 68, 11, 20, 18);
 
             system("cls");
@@ -272,7 +273,7 @@ void Suitcase::tryUnlock()
                 dialogue.show({
                     "That doesn't seem right..",
                     "Two minutes have been deducted.",
-                    });
+                    },42, 10, 35, 18);
 
 
                 system("cls");
@@ -285,17 +286,14 @@ void Suitcase::tryUnlock()
             "You pull open Drawer 5,",
             "a folded piece of paper lies inside.",
             "You recognize the handwriting immediately.",
-            "\"It's yours. \"",
+            "\"It's yours.\"",
             "You unfold it.",
-            "There is only one sentence:",
             "\"You already knew.\"",
             "All this time, you had been searching for an answer.",
-            "In the train, photographs, empty seats",
             "But the answer was never somewhere else.",
             "It was always with you.",
             "\"I knew...\"",
-            "For the first time, you don't look away. ",
-            "The doors unlocks. ",
+            "The suitcase unlocks.",
                 }, 56, 10, 26, 18);
 
 

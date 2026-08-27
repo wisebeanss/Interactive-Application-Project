@@ -16,6 +16,14 @@ Map::Map() {
 Map::~Map() {
 	clearObjects();
 }
+void Map::resetMap(Player& player) {
+	carriageNum = 1;
+	carriageRoom = 1;
+	animFrame = 0;
+	player.setX(2);
+	player.setY(6);
+	buildMap();
+}
 bool Map::isMapRendered() {
 	return renderMap;
 }
@@ -331,7 +339,7 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, Player&
 				targetWidth);
 			break;
 		}
-		default:lineBuffer += formatPanelLine("", targetWidth); break;
+		default:lineBuffer += formatPanelLine("                   ", targetWidth); break;
 
 		}
 		for (int j = 0; j < 24; j++) {
@@ -342,34 +350,9 @@ void Map::printSidebar(int carriageNum, int carriageRoom, bool uiActive, Player&
 
 		std::cout << lineBuffer << "\n";
 	}
+	
 }
 
-//=========dialogue box if we got time===================
-
-//std::string textBoxMax(const std::string& text, size_t targetWidth = 50) {
-//	if (text.length() >= targetWidth) {
-//		return text.substr(0, targetWidth); // Truncate if too long
-//	}
-//	return text + std::string(targetWidth - text.length(), ' '); // Pad remaining spaces
-//}
-//
-//void Map::printDialogueBox(bool uiActive, const std::string textBuffer[7] = nullptr) const {
-//	size_t boxWidth = 50;
-//	for (int i = 0; i < 7; i++) {
-//		std::string lineBuffer = "";
-//		switch (i) {
-//		case 0: lineBuffer += textBoxMax("+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-+", boxWidth); break;
-//		case 1: lineBuffer += textBoxMax("", boxWidth); break;
-//		case 2: lineBuffer += textBoxMax("", boxWidth); break;
-//		case 3: lineBuffer += textBoxMax("", boxWidth); break;
-//		case 4: lineBuffer += textBoxMax("", boxWidth); break;
-//		case 5: lineBuffer += textBoxMax("", boxWidth); break;
-//		case 6: lineBuffer += textBoxMax("+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-+", boxWidth); break;
-//
-//
-//		}
-//	}
-//}
 
 void Map::updateMap(int x, int y, char symbol) {
 	if (x > 0 && x < 24 && y > 2 && y < 10) {
@@ -416,7 +399,7 @@ Timer& Map::getTimerObject() { return timer; }
 
 
 
-Vector<InteractiveObject*>& Map::getObjects() {
+Vector& Map::getObjects() {
 	return Objects;
 }
 void Map::clearObjects() {

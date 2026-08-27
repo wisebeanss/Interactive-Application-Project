@@ -61,14 +61,14 @@ void Player::ClearInv() {
 }
 InteractiveObject* Player::getNearbyObject() {
 	for (int i = 0; i < map.getObjects().size(); i++) {
-		int objX = map.getObjects()[i]->getX();
-		int objY = map.getObjects()[i]->getY();
+		int objX = (map.getObjects().at(i))->getX();
+		int objY = (map.getObjects().at(i))->getY();
 		if ((objX == getX() && objY == getY() + 1) ||
 			(objX == getX() && objY == getY() - 1) ||
 			(objX == getX() + 1 && objY == getY()) ||
 			(objX == getX() - 1 && objY == getY()))
 		{
-			return map.getObjects()[i];
+			return map.getObjects().at(i);
 		}
 	}
 	return nullptr;
@@ -77,7 +77,7 @@ void Player::HandleInput(char symbol) {
 	//movement
 	if (symbol == 'w' || symbol == 'a' || symbol == 's' || symbol == 'd') {
 		for (size_t i = 0; i < map.getObjects().size(); i++) {
-			InteractiveObject* obj = map.getObjects()[i];
+			InteractiveObject* obj = map.getObjects().at(i);
 			if (obj != nullptr && obj->getUIActive()) {
 				obj->disableUI(); // Toggles uiActive back to false webn they walk
 			}
@@ -89,7 +89,7 @@ void Player::HandleInput(char symbol) {
 		}
 		move(symbol);
 		for (size_t i = 0; i < map.getObjects().size(); i++) {
-			InteractiveObject* obj = map.getObjects()[i];
+			InteractiveObject* obj = map.getObjects().at(i);
 			if (obj != nullptr && obj->getX() == getX() && obj->getY() == getY()) {
 				Playinter.PickUp();
 				obj->disableUI(); // Ensure UI is OFF when entering inventory
@@ -136,11 +136,14 @@ void Player::HandleInput(char symbol) {
 			map.setMapRendered(false);
 		}
 	}
+	else if (symbol == 't') {
+		map.timer.decreaseTime(300);
+	}
 	else if (symbol >= '1' && symbol <= '7') {
 		int InvSlotIdx = static_cast<int>(symbol - '1');
 		for (size_t i = 0; i < map.getObjects().size(); i++) {
-			if (map.getObjects()[i] != nullptr) {
-				map.getObjects()[i]->disableUI();
+			if (map.getObjects().at(i) != nullptr) {
+				map.getObjects().at(i)->disableUI();
 			}
 		}
 		for (size_t i = 0; i < Inventory.size(); i++) {
@@ -166,19 +169,15 @@ void Player::move(char movement)
 	int newY = getY();
 	switch (movement) {
 	case 'w':
-		Playinter.PlayerWalk();
 		newY -= 1;
 		break;
 	case 'a':
-		Playinter.PlayerWalk();
 		newX -= 1;
 		break;
 	case 's':
-		Playinter.PlayerWalk();
 		newY += 1;
 		break;
 	case 'd':
-		Playinter.PlayerWalk();
 		newX += 1;
 		break;
 	default:

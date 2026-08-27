@@ -9,7 +9,11 @@ using namespace std;
 //transfer the file name 
 static void PlayBgmLoop(const char* audioFile)
 {
-    PlaySoundA(audioFile, NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+    mciSendStringA("close mybgm", NULL, 0, NULL);
+    string openCmd = string("open \"") + audioFile + "\" alias mybgm";
+    if (mciSendStringA(openCmd.c_str(), NULL, 0, NULL) == 0) {
+        mciSendStringA("play mybgm repeat", NULL, 0, NULL);
+    }   
 }
 // Play sound effect using MCI (doesn't interrupt background music)
 static void PlayWavSFX(const char* audioFile)
@@ -25,7 +29,7 @@ static void PlayWavSFX(const char* audioFile)
         mciSendStringA("play mysfx", NULL, 0, NULL);
     }
 }
-void PlayWavSFXAsync(const char* audioFile) {
+static void PlayWavSFXAsync(const char* audioFile) {
     PlaySoundA(audioFile, NULL, SND_FILENAME | SND_ASYNC);
 }
 // Stop/close all the Bgm and sounds
@@ -38,7 +42,7 @@ void Sound::StopAll()
 }
 
 // ========== ALL SOUNDS ==========
-void Sound::Background() { PlayBgmLoop("background.wav"); }
+//void Sound::Background() { PlayBgmLoop("background.wav"); }
 void Sound::Manumusic() { PlayBgmLoop("Manu.wav"); }
 void Sound::PlayKeyMusic() { PlayWavSFX("open.wav"); }
 void Sound::PlaySelect() { PlayWavSFX("flippingbook.wav"); }
@@ -46,7 +50,7 @@ void Sound::PlayError() { PlayWavSFX("Error.wav"); }
 void Sound::PlayStart() { PlayWavSFX("equip.wav"); }
 
 void Sound::PlayExit() { PlayWavSFX("Exit.wav"); }
-void Sound::PlayerWalk() { PlayWavSFXAsync("Walking.wav"); }
+//void Sound::PlayerWalk() { PlayWavSFXAsync("Walking.wav"); }
 
 void Sound::PlayDoor() { PlayWavSFX("door.wav"); }
 void Sound::PlayKnock() { PlayWavSFX("Doorhandle.wav"); }
@@ -57,5 +61,5 @@ void Sound::PickUp() { PlayWavSFX("PickUp.wav"); }
 void Sound::PlayPhone() { PlayWavSFX("Phone.wav"); }
 void Sound::Locker() { PlayWavSFX("Unlocked.wav"); }
 void Sound::Ending1() { PlayWavSFX("Ending1.wav"); }
-void Sound::Ending2() { PlayWavSFX("Ending3.wav"); }
-void Sound::Ending3() { PlayWavSFX("Ending3.wav"); }
+void Sound::Ending2() { PlayWavSFX("Ending1.wav"); }
+void Sound::Ending3() { PlayWavSFX("Ending1.wav"); }
