@@ -219,6 +219,7 @@ void MainMenu::selectCarriage() {
             if (idx < 1) { idx = 6; }
             map.setCarriage(idx);
             map.buildMap();
+            
         }
         else if (key == 'd') {
             idx++;

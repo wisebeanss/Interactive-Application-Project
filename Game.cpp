@@ -20,10 +20,6 @@ void Game::Run() {
 
 	while (true) {
 		auto frameStart = std::chrono::high_resolution_clock::now();
-
-		int oldY = player.getY();
-		int oldX = player.getX();
-
 		if (_kbhit()) {
 			char letter = _getch();
 			//Check for Esc Key
