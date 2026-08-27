@@ -10,6 +10,8 @@ public:
 	void PlayerWalk();
 	void PlayDoor();
 	void PlaySuitcase();
+	void PlayPhone();
+	void PlayKnock();
 	void StopAll();
 };
 

@@ -78,7 +78,6 @@ void Doors::clearQuestion(COORD startPos, int lines)
 
 void Doors::use()
 {
-	Doorplay.PlayDoor();
 	Dialogue dialogue;
 	int answerT1;
 	char answerT2 = ' ';
@@ -86,6 +85,7 @@ void Doors::use()
 
 	if (roomID == 1)
 	{
+		Doorplay.PlayKnock();
 		if (question == 1)
 		{
 			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -120,6 +120,7 @@ void Doors::use()
 			}
 			else
 			{
+				Doorplay.PlayError();
 				dialogue.show({
 					"That doesn't seem right..",
 					"Two minutes have been deducted.",
@@ -127,7 +128,7 @@ void Doors::use()
 				},42, 10, 35, 18);
 				
 				
-
+				
 				system("cls");
 				getGameMap().timer.decreaseTime(2 * 60);
 
@@ -162,7 +163,7 @@ void Doors::use()
 				"The door unlocks.",
 			
 					}, 42, 10, 35, 18);
-
+				Doorplay.PlayDoor();
 				
 
 				system("cls");
@@ -183,7 +184,7 @@ void Doors::use()
 
 				system("cls");
 				getGameMap().timer.decreaseTime(2 * 60);
-
+				
 				return;
 			}
 		}
@@ -196,6 +197,7 @@ void Doors::use()
 
 	if (roomID == 2)
 	{
+		Doorplay.PlayKnock();
 		if (question == 1)
 		{
 			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -228,7 +230,7 @@ void Doors::use()
 				
 				changeUnlockedState(true);
 				question = 2;
-			
+				Doorplay.PlayDoor();
 				return;
 			}
 
@@ -253,6 +255,7 @@ void Doors::use()
 
 	if (roomID == 3)
 	{
+		Doorplay.PlayKnock();
 		if (question == 1)
 		{
 			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -289,7 +292,7 @@ void Doors::use()
 
 				changeUnlockedState(true);
 
-
+				Doorplay.PlayDoor();
 				system("cls");
 
 				question = 2;
@@ -320,6 +323,7 @@ void Doors::use()
 
 	if (roomID == 4)
 	{
+		Doorplay.PlayKnock();
 		if (question == 1)
 		{
 			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -352,7 +356,7 @@ void Doors::use()
 					}, 48, 11, 30, 18);
 
 				changeUnlockedState(true);
-
+				Doorplay.PlayDoor();
 				system("cls");
 				question = 2;
 
@@ -380,6 +384,7 @@ void Doors::use()
 		}
 	}
 	if (roomID == 5) {
+		Doorplay.PlayKnock();
 		if (question == 1) {
 			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -405,6 +410,7 @@ void Doors::use()
 				
 
 				changeUnlockedState(true);
+				Doorplay.PlayDoor();
 				system("cls");
 				question = 2;
 				return;
@@ -432,6 +438,7 @@ void Doors::use()
 	
 	}
 	if (roomID == 6) {
+		Doorplay.PlayKnock();
 		if (doorID == 1)
 		{
 			cout << "unlock the suitcase first";
@@ -439,7 +446,7 @@ void Doors::use()
 		if (doorID == 61)
 		{
 			// BAD ENDING
-
+			Doorplay.PlayDoor();
 			dialogue.show({
 				"You step through the door, expecting freedom.",
 				"Instead, you find yourself back in Carriage 1. ",
@@ -457,6 +464,7 @@ void Doors::use()
 		else if (doorID == 62)
 		{
 			// NEUTRAL ENDING
+			Doorplay.PlayDoor();
 			dialogue.show({
 					"You step through Door 2. ",
 					"Your reflection stands waiting on the other side. ",
@@ -476,6 +484,7 @@ void Doors::use()
 		else if (doorID == 63)
 		{
 			// TRUE ENDING
+			Doorplay.PlayDoor();
 			dialogue.show({
 					"You ignore the false exits and walk toward the furnace.",
 					"The dark purple flames roar, burning with every suppressed tear,",
