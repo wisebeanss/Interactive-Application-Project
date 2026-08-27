@@ -103,7 +103,6 @@ void MainMenu::Show() {
             if (map.isThereEndings()) {
                 selectCarriage();
                 map.setEnded(false);
-                /*map.setCarriage(num);*/
             }
             cout << "\n          Starting game...\n";
 
