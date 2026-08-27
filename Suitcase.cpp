@@ -236,7 +236,7 @@ void Suitcase::tryUnlock()
             "And one, without a date.",
             "Written after she had finally stopped waiting entirely.\n",
             "You choose the letter with no date.",
-            "The safe clicks open.\n",
+            "The suitcase clicks open.\n",
                 }, 68, 11, 20, 18);
 
             system("cls");
@@ -296,7 +296,7 @@ void Suitcase::tryUnlock()
             "It was always with you.",
             "\"I knew...\"",
             "For the first time, you don't look away. ",
-            "The doors unlocks. ",
+            "The suitcase unlocks. ",
                 }, 56, 10, 26, 18);
 
 
