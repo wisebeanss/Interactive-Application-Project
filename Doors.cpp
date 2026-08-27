@@ -446,6 +446,7 @@ void Doors::use()
 		Doorplay.PlayKnock();
 		if (doorID == 1)
 		{
+			Doorplay.PlayError();
 			cout << "unlock the suitcase first";
 		}
 		if (doorID == 61)

@@ -107,7 +107,7 @@ void Suitcase::tryUnlock()
         GetConsoleScreenBufferInfo(hConsole, &info);
 
         COORD questionPos = info.dwCursorPosition;
-
+        suitcase.Locker();
         hintMsg = "give the order of the time of the calls(XXXXXXXXXXXXXXXX): ";
         clearQuestion(questionPos, 1);
         
@@ -149,15 +149,16 @@ void Suitcase::tryUnlock()
     }
     if (roomID == 4)
     {
-        suitcase.PlayError();
         hintMsg = "The suitcase is still locked. Find all 3 photos first.\nPieces collected: " + to_string(noOfPhotos) + "/3";
         canunlock = hasAllPhotos();
         if (!canunlock)
         {
             cout << "\n" << hintMsg ;
+            suitcase.PlayError();
         }
         if (canunlock)
         {
+            suitcase.PlaySuitcase();
             dialogue.show({
             "You place the fragments together.",
             "The photograph slowly becomes whole.",
@@ -186,6 +187,7 @@ void Suitcase::tryUnlock()
 
         if (!canunlock)
         {
+            suitcase.Locker();
             cout << "\r" << string(80, ' ') << "\r";
             cout << "Which letter was written last: ";
 
@@ -198,6 +200,7 @@ void Suitcase::tryUnlock()
             if (answer == "D" || answer == "d")
             {
                 canunlock = true;
+                suitcase.PlaySuitcase();
             }
             else
             {
@@ -246,6 +249,7 @@ void Suitcase::tryUnlock()
         string answer;
         if (!canunlock)
         {
+            suitcase.Locker();
             cout << "\r" << string(80, ' ') << "\r";
             cout << "Which drawer holds the truth: ";
 
@@ -253,6 +257,7 @@ void Suitcase::tryUnlock()
             clearQuestion(questionPos, 1);
             if (answer == "5")
             {
+                suitcase.PlaySuitcase();
                 canunlock = true;
             }
             else
