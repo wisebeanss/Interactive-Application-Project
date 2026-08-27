@@ -92,11 +92,13 @@ int MainMenu::GetChoiceInter() {
 }
 
 void MainMenu::Show() {
+    sound.Manumusic();
     while (true) {
         int choice = GetChoiceInter();
 
         if (choice == 1) {
-            sound.PlayStart();        // ✅ 开始游戏音效
+            sound.StopAll();
+            sound.PlayStart();        
             DrawTitle();
             if (map.isThereEndings()) {
                 selectCarriage();
@@ -104,6 +106,7 @@ void MainMenu::Show() {
                 /*map.setCarriage(num);*/
             }
             cout << "\n          Starting game...\n";
+
             Sleep(800);
             system("cls");
             return;
@@ -162,11 +165,13 @@ void MainMenu::Show() {
             (void)_getch();
         }
         else if (choice == 5) {
+            sound.StopAll();
             sound.PlayExit();       
             DrawTitle();
             cout << "\n          Goodbye...\n";
             Sleep(800);
             exit(0);
+           
         }
     }
 }

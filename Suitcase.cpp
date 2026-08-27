@@ -179,17 +179,18 @@ void Suitcase::tryUnlock()
 
         COORD questionPos = info.dwCursorPosition;
 
-        cout << "\r" << string(80, ' ') << "\r";
-        cout << "Which letter was written last: ";
-
-        string answer;
-        cin >> answer;
-
-        clearQuestion(questionPos, 1);
 
         if (!canunlock)
         {
-            
+            cout << "\r" << string(80, ' ') << "\r";
+            cout << "Which letter was written last: ";
+
+
+            string answer;
+            cin >> answer;
+
+            clearQuestion(questionPos, 1);
+
             if (answer == "D" || answer == "d")
             {
                 canunlock = true;
@@ -225,7 +226,7 @@ void Suitcase::tryUnlock()
 
             system("cls");
 
-            unlocked = true;
+            unlocked = canunlock;
         }
     }
     if (roomID == 6)
@@ -237,17 +238,15 @@ void Suitcase::tryUnlock()
 
         COORD questionPos = info.dwCursorPosition;
 
-        cout << "\r" << string(80, ' ') << "\r";
-        cout << "Which drawer holds the truth: ";
-
-        int answer;
-        cin >> answer;
-
-        clearQuestion(questionPos, 1);
+        string answer;
         if (!canunlock)
         {
-           
-            if (answer == 5)
+            cout << "\r" << string(80, ' ') << "\r";
+            cout << "Which drawer holds the truth: ";
+
+            cin >> answer;
+            clearQuestion(questionPos, 1);
+            if (answer == "5")
             {
                 canunlock = true;
             }
@@ -256,9 +255,7 @@ void Suitcase::tryUnlock()
                 dialogue.show({
                     "That doesn't seem right..",
                     "Two minutes have been deducted.",
-
                     });
-
 
 
                 system("cls");
