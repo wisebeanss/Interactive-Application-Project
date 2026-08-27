@@ -286,17 +286,14 @@ void Suitcase::tryUnlock()
             "You pull open Drawer 5,",
             "a folded piece of paper lies inside.",
             "You recognize the handwriting immediately.",
-            "\"It's yours. \"",
+            "\"It's yours.\"",
             "You unfold it.",
-            "There is only one sentence:",
             "\"You already knew.\"",
             "All this time, you had been searching for an answer.",
-            "In the train, photographs, empty seats",
             "But the answer was never somewhere else.",
             "It was always with you.",
             "\"I knew...\"",
-            "For the first time, you don't look away. ",
-            "The suitcase unlocks. ",
+            "The suitcase unlocks.",
                 }, 56, 10, 26, 18);
 
 
