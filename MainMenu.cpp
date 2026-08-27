@@ -106,7 +106,6 @@ void MainMenu::Show() {
                     continue;
                 }
                 map.setEnded(false);
-                /*map.setCarriage(num);*/
             }
             cout << "\n          Starting game...\n";
 
