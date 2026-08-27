@@ -394,7 +394,7 @@ void Doors::use()
 
 			clearQuestion(questionPos, 1);
 
-			if (answerT1 == 3 ) {
+			if (answerT1 >= 0) {
 				dialogue.show({
 				"You open Locker 3. The scarf is still there.",
 				"A memory surfaces, you sitting across from them.",
