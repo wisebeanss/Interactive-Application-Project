@@ -10,7 +10,9 @@ private:
 	array<InteractiveObject*, 7> Inventory;
 	bool interact;
 	Map &map;
+	Timer timer;
 public:
+	Player();
 	Player(Map &map);
 	~Player();
 	std::string getInvItemName(int index) const;

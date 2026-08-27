@@ -14,13 +14,40 @@ void Game::Init() {
 	map.printSidebar(1, 1, false, player, defaultBuffer);
 }
 void Game::Run() {
+	map.timer.resetTimer();
 	Puzzle puzzle;
 
 	const std::chrono::milliseconds frameBudget(33);
 
 	while (true) {
+
+
 		auto frameStart = std::chrono::high_resolution_clock::now();
 
+		if (map.timer.isTimeUp()) {
+			MainMenu menu;
+			int choice = menu.ShowGameOverMenu(player);
+
+			if (choice == 1) {
+				system("cls");
+				map.timer.resetTimer();
+				player.setX(2);         
+				player.setY(6);         
+				player.ClearInv();
+				map.buildMap();
+				map.resetMap(player);
+				continue;              
+			}
+			else if (choice == 2) {
+	
+				menu.Show(player);
+				return;         
+			}
+			else if (choice == 3) {
+
+				exit(0);
+			}
+		}
 		int oldY = player.getY();
 		int oldX = player.getX();
 
@@ -101,7 +128,6 @@ void Game::Run() {
 			std::this_thread::sleep_for(frameBudget - elapsedTime);
 		}
 	}
-
 
 }
 void Game::End() {

@@ -10,6 +10,7 @@ using namespace std;
 static const string margin(40, ' ');
 Sound sound;  
 
+
 string MainMenu::FormatLine(const string& text, size_t width) {
     if (text.length() >= width)
         return text.substr(0, width);
@@ -75,6 +76,7 @@ int MainMenu::GetChoiceInter() {
             sound.PlayKeyMusic();   
             selected--;
             if (selected < 0) selected = total - 1;
+      
         }
         else if (key == 's') {
             sound.PlayKeyMusic();    
@@ -91,7 +93,7 @@ int MainMenu::GetChoiceInter() {
     }
 }
 
-void MainMenu::Show() {
+void MainMenu::Show(Player& player) {
     while (true) {
         int choice = GetChoiceInter();
 
@@ -103,8 +105,11 @@ void MainMenu::Show() {
                 map.setEnded(false);
                 /*map.setCarriage(num);*/
             }
-            cout << "\n          Starting game...\n";
+            cout << "\n                                          Starting game...\n";
+            map.resetMap(player);
             Sleep(800);
+            player.setX(2);
+            player.setY(6);
             system("cls");
             return;
         }
@@ -151,7 +156,7 @@ void MainMenu::Show() {
             cout << margin << "|   Psychological Theme & Design   |\n";
             cout << margin << "|                                  |\n";
             cout << margin << "|   Programming & Design:          |\n";
-            cout << margin << "|   Your Name / Team               |\n";
+            cout << margin << "|   GROUP 4 !!                     |\n";
             cout << margin << "|                                  |\n";
             cout << margin << "|   Special Thanks:                |\n";
             cout << margin << "|   Everyone who helped along      |\n";
@@ -197,6 +202,53 @@ int MainMenu::ShowPauseMenu() {
         }
         else {
             sound.PlayError();       
+        }
+    }
+}
+
+void MainMenu::DrawGameOverMenu(int selected) {
+    DrawTitle();
+    cout << margin << "+----------------------------------+\n";
+    cout << margin << "|        G A M E   O V E R         |\n";
+    cout << margin << "+----------------------------------+\n";
+    cout << margin << "|  Time ran out on your journey!   |\n";
+    cout << margin << "|                                  |\n";
+    cout << margin << "|   " << (selected == 0 ? "-->  " : "     ") << "Restart Carriage          |\n";
+    cout << margin << "|   " << (selected == 1 ? "-->  " : "     ") << "Return to Main Menu       |\n";
+    cout << margin << "|   " << (selected == 2 ? "-->  " : "     ") << "Exit Game                 |\n";
+    cout << margin << "|                                  |\n";
+    cout << margin << "+----------------------------------+\n";
+    cout << "\n" << margin << " Use 'W'/'S' to move | Enter to confirm\n";
+}
+
+int MainMenu::ShowGameOverMenu(Player& player) {
+    int selected = 0;
+    int total = 3;
+
+    while (true) {
+        system("cls");
+        DrawGameOverMenu(selected);
+
+        int key = _getch();
+        if (key == 'W' || key == 'w') {
+            sound.PlayKeyMusic();
+            selected--;
+            if (selected < 0) selected = total - 1;
+            system("cls");
+            map.resetMap(player);
+            player.ClearInv();
+        }
+        else if (key == 'S' || key == 's') {
+            sound.PlayKeyMusic();
+            selected++;
+            if (selected >= total) selected = 0;
+        }
+        else if (key == 13) { // Enter Key
+            sound.PlaySelect();
+            return selected + 1; // Returns 1: Restart, 2: Main Menu, 3: Exit
+        }
+        else {
+            sound.PlayError();
         }
     }
 }
