@@ -192,6 +192,22 @@
     <ClInclude Include="Vector.h" />
     <ClInclude Include="Watch.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="Clock.wav" />
+    <Media Include="Doorhandle.wav" />
+    <Media Include="Ending1.wav" />
+    <Media Include="equip.wav" />
+    <Media Include="Error.wav" />
+    <Media Include="Exit.wav" />
+    <Media Include="flippingbook.wav" />
+    <Media Include="Manu.wav" />
+    <Media Include="Mirror.wav" />
+    <Media Include="open.wav" />
+    <Media Include="Phone.wav" />
+    <Media Include="PickUp.wav" />
+    <Media Include="unholster.wav" />
+    <Media Include="Unlocked.wav" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

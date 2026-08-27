@@ -7,7 +7,9 @@ Vector::~Vector() {
 	delete[] Array;
 }
 InteractiveObject*& Vector::at(int index) {
-	if(index > length)
+	if (index > length) {
+		index = length;
+	}
 	return Array[index];
 }
 int Vector::size() {
@@ -48,8 +50,5 @@ void Vector::erase(int index) {
 }
 
 void Vector::clear() {
-	for (int i = 0; i < length; i++) {
-		delete Array[i];
-	}
 	length = 0;
 }

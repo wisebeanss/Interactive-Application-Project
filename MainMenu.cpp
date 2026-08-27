@@ -105,9 +105,14 @@ void MainMenu::Show(Player& player) {
             if (map.isThereEndings()) {
                 selectCarriage();
                 map.setEnded(false);
+                map.buildMap();
+                player.setX(2);
+                player.setY(6);
+            }
+            else {
+                map.resetMap(player);
             }
             cout << "\n                                          Starting game...\n";
-            map.resetMap(player);
             Sleep(800);
             player.setX(2);
             player.setY(6);

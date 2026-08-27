@@ -82,7 +82,7 @@ void Doors::use()
 	int answerT1;
 	char answerT2 = ' ';
 	string answerT3;
-
+	setRoomID(getGameMap().getCarriage());
 	if (roomID == 1)
 	{
 		Doorplay.PlayKnock();
@@ -463,7 +463,7 @@ void Doors::use()
 
 			cin >> confirm;
 			clearQuestion(questionPos, 1);
-
+			
 			if (confirm == 'N' || confirm == 'n')
 			{
 				dialogue.show({
