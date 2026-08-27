@@ -10,7 +10,7 @@ static void PlayBgmLoop(const char* audioFile)
 {
     PlaySoundA(audioFile, NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 }
-// Play sound effect using MCI (does NOT interrupt background music)
+// Play sound effect using MCI (doesn't interrupt background music)
 static void PlayWavSFX(const char* audioFile)
 {
     // Close any previously opened sound effect channel
@@ -24,8 +24,10 @@ static void PlayWavSFX(const char* audioFile)
         mciSendStringA("play mysfx", NULL, 0, NULL);
     }
 }
-
-//Stop/close all the Bgm and sounds
+void PlayWavSFXAsync(const char* audioFile) {
+    PlaySoundA(audioFile, NULL, SND_FILENAME | SND_ASYNC);
+}
+// Stop/close all the Bgm and sounds
 void Sound::StopAll()
 {
     PlaySoundA(NULL, NULL, 0); 
@@ -41,8 +43,13 @@ void Sound::PlayKeyMusic() { PlayWavSFX("open.wav"); }
 void Sound::PlaySelect() { PlayWavSFX("flippingbook.wav"); }
 void Sound::PlayError() { PlayWavSFX("Error.wav"); }
 void Sound::PlayStart() { PlayWavSFX("equip.wav"); }
+<<<<<<< HEAD
 void Sound::PlayExit() { PlayWavSFX("Exit.wav"); }
 void Sound::PlayerWalk() { PlayWavSFX("Walking.wav"); }
+=======
+void Sound::PlayExit() { PlayWavSFX("flippingbook.wav"); }
+void Sound::PlayerWalk() { PlayWavSFXAsync("Walking.wav"); }
+>>>>>>> 03e1c10c26c2deda93a24db99736bce2f3096590
 void Sound::PlayDoor() { PlayWavSFX("door.wav"); }
 void Sound::PlayKnock() { PlayWavSFX("Doorhandle.wav"); }
 void Sound::PlaySuitcase() { PlayWavSFX("unholster.wav"); }
